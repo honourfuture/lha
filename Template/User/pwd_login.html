@@ -1,0 +1,50 @@
+<include file="Mobile:header" nav="修改登录密码"/>
+<div class="mobile">
+    <div class="othertop">
+        <a class="goback" href="{:U('set_account')}"><img src="__PUBLIC__/mobile/img/goback.png" /></a>
+        <div class="othertop-font">修改登录密码</div>
+    </div>
+    <div class="header-nbsp"></div>
+    <div class="login_bg">
+        <form action="{:U('pwd_login')}" method="post" id="ifr">
+            <div class="input_text cert">
+            	<label>原登录密码</label>
+                   <input type="text" name="oldpwd" id="oldpwd" placeholder="请输入登录密码">
+               </div>
+               <div class="input_text cert">
+            	<label>新登录密码</label>
+                   <input type="password" name="pwd" id="pwd" placeholder="请输入新登录密码">
+               </div>
+               <div class="input_text cert">
+            	<label>确认密码</label>
+                   <input type="password" name="pwd2" id="pwd2" placeholder="请输入确认密码">
+               </div>
+               <input type="submit" class="input_btn" value="完成修改" />
+        </form>
+    </div>
+</div>
+<script type="text/javascript">
+    $("#ifr").submit(function() {
+        var oldpwd = $("#oldpwd").val();
+        var pwd = $("#pwd").val();
+        var pwd2 = $("#pwd2").val();
+        if (oldpwd.length < 6 || oldpwd.length > 16) {
+            msg("错误", "请输入6-16个字符的原登录密码！", 1);
+            return false;
+        }
+        if (pwd.length < 6 || pwd.length > 16) {
+            msg("错误", "请输入6-16个字符的新登录密码！", 1);
+            return false;
+        }
+        if (pwd2.length < 6 || pwd2.length > 16) {
+            msg("错误", "请再次输入6-16个字符的新登录密码！", 1);
+            return false;
+        }
+        if (pwd != pwd2) {
+            msg("错误", "两次密码不一致！", 1);
+            return false;
+        }
+    })
+</script>
+</body>
+</html>

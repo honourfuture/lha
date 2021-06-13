@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<include file="common_header" title="商品列表"/>
+<include file="Public_header" />
+<include file="page_css" />
+
+<body class="gray-bg wrapper wrapper-content">
+
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5><i class="fa fa-tasks"></i> 商品列表</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="col-sm-3">
+                    <form name="admin_list_sea" class="form-search" method="get" action="__URL__/goods_list">
+                        <div  class="input-group">
+                            <input type="text" name="val" id="val" class="form-control" value="" placeholder="输入商品名称进行搜索">
+                            <span class="input-group-btn">
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> 搜索</button>
+                    </span>
+                        </div>
+                    </form>
+                </div>
+                <div class="row">
+
+                    <div class="col-sm-2" style="width: 100px">
+                        <div class="input-group">
+                            <a href="{:U('chuhzg19tvgabxm/add_goods')}" class="btn btn-primary">添加商品</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="hr-line-dashed"></div>
+
+                <table class="table table-bordered">
+                    <thead>
+                    <tr class="long-tr">
+                        <th width="5%">编号</th>
+                        <th>商品名称</th>
+                        <th>缩略图</th>
+                        <th>价格</th>
+                        <th>运费</th>
+                        <th>所属分类</th>
+                        <th>库存</th>
+                        <th>添加时间</th>
+                        <th>推荐</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <volist name="goods_list" id="vo" key="val">
+                        <tr class="long-td">
+                            <td>{$vo.id}</td>
+                            <td>{$vo.goods_name}</td>
+                            <td><img src="/Public/uploads/item/{$vo.photo}" style="height:30px" onerror="this.src='__PUBLIC__/Admin/img/no_img.jpg'"/></td>
+                            <td>{$vo.goods_price}</td>
+                            <td>{$vo.goods_freight}</td>
+                            <td>{$vo.classify_name}</td>
+                            <td>{$vo.goods_kc}</td>
+                            <td>{$vo.add_time|date='Y年m月d日 H:i:s',###}</td>
+                            <td>
+                                <if condition="$vo.tuijian eq 1">
+                                    <a href="javascript:;"><span class="label label-primary" id="tuijian{$vo.id}" onclick="tuijian({$vo.id});" >推荐中</span></a>
+                                    <else/>
+                                    <a href="javascript:;"><span class="label label-danger" id="tuijian{$vo.id}" onclick="tuijian({$vo.id});" >不推荐</span></a>
+                                </if>
+                            </td>
+                            <td>
+                                <if condition="$vo.state eq 1">
+                                    <a href="javascript:;"><span class="label label-primary" id="sta{$vo.id}" onclick="state({$vo.id});" >显示</span></a>
+                                    <else/>
+                                    <a href="javascript:;"><span class="label label-danger" id="sta{$vo.id}" onclick="state({$vo.id});" >不显示</span></a>
+                                </if>
+                            </td>
+                            <td>
+                                <a href="{:U('chuhzg19tvgabxm/add_goods',array('id'=>$vo['id']))}" class="btn btn-primary">
+                                    编辑</a>&nbsp;&nbsp;
+                                <a href="javascript:;" onclick="return del({$vo.id},{:I('p',1)});" class="btn btn-danger">
+                                   删除</a>
+                            </td>
+                        </tr>
+                    </volist>
+                    </tbody>
+                </table>
+                <div class="pages" style=" text-align: right;">
+                    {$page}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function del(s_id,p){
+        layer.confirm('删除后将不可恢复，你确定要删除吗？', {icon: 3}, function(index){
+            layer.close(index);
+            window.location.href="__URL__/goods_del/id/"+s_id+"/p/"+p+"";
+        });
+    }
+
+    function state(val){
+        $.post('{:U("goods_state")}',
+            {id:val},
+            function(data){
+                var $v=val;
+                if(data.status){
+                    if(data.info=='状态禁止'){
+                        var a='不显示'
+                        $('#sta'+val).html(a);
+                        $('#sta'+val).removeClass("label-primary").addClass("label-danger");
+                        layer.msg(data.info,{icon:4});
+                        return false;
+                    }else{
+                        var b='显示'
+                        $('#sta'+val).html(b);
+                        $('#sta'+val).removeClass("label-danger").addClass("label-primary");
+                        layer.msg(data.info,{icon:1});
+                        return false;
+                    }
+
+                }
+            });
+        return false;
+    }
+
+    function tuijian(val) {
+        $.post('{:U("goods_tuijian")}',
+            {id:val},
+            function(data){
+                var $v=val;
+                if(data.status){
+                    if(data.info=='已取消推荐'){
+                        var a='不推荐';
+                        $('#tuijian'+val).html(a);
+                        $('#tuijian'+val).removeClass("label-primary").addClass("label-danger");
+                        layer.msg(data.info,{icon:4});
+                        return false;
+                    }else{
+                        var b='推荐中';
+                        $('#tuijian'+val).html(b);
+                        $('#tuijian'+val).removeClass("label-danger").addClass("label-primary");
+                        layer.msg(data.info,{icon:1});
+                        return false;
+                    }
+
+                }
+            });
+        return false;
+    }
+</script>
+
+<include file="common_footer" menu="menu_goods" nav="0"/>
+</body>
+
+</html>

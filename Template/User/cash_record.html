@@ -1,0 +1,30 @@
+<include file="Mobile:header" nav="提现记录"/>
+<div class="mobile">
+    <div class="othertop">
+        <a class="goback" href="javascript:history.back();"><img src="__PUBLIC__/mobile/img/goback.png" /></a>
+        <div class="othertop-font">提现记录</div>
+    </div>
+    <div class="header-nbsp"></div>
+    <div class="record_outer">
+    	<table>
+    		<tr>
+    			<th>提现金额</th>
+    			<th>提现时间</th>
+    			<th>状态</th>
+    		</tr>
+            <volist name="cash" id="c">
+                <tr>
+                    <td>{$c.money}</td>
+                    <td>{$c.time}</td>
+                    <td>
+                        <if condition="$c['status'] eq 0">处理中</if>
+                        <if condition="$c['status'] eq 1">提现成功</if>
+                        <if condition="$c['status'] eq 2">提现失败</if>
+                    </td>
+                </tr>
+            </volist>
+    	</table>
+    </div>
+</div>
+</body>
+</html>

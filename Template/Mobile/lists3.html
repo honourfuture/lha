@@ -1,0 +1,117 @@
+<include file="header" nav="标列表"/>
+<link rel="stylesheet" href="__PUBLIC__/mobile/css/div3.css?k={:rand(1,99999)}"/>
+<div class="mobile">
+    <div class="header">{$Think.lang.investmentProject}</div>
+    <div class="max">
+        <div class="platformData">
+            <volist name="item" id="i">
+                <a href="{:U('details','id='.$i['id'])}">
+                    <div class="itemList">
+                        <div class="project-cont">
+                            <div class="project-img">
+                                <img src="__PUBLIC__/uploads/item/{$i.img}">
+                            </div>
+                            <div class="project-list">
+                                <ul>
+                                    <li>
+                                        <em>{$i.title}</em>
+                                    </li>
+                                    <li style="color:red">
+                                        <em>{:getProjectType($i['type'])}</em>
+                                    </li>
+                                    <li>
+                                        {$Think.lang.projectScale}：<em>{$Think.lang.unitSymbol} {:round($i['total'],2)}</em>
+                                    </li>
+                                    <li>
+                                        {$Think.lang.startingAmount}：<em>{$Think.lang.unitSymbol} {:round($i['min'],2)}</em>
+                                    </li>
+                                    <li>
+                                        {$Think.lang.dailyInterestRate}：<em>{:round($i['rate'],2)}</em>%
+                                    </li>
+                                    <li>
+                                        <em>
+                                            <span class="li-title">項目進度：</span>
+                                            <span class="jdt1">&nbsp;&nbsp;</span>
+                                            <span class="jdt"><i style="width:76.69%"></i></span>
+                                            <span class="jdt3">76.69%</span>
+                                        </em>
+                                    </li>
+                                    <div class="clear"></div>
+                                </ul>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </a>
+            </volist>
+        </div>
+    </div>
+    <div class="header-nbsp"></div>
+
+    <!-- 投资项目 -->
+
+    <!--<volist name="item" id="i">-->
+        <!--<div class="pro_box">-->
+            <!--<a class="tier" href="{:U('details','id='.$i['id'])}">-->
+               <!--<div class="img-box">-->
+                    <!--<img src="__PUBLIC__/uploads/item/{$i.img}" class="img">-->
+                <!--</div>-->
+                <!--<div class="info-box">-->
+                    <!--<div class="ib-head">-->
+                        <!--<span class="index">保</span>{$i.title}-->
+                    <!--</div>-->
+                   <!--&lt;!&ndash; <div class="ib-doc">-->
+                        <!--{$i.desc}-->
+                    <!--</div>&ndash;&gt;-->
+                    <!--<div class="ib-body">-->
+                        <!--<div class="cl-3">-->
+                            <!--<p><span class="red">{:round($i['rate'],2)}</span>%</p>-->
+                            <!--<p>{$Think.lang.dailyInterestRate}</p>-->
+                        <!--</div>-->
+                        <!--<div class="cl-3">-->
+                            <!--<p><span class="red">{$i.day}</span>天</p>-->
+                            <!--<p>{$Think.lang.investmentPeriod}</p>-->
+                        <!--</div>-->
+                        <!--<div class="cl-3">-->
+                            <!--<p>￥<span class="red">{:round($i['min'],2)}</span>{$Think.lang.unit}</p>-->
+                            <!--<p>{$Think.lang.startingAmount}</p>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="ib-foot">-->
+                        <!--<div class="text">-->
+                            <!--<p>{$Think.lang.projectScale}：{:round($i['total'],2)}万{$Think.lang.unit}</p>-->
+                            <!--<p>{:getProjectType($i['type'])}</p>-->
+                        <!--</div>-->
+                        <!--<div class="other">-->
+                            <!--<if condition="getProjectPercent($i['id']) eq 100">-->
+                                <!--<button class="now-btn" style="background-color: #888;">项目已满</button>-->
+                                <!--<else/>-->
+                                <!--<button class="now-btn">{$Think.lang.investNow}</button>-->
+                            <!--</if>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="plan">-->
+                        <!--<span>{$Think.lang.projectProgress}：</span>-->
+                        <!--<div class="plan-wrap">-->
+                            <!--<if condition="getProjectPercent($i['id']) eq 100">-->
+                                <!--<div class="plan-con" style="width:{:round(getProjectPercent($i['id']),2)}%;background-color: #888;"></div>-->
+                                <!--<else/>-->
+                                <!--<div class="plan-con" style="width:{:round(getProjectPercent($i['id']),2)}%;"></div>-->
+                            <!--</if>-->
+                        <!--</div>-->
+                        <!--<span class="plan-text">{:round(getProjectPercent($i['id']),2)}%</span>-->
+                    <!--</div>-->
+                    <!--<if condition="getProjectPercent($i['id']) eq 100">-->
+                        <!--<img class="over" src="__PUBLIC__/mobile/img/over.png" style="display: block;position: absolute;right: 0;margin-top: -2rem;"/>-->
+                    <!--</if>-->
+                <!--</div>-->
+            <!--</a>-->
+        <!--</div>-->
+    <!--</volist>-->
+
+
+    <include file="footer" menu="list"/>
+</div>
+</body>
+</html>

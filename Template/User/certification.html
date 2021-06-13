@@ -1,0 +1,34 @@
+<include file="Mobile:header" nav="实名认证"/>
+<div class="mobile">
+    <div class="othertop">
+        <a class="goback" href="{:U('person')}"><img src="__PUBLIC__/mobile/img/goback.png" /></a>
+        <div class="othertop-font">实名认证</div>
+    </div>
+    <div class="header-nbsp"></div>
+        <div class="login_bg">
+	        <if condition="$user['auth'] eq 1">
+                <div class="input_text cert">
+                    <label>姓名</label>
+                    <input type="text" readonly="readonly" value="{$user.name}" placeholder="输入姓名">
+                </div>
+                <div class="input_text cert">
+                    <label>身份证号码</label>
+                    <input type="text" readonly="readonly" value="{$user.idcard}" placeholder="输入有效身份证号">
+                </div>
+                <else/>
+                <form action="{:U('certification')}" method="post">
+                    <div class="input_text cert">
+                        <label>姓名</label>
+                        <input type="text" name="name" placeholder="输入姓名">
+                    </div>
+                    <div class="input_text cert">
+                        <label>身份证号码</label>
+                        <input type="text" name="idcard" placeholder="输入有效身份证号">
+                    </div>
+                    <input type="submit" class="input_btn" value="立即认证" />
+                </form>
+            </if>
+        </div>
+    </div>
+</body>
+</html>

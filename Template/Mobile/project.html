@@ -1,0 +1,57 @@
+<include file="header" nav="标列表"/>
+<link rel="stylesheet" href="__PUBLIC__/mobile/css/x.css?k={:rand(1,99999)}"/>  
+<div class="mobile">
+    <div class="header">项目投资</div>
+    <div class="header-nbsp"></div>
+
+
+
+<div class="max">
+
+<div class="platformData">
+ <volist name="item" id="i">
+ <a href="{:U('details','id='.$i['id'])}">
+</a><div class="itemList" style="height:160px;"><a href="{:U('details','id='.$i['id'])}">
+<div class="investTitle"><img src="__PUBLIC__/mobile/img/mortgage.gif" style="">{$i.title}</div>
+<div class="investInfo">
+<ul>
+<li style="width:25%"><em>{:round($i['rate'],2)}</em>%<br>{$Think.lang.dailyInterestRate}</li>
+<li style="width:35%"><em>{$i.day}</em> 天<br>{$Think.lang.investmentPeriod}</li>
+<li style="width:40%">{$Think.lang.unitSymbol}<em>{:round($i['min'],2)}</em>{$Think.lang.unit}<br>{$Think.lang.startingAmount}</li>
+<div class="clear"></div></ul></div>
+</a><div class="project-foot"><a href="{:U('details','id='.$i['id'])}">
+&nbsp;&nbsp;{$Think.lang.projectScale}：{:round($i['total'],2)}万{$Think.lang.unit}&nbsp;&nbsp;&nbsp;&nbsp; {:getProjectType($i['type'])}<br>
+<span class="jdt1">&nbsp;&nbsp;</span><span class="jdt"><i style="width:{:round(getProjectPercent($i['id']),2)}%"></i></span><span class="jdt3">{:round(getProjectPercent($i['id']),2)}%</span>
+</a><div class="touzi"  <if condition="getProjectPercent($i['id']) eq 100"> style="background-color: #888;  <else/>style="background-color: #12ADFF; </if>float:right;width:70px;margin-right:10px;border-radius: 2px;">
+
+	 <if condition="getProjectPercent($i['id']) eq 100">
+	<a class="f_get_now" href="{:U('details','id='.$i['id'])}" style="font-size: 13px;color: #FFFFFF;background-color: #888;">项目已满</a>
+ <else/>
+                               <a class="f_get_now" href="{:U('details','id='.$i['id'])}" style="font-size: 13px;color: #FFFFFF">{$Think.lang.investNow}</a>
+                            </if>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+
+    </volist>
+</div>
+</div>
+
+
+ <script type="text/javascript" src="__PUBLIC__/xin_mobile/static/js/rem.js"></script> 
+   <link type="text/css" rel="stylesheet" href="__PUBLIC__/xin_mobile/static/css/foot.css" /> 
+   <div class="hh"></div> 
+  
+   <footer class="footer"> 
+    <a href="#"><img src="__PUBLIC__/xin_mobile/images/15.png" /></a> 
+    <a href="/Mobile/lists.html"><img src="__PUBLIC__/xin_mobile/images/16.png" /></a> 
+    <a href="/Mobile/index/index.html"><img src="__PUBLIC__/xin_mobile/images/17.png" /></a> 
+    <a href="/about/index.html"><img src="__PUBLIC__/xin_mobile/images/18.png" /></a> 
+    <a href="/user/person.html"><img src="__PUBLIC__/xin_mobile/images/19.png" /></a> 
+   </footer> 
+
+   
+</div>
+</body>
+</html>

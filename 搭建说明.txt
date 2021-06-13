@@ -1,0 +1,12 @@
+搭建说明：
+
+演示环境：Linux+宝塔
+NX1.18+PHP5.6+MYSQL5.6
+
+伪静态选择 thinkPHP
+Public/config.php 
+修改数据库账号密码
+
+后台登录地址：域名/Chuhzg19tvgabxm/login.html
+
+账号：admin 密码：www.loowp.com

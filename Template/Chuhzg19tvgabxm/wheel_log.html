@@ -1,0 +1,59 @@
+
+<include file="common_header" title="抽奖设置管理"/>
+<p class="curr">
+    <a>抽奖管理</a>&gt;&gt;
+    <span>抽奖记录</span>
+</p>
+<div class="content">
+    <div class="list_main">
+        <div class="title">
+            <form action="{:U('wheel_log')}" method="post">
+                <p>
+                    <label>手机号码</label><input type="text" name="phone" value="" class="txt" placeholder="抽奖用户手机号码">
+                    <!--<label>抽奖日期</label><input type="text" name="start" value="" class="timer">至<input type="text" name="end" value="" class="timer">-->
+                    <label>抽奖类型</label>
+                    <select name="type">
+                        <option value="0">全部</option>
+                        <option value="1">现金</option>
+                        <option value="2">实物</option>
+                    </select>
+                    <input type="submit" class="sub1" value="查询">
+                </p>
+                <!-- <p>
+                
+                <input type="submit" class="sub1" value="查询">
+                   <a href="javascript:;" onclick="delCheck()" class="four">批量删除</a>
+                    <a href="/admin8123edcvfr7890/prizelist_add.html" class="two">添加记录</a>
+                </p>-->
+            </form>
+        </div>
+        <table>
+            <tbody>
+            <tr>
+                <th><input type="checkbox" id="selectAll"></th>
+                <th>会员手机</th>
+                <!--<th>奖品类型</th>-->
+                <th>奖品名称</th>
+                <th>发布时间</th>
+                <!--<th>操作</th>-->
+            </tr>
+            <volist name="list" id="vo">
+            <tr>
+                <td><input type="checkbox" name="ck[]" value="{$vo.id}"></td>
+                <td>{$vo.phone}</td>
+               <!-- <td></td>-->
+                <td>{$vo.title}</td>
+                <td>{$vo.ctime}</td>
+                <!--<td>
+                    <a href="javascript:;" onclick="delList(82)" class="del">删除</a>
+                </td>-->
+            </tr>
+            </volist>
+            </tbody>
+        </table>
+        <ul class="page">
+        {$page}
+        </ul>
+    </div>
+</div>
+</div>

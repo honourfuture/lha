@@ -1,0 +1,23 @@
+<include file="common_header" title="系统管理"/>
+        <p class="curr">
+            <a>系统管理</a>&gt;&gt;
+            <span>合同章设置</span>
+        </p>
+        <div class="content">
+            <form action="{:U('system_contract')}" method="post" enctype="multipart/form-data">
+                <div class="line">
+                    <label>图片：<br/><span style="color:#f00;font-size: 12px;">建议尺寸：750x750像素</span></label>
+                    <div class="uploads">
+                        <img src="__PUBLIC__/uploads/contract.png?k={:rand(1,99999)}" id="portrait">
+                        <input type="file" class="file" name="img"  accept="image/png" onchange="showPreview(this)">
+                    </div>
+                </div>
+                
+                <div class="button">
+                    <input type="submit" value="确定" class="submit" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<include file="common_footer" menu="menu_system" nav="3"/>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>计算器</title>
+    <link href="__PUBLIC__/mobile/css/calculator.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="__PUBLIC__/mobile/js/adaptive.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/mobile/js/config.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/mobile/js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/mobile/js/calculator.js"></script>
+</head>
+<body>
+<div class="mobile">
+    <div class="c_othertop">
+        <a class="c_goback" href="javascript:history.back();"><img src="__PUBLIC__//mobile/img/goback.png" /></a>
+        <div class="c_othertop-font">收益计算器</div>
+    </div>
+    <div class="c_calculatorCpmBox">
+        <form class="c_calculatorCpmLeft">
+            <div class="img_box"><img src="__PUBLIC__/uploads/logo.png" /></div>
+            <div class="c_calculator_all">
+                <label>投资金额</label>
+                <input type="text" class="c_nullinput" id="account" maxlength="7" placeholder="意向投资金额" />
+                <span>{$Think.lang.unit}</span>
+            </div>
+            <div class="c_calculator_all">
+                <label>{$Think.lang.investmentPeriod}</label>
+                <input type="text" class="c_nullinput" id="periods" maxlength="3" placeholder="期望投资期限" />
+                <span class="tyepname">日</span>
+            </div>
+            <div class="c_calculator_all">
+                <label>{$Think.lang.dailyInterestRate}</label>
+                <input type="text" class="c_nullinput" id="apr" maxlength="5" placeholder="期望日化利率" />
+                <span>%</span>
+            </div>
+            <div class="c_calculator_all">
+                <label>还款方式</label>
+                <select id="flagstatus" class="select_showbox">
+                    <option value="1">一次性还本付息</option>
+                    <option value="2">每日返息，到期还本</option>
+                    <option value="3">每周返息，到期还本</option>
+                    <option value="4">每月返息，到期还本</option>
+                    <option value="5">每日复利，保本保息</option>
+                </select>
+            </div>
+            <div class="c_calculator_all">
+                <input type="button" class="c_buttons c_cpmbuttons" value="计算收益">
+                <input type="reset" class="c_buttons c_cpmresets" value="重新计算">
+                <div id="calculErr"></div>
+            </div>
+        </form>
+        <div class="c_calculatorCpmRight">
+            <a class="c_show_left">重新计算</a>
+            <ul id="calculatorList"></ul>
+            <ul class="c_bottomcpm"></ul>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

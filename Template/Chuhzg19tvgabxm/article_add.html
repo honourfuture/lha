@@ -1,0 +1,55 @@
+<include file="common_header" title="文章管理"/>
+        <p class="curr">
+            <a>文章管理</a>&gt;&gt;
+            <a href="{:U('article_list')}">文章列表</a>&gt;&gt;
+            <span>添加文章</span>
+        </p>
+        <div class="content">
+            <form action="{:U('article_add')}" method="post"  enctype="multipart/form-data">
+                <div class="line">
+                    <label>文章标题：</label>
+                    <input type="text" name="title" placeholder="请输入文章标题"/>
+                </div>
+                <div class="line">
+                    <label>链接：</label>
+                    <input type="text" name="keyword" placeholder="请输入关键字"/>
+                </div>
+				 <div class="line">
+                    <label>图标：</label>
+                    <div class="uploads">
+                        <img src="__PUBLIC__/admin/img/no_img.jpg" id="photo">
+                        <input type="file" class="file" name="photo"  accept="image/*" onchange="showPreview2(this,'photo')">
+                    </div>
+                </div>
+                <div class="line">
+                    <label>文章类型：</label>
+                    <select name="type">
+                        <volist name=":getData('article_type','all','','','sort')" id="t">
+                            <option value="{$t.id}">{$t.name}</option>
+                        </volist>
+                    </select>
+                </div>
+                <div class="line">
+                    <label class="tp">文章内容：</label>
+                    <textarea class="cke_editor" id="container" name="content"></textarea>
+                </div>
+                <div class="line">
+                    <label>文章状态：</label>
+                    <input type="radio" name="show" value="1" checked="checked"/>显示&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="show" value="0"/>隐藏
+                </div>
+                <div class="button">
+                    <input type="submit" value="立即提交" class="submit" />
+                    <input type="reset" value="重置" class="reset"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="__PUBLIC__/UEditor/ueditor.config.js"></script>
+<script type="text/javascript" src="__PUBLIC__/UEditor/ueditor.all.js"></script>
+<script type="text/javascript">
+    var editor = UE.getEditor('container');
+</script>
+
+<include file="common_footer" menu="menu_article" nav="1"/>

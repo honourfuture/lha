@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<include file="common_header" title="商品分类"/>
+<include file="Public_header" />
+<script type="text/javascript" charset="utf-8" src="__PUBLIC__/Common/Ueditor/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="__PUBLIC__/Common/Ueditor/ueditor.all.min.js"></script>
+<include file="Public_page_css" />
+<script>
+    $(function(){
+        $('#signupForm').ajaxForm({
+
+            success: complete, // 这是提交后的方法
+            dataType: 'json'
+        });
+
+
+        function complete(data){
+            if(data.status==1){
+                layer.msg(data.info, {icon: 6}, function(index){
+                    layer.close(index);
+                    window.location.href=data.url;
+                });
+            }else{
+                layer.msg(data.info, {icon: 5}, function(index){
+                    layer.close(index);
+                    $('#admin_username').focus();
+                });
+                return false;
+            }
+        }
+
+    });
+</script>
+<body class="gray-bg wrapper wrapper-content">
+
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5><i class="fa fa-tasks"></i> 添加分类</h5>
+            </div>
+            <div class="ibox-content">
+                <form class="form-horizontal" method="post" action="{:U('add_classify')}" name="basic_validate" id="signupForm">
+                    <input type="hidden" name="id" value="{$classify.id}" />
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">分类名称</label>
+                        <div class="col-sm-6">
+                            <input type="text" name="classify_title" id="classify_title" placeholder="输入分类名称" class="form-control" value="{$classify.classify_title}">
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+					
+					
+					
+					
+					    <div class="form-group">
+                        <label class="col-sm-2 control-label">分类封面</label>
+                        <div class="col-sm-6">
+                            <div style="width: 200px; height: 110px; float: left;">
+							  <div class="uploads">
+								
+									<input type="file" class="file" name="photo"  accept="image/*" onchange="showPreview2(this,'photo')">
+								</div>
+  
+                            </div>
+                            <div style="height: 110px; float: left;">
+                                <if condition="$classify eq ''">
+                                    <img id="photo" src="/Public/uploads/item/{$classify.photo}" onerror="this.src='__PUBLIC__/admin/img/no_img.jpg'" style="height: 100px" />
+                                    <else />
+                                    <img id="photo" src="/Public/uploads/item/{$classify.photo}"  style="height: 100px" />
+                                </if>
+                            </div>
+                        </div>
+                    </div>
+					
+					
+					
+					
+					
+					
+					
+					
+                   
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group">
+                        <div class="col-sm-4 col-sm-offset-2">
+                            <button class="btn btn-primary" type="submit"><i class="fa fa-save"></i>保存</button>&nbsp;&nbsp;&nbsp;
+                            <a class="btn btn-danger" href="javascript:history.go(-1);">取消</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<include file="Public:footer" />
+
+<js file='__PUBLIC__/Admin/uploadify/jquery.uploadify.min.js' />
+<link rel="stylesheet" href="__PUBLIC__/Admin/uploadify/uploadify.css">
+
+<script type="text/javascript">
+$("#photo_file").uploadify({
+    'swf': '__PUBLIC__/Admin/uploadify/uploadify.swf?t={$nowtime}',
+    'uploader': '{:U("Upload/upload")}',
+    'cancelImg': '__PUBLIC__/Admin/uploadify/uploadify-cancel.png',
+    'buttonText': '上传封面',
+    'height': 35,
+    'fileTypeExts': '*.gif;*.jpg;*.png',
+    'queueSizeLimit': 1,
+    'onUploadSuccess': function(file, data, response) {
+        $("#data_photo").val(data);
+        $("#upload_img").attr('src', '__ROOT__/Uploads' + data).show();
+    }
+});
+
+</script>
+<script>
+
+    var config = {
+        '.chosen-select': {},
+    }
+    for (var selector in config) {
+        $(selector).chosen(config[selector]);
+    }
+
+</script>
+
+
+<!-- 下拉CSS样式 -->
+<script>
+
+var config = {
+    '.chosen-select': {},
+}
+for (var selector in config) {
+    $(selector).chosen(config[selector]);
+}
+
+</script>
+
+<!-- IOS开关样式配置 -->
+<script>
+var elem = document.querySelector('.js-switch');
+var switchery = new Switchery(elem, {
+    color: '#1AB394'
+});
+var config = {
+    '.chosen-select': {},
+}
+for (var selector in config) {
+    $(selector).chosen(config[selector]);
+}
+
+</script>
+<include file="common_footer" menu="menu_goods" nav="1"/>
+</body>
+
+</html>

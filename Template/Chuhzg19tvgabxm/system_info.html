@@ -1,0 +1,147 @@
+<include file="common_header" title="系统管理"/>
+        <p class="curr">
+            <a>系统管理</a>&gt;&gt;
+            <span>网站信息</span>
+        </p>
+        <div class="content">
+            <form action="{:U('system_info')}" method="post">
+                <div class="line">
+                    <label>网站名称：</label>
+                    <input type="text" name="webname" value="{:getInfo('webname')}"/>
+                </div>
+                <div class="line">
+                    <label>公司名称：</label>
+                    <input type="text" name="company" value="{:getInfo('company')}" class="short"/>
+                </div>
+                <div class="line">
+                    <label>公司电话：</label>
+                    <input type="text" name="tel" value="{:getInfo('tel')}" class="short"/>
+                </div>
+                <div class="line">
+                    <label>公司地址：</label>
+                    <input type="text" name="address" value="{:getInfo('address')}"/>
+                </div>
+                <div class="line">
+                    <label>网站公告：</label>
+                    <input type="text" name="notice" value="{:getInfo('notice')}"/>
+                </div>
+                <div class="line">
+                    <label>客服链接：</label>
+                    <input type="text" name="service" value="{:getInfo('service')}"/>
+                </div>
+                <div class="line">
+                    <label>APP下载链接：</label>
+                    <input type="text" name="app" value="{:getInfo('app')}"/>
+                </div>
+                <div class="line">
+                    <label>ICP备案号：</label>
+                    <input type="text" name="icp" value="{:getInfo('icp')}"/>
+                </div>
+                <div class="line">
+                    <label>客服微信号：</label>
+                    <input type="text" name="wechat" value="{:getInfo('wechat')}" class="short"/>
+                </div>
+                <div class="line">
+                    <label>客服QQ号：</label>
+                    <input type="text" name="qq" value="{:getInfo('qq')}" class="short"/>
+                </div> 
+				<div class="line">
+                    <label>充值多少可看银行卡信息：</label>
+                    <input type="text" name="icar" value="{:getInfo('icar')}" class="short"/>
+                </div>
+                <div class="line">
+                    <label>最低提现金额：</label>
+                    <input type="text" name="cash" value="{:getInfo('cash')}" class="short"/>
+                </div> 
+				<div class="line">
+                    <label>允许提现时间</label>
+                    <input type="text" name="allowable" value="{:getInfo('allowable')}" class="short"/>
+                </div>	
+				<div class="line">
+                    <label>每天允许提现免费次数</label>
+                    <input type="text" name="withdrawals" value="{:getInfo('withdrawals')}" class="short"/>
+                </div>
+                <div class="line">
+                    <label>余额宝利率</label>
+                    <input type="text" name="interest_rate" value="{:getInfo('interest_rate')}" class="short"/>
+                </div>
+                <div class="line">
+                    <label>余额宝最少转入</label>
+                    <input type="text" name="min_money" value="{:getInfo('min_money')}" class="short"/>
+                </div>
+                <div class="line">
+                    <label>余额宝最多转入</label>
+                    <input type="text" name="max_money" value="{:getInfo('max_money')}" class="short"/>
+                </div>
+				<div class="line">
+                    <label>超出次数比例收取手续费</label>
+                    <input type="text" name="charged" value="{:getInfo('charged')}" class="short"/>
+                </div>
+                <div class="line">
+                    <label>排行榜：</label>
+                    <textarea name="ranking">{:getInfo('ranking')}</textarea>
+                </div>
+                <div class="line">
+                    <label>合同设置：</label>
+                    <textarea name="contract">{:getInfo('contract')}</textarea>
+                </div>
+                <div class="line">
+                    <label>结算开关：</label>
+                    <select name="jiesuan">
+                        <option value="0"<if condition="getInfo('jiesuan') eq 0"> selected="selected"</if>>关闭</option>
+                        <option value="1"<if condition="getInfo('jiesuan') eq 1"> selected="selected"</if>>开启</option>
+                    </select>
+                </div>
+                <!--<div class="line">
+                    <label>电脑站开关：</label>
+                    <select name="web">
+                        <option value="0"<if condition="getInfo('web') eq 0"> selected="selected"</if>>关闭</option>
+                        <option value="1"<if condition="getInfo('web') eq 1"> selected="selected"</if>>开启</option>
+                    </select>
+                </div>-->
+                <div class="line">
+                    <label>手机模板：</label>
+                    <select name="template">
+                        <option value="one"<if condition="getInfo('template') eq 'one'"> selected="selected"</if>>模板一</option>
+                        <option value="two"<if condition="getInfo('template') eq 'two'"> selected="selected"</if>>模板二</option>
+                        <option value="three"<if condition="getInfo('template') eq 'three'"> selected="selected"</if>>模板三</option>
+                    </select>
+                </div>
+                <div class="line">
+                    <label>公司视频地址：</label>
+                    <input type="text" name="video" value="{:getInfo('video')}" class="" placeholder="不显示请填写“无”，建议mp4格式的链接"/>
+                </div>
+                <div class="line">
+                    <label>短信签名：</label>
+                    <input type="text" name="smsname" value="{:getInfo('smsname')}" class="short"/>
+                </div>
+                <!-- <div class="line">
+                    <label>短信APIKEY：</label>
+                    <input type="text" name="smskey" value="{:getInfo('smskey')}" class="short"/>
+                </div> -->
+              
+                <div class="button">
+                    <input type="submit" value="立即提交" class="submit" />
+                    <input type="reset" value="重置" class="reset"/>
+                </div>
+                <input type="hidden" value="">
+            </form>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+	function showPreview(source) {
+	    var file = source.files[0];
+	    if(window.FileReader) {
+	        var fr = new FileReader();
+	        console.log(fr);
+	        var portrait = document.getElementById('portrait');
+	        fr.onloadend = function(e) {
+	          portrait.src = e.target.result;
+	        };
+	        fr.readAsDataURL(file);
+	        portrait.style.display = 'block';
+	    }
+	}
+</script>
+<include file="common_footer" menu="menu_system" nav="0"/>

@@ -1,0 +1,59 @@
+<include file="Mobile:header" nav="转入"/>
+<div class="mobile">
+    <div class="othertop">
+        <a class="goback" href="{:U('person')}"><img src="__PUBLIC__/mobile/img/goback.png" /></a>
+        <div class="othertop-font">转出</div>
+    </div>
+    <div class="header-nbsp"></div>
+    <!-- 充值 -->
+    <form action="{:U('addzhuanchu')}" method="post" id="ifr">
+        <div class="blank_card">
+            <p>转出金额</p>
+            <label class="big">￥</label>
+            <input class="big" type="text" name="money" placeholder="请输入转出金额" id="money" />
+            <p>可用余额&nbsp;&nbsp;&nbsp;￥ <strong>{$res.paypal}</strong> 元</p>
+        </div>
+      
+
+        <input type="submit" value="立即转出" class="input_btn">
+    </form>
+<!-- 充值  end-->
+</div>
+<script>
+$(function(){
+    //下拉银行卡
+    $(".bank_xl li a").bind('click',function(){
+       $('#chose_input').val($(this).attr('title'));
+        $('.bank_xl').slideUp();
+        $("#chose_bank").parent().find('.jt_xz img').addClass('down');
+    });
+    $("#chose_bank").click(function(){
+        $('.bank_xl').slideDown();
+        $("#chose_bank").prev().find('img').removeClass('down');
+    });
+    $(":radio[name='style']").click(function(){
+        var index = $(this).val();
+        if(index == 3){
+        	 //$("#blank").show();
+        }else{
+        	//$("#blank").hide();
+        }            
+    });
+})
+$("#ifr").submit(function(){
+    var money = parseFloat($("#money").val()).toFixed(2);
+    var auth = parseInt("{$user.auth}");
+ 
+    if(isNaN(money)){
+        msg("错误","转出金额有误！",1);
+        return false;
+    }
+    if(money < 0.01){
+        msg("错误","最低转出金额0.01元！",1);
+        return false;
+    }
+  
+})
+</script>
+</body>
+</html>

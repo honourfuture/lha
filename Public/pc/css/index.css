@@ -1,0 +1,37 @@
+@CHARSET "UTF-8";
+#container{width:100%;height:500px;overflow:hidden;}
+.sections,.section{height:100%;}
+#container,.sections{position: relative;}
+.section{text-align:center;color:white;}
+.section a{display: block;width: 100%;height: 500px;}
+
+.showCase-title{text-align:center;font-size:24px;color:#d93037;padding:30px 0;font-weight:normal;}
+.showCase-title span{color:#999;font-size:24px;margin-left:10px;}
+.showCase-title.about{text-align:left;text-indent:30px;padding:10px 0 20px 0;}
+.scc-content{width:1198px;margin:0 auto 20px auto;}
+.scc-content ul{font-size:0;padding:0 89px;}
+.scc-content ul li{display:inline-block;margin:0 10px 20px 10px;}
+.scc-content ul li a{display:block;width:235px;height:205px;position:relative;overflow:hidden;}
+.scc-content ul li a img,.index-team ul li a img{width:100%;height:100%;}
+.scc-content ul li a span{display:block;position:absolute;width:100%;height:40px;line-height:40px;text-align:center;background:#111;filter:alpha(opacity=80);opacity:0.9;color: #fff;font-size:16px;bottom:0px;z-index:99;}
+.case-bg{width:235px;height:205px;position:absolute;bottom:-205px;z-index:999;}
+.scc-content li a:hover .case-bg{bottom:0px;}
+.scc-content li a:hover .case-bg, .scc-content li a .case-bg{-webkit-transition:all 0.5s ease;-moz-transition:all 0.5s ease;-ms-transition:all 0.5s ease;-o-transition:all 0.5s ease;transition:all 0.5s ease;}
+
+.about-us{width:1000px;margin:0 auto;}
+.about-us p{text-indent:30px;margin-bottom:10px;color:#333;font-size:14px;line-height:25px;}
+
+.index-team{width:1198px;margin:0 auto;}
+.index-team ul{font-size:0;padding:0 96px;}
+.index-team ul li{display:inline-block;margin:0 3px 5px 3px;}
+.index-team ul li a{display:block;width:195px;height:250px;position:relative;overflow:hidden;}
+.team-bg{width:100%;position:absolute;bottom:-60px;height:50px;font-size:18px;color:#fff;padding:5px 0;background:rgba(0,0,0,.5);text-align:center;line-height:25px;}
+.team-bg span{font-size:14px;display:block;}
+.index-team ul li a:hover .team-bg{bottom:0px;}
+.index-team ul li a:hover .team-bg,.index-team ul li a .team-bg{-webkit-transition:all 0.3s ease;-moz-transition:all 0.3s ease;-ms-transition:all 0.3s ease;-o-transition:all 0.3s ease;transition:all 0.3s ease;}
+
+/*合作*/
+.cooperate{width:1130px;margin:0 auto;padding:0 30px}
+.cooperate ul li{margin:0 10px 20px 10px;display:inline-block;}
+.cooperate ul li a{display:block;background:#fff;border:1px solid #ddd;width:200px;height:50px;line-height:50px;text-align:center;}
+.cooperate ul li a img{vertical-align: middle;max-width:100%;max-height:100%;}

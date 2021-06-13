@@ -1,0 +1,319 @@
+/*通用类*/
+*{
+	margin:0;		
+	padding:0;
+}
+html{
+	overflow-x:hidden;		
+}
+body{		
+	width:100%;	
+	min-width:320px;
+	margin:0 auto;	
+	font-family:"Microsoft Yahei";	
+	background:#f4f5fa; 
+	overflow-x:hidden;
+	text-align:left;	
+	position:relative;
+	font-size:0.24rem;
+	color:#373c40;
+}
+
+/*不同设备字体em基准*/
+html{
+	font-size:42.6667px;	
+}
+@media screen and (max-width: 320px){ 
+  html{
+  	font-size:42.6667px;
+  }
+}
+@media screen and (min-width: 321px) and (max-width: 360px){ 
+  html{
+  	font-size:48px;
+  }
+}
+@media screen and (min-width: 361px) and (max-width: 375px){ 
+  html{
+  	font-size:50px;
+  }
+}
+@media screen and (min-width: 376px) and (max-width: 414px){ 
+  html{
+  	font-size:55px;
+  }
+}
+@media screen and (min-width: 415px) and (max-width: 484px){ 
+  html{
+  	font-size:64px;
+  }
+}
+@media screen and (min-width: 485px) and (max-width: 720px){ 
+  html{
+  	font-size:96px;
+  }
+}
+@media screen and (min-width: 721px) and (max-width: 768px){ 
+  html{
+  	font-size:102px;
+  }
+}
+@media screen and (min-width: 769px) and (max-width: 1080px){ 
+  html{
+  	font-size:144px;
+  }
+}
+@media screen and (min-width: 1080px){ 
+  html{
+  	font-size:144px;
+  }
+}
+
+
+img{
+	border:none;	
+}
+h1,h2,h3{
+	font-weight:normal;	
+}
+a{
+	color:#373c40;
+	text-decoration:none;	
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	-webkit-tap-highlight-color:transparent;
+	outline:none；
+}
+input,textarea,select{
+	font-family:"Microsoft Yahei";	
+	font-size:1em;
+	outline:none;
+	margin:0;
+	padding:0;
+}
+input::-webkit-input-placeholder {
+	color: #a0a0a0 !important;
+}
+textarea::-webkit-input-placeholder {
+	color: #a0a0a0 !important;
+}
+input[type='button'],input[type='text'],input[type='search'], input[type='submit'], input[type='reset'],input[type='date'],input[type='time'],input[type='number'] {
+	-webkit-appearance: none;
+}
+select{
+	-webkit-appearance: none;	
+}
+textarea{ 
+	-webkit-appearance: none;
+}
+input::-webkit-outer-spin-button,input::-webkit-inner-spin-button{
+    -webkit-appearance: none !important;
+    margin: 0;
+}
+ul,ol{
+	padding:0;
+	list-style-type:none;	
+}
+em{
+	font-style:normal;	
+}
+.lt{
+	float:left;	
+}
+.rt{
+	float:right;	
+}
+input.sub,label{
+	border:none;	
+	cursor:pointer;
+}
+input,textarea{
+	font-family:"Microsoft Yahei";
+	outline:none;	
+	margin:0;
+	padding:0;
+}
+table{
+	border-collapse:collapse;	
+}
+td,th{
+	padding:0;	
+}
+div.clear{
+	font: 0px Arial; line-height:0;
+	height:0; 
+	overflow:hidden;	
+	clear:both;	
+}
+.cm_photo{
+	display:block;
+	position:relative;
+	overflow:hidden;	
+}
+.cm_photo .thumb{
+	display:block;
+	width:100%;
+	height:100%;
+	position:absolute;
+	left:0;
+	top:0;
+	z-index:10;	
+}
+.cm_photo .zw{
+	display:block;
+	height:auto;	
+	width:100%;
+}
+
+.header{
+	width: 100%;
+	height: 0.8rem;
+	line-height: 0.8rem;
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 100;
+	background:#f4f5fa;
+	font-size:0.36rem;
+	text-align: center;
+}
+.header .backa{
+	display: block;
+	width: 0.8rem;
+	height: 0.8rem;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	background:url("../images/head_back.png") no-repeat center center;
+	background-size:100% 100%;
+}
+.header .menu_btn{
+	display: block;
+	width: 0.8rem;
+	height: 0.8rem;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	background:url("../images/menu_btn.png") no-repeat center center;
+	background-size:100% 100%;
+}
+.header_zw{
+	height: 0.8rem;
+	clear: both;
+}
+
+.ba_top{
+
+	height: 2.54rem;
+	margin:0 0.3rem 0.4rem 0.3rem;
+	border-radius:0.1rem;
+	color:#fff;
+	position: relative;
+	background:#039fbd; /* 一些不支持背景渐变的浏览器 */  
+	background:linear-gradient(to right, #28a3e6, #1455b2);
+	background:-moz-linear-gradient(to right, #28a3e6, #1455b2);
+	background:-webkit-gradient(to right, #28a3e6, #1455b2);
+	background:-o-linear-gradient(to right, #28a3e6, #1455b2);
+	padding:0 0.25rem;
+}
+.ba_top .t1{
+	padding-top:0.22rem;
+	height: 0.55rem;
+	line-height: 0.55rem;
+	font-size:0.28rem;
+}
+.ba_top .t2{
+	height: 0.84rem;
+	line-height: 0.84rem;
+	font-size:0.6rem;
+}
+.ba_top .bt{
+	height: 0.88rem;
+	line-height: 0.88rem;
+	font-size:0.28rem;
+	clear: both;
+}
+.ba_top .geta{
+	display: block;
+	height: 0.4rem;
+	line-height: 0.4rem;
+	padding:0 0.32rem 0 0;
+	color:#fff;
+	font-size:0.24rem;
+	position: absolute;
+	right: 0.25rem;
+	top: 50%;
+	margin-top:-0.2rem;
+	background:url("../images/geta.png") no-repeat right center;
+	background-size:auto 0.2rem;
+}
+.ba_top .geta span{
+	display: block;
+	height: 0.4rem;
+	padding-left:0.32rem;
+	background:url("../images/geta2.png") no-repeat left center;
+	background-size:auto 100%;
+}
+
+.ba_floor{
+
+	height: 1.6rem;
+	margin:0.25rem 0.3rem 0 0.3rem;
+	background:#fff;
+	border-radius:0.1rem;
+	box-shadow:0 0 0.15rem #eaebf4;
+	box-sizing:border-box;
+	padding-left:1.17rem;
+	position: relative;
+}
+.ba_floor .ico{
+	display: block;
+	position: absolute;
+	left: 0.14rem;
+	top: 50%;
+	margin-top:-0.35rem;
+	width: 0.7rem;
+	height: 0.7rem;
+	border-radius:100%;
+}
+.ba_floor dl{
+	line-height: 0.46rem;
+	padding-top:0.38rem;
+}
+.ba_floor dt{
+	font-size:0.32rem;
+}
+.ba_floor dd{
+	font-size:0.28rem;
+	color:#8d8d8d;
+}
+.ba_floor .price{
+	right: 0.2rem;
+	top: 0.3rem;
+	height: 0.6rem;
+	line-height: 0.6rem;
+	text-align:right;
+	position: absolute;
+	font-size:0.32rem;
+}
+.ba_floor .date{
+	height: 0.4rem;
+	line-height: 0.4rem;
+	color:#c3c3c3;
+	position: absolute;
+	font-size: 12px;
+	right: 0.2rem;
+	bottom: 0.3rem;
+}
+.ba_floor .red{
+	color:#ff1774;
+}
+.ba_floor .gray{
+	color:#999;
+}
+.ba_qd{
+	text-align: center;
+	color:#111;
+	opacity: 0.6;
+	line-height: 3;
+	padding-top:0.3rem;
+}

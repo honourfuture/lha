@@ -1,0 +1,109 @@
+<include file="common_header" title="项目管理"/>
+        <p class="curr">
+            <a>项目管理</a>&gt;&gt;
+            <span>项目列表</span>
+        </p>
+        <div class="content">
+            <div class="list_main">
+	            <div class="title">
+	                <form action="{:U('project_list')}" method="get">
+	                    <p>
+	                       <label>项目名称</label><input type="text" name="title" value="{$_GET['title']}" class="txt">
+	                       <!--<label>日期</label><input type="text" class="timer">至<input type="text" class="timer">-->
+	                    <!--</p>-->
+	                    <!--<p>-->
+                           <!--<label>项目期限</label><input type="text" class="txt">-->
+                           <label>还款方式</label>
+                           <select name="type">
+                               <option value="0">全部</option>
+                               <volist name=":setProjectType()" id="t">
+                                   <if condition="$_GET['type'] eq $t['id']">
+                                       <option value="{$t.id}" selected="selected">{$t.name}</option>
+                                       <else/>
+                                       <option value="{$t.id}">{$t.name}</option>
+                                   </if>
+                               </volist>
+                           </select>
+                            <input type="submit" class="sub1" value="查询">
+                           <a href="{:U('project_add')}" class="two">添加项目</a>
+                            <a href="javascript:;" onclick="delCheck()" class="four">批量删除</a>
+                        </p>
+	                </form>
+	                
+	            </div>
+	            <table>
+	                <tbody>
+		                <tr>
+		                    <th><input type="checkbox" id="selectAll"></th>
+		                    <th>编号</th>
+                            <th>排序</th>
+                             <th>项目分类</th>
+                            <th>项目名称</th>
+		                    <th>金额(万泰铢)</th>
+		                    <th>分润比例(%)</th>
+		                    <th>收益率(%)</th>
+		                    <th>期限(天)</th>
+                            <th>起投金额(泰铢)</th>
+		                    <th>还款方式</th>
+		                    <th>开始时间</th>
+		                    <th>操作</th>
+		                </tr>
+                        <volist name=":getData('item','all',$where,$limit,'sort')" id="i">
+                            <tr>
+                                <td><input type="checkbox" name="ck[]" value="{$i.id}"></td>
+                                <td>{$i.id}</td>
+                                <td>{$i.sort}</td> 
+                                <td>{:getprojectclassname($i['class'])}
+                                </td>
+                                <td>{$i.title}</td>
+                                <td>{$i.total}</td>
+                                <td>{$i.frbl}</td>
+                                <td>{$i.rate}</td>
+                                <td>{$i.day}</td>
+                                <td>{$i.min}</td>
+                                <td>{:getProjectType($i['type'])}</td>
+                                <td>{$i.time}</td>
+                                <td>
+                                    <a href="{:U('project_edit','id='.$i['id'])}" class="update">编辑</a>
+                                    <a href="javascript:;" onclick="delList({$i.id})" class="del">删除</a>
+                                </td>
+                            </tr>
+                        </volist>
+		            </tbody>
+	            </table>
+	            <ul class="page">
+                    {$page}
+	            </ul>
+	        </div>
+	    </div>
+    </div>
+</div>
+<script>
+    $().ready(function(){
+        $('.timer').datetimepicker({
+            lang:'ch',
+            timepicker:false,
+            format:'Y-m-d'
+        });
+    });
+    function delList(obj){
+        if(confirm("确认删除这条记录吗？")){
+//            window.location.href = "/admin/dellist/data/item/list/"+obj+".html?re={:U('project_list')}";
+            window.location.href = "{:U('dellist')}?data=item&list="+obj+"&re={:U('project_list')}";
+        }
+    }
+    function delCheck(){
+        var arr = new Array();
+        $("input[name='ck[]']:checked").each(function(i){
+            arr[i] = $(this).val();
+        });
+        var vals = arr.join(",");
+        if(vals != ""){
+            delList(vals);
+        }
+        else{
+            alert("请选择需要删除的内容！");
+        }
+    }
+</script>
+<include file="common_footer" menu="menu_project" nav="0"/>

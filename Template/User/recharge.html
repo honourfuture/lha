@@ -1,0 +1,108 @@
+<include file="Mobile:header" nav="充值"/>
+<div class="mobile">
+    <div class="othertop">
+        <a class="goback" href="{:U('person')}"><img src="__PUBLIC__/mobile/img/goback.png" /></a>
+        <div class="othertop-font">充值</div>
+    </div>
+    <div class="header-nbsp"></div>
+    <!-- 充值 -->
+    <form action="{:U('recharge')}" method="post" id="ifr">
+        <div class="blank_card">
+            <p>充值金额</p>
+            <label class="big">￥</label>
+            <input class="big" type="text" name="money" placeholder="请输入充值金额" id="money" />
+            <p>可用余额&nbsp;&nbsp;&nbsp;￥ <strong>{$user.money}</strong> 元</p>
+        </div>
+        <div class="blank_card">
+            <label>充值方式</label>
+            <if condition="getInfo('qr_alipay_status') eq 1"><label style="padding-right: .2rem;width: auto;"><input type="radio" value="alipay" name="type"> 支付宝</label></if>
+            <if condition="getInfo('qr_wechat_status') eq 1"><label style="padding-right: .2rem;width: auto;"><input type="radio" value="wechat" name="type"> 微信</label></if>
+            <if condition="getInfo('pay_bank_status') eq 1"><label style="padding-right: .2rem;width: auto;"><input type="radio" value="bank" name="type"> 银行入款</label></if>
+            <if condition="getInfo('online_wechat') eq 1"><label style="padding-right: .2rem;width: auto;"><input type="radio" value="online_wechat" name="type"> 微信充值</label></if>
+            <if condition="getInfo('online_wechat') eq 1"><label style="padding-right: .2rem;width: auto;"><input type="radio" value="online_alipay" name="type"> 支付宝充值</label></if>
+            <!--<label><input type="radio" value="3" name="style" id="selected"> 银行卡</label>-->
+        </div>
+        <div class="blank_card" id="blank">
+	         <label>银行卡</label><input id="chose_input" type="text" placeholder="请选择银行卡" />
+	         <div class="jt_xz"><img class="down" src="__PUBLIC__/mobile//img/jtx.png" ></div>
+	         <div id="chose_bank" class="bank_xljt1"></div>
+	         <ul class="bank_xl">
+	             <li>
+                     <a href="javascript:;" title="中国工商银行">
+                         <img src="__PUBLIC__/mobile/img/bank/bank_ICBC.jpg" alt="">
+                     </a>
+                 </li>
+                 <li>
+                     <a href="javascript:;" title="中国农业银行">
+                         <img src="__PUBLIC__/mobile/img/bank/bank_ABC.jpg" alt="">
+                     </a>
+                 </li>
+                 <li>
+                     <a href="javascript:;" title="中国建设银行">
+                         <img src="__PUBLIC__/mobile/img/bank/bank_CCB.jpg" alt="">
+                     </a>
+                 </li><li>
+                     <a href="javascript:;" title="招商银行">
+                         <img src="__PUBLIC__/mobile/img/bank/bank_CMB.jpg" alt="">
+                     </a>
+                 </li><li>
+                     <a href="javascript:;" title="中国银行">
+                         <img src="__PUBLIC__/mobile/img/bank/bank_BOC.jpg" alt="">
+                     </a>
+                 </li>
+	         </ul>
+	    </div>
+        <input type="submit" value="立即充值" class="input_btn">
+    </form>
+<!-- 充值  end-->
+</div>
+<script>
+$(function(){
+    //下拉银行卡
+    $(".bank_xl li a").bind('click',function(){
+       $('#chose_input').val($(this).attr('title'));
+        $('.bank_xl').slideUp();
+        $("#chose_bank").parent().find('.jt_xz img').addClass('down');
+    });
+    $("#chose_bank").click(function(){
+        $('.bank_xl').slideDown();
+        $("#chose_bank").prev().find('img').removeClass('down');
+    });
+    $(":radio[name='style']").click(function(){
+        var index = $(this).val();
+        if(index == 3){
+        	 //$("#blank").show();
+        }else{
+        	//$("#blank").hide();
+        }            
+    });
+})
+$("#ifr").submit(function(){
+    var money = parseFloat($("#money").val()).toFixed(2);
+    var auth = parseInt("{$user.auth}");
+    var icar = parseInt("{$icar}");
+    if(auth == 0){
+        msg("错误","请认证后再进行充值！",2,"{:U('User/certification')}");
+        return false;
+    }
+    if(isNaN(money)){
+        msg("错误","充值金额有误！",1);
+        return false;
+    }
+    if(money < 100){
+        msg("错误","最低充值金额100元！",1);
+        return false;
+    } 
+	<!-- if(money < icar){ -->
+        <!-- msg("错误",".01元！",1); -->
+        <!-- return false; -->
+    <!-- } -->
+    var type = $("input:radio[name='type']:checked").val();
+    if(type == null){
+        msg("错误","请选择支付方式！",1);
+        return false;
+    }
+})
+</script>
+</body>
+</html>

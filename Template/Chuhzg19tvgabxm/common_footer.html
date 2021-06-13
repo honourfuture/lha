@@ -1,0 +1,63 @@
+
+<script type="text/javascript">
+    function showPreview(source) {
+        var file = source.files[0];
+        if(window.FileReader) {
+            var fr = new FileReader();
+            console.log(fr);
+            var portrait = document.getElementById('portrait');
+            fr.onloadend = function(e) {
+                portrait.src = e.target.result;
+            };
+            fr.readAsDataURL(file);
+            portrait.style.display = 'block';
+        }
+    }
+    function showPreview2(source,obj) {
+        var file = source.files[0];
+        if(window.FileReader) {
+            var fr = new FileReader();
+            console.log(fr);
+            var portrait = document.getElementById(obj);
+            fr.onloadend = function(e) {
+                portrait.src = e.target.result;
+            };
+            fr.readAsDataURL(file);
+            portrait.style.display = 'block';
+        }
+    }
+
+    var menu = "[menu]";
+    var nav = "[nav]";
+    console.log(nav);
+    $(function(){
+        $("."+menu+" p").addClass("down");
+        $("."+menu+" .son_menu").css("display","block");
+        $("."+menu+" .son_menu a").eq(nav).addClass("on");
+        seeNum();
+    });
+    function seeNum(){
+        var seeNumUrl = "{:U('seeNum')}";
+        var rechargeState = 1;//充值声音开关，1开/0关
+        $.ajax({
+            type : "POST",
+            url : seeNumUrl,
+            data: {rechargeState:rechargeState},
+            dataType : "json",
+            success : function(result){
+                if(result['code']!="000"){
+                    $("#ifr").attr("src",result['url']);
+                    //alert(result['msg']);
+                }else{
+                    $("#ifr").attr("src","");
+                }
+            },
+            error:function(){
+                //alert();
+            }
+        });
+    }
+    setInterval(seeNum,15000);
+</script>
+</body>
+</html>

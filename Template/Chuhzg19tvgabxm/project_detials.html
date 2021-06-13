@@ -1,0 +1,42 @@
+<include file="common_header" title="项目管理"/>
+        <p class="curr">
+            <a>项目管理</a>&gt;&gt;
+            <a href="{:U('project_alreay')}">已投项目</a>&gt;&gt;
+            <span>还款详情</span>
+        </p>
+        <div class="content">
+            <div class="list_main">
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>编号</th>
+                            <th>项目名称</th>
+                            <th>投资人ID</th>
+                            <th>投资人手机号</th>
+                            <th>预计返款时间</th>
+                            <th>实际返款时间</th>
+                            <th>预计返款金额</th>
+                            <th>实际返款金额</th>
+                        </tr>
+                        <volist name=":getData('invest_list','all','iid='.$iid,'','id')" id="i">
+                        <tr>
+                            <td>{$i.id}</td>
+                            <td>{$i.title}</td>
+                            <td>{$i.uid}</td>
+                            <td>{:getUserPhone($i['uid'])}</td>
+                            <td>{$i.time1}</td>
+                            <td><if condition="$i['time2'] neq '0000-00-00 00:00:00'">{$i.time2}<else/>未返款</if></td>
+                            <td>{$i.pay1}</td>
+                            <td>{$i.pay2}</td>
+                        </tr>
+                        </volist>
+                    </tbody>
+                </table>
+                <ul class="page">
+                    {$page}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<include file="common_footer" menu="menu_project" nav="1"/>

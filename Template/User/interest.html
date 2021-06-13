@@ -1,0 +1,28 @@
+<include file="Mobile:header" nav="收益记录"/>
+<div class="mobile">
+    <div class="othertop">
+        <a class="goback" href="javascript:history.back();"><img src="__PUBLIC__/mobile/img/goback.png" /></a>
+        <div class="othertop-font">收益记录</div>
+    </div>
+    <div class="header-nbsp"></div>
+    <div class="record_outer">
+    	<table>
+    		<tr>
+    			<th>项目名称</th>
+    			<th>支付日</th>
+    			<th>支付金额</th>
+    			<th>状态</th>
+    		</tr>
+            <volist name="invest" id="i">
+                <tr>
+                    <td>第{$i.num}期 {$i.title}</td>
+                    <td>{:date('m-d H:i',strtotime($i['time2']))}</td>
+                    <td>{$i.pay2}</td>
+                    <td>已完成</td>
+                </tr>
+            </volist>
+    	</table>
+    </div>
+</div>
+</body>
+</html>

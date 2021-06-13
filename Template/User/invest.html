@@ -1,0 +1,30 @@
+<include file="Mobile:header" nav="投资记录"/>
+<div class="mobile">
+    <div class="othertop">
+        <a class="goback" href="javascript:history.back();"><img src="__PUBLIC__/mobile/img/goback.png" /></a>
+        <div class="othertop-font">投资记录</div>
+    </div>
+    <div class="header-nbsp"></div>
+    <div class="record_outer">
+    	<table>
+    		<tr>
+    			<th>项目名称</th>
+    			<th>投资金额</th>
+    			<th>状态</th>
+    			<th>详情</th>
+    			<th>合同</th>
+    		</tr>
+            <volist name="invest" id="v">
+                <tr>
+                    <td>{$v.title}</td>
+                    <td>{$v.money}</td>
+                    <td>{:getInvestStatus($v['id'])}</td>
+                    <td><a href="{:U('details','id='.$v['id'])}" class="a1">查看</a></td>
+                    <td><a href="{:U('contract','id='.$v['id'])}" class="a2">查看</a></td>
+                </tr>
+            </volist>
+    	</table>
+    </div>
+</div>
+</body>
+</html>

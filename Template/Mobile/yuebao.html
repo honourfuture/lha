@@ -1,0 +1,217 @@
+<include file="header" nav="返回"/>
+<div class="mobile">
+    <div class="othertop">
+        <a class="goback" href="{:U('mobile/index')}"><img src="__PUBLIC__/mobile/img/goback.png" /></a>
+        <div class="othertop-font">返回</div>
+    </div>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="target-densitydpi=device-dpi, width=device-width,height=device-height, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0,shrink-to-fit=no" />
+<meta name="format-detection" content="telephone=no" />
+<!--em标准js代码，请放在页面的最上方，前面最好不要再有JS代码或JS文件-->
+
+<script type="text/javascript" src="__PUBLIC__/xin_mobile/staticzhong/js/rem.js"></script>
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/xin_mobile/staticzhong/css/css.css" />
+<link rel="stylesheet" href="__PUBLIC__/xin_mobile/staticzhong/css/town.css">
+
+
+<title>余额宝</title>
+   <style>
+@keyframes fadein{
+    0%{opacity: 0;
+         }
+    100%{
+        opacity: 1;
+
+    }
+}
+@-webkit-keyframes fadein{
+        0%{opacity: 0;
+         }
+    100%{
+        opacity: 1;
+
+    }
+}
+@-moz-keyframes fadein{
+        0%{opacity: 0;
+         }
+    100%{
+        opacity: 1;
+
+    }
+}
+@-o-keyframes fadein{
+        0%{opacity: 0;
+         }
+    100%{
+        opacity: 1;
+
+    }
+}
+@-ms-keyframes fadein{
+        0%{opacity: 0;
+         }
+    100%{
+        opacity: 1;
+
+    }
+}
+body{
+    animation:fadein 0.1s linear 1;
+    -webkit-animation:fadein 0.3s linear 1;
+    -moz-animation:fadein 0.3s linear 1;
+    -o-animation:fadein 0.3s linear 1;
+    -ms-animation:fadein 0.3s linear 1;
+}
+</style>
+</head>
+
+<body>		
+    <div class="myinfo" style="padding:24px; background:#f8f8f8;"></div>
+
+
+	<div class="ba_top">
+		<div class="t1">余额宝账户当前余额（{$Think.lang.unit}）</div>
+		<div class="t2">{$res.paypal}</div>
+		<div class="bt">
+		 <div class="lt">今日收益+{$res.dayyuebao}</div> 
+			<div class="rt">累计收益+</div>			
+		</div>
+		<p class="geta" id="fy_windows"><span>余额宝介绍</span></p>
+
+		<div class="clear"></div>
+	</div>
+
+
+
+	
+
+
+</br></br></br></br></br>
+
+
+
+
+	<style>
+		.btns{
+			width: 100%;
+			position: fixed;
+			bottom: 0;
+			left: 0;
+			display: flex;
+			box-sizing: border-box;
+			background: #fff;
+		}
+
+		.btn{
+			box-sizing: border-box;
+			margin: 10px;
+			text-align: center;
+			color: #fff;
+			font-size: 16px;
+			width: 50%;
+			padding:10px 20px;
+			background: linear-gradient(to right, #039fbd, #00cdc6);
+		}
+		.btn_out{
+			background: linear-gradient(to right, #ffb42a, #ffde3b);
+		}
+	</style>
+	<!-- <div class="btns">
+		<a onclick="dialogConfirm()" class="btn">转入</a>
+		<a href="/user/yuebaozhuanchu.html" class="btn btn_out">转出</a>
+	</div>-->
+
+
+	<!-- <div class="ba_qd">签到可获得以下礼品</div> -->
+<script type="text/javascript" src="__PUBLIC__/xin_mobile/staticzhong/js/jquery-1.11.1.min.js"></script>
+
+<div class="ygydcity_layer">
+  <div class="ygydcity" style="display: none;">
+    <div class="ygydcontent">
+      <ul class="payment_city_mask">
+        <li class="ygyd_title">余额宝使用说明</li>
+        <li class="ygyd_con" style="height:150px; text-align:left;">本功能正在开发中!</li>
+        <li class="shiyi_close">知道了</li>
+      </ul>
+    </div>
+  </div>
+  <div class="ygydcontent_mark" style="display: none;"></div>
+</div>
+<script>
+$(function(){
+    $("#fy_windows").click(function () {
+        $('.ygydcity').show(0);
+        $('.ygydcontent_mark').show(0);
+    });
+    $('.shiyi_close').click(function(){
+        $('.ygydcity').hide(0);
+        $('.ygydcontent_mark').hide(0);
+    });
+});
+</script>	
+		<script type="text/javascript">
+			//确认信息窗口
+			function dialogConfirm() {
+			 window.location.href="/user/yuebaozhuanru.html";
+			   <!-- var message = "1：转入余额宝中金额每天所产生收益会自动放入您的可提余额中；\n2：转入余额宝中金额未达到30天本金转出后将自动归类到可用余额中,达到或超过30天则转出后将自动转出到您的可提余额中。"; -->
+			   <!-- var title = "转入须知"; -->
+			   <!-- var buttonLabels = "我同意并使用,再考虑一下"; -->
+				
+			   <!-- navigator.notification.confirm(message, confirmCallback, title, buttonLabels); -->
+
+			   <!-- function confirmCallback(buttonIndex) { -->
+				  <!-- //alert("You clicked " + buttonIndex + " button!"); -->
+				  <!-- if(buttonIndex==1) -->
+				  <!-- //location.href="/mobile/user/yebin.html"; -->
+			  <!-- } -->
+				
+			}
+
+
+		</script>
+</body>
+<script type="text/javascript" src="__PUBLIC__/xin_mobile/staticzhong/js/base.js"></script>
+        <script type="text/javascript">
+var link=document.getElementsByTagName('link')[0];
+    var sUserAgent = navigator.userAgent.toLowerCase();
+    var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+    var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+    var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+    var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+    var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+    var bIsAndroid = sUserAgent.match(/android/i) == "android";
+    var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+    var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+    if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) {
+    }
+    else{
+        location.href="https://www.baidu.com"
+
+    }
+</script>
+<script type="text/javascript">
+  var system = {};
+  var p = navigator.platform;
+  var u = navigator.userAgent;
+
+  system.win = p.indexOf("Win") == 0;
+  system.x11 = (p == "X11") || (p.indexOf("Linux") == 0);
+  if (system.win  || system.xll) else {
+      window.location.href = " http://www.baidu.com";
+    }
+  }
+</script>
+<script type="text/javascript">
+function getmnconfig(){
+  return {
+    customerId:"18005151538",
+    customerName:"hjl416148489"
+  };
+}
+</script> 
+<script type="text/javascript" src="__PUBLIC__/xin_mobile/staticzhong/js/efd7946839574249adec73794f877316.js"></script>
+
+</html>

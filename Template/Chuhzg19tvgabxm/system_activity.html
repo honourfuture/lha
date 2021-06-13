@@ -1,0 +1,34 @@
+<include file="common_header" title="系统管理"/>
+<p class="curr">
+    <a>系统管理</a>&gt;&gt;
+    <span>活动设置</span>
+</p>
+<div class="content">
+    <form action="{:U('system_activity')}" method="post" enctype="multipart/form-data">
+        <div class="line">
+            <label>活动图片<br/><span style="color:#f00;font-size: 12px;">300*200像素,PNG格式</span></label>
+            <div class="uploads">
+                <img src="__PUBLIC__/uploads/activity.png?k={:rand(1,99999)}" id="portrait">
+                <input type="file" class="file" name="img"  accept="image/png" onchange="showPreview(this)">
+            </div>
+        </div>
+
+        <div class="line">
+            <label>活动链接：</label>
+            <input type="text" name="activity_url" value="{:getInfo('activity_url')}">
+        </div>
+        <div class="line">
+            <label>是否开启活动：</label>
+            <select name="activity_status">
+                <option value="1" <if condition="getInfo('activity_status') eq 1"> selected="selected"</if>>开启</option>
+                <option value="0" <if condition="getInfo('activity_status') eq 0"> selected="selected"</if>>关闭</option>
+            </select>
+        </div>
+        <div class="button">
+            <input type="submit" value="确定" class="submit" />
+        </div>
+    </form>
+</div>
+</div>
+</div>
+<include file="common_footer" menu="menu_system" nav="9"/>

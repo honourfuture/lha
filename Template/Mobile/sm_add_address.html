@@ -1,0 +1,148 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta id="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<link href="__PUBLIC__/mobile/css/swiper.min.css" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/mobile/css/web1.css"/>
+
+<title>新建地址</title>
+</head>
+
+<body>
+<div class="main-container">
+	<div class="header_list">
+    	<a href="javascript:;" class="go_back" onClick="javascript :history.go(-1)"; id="go_back">
+        	<i class="iconfont">&#xe60e;</i>
+        </a>
+        <h3>添加收货地址</h3>
+     
+    </div>
+    
+    <div style="height:45px;"></div>
+<section class="aui-myOrder-content">
+		<div class="aui-prompt"><i class="iconfont">&#xe61d;</i>填写您的地址信息</div>
+		<div class="aui-Address-box">
+			<p>
+				<input class="aui-Address-box-input" type="text" placeholder="收货人姓名" id="name">
+			</p>
+			<p>
+				<input class="aui-Address-box-input" type="text" placeholder="手机号码" id="phone">
+			</p>
+			<p>
+				<input class="aui-Address-box-input" type="text" readonly id="J_Address"  placeholder="所在地区">
+			</p>
+			<p>
+				<textarea class="aui-Address-box-text" placeholder="街道， 小区门牌等详细地址" rows="3" id="details"></textarea>
+			</p>
+
+		</div>
+		<div class="aui-out">
+			<a href="javascript:;" class="red-color" id="save_address">保存</a>
+		</div>
+	</section>
+</div>
+</body>
+</html>
+	<script type="text/javascript" src="__PUBLIC__/mobile/js/jquery-1.9.1.min.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/mobile/js/template.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/mobile/js/aui.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/mobile/js/city.js"></script>
+<script>
+$("#save_address").click(function() {
+		
+		var name = $("#name").val();
+		var phone = $("#phone").val();
+		var area = $("#J_Address").val();
+		var details = $("#details").val();
+		$.ajax('/gs/save_address', {
+			data: {
+			
+				name: name,
+				phone: phone,
+				area: area,
+				details: details,
+				
+			},
+			dataType: 'json', //服务器返回json格式数据
+			type: 'post', //HTTP请求类型
+			async: false,
+			timeout: 10000, //超时时间设置为10秒；
+			success: function(res) {
+			console.log(res);
+				if(res.status == 1) {
+				
+					alert('添加成功');
+					window.history.go(-1);
+				} else {
+				
+				}
+			},
+		
+		});
+	});
+</script>
+	<script type="text/javascript" >
+        /**
+         * Javascript API调用Tab
+         */
+        !function ($) {
+            var $tab = $('#J_Tab');
+
+            $tab.tab({
+                nav: '.tab-nav-item',
+                panel: '.tab-panel-item',
+                activeClass: 'tab-active'
+            });
+
+			/*
+			 $tab.find('.tab-nav-item').on('open.ydui.tab', function (e) {
+			 console.log('索引：%s - [%s]正在打开', e.index, $(this).text());
+			 });
+			 */
+
+            $tab.find('.tab-nav-item').on('opened.ydui.tab', function (e) {
+                console.log('索引：%s - [%s]已经打开了', e.index, $(this).text());
+            });
+        }(jQuery);
+	</script>
+	<script>
+        /**
+         * 默认调用
+         */
+        !function () {
+            var $target = $('#J_Address');
+
+            $target.citySelect();
+
+            $target.on('click', function (event) {
+                event.stopPropagation();
+                $target.citySelect('open');
+            });
+
+            $target.on('done.ydui.cityselect', function (ret) {
+                $(this).val(ret.provance + ' ' + ret.city + ' ' + ret.area);
+            });
+        }();
+        /**
+         * 设置默认值
+         */
+        !function () {
+            var $target = $('#J_Address2');
+
+            $target.citySelect({
+                provance: '新疆',
+                city: '乌鲁木齐市',
+                area: '天山区'
+            });
+
+            $target.on('click', function (event) {
+                event.stopPropagation();
+                $target.citySelect('open');
+            });
+
+            $target.on('done.ydui.cityselect', function (ret) {
+                $(this).val(ret.provance + ' ' + ret.city + ' ' + ret.area);
+            });
+        }();
+	</script>

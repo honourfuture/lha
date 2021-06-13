@@ -1,0 +1,128 @@
+@CHARSET "UTF-8";
+*{margin:0;padding:0;}
+html {height: 100%;font-family: "微软雅黑",Helvetica,Arial,sans-serif;}
+body{width:100%;min-width:1200px;}
+ul{list-style:none;}
+a{text-decoration:none;color:#444;}
+img{border:0;max-width: 100%;}
+button{outline:none;}
+input{outline:none;}
+.main-outer{width:100%;background:#f7f7f7;padding:50px 0;}
+
+.header-outer{width:100%;height:34px;background-color:#fff;border-bottom: 1px solid #dedede;}
+.header{width:1198px;margin:0 auto;height:34px;line-height:34px;}
+.top-tele, .top-time{float:left;font-size:12px;color:#666;}
+.top-tele em{width:16px;height:16px;background:url(../img/ind-head-icon.png) no-repeat left top;display:inline-block;vertical-align:-3px;margin: 0 6px 0 0;}
+.tele-num {float:left;font-size:13px;color:#666;margin: 0 20px 0 0;font-weight:bold;}
+.top-bg{height:17px;float:left;margin:11px 0 0 16px;background:url(../img/ind-head-icon.png) no-repeat;transition:all .2S ease-out .2s;position:relative;-webkit-transition:all .2S ease-out .2s;-ms-transition:all .2S ease-out .2s;-moz-transition:all .2S ease-out .2s;}
+.wechat{width:21px;background-position:0px  -22px;}
+.wechat .tk, .tt-bg{width: 140px;height: 89px;background:url(../img/header_bg.png) no-repeat;position:absolute;top:18px;left:-58px;display:none;z-index:3;}
+.wechat .tk{left:-75px;width:165px;height:184px;}
+.wechat .tk img,.mobile-er img{height: 150px;width: 150px;padding: 24px 0 0 8px;}
+.wechat:hover{background-position: left -44px;}
+.wechat:hover .tk{display:block;}
+.top-qq {width:18px;background-position:0px  -69px;}
+.top-qq:hover .tt-bg{display: block;}
+.top-qq:hover{background-position: left -93px;}
+.tt-bg{background: url(../img/ind-head-qqh.png) no-repeat;top: 19px;}
+.qq-h{width:138px;height:32px;position:absolute;left:1px;top:45px;text-indent:40px;font-size:12px;}
+.mobile-app{width:12px;background-position:0px  -123px;}
+.mobile-app:hover{background-position:left -148px;}
+.mobile-er{width: 165px;height: 182px;background: url(../img/header_bg.png) no-repeat;position:absolute;top:20px;left:-78px;display:none;z-index:3;}
+.mobile-app:hover .mobile-er{display:block;}
+.top-login{width:100px;float:right;}
+.top-login a{font-size:14px;color:#666;padding:0 5px;}
+.top-login a:hover{color:#34afe7;}
+.nav-outer{width:100%;height:88px;background:#fff;}
+.nav-outer .nav{width:1198px;margin:0 auto;height:88px;}
+.nav-outer .nav img{display:inline-block;height:80px;margin:6px 0 0 0;}
+.nav-outer .nav ul{float:right;margin-top:25px;}
+.nav-outer .nav ul li{padding:7px 14px;display:inline-block;font-size:16px;margin:0 6px;}
+.nav-outer .nav ul li a{font-size:16px;color:#666;}
+.nav-outer .nav ul li:hover,.nav-outer .nav ul li.active{border-bottom:2px solid #d93037;}
+.nav-outer .nav ul li a:hover,.nav-outer .nav ul li.active a{color:#d93037;}
+
+.footer {
+	width: 100%;
+	height: 255px;
+	background: #363b3f
+}
+
+.footer_content {
+	width: 1200px;
+	margin: 0 auto;
+	height: 100%
+}
+.c_content_top {
+	width: 100%;
+	height: 200px
+}
+
+.c_service_time {
+	float: left;
+	width: 350px;
+	text-align: center;
+	margin-top: 38px
+}
+
+.c_service_time p {
+	font-size: 13px;
+	color: #7d8390;
+	line-height: 30px;
+	letter-spacing: 2px;
+	margin-top: 6px
+}
+.c_service_link {
+	float: right;
+	margin-top: 55px;
+	padding-left: 30px;
+	border-left: 1px solid #404549
+}
+
+.c_service_link ul {
+	float: left;
+	margin: 0 40px
+}
+
+.c_service_link ul li {
+	color: #d9dcdc;
+	font-size: 16px;
+	line-height: 32px
+}
+
+.c_service_link ul li a {
+	color: #7d8390;
+	font-size: 14px
+}
+.footer_in {
+	width: 100%;
+	background: #404549;
+	border-top: 1px dashed #404549
+}
+
+.c_more_link {
+	width: 1200px;
+	margin: 0 auto;
+	line-height: 56px;
+	text-align: center;
+	color: #7d8390;
+	font-size: 12px
+}
+
+.c_more_link a {
+	color: #7d8390;
+	font-size: 12px
+}
+
+.footer_in_box {
+	height: 36px;
+	background: #333;
+	color: #707e8c;
+	line-height: 36px;
+	text-align: center
+}
+
+
+.paging{text-align:center;height:50px;line-height:50px;margin:0 auto;}
+.paging a{padding:0px 12px;line-height:30px;margin:3px;color:#333;background-color:#f7f7f7;display:inline-block;font-size:14px;border-radius:3px;-o-border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;}
+.paging a.on{background-color:#fff;}

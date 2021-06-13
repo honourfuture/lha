@@ -1,0 +1,79 @@
+<include file="Mobile:header" nav="{$Think.lang.cityPartner}"/>
+<div class="mobile">
+    <div class="othertop">
+        <a class="goback" href="javascript:history.back();"><img src="__PUBLIC__/mobile/img/goback.png" /></a>
+        <div class="othertop-font">{$Think.lang.cityPartner}</div>
+    </div>
+    <!-- 推荐有奖 -->
+    <div class="company">
+	    <div class="firends_to">
+	    	<a style="width: 100%;" id="inteCode"><img src="__PUBLIC__/mobile/img/code.png" /><span style="width:4rem;">邀请二维码 推荐人ID:({$uid})</span></a>
+
+	    </div>
+        <div id="qrcode" class="qrcode" style="width:3.06rem;margin: auto;padding: .1rem;background-color: #fff;"></div>
+        <script type="text/javascript" src="__PUBLIC__/mobile/js/qrcode.js"></script>
+        <script type="text/javascript">
+            //new QRCode(document.getElementById("qrcode"), "{$code_url}");  // 设置要生成二维码的链接
+            var qrcode = new QRCode('qrcode', {
+                text: "http://{$_SERVER['SERVER_NAME']}/mobile/reg/invite/{$uid}",
+                width: '150',
+                height: '150',
+                colorDark : '#000000',
+                colorLight : '#ffffff',
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        </script>
+	    <h2 class="planner_h2"><span>我推荐的会员(一级)</span></h2>
+	    <div class="planner_rule">       
+	        <table>
+	        	<tr>
+	        		<th>推广会员</th>
+	        		<th>注册时间</th>
+	        	</tr>
+                <volist name="firstUsers" id="d">
+                    <tr>
+                        <td>{:getUserHidePhone($d['id'])}</td>
+                        <td>{$d.time}</td>
+                    </tr>
+                </volist>
+	        </table>
+	    </div>
+        <h2 class="planner_h2"><span>我推荐的会员(二级)</span></h2>
+        <div class="planner_rule">
+            <table>
+                <tr>
+                    <th>推广会员</th>
+                    <th>注册时间</th>
+                </tr>
+                <volist name="secondUsers" id="d">
+                    <tr>
+                        <td>{:getUserHidePhone($d['id'])}</td>
+                        <td>{$d.time}</td>
+                    </tr>
+                </volist>
+            </table>
+        </div>
+        <h2 class="planner_h2"><span>我推荐的会员(三级)</span></h2>
+        <div class="planner_rule">
+            <table>
+                <tr>
+                    <th>推广会员</th>
+                    <th>注册时间</th>
+                </tr>
+                <volist name="thirdUsers" id="d">
+                    <tr>
+                        <td>{:getUserHidePhone($d['id'])}</td>
+                        <td>{$d.time}</td>
+                    </tr>
+                </volist>
+            </table>
+        </div>
+    </div>
+</div>
+<script>
+    $().ready(function(){
+        msg("公告","邀请好友加入，即可获得lv1每日收益8%，lv2每日收益3%，lv3每日收益1%！",1);
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<include file="common_header" title="项目分类"/>
+        <p class="curr">
+            <a>项目分类</a>&gt;&gt;
+            <a href="{:U('project_list')}">分类列表</a>&gt;&gt;
+            <span>修改分类</span>
+        </p>
+        <div class="content">
+            <form action="{:U('project_class_edit')}" method="post"  enctype="multipart/form-data">
+            	 <input type="hidden" value="{$id}" name="id"/>
+                <div class="line">
+                    <label>分类名称：</label>
+                    <input type="text" name="name" value = "{$data.name}" placeholder="请输入分类名称" class="short"/>
+                </div>
+                <div class="line">
+                    <label>分类描述：</label>
+                    <input type="text" name="note"  value = "{$data.note}" placeholder="请输入分类描述" maxlength="144"/>
+                </div>
+                <div class="line">
+                    <label>首页图标：</label>
+                    <div class="uploads">
+                        <img src="/Public/uploads/item/{$data.img1}" id="img1">
+                        <input type="file" class="file" name="img1"  accept="image/*" onchange="showPreview2(this,'img1')">
+                    </div>
+                </div>
+                 <div class="line">
+                    <label>投资icon：</label>
+                    <div class="uploads">
+                        <img src="/Public/uploads/item/{$data.img2}" id="img2">
+                        <input type="file" class="file" name="img2"  accept="image/*" onchange="showPreview2(this,'img2')">
+                    </div>
+                </div>
+           
+                <div class="line">
+                    <label class="tp">标题颜色：</label>
+                   <input type="color" name="color" value = "{$data.color}" placeholder="标题颜色" maxlength="144"/>
+                </div>
+                <div class="line">
+                    <label>排序（从小到大）：</label>
+                    <input type="number" name="sort" min="1" value = "{$data.sort}" max="999999" value="1" placeholder="请输入排序" class="short"/>
+                </div>
+                <div class="button"> 
+                    <input type="submit" value="立即提交" class="submit" />
+                    <input type="reset" value="重置" class="reset"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="__PUBLIC__/UEditor/ueditor.config.js"></script>
+<script type="text/javascript" src="__PUBLIC__/UEditor/ueditor.all.js"></script>
+<script type="text/javascript">
+    var editor = UE.getEditor('container');
+    $().ready(function(){
+        $('.timer').datetimepicker({
+        	lang:'ch',
+            timepicker:true,
+            format:'Y-m-d H:i',
+            step:'60',
+            scrollInput:false,
+            ShowCheckBox:true
+        });
+    });
+</script>
+<include file="common_footer" menu="menu_project" nav="2"/>

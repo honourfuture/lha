@@ -1,0 +1,135 @@
+<include file="common_header" title="系统管理"/>
+        <p class="curr">
+            <a>系统管理</a>&gt;&gt;
+            <span>支付设置</span>
+        </p>
+        <div class="main_tabs">
+            <span class="active">线上支付</span>
+            <span>线下支付</span>
+        </div>
+        <div class="content">
+            <form action="{:U('system_payment')}" method="post" class="pay">
+                <input type="hidden" name="type" value="1"/>
+                <div class="line">
+                    <label>商户号：</label>
+                    <input type="text" class="short" name="bid" value="{$online.bid}">
+                </div>
+                <div class="line">
+                    <label>APPID：</label>
+                    <input type="text" class="short" name="appid" value="{$online.appid}">
+                </div>
+                <div class="line">
+                    <label>密钥：</label>
+                    <input type="text" class="short" name="appkey" value="{$online.appkey}">
+                </div>
+                <div class="line">
+                    <label>支付域名：</label>
+                    <input type="text" class="short" name="domain" value="{$online.domain}">
+                </div>
+                <div class="line">
+                    <label>是否开启：</label>
+                    <select name="online_wechat">
+                        <option value="1" <if condition="getInfo('online_wechat') eq 1"> selected="selected"</if>>开启</option>
+                        <option value="0" <if condition="getInfo('online_wechat') eq 0"> selected="selected"</if>>关闭</option>
+                    </select>
+                </div>
+                <div class="button">
+                    <input type="submit" value="立即提交" class="submit" />
+                </div>
+            </form>
+            
+            <form action="{:U('system_payment')}" method="post" class="pay" enctype="multipart/form-data">
+                <input type="hidden" name="type" value="2"/>
+                <div class="line">
+                    <label>一、银行入款：</label>
+                </div>
+                <div class="line">
+                    <label>收款银行：</label>
+                    <input type="text" name="pay_bank_type" value="{:getInfo('pay_bank_type')}" class="short">
+                </div>
+                <div class="line">
+                    <label>收款人：</label>
+                    <input type="text" name="pay_bank_name" value="{:getInfo('pay_bank_name')}" class="short">
+                </div>
+                <div class="line">
+                    <label>收款账号：</label>
+                    <input type="text" name="pay_bank_account" value="{:getInfo('pay_bank_account')}" class="short">
+                </div>
+                <div class="line">
+                    <label>银行入款支付描述：</label>
+                    <input type="text" name="pay_bank" value="{:getInfo('pay_bank')}">
+                </div>
+                <div class="line">
+                    <label>是否开启银行入款：</label>
+                    <select name="pay_bank_status">
+                        <option value="1" <if condition="getInfo('pay_bank_status') eq 1"> selected="selected"</if>>开启</option>
+                        <option value="0" <if condition="getInfo('pay_bank_status') eq 0"> selected="selected"</if>>关闭</option>
+                    </select>
+                </div>
+                <br/>
+                <br/>
+                <div class="line">
+                    <label>二、支付宝扫码：</label>
+                </div>
+                <div class="line">
+                    <label>支付宝二维码：<br/><span style="color:#f00;font-size: 12px;">图片最大50KB，JPG格式</span></label>
+                    <div class="uploads">
+                        <img src="__PUBLIC__/uploads/scan/{:getInfo('qr_alipay_img')}?k={:rand(1,99999)}" id="portrait1">
+                        <input type="file" class="file" name="alipay"  accept="image/*" onchange="showPreview2(this,'portrait1')">
+                    </div>
+                </div>
+                <div class="line">
+                    <label>支付宝扫码支付描述：</label>
+                    <input type="text" name="qr_alipay" value="{:getInfo('qr_alipay')}">
+                </div>
+                <div class="line">
+                    <label>是否开启支付宝扫码：</label>
+                    <select name="qr_alipay_status">
+                        <option value="1" <if condition="getInfo('qr_alipay_status') eq 1"> selected="selected"</if>>开启</option>
+                        <option value="0" <if condition="getInfo('qr_alipay_status') eq 0"> selected="selected"</if>>关闭</option>
+                    </select>
+                </div>
+                <br/>
+                <br/>
+                <div class="line">
+                    <label>三、微信扫码：</label>
+                </div>
+                <div class="line">
+                    <label>微信二维码：<br/><span style="color:#f00;font-size: 12px;">图片最大50KB，JPG格式</span></label>
+                    <div class="uploads">
+                        <img src="__PUBLIC__/uploads/scan/{:getInfo('qr_wechat_img')}?k={:rand(1,99999)}" id="portrait2">
+                        <input type="file" class="file" name="wechat"  accept="image/*" onchange="showPreview2(this,'portrait2')">
+                    </div>
+                </div>
+                <div class="line">
+                    <label>微信扫码支付描述：</label>
+                    <input type="text" name="qr_wechat" value="{:getInfo('qr_wechat')}">
+                </div>
+                <div class="line">
+                    <label>是否开启微信扫码：</label>
+                    <select name="qr_wechat_status">
+                        <option value="1" <if condition="getInfo('qr_wechat_status') eq 1"> selected="selected"</if>>开启</option>
+                        <option value="0" <if condition="getInfo('qr_wechat_status') eq 0"> selected="selected"</if>>关闭</option>
+                    </select>
+                </div>
+                <div class="button">
+                    <input type="submit" value="立即提交" class="submit" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $().ready(function(){
+    	$(".content .pay:eq(1)").hide();
+    	$(".main_tabs span").click(function(){
+    		$(this).addClass("active");
+    		$(this).siblings().removeClass("active");
+    		var index = $(this).index();
+            $(".content .pay:eq("+index+")").show();
+            $(".content .pay:eq("+index+")").siblings().hide();
+    	});
+    });
+	
+</script>
+<include file="common_footer" menu="menu_system" nav="5"/>

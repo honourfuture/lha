@@ -1,0 +1,116 @@
+<include file="common_header" title="会员管理"/>
+<p class="curr">
+    <a>会员管理</a>&gt;&gt;
+    <a href="{:U('user_list')}">会员列表</a>&gt;&gt;
+    <span>会员详情</span>
+</p>
+<div class="content">
+    <form action="{:U('user_details')}" method="post">
+        <input type="hidden" name="id" value="{$user.id}"/>
+        <div class="line">
+            <label>ID：</label>
+            {$user.id}
+            <!--<input type="text" value="{$user.id}" class="short" readonly/>-->
+        </div>
+        <div class="line">
+            <label>推荐人：</label>
+            <input type="text" class="short" name="top" value="{:getUserPhone($user['top'])}" placeholder="默认为0"/>
+        </div>
+        <div class="line">
+            <label>手机号：</label>
+            <input type="text" value="{$user.phone}" name="phone" class="short"/>
+        </div>
+        <div class="line">
+            <label>姓名：</label>
+            <input type="text" value="{$user.name}" name="name" class="short"/>
+        </div>
+        <div class="line">
+            <label>身份证号：</label>
+            <input type="text" value="{$user.idcard}" name="idcard" class="short"/>
+        </div>
+        <div class="line">
+            <label>QQ号码：</label>
+            <input type="text" value="{$user.qq}" name="qq" class="short"/>
+        </div>
+        <div class="line">
+            <label>登录密码：</label>
+            <input type="password" value="" class="short" name="pwd" placeholder="不修改请留空"/>
+        </div>
+        <div class="line">
+            <label>交易密码：</label>
+            <input type="password" value="" class="short" name="pwd2" placeholder="不修改请留空"/>
+        </div>
+        <div class="line">
+            <label>余额：</label>
+            <input type="text" value="{$user.money}" name="money" class="short"/>
+        </div>
+		<div class="line">
+            <label>冻结余额：</label>
+            <input type="text" value="{$user.dongjiemoney}" name="dongjiemoney" class="short"/>
+        </div>
+        <div class="line">
+            <label>成长值：</label>
+            <input type="text" value="{$user.value}" name="value" class="short" placeholder="修改成长值将影响会员等级"/>
+        </div>
+        <div class="line">
+            <label>是否锁定：</label>
+            <select name="clock">
+                <option value="0" <if condition="$user['clock'] eq 0"> selected="selected"</if>>正常</option>
+                <option value="1" <if condition="$user['clock'] eq 1"> selected="selected"</if>>锁定</option>
+            </select>
+        </div>
+        <div class="line">
+            <label>会员等级：</label>
+           <select name="member">
+		   
+		   <?php
+		   	$djarr=M("user_member")->select();
+			foreach($djarr as $d=>$v){
+		   ?>
+		   <option value="<?php echo $v["id"];?>" <if condition="$user['member'] eq $v['id']"> selected="selected"</if>><?php echo $v["name"];?></option> 
+			<?php
+				}
+			?>
+            </select>
+        </div>
+        <div class="line">
+            <label>注册时间：</label>
+            {$user.time}
+            <!--<input type="text" value="{$user.time}" class="short" readonly/>-->
+        </div>
+
+        <div class="button">
+            <input type="submit" value="立即提交" class="submit" />
+            <input type="button" value="查看银行卡" onclick="$('.bankbg').show();" style="border: 1px solid #33a7fd;padding: 10px 20px;color: #fff;background: #33a7fd;;"/>
+        </div>
+    </form>
+</div>
+</div>
+</div>
+<div class="bankbg" style="display:none;width: 500px;height: 340px;position: fixed;top: 0;left:0;right:0;bottom: 0;margin: auto;background-color: #383e48;border: 1px solid #383e48;">
+    <div style="width: 100%;height:40px;line-height: 40px;text-indent: 10px;color:#fff;">
+        银行卡详情
+        <div style="display: inline-block;float:right;margin-right: 10px;">
+            <a href="javascript:;" onclick="$('.bankbg').hide()" style="color:#fff;">x</a>
+        </div>
+    </div>
+    <div class="list_main">
+        <iframe src="{:U('user_bank','id='.$user['id'])}" width="500px" height="300px" frameborder="0"></iframe>
+    </div>
+</div>
+<script type="text/javascript">
+    function showPreview(source) {
+        var file = source.files[0];
+        if(window.FileReader) {
+            var fr = new FileReader();
+            console.log(fr);
+            var portrait = document.getElementById('portrait');
+            fr.onloadend = function(e) {
+                portrait.src = e.target.result;
+            };
+            fr.readAsDataURL(file);
+            portrait.style.display = 'block';
+        }
+    }
+</script>
+<include file="common_footer" menu="menu_user" nav="0"/>

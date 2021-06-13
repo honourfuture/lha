@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta id="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<link rel="stylesheet" href="__PUBLIC__/mobile/css/web1.css" type="text/css" media="all">
+		<link href="__PUBLIC__/mobile/css/swiper.min.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="__PUBLIC__/mobile/js/jquery-1.9.1.min.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/mobile/js/template.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/mobile/js/aui.js"></script>
+		<title>商品分类</title>
+	</head>
+
+	<body class="main-container" style=" background:#fff;">
+		<div class="suo_top">
+			<div class="black" id="go_back" onClick="javascript :history.go(-1);" >
+				<a href="javascript:;" ></a>
+			</div>
+			<h3>商品分类</h3>
+
+		</div>
+
+		<!--商品分类区域开始-->
+		<div class="zhuti" style="margin-top:0; border-bottom:0;">
+			<div class="rexiao_top">
+				<h3>主题馆</h3>
+			</div>
+
+			<ul class="clearfixd" id="class_div">
+				<script id="class_script" type="text/html">
+					<% if(list.length >0){%>
+					<%for(i = 0; i < list.length; i ++) {%>
+					<li>
+						<a href="javascript:;" onclick="sm_list(<%=list[i].id%>,'<%=list[i].classify_title%>')">
+							<div class="zhuti_l">
+								<p><%=list[i].classify_title%></p>
+								<span><%=list[i].classify_goods_num%>款产品</span>
+							</div>
+							<div class="zhuti_r">
+								<img src="/Public/uploads/item/<%=list[i].photo%>" alt="" />
+							</div>
+						</a>
+					</li>
+					<%}%>
+					<%}%>
+				</script>
+			</ul>
+		</div>
+		<!--商品分类区域结束-->
+	</body>
+<script>
+$(document).ready(function(){ 
+
+　　　$.ajax('/gs/get_sm_class', {
+	
+		dataType: 'json', //服务器返回json格式数据
+		type: 'get', //HTTP请求类型
+
+		success: function(res) {
+		console.log(res);
+			if(res.status == 1) {
+				var script = "class_script";
+		        var html = template.render(script, {
+		            list: res.info,
+		           
+		        });
+		        $("#class_div").html(html);
+			} else { 
+				is_error(res.info);
+			}
+		},
+	});
+　
+}); 
+function sm_list(class_id,title){
+	window.location.href = "sm_list.html?class_id="+class_id+"&title="+title;
+	
+}
+</script>
+
+</html>

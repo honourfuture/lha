@@ -1,0 +1,28 @@
+<include file="Mobile:header" nav="站内消息"/>
+<div class="mobile">
+    <div class="othertop">
+        <a class="goback" href="javascript:history.back();"><img src="__PUBLIC__/mobile/img/goback.png" /></a>
+        <div class="othertop-font">站内消息</div>
+    </div>
+    <div class="header-nbsp"></div>
+    <div class="record_outer">
+    	<table>
+    		<tr>
+    		
+    			<th>时间</th>
+    			<th>消息</th>
+    			
+    		</tr>
+            <volist name="invest" id="i">
+                <tr>
+             
+                    <td>{$i['time']}</td>
+                    <td>{$i.content}</td>
+                  
+                </tr>
+            </volist>
+    	</table>
+    </div>
+</div>
+</body>
+</html>

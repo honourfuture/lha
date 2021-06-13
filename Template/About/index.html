@@ -1,0 +1,123 @@
+<html data-dpr="1" style="font-size: 50px;"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>关于我们</title>
+    <link rel="stylesheet" href="/Public/mobile/css/base.css?k=30558">
+    <script type="text/javascript" src="/Public/mobile/js/adaptive.js"></script>
+    <script type="text/javascript" src="/Public/mobile/js/config.js"></script>
+    <script type="text/javascript" src="/Public/mobile/js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="/Public/mobile/js/public.js"></script>
+    <script type="text/javascript" src="https://js.users.51.la/20928847.js"></script>
+    <script type="text/javascript">
+        function msg(title,content,type,url){
+            $("#msgTitle").html(title);
+            $("#msgContent").html(content);
+            if(type==1){
+                var btn = '<input type="button" value="确定" onclick="$(\'#msgBox\').hide();" style="background-color: #4f79bc;color:#fff;border: none;padding:5px 10px;"/>';
+            }
+            else{
+                var btn = '<input type="button" value="确定" onclick="window.location.href=\''+url+'\'" style="background-color: #4f79bc;color:#fff;border: none;padding:5px 10px;"/>';
+            }
+            $("#msgBtn").html(btn);
+            $("#msgBox").show();
+        }
+    </script>
+    <style type="text/css">
+    	.footer{text-align: center;margin-top:.3rem;}
+		.footer p{font-weight: bold;line-height: .8rem;font-size:.28rem;}
+		.footer .zhenjian{width: 7rem;text-align: center;font-size: 0;margin:0 auto .5rem;}
+		.footer .zhenjian img{width:1.5rem;margin:0 .05rem .1rem .05rem;}
+    </style>
+</head>
+<body style="font-size: 0.18rem;">
+<div id="msgBox" style="width: 100%;background-color: rgba(0,0,0,0.25);height: 1000px;position: fixed;top: 0;left: 0;z-index: 9999;font-size:.28rem;display: none;">
+    <div style="width: 80%;margin-top: 40%;margin-left: 10%;background-color: #fff;border-radius: 5px;overflow: hidden;">
+        <div id="msgTitle" style="padding:10px 20px;background-color: #4f79bc;color:#fff;">
+            提示
+        </div>
+        <div id="msgContent" style="padding:20px;line-height: 25px;">
+            内容
+        </div>
+        <div id="msgBtn" style="padding: 10px 20px;text-align: right;border-top: 1px solid #eee;">
+            <input type="button" value="确定" style="background-color: #4f79bc;color:#fff;border: none;padding:5px 10px;">
+            <input type="button" value="取消" style="background-color: #4f79bc;color:#fff;border: none;padding:5px 10px;">
+        </div>
+    </div>
+</div>
+
+<div class="mobile">
+    <div class="othertop">更多</div>
+   	<h1 class="about_tit">关于我们</h1>
+   	<ul class="about_outer">
+   		<li>
+            <a href="/about/lists/id/1006.html"><img src="/Public/mobile/img/about_notice.png">提现问题</a>
+            <a href="/about/lists/id/1005.html"><img src="/Public/mobile/img/about_notice.png">资质荣誉</a>
+            <a href="/about/details/id/35.html"><img src="/Public/mobile/img/about_notice.png">公司简介</a>
+            <a href="/about/details/id/46.html"><img src="/Public/mobile/img/about_notice.png">营业执照</a>
+            <a href="/about/lists/id/2.html"><img src="/Public/mobile/img/about_notice.png">会员等级</a>
+            <a href="/about/details/id/29.html"><img src="/Public/mobile/img/about_notice.png">最新资讯</a>
+            <a href="/about/lists/id/1008.html"><img src="/Public/mobile/img/about_pay.png">支付方式</a>
+            <a href="/about/lists/id/1012.html"><img src="/Public/mobile/img/about_notice.png">平台公告</a>
+            <a href="/about/details/id/9.html"><img src="/Public/mobile/img/about_help.png">常见问题</a>
+            <a href="/about/lists/id/1010.html"><img src="/Public/mobile/img/about_notice.png">会员推荐奖励</a>
+            <a href="/about/lists/id/3.html"><img src="/Public/mobile/img/about_tel.png">联系我们</a>   	
+        </li>
+   	</ul>
+	<div class="contact">
+        <span class="tel">服务热线：<a href="tel:"><strong></strong></a></span>
+        <a href="https://www.4lpv0.cn/im.htm?pid=297ec46175de952a0175df7d060d00ca" class="kef">进入在线客服</a>
+    </div>
+	<div style="width:100%;padding:0 0 0 0.2rem;font-weight: bold;font-size: .3rem;line-height:0.8rem;font-size: .28rem;border-bottom: 1px solid #ccc;">在线客服QQ：<span style="color: red;"></span></div>
+    <!-- 底部样式 -->
+<div class="header-nbsp"></div>
+<div class="footer_nav">
+    <a href="/mobile/index.html">
+        <img src="/Public/mobile/img/home.png">
+        <span>首页</span>
+    </a>
+    <a href="/mobile/lists.html">
+        <img src="/Public/mobile/img/invest.png">
+        <span class="">投资项目</span>
+    </a>
+    <a href="/user/person.html">
+        <img src="/Public/mobile/img/user.png">
+        <span>会员中心</span>
+    </a>
+    <a href="/about/index.html">
+        <img src="/Public/mobile/img/about_blue.png">
+        <span class="active">关于我们</span>
+    </a>
+    <a href="https://www.4lpv0.cn/im.htm?pid=297ec46175de952a0175df7d060d00ca">
+        <img src="/Public/mobile/img/kefu.png">
+        <span class="active">在线客服</span>
+    </a>
+</div>
+<!-- 底部样式 end -->
+<!-- 回到顶部 -->
+<div class="go_top" id="go_top" style="display: none;"><img src="/Public/mobile/img/top.png"></div>
+<script type="text/javascript">
+    $(function(){
+        var nav = "about";
+        if(nav == "index"){
+            $(".footer_nav span").eq(0).addClass("active");
+            $(".footer_nav img").eq(0).attr("src","/Public/mobile/img/home_blue.png");
+        }
+        if(nav == "list"){
+            $(".footer_nav span").eq(1).addClass("active");
+            $(".footer_nav img").eq(1).attr("src","/Public/mobile/img/invest_blue.png");
+        }
+        if(nav == "user"){
+            $(".footer_nav span").eq(2).addClass("active");
+            $(".footer_nav img").eq(2).attr("src","/Public/mobile/img/user_blue.png");
+        }
+        if(nav == "about"){
+            $(".footer_nav span").eq(3).addClass("active");
+            $(".footer_nav img").eq(3).attr("src","/Public/mobile/img/about_blue.png");
+        }
+    })
+</script>
+
+<script type="text/javascript" src="https://js.users.51.la/20172683.js"></script>
+</div>
+
+</body></html>

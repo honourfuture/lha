@@ -1,0 +1,29 @@
+<include file="header" nav="登录"/>
+<div class="mobile">
+    <div class="othertop">
+        <a class="goback" href="{:U('mobile/index')}"><img src="__PUBLIC__/mobile/img/goback.png" /></a>
+        <div class="othertop-font">登录</div>
+    </div>
+    <div class="header-nbsp"></div>
+    <div style="text-align: center;">
+        <img src="/Public/uploads/mlogo2.png" width="50%">
+    </div>
+        <div class="login_bg">
+	        <form action="{:U('login')}" method="post">
+	            <div class="input_text log">
+	            	<label>账号</label>
+                    <input type="text" name="account" placeholder="请输入手机号码">
+                </div>
+                <div class="input_text log">
+	            	<label>密码</label>
+                    <input type="password" name="password" placeholder="请输入登录密码">
+                </div>
+                <div class="error_tips"></div>
+                <input type="submit" class="input_btn" value="登录" />
+                <p class="p2 re"><a href="reg.html">注册账号</a></p>
+                <if condition="smsStatus('18004') eq 1"><p class="p1"><a href="forget.html">忘记密码?</a></p></if>
+	        </form>
+        </div>
+    </div>
+</body>
+</html>

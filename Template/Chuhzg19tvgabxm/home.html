@@ -1,0 +1,102 @@
+<include file="common_header" title="工作台"/>
+<p class="curr"><span>首页</span></p>
+<div class="index_nav">
+    <a href="{:U('user_list')}">
+        <i class="first"></i>
+        <p>
+            <span class="num">{:count(getData('user','all'))}</span>
+            <span class="txt">注册会员</span>
+        </p>
+    </a>
+    <a href="{:U('project_alreay')}">
+        <i class="two"></i>
+        <p>
+            <span class="num">{:count(getData('invest','all'))}</span>
+            <span class="txt">已投项目</span>
+        </p>
+    </a>
+    <a href="{:U('finance_payment')}">
+        <i class="three"></i>
+        <p>
+            <span class="num">{:count(getData('recharge','all'))}</span>
+            <span class="txt">充值记录</span>
+        </p>
+    </a>
+    <a href="{:U('finance_invoice')}">
+        <i class="four"></i>
+        <p>
+            <span class="num">{:count(getData('cash','all'))}</span>
+            <span class="txt">提现记录</span>
+        </p>
+    </a>
+</div>
+<div class="content">
+    <div class="cont">
+        <div class="cont_main cleft">
+            <div class="title">最新财务纪录</div>
+            <div class="artical">
+                <table border="0">
+                    <volist name=":getData('finance','all','','0,9','id desc')" id="f">
+                        <tr>
+                            <td width="100px" valign="top">{:date('m-d H:i',strtotime($f['time']))}</td>
+                            <td>[{:getUserPhone($f['uid'])}] {$f.reason}</td>
+                        </tr>
+                    </volist>
+                </table>
+            </div>
+        </div>
+        <div class="cont_main system">
+            <div class="title">系统基本参数</div>
+            <table>
+                <tr>
+                    <td>服务器环境</td>
+                    <td>{:PHP_OS}</td>
+                </tr>
+                <tr>
+                    <td>PHP版本</td>
+                    <td>{:PHP_VERSION}</td>
+                </tr>
+                <tr>
+                    <td>最大文件大小</td>
+                    <td>{:get_cfg_var ("upload_max_filesize")?get_cfg_var ("upload_max_filesize"):"不允许"}</td>
+                </tr>
+                <tr>
+                    <td>服务器时间</td>
+                    <td><span class="nowTime">{:date('Y-m-d H:i:s')}</span></td>
+                </tr>
+            </table>
+        </div>
+        <div class="cont_main system">
+            <div class="title">最新文章</div>
+            <table>
+                <volist name=":getData('article','all','','0,4','id desc')" id="a">
+                    <tr>
+                        <td><a href="{:U('article_edit','id='.$a['id'])}" style="color:#000;">{$a.title}</a></td>
+                        <td>{:date('Y-m-d',strtotime($a['time']))}</td>
+                    </tr>
+                </volist>
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+    function get_time(){
+        var myDate=new Date();
+        var year = myDate.getFullYear();//获取当前年
+        var month = (myDate.getMonth()+1)<10?"0":"";//获取当前月
+        month = month + (myDate.getMonth()+1);
+        var date = myDate.getDate()<10?"0":"";//获取当前日
+        date = date + myDate.getDate();
+        var h = myDate.getHours()<10?"0":"";//获取当前小时数(0-23)
+        h = h + myDate.getHours();
+        var m = myDate.getMinutes()<10?"0":"";//获取当前分钟数(0-59)
+        m = m + myDate.getMinutes();
+        var s = myDate.getSeconds()<10?"0":"";//获取当前秒
+        s = s + myDate.getSeconds();
+        $(".nowTime").text(year+"-"+month+"-"+date+" "+h+":"+m+":"+s);
+    }
+    setInterval(get_time,1000);
+</script>
+<include file="common_footer" menu="menu_index" nav=""/>

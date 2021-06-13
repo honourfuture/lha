@@ -1,0 +1,100 @@
+<include file="header" nav="立即投标"/>
+<div class="mobile">
+	<div class="othertop">
+        <a class="goback" href="javascript:history.back();"><img src="__PUBLIC__/mobile/img/goback.png" /></a>
+        <div class="othertop-font">立即投标</div>
+    </div>
+    
+    <div class="form_outer">
+    	<div class="form_top">
+    		<p>
+    			<span class="span_tit">账户可用余额（{$Think.lang.unit}）</span>
+    			<span class="span_num">￥ {$user['money']}{$Think.lang.unit}</span>
+    		</p>
+    		<p>
+    			<span class="span_tit">项目可投金额（{$Think.lang.unit}）</span>
+    			<span class="span_num">￥ <strong id = "maxNum">{:getProjectSurplus($data['id'])} </strong>{$Think.lang.unit}</span>
+    		</p>
+    	</div>
+    	<form action="{:U('form')}" method="post" id="ifr">
+            <input type="hidden" value="{$data.id}" name="id"/>
+            <input type="hidden" value="{:round($data['max'],2)}" id="maxNum2"/>
+            <input type="hidden" value="{:round($user['money']/100)*100}" id="userMoney"/>
+            <input type="hidden" value="{:round($user['money'],2)}" id="userMoney2"/>
+    		<ul>
+    			<li>
+    				<label>{$Think.lang.startingAmount}</label><span>￥ <em class="start">{:round($data['min'],2)}</em> {$Think.lang.unit}</span>
+    			</li>
+    			<li>
+    				<label>结息时间</label><span>满 <em class="time">24小时</em> 自动结息</span>
+    			</li>
+    			<li>
+    				<label>投资金额</label><br/>
+    				<div class="caculate">
+    					<i class="btn_reduce">&minus;</i>
+    					<input type="text" name="money" id="money" value="{:round($data['min'],2)}">
+    					<i class="btn_add">+</i>
+    				</div>
+    			</li>
+    			<li>
+    				<label></label><span class="add">最低起投 <em class="time" id="minNum">{:round($data['min'],2)}</em> {$Think.lang.unit}，最高可投<em class="time" id="minNum">{:round($data['max'],2)}</em>,加一次为  <em class="time" id="addNum">100</em> {$Think.lang.unit}</span>
+    			</li>
+    			<li>
+    				<label>支付密码</label>
+    				<input type="password" placeholder="默认为登录密码" name="pwd" id="pwd" class="pwd">
+    			</li>
+    		</ul>
+    		<input type="submit" value="{$Think.lang.investNow}" class="input_btn">
+    	</form>
+    </div>
+</div>
+<script>
+    $().ready(function(){
+    	var minNum = Number($("#minNum").text());
+        var maxNum = Number($("#maxNum").text());
+        var maxNum2 = Number($("#maxNum2").val());
+        var userMoney = Number($("#userMoney").val());
+    	var addNum = Number($("#addNum").text());
+        $(".caculate .btn_reduce").click(function(){
+            var number = Number($(this).next().val());
+            if(number > minNum){
+                number = number - addNum;
+                $(this).next().val(number);
+            }
+        });
+        $(".caculate .btn_add").click(function(){
+            var number = Number($(this).prev().val());
+            if(number < maxNum && number < maxNum2 && userMoney > number){
+            	number = number + addNum;
+                $(this).prev().val(number);
+            }
+        });
+        $("#ifr").submit(function(){
+            var money = $("#money").val();
+            if(money > maxNum){
+                msg("错误","投资金额不能大于项目剩余投资额度！",1);
+                return false;
+            }
+            if(money < minNum){
+                msg("错误","投资金额不能小于项目最小投资额度！",1);
+                return false;
+            }
+            if(money > maxNum2){
+                msg("错误","投资金额不能大于项目最大投资额度！",1);
+                return false;
+            }
+            var userMoney2 = Number($("#userMoney2").val());
+            if(money > userMoney2){
+                msg("错误","投资金额不能大于您的余额！",1);
+                return false;
+            }
+            var pwd = $("#pwd").val();
+            if(pwd.length < 6 || pwd.length > 16){
+                msg("错误","请输入正确的交易密码！",1);
+                return false;
+            }
+        });
+    });
+</script>
+</body>
+</html>

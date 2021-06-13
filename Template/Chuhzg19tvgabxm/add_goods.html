@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<include file="common_header" title="添加商品"/>
+<include file="Public_header" />
+<script type="text/javascript" charset="utf-8" src="__PUBLIC__/Common/Ueditor/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="__PUBLIC__/Common/Ueditor/ueditor.all.min.js"></script>
+<include file="Public_page_css" />
+<script>
+    $(function(){
+        $('#signupForm').ajaxForm({
+
+            success: complete, // 这是提交后的方法
+            dataType: 'json'
+        });
+
+
+        function complete(data){
+            if(data.status==1){
+                layer.msg(data.info, {icon: 6}, function(index){
+                    layer.close(index);
+                    window.location.href=data.url;
+                });
+            }else{
+                layer.msg(data.info, {icon: 5}, function(index){
+                    layer.close(index);
+                    $('#admin_username').focus();
+                });
+                return false;
+            }
+        }
+
+    });
+</script>
+<body class="gray-bg wrapper wrapper-content">
+
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5><i class="fa fa-tasks"></i> 添加商品</h5>
+            </div>
+            <div class="ibox-content">
+                <form class="form-horizontal" method="post" action="{:U('add_goods')}" name="basic_validate" id="signupForm">
+                    <input type="hidden" name="id" value="{$goods.id}">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">所属分类</label>
+                        <div class="col-sm-6">
+                            <select id="classify_id" name="classify_id" class="form-control m-b chosen-select">
+                                <option value="0">请选择分类</option>
+                                <foreach name="list" item="vo">
+                                    <option value="{$vo.id}" <eq name="vo.id" value="$classify.id">selected="selected"</eq>>{$vo.classify_title}</option>
+                                </foreach>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">商品名称</label>
+                        <div class="col-sm-6">
+                            <input type="text" name="goods_name" id="goods_name" placeholder="输入商品名称" class="form-control" value="{$goods.goods_name}">
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">商品简称</label>
+                        <div class="col-sm-6">
+                            <input type="text" name="goods_j_name" id="goods_j_name" placeholder="输入商品简称建议5字符以内" class="form-control" value="{$goods.goods_j_name}">
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">商品描述</label>
+                        <div class="col-sm-6">
+                            <textarea type="text" rows="5" name="goods_remark" id="goods_remark" placeholder="输入商品描述，请勿过长" class="form-control">{$goods.goods_remark}</textarea>
+                        </div>
+                    </div>
+                    <div id="ajaxziduan">
+
+                    </div>
+                    <div class="hr-line-dashed"></div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">价格</label>
+                        <div class="col-sm-6">
+                            <input onkeyup="value=value.replace(/[^\d{1,}\.\d{1,}|\d{1,}]/g,'')" name="goods_price" id="goods_price" placeholder="输入该商品的价格" class="form-control" value="{$goods.goods_price}">
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">运费</label>
+                        <div class="col-sm-6">
+                            <input onkeyup="value=value.replace(/[^\d{1,}\.\d{1,}|\d{1,}]/g,'')" name="goods_freight" id="goods_freight" placeholder="输入该商品的运费(单件)" class="form-control" value="{$goods.goods_freight}">
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+                    <!--<div class="form-group">-->
+                        <!--<label class="col-sm-2 control-label">价格(复消积分)</label>-->
+                        <!--<div class="col-sm-6">-->
+                            <!--<input onkeyup="value=value.replace(/[^\d{1,}\.\d{1,}|\d{1,}]/g,'')" name="goods_price_fx" id="goods_price_fx" placeholder="输入该商品的复消积分价格" class="form-control" value="{$goods.goods_price_fx}">-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="hr-line-dashed"></div>-->
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">商品库存</label>
+                        <div class="col-sm-6">
+                            <input type="number" name="goods_kc" id="goods_kc" placeholder="输入商品库存" class="form-control" value="{$goods.goods_kc}">
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+		
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">商品缩略图</label>
+                        <div class="col-sm-6">
+                            <div style="width: 200px; height: 110px; float: left;">
+							  <div class="uploads">
+								
+									<input type="file" class="file" name="photo"  accept="image/*" onchange="showPreview2(this,'photo')">
+								</div>
+  
+                            </div>
+                            <div style="height: 110px; float: left;">
+                                <if condition="$goods eq ''">
+                                    <img id="photo" src="__ROOT__/Uploads/{$detail.photo}" onerror="this.src='__PUBLIC__/admin/img/no_img.jpg'" style="height: 100px" />
+                                    <else />
+                                    <img id="photo" src="/Public/uploads/item/{$goods.photo}"  style="height: 100px" />
+                                </if>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--div id="hastuji" >
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">商品轮播图</label>
+                            <div class="col-sm-6">
+                                <div style="width: 200px; height: 110px; float: left;">
+
+                                    <input id="addtuji" name="addtuji" type="file" multiple value="" />
+                                </div>
+                                <div style=" float: left;" id="tujilist">
+                                    <if condition="$goods neq ''">
+                                        <volist name="tujilist" id="vo2">
+                                            <a class="tujilb" href="javascript:;" title="点击删除"><img   src="{$vo2}"  style="height: 100px" /><input type="hidden" name="tujilist[]" value="{$vo2}"></a>
+                                        </volist>
+                                    </if>
+                                </div>
+                            </div>
+                        </div>
+                    </div-->
+
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">商品详情</label>
+                        <div class="col-sm-10">
+                            <script type="text/plain" id="editor" name="goods_content" style="width:90%;height:300px;">{$goods.goods_content}</script></div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group">
+                        <div class="col-sm-4 col-sm-offset-2">
+                            <button class="btn btn-primary" type="submit"><i class="fa fa-save"></i>保存</button>&nbsp;&nbsp;&nbsp;
+                            <a class="btn btn-danger" href="javascript:history.go(-1);">取消</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<js file='__PUBLIC__/admin/uploadify/jquery.uploadify.min.js' />
+<link rel="stylesheet" href="__PUBLIC__/admin/uploadify/uploadify.css">
+
+<script type="text/javascript">
+    $("#photo_file").uploadify({
+        'swf': '__PUBLIC__/admin/uploadify/uploadify.swf?t={$nowtime}',
+        'uploader': '{:U("Upload/upload")}',
+        'cancelImg': '__PUBLIC__/admin/uploadify/uploadify-cancel.png',
+        'buttonText': '上传封面',
+        'height': 35,
+        'fileTypeExts': '*.gif;*.jpg;*.png',
+        'queueSizeLimit': 1,
+        'onUploadSuccess': function(file, data, response) {
+        $("#data_photo").val(data);
+        $("#upload_img").attr('src', '__ROOT__/Uploads' + data).show();
+        }
+    });
+
+    $("#video_file").uploadify({
+        'swf': '__PUBLIC__/admin/uploadify/uploadify.swf?t={$nowtime}',
+        'uploader': '{:U("Upload/uploadvideo")}',
+        'cancelImg': '__PUBLIC__/admin/uploadify/uploadify-cancel.png',
+        'buttonText': '上传视频',
+        'height': 35,
+        'fileSizeLimit' : '300MB',//上传文件大小限制
+        'fileTypeExts': '*.mp4',
+        'queueSizeLimit': 1,
+        'onUploadSuccess': function(file, data, response) {
+        $("#data_video").val(data);
+
+        }
+    });
+
+    $("#addtuji").uploadify({
+        'swf': '__PUBLIC__/admin/uploadify/uploadify.swf?t={$nowtime}',
+        'uploader': '{:U("Upload/upload")}',
+        'cancelImg': '__PUBLIC__/admin/uploadify/uploadify-cancel.png',
+        'buttonText': '上传图片',
+        'height': 35,
+        'fileTypeExts': '*.gif;*.jpg;*.png',
+        'queueSizeLimit': 1,
+        'onUploadSuccess': function(file, data, response) {
+
+        var html='<a class="tujilb" href="javascript:;" title="点击删除"><img   src="'+'__ROOT__/Uploads' + data+'"  style="height: 100px" /><input type="hidden" name="tujilist[]" value="'+'__ROOT__/Uploads' + data+'"></a>';
+        $("#tujilist").append(html);
+
+        }
+    });
+
+    $(document).on("click",".tujilb",function(){
+        $(this).remove();
+
+    })
+
+    var ue = UE.getEditor('editor');
+    // 自定义的编辑器配置项,此处定义的配置项将覆盖editor_config.js中的同名配置
+    var editor_a = new baidu.editor.ui.Editor(editorOption);
+    editor_a.render('editor');
+
+
+
+</script>
+<script>
+
+    var config = {
+        '.chosen-select': {},
+    }
+    for (var selector in config) {
+        $(selector).chosen(config[selector]);
+    }
+
+</script>
+
+
+<!-- 下拉CSS样式 -->
+<script>
+
+    var config = {
+        '.chosen-select': {},
+    }
+    for (var selector in config) {
+        $(selector).chosen(config[selector]);
+    }
+
+</script>
+
+<!-- IOS开关样式配置 -->
+<script>
+    var elem = document.querySelector('.js-switch');
+    var switchery = new Switchery(elem, {
+        color: '#1AB394'
+    });
+    var config = {
+        '.chosen-select': {},
+    }
+    for (var selector in config) {
+        $(selector).chosen(config[selector]);
+    }
+
+</script>
+<include file="common_footer" menu="menu_goods" nav="1"/>
+</body>
+
+</html>

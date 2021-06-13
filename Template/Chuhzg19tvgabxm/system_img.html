@@ -1,0 +1,45 @@
+<include file="common_header" title="系统管理"/>
+<p class="curr">
+    <a>系统管理</a>&gt;&gt;
+    <span>图设置</span>
+</p>
+<div class="content">
+    <form action="{:U('system_img')}" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="key" value="1"/>
+        <div class="line">
+            <label>网站LOGO<br/><span style="color:#f00;font-size: 12px;">255x52像素,PNG格式</span></label>
+            <div class="uploads">
+                <img src="__PUBLIC__/uploads/logo.png?k={:rand(1,99999)}" id="logo">
+                <input type="file" class="file" name="logo"  accept="image/png" onchange="showPreview2(this,'logo')">
+            </div>
+        </div>
+        <div class="line">
+            <label>担保公司公章<br/><span style="color:#f00;font-size: 12px;">255x255像素,PNG格式</span></label>
+            <div class="uploads">
+                <img src="__PUBLIC__/uploads/wechat.png?k={:rand(1,99999)}" id="wechat">
+                <input type="file" class="file" name="wechat"  accept="image/png" onchange="showPreview2(this,'wechat')">
+            </div>
+        </div>
+        <div class="line">
+            <label>手机APP二维码<br/><span style="color:#f00;font-size: 12px;">255x255像素,PNG格式</span></label>
+            <div class="uploads">
+                <img src="__PUBLIC__/uploads/app.png?k={:rand(1,99999)}" id="app">
+                <input type="file" class="file" name="app"  accept="image/png" onchange="showPreview2(this,'app')">
+            </div>
+        </div> 
+        <div class="line">
+            <label>手机登录LOGO<br/><span style="color:#f00;font-size: 12px;">500x500像素,PNG格式</span></label>
+            <div class="uploads">
+                <img src="__PUBLIC__/uploads/mlogo2.png?k={:rand(1,99999)}" id="mlogo2">
+                <input type="file" class="file" name="mlogo2"  accept="image/png" onchange="showPreview2(this,'mlogo2')">
+            </div>
+        </div>
+
+        <div class="button">
+            <input type="submit" value="确定" class="submit" />
+        </div>
+    </form>
+</div>
+</div>
+</div>
+<include file="common_footer" menu="menu_system" nav="8"/>

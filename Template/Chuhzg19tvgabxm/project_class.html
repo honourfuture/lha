@@ -1,0 +1,86 @@
+<include file="common_header" title="项目管理"/>
+        <p class="curr">
+            <a>项目管理</a>&gt;&gt;
+            <span>分类列表</span>
+        </p>
+        <div class="content">
+            <div class="list_main">
+	            <div class="title">
+	                <form action="{:U('project_class')}" method="get">
+	                    <p>
+	                     
+                         
+                           <a href="{:U('project_class_add')}" class="two">添加分类</a>
+                       
+                        </p>
+	                </form>
+	                
+	            </div>
+	            <table>
+	                <tbody>
+		                <tr>
+		                
+		                    <th>编号</th>
+		                     <th>项目名称</th>
+	                   
+	                         <th>投资icon</th>
+                            <th>排序</th>
+                           
+		         
+		                    <th>添加时间</th>
+		                    <th>操作</th>
+		                </tr>
+                        <volist name=":getData('project_class','all',$where,$limit,'sort')" id="i">
+                            <tr>
+                          
+                                <td>{$i.id}</td>
+                                 <td>{$i.name}</td>
+                                   <td><img src="/Public/uploads/item/{$i.img2}"></td>
+                                <td>{$i.sort}</td>
+                               
+                 
+                                <td>{$i.add_time|date="Y-m-d H:i:s",###}</td>
+                                <td>
+                                    <a href="{:U('project_class_edit','id='.$i['id'])}" class="update">编辑</a>
+                                    <a href="javascript:;" onclick="delList({$i.id})" class="del">删除</a>
+                                </td>
+                            </tr>
+                        </volist>
+		            </tbody>
+	            </table>
+	            <ul class="page">
+                    {$page}
+	            </ul>
+	        </div>
+	    </div>
+    </div>
+</div>
+<script>
+    $().ready(function(){
+        $('.timer').datetimepicker({
+            lang:'ch',
+            timepicker:false,
+            format:'Y-m-d'
+        });
+    });
+    function delList(obj){
+        if(confirm("确认删除这条记录吗？")){
+//            window.location.href = "/admin/dellist/data/item/list/"+obj+".html?re={:U('project_list')}";
+            window.location.href = "{:U('dellist')}?data=project_class&list="+obj+"&re={:U('project_class')}";
+        }
+    } 
+    function delCheck(){ 
+        var arr = new Array();
+        $("input[name='ck[]']:checked").each(function(i){
+            arr[i] = $(this).val();
+        });
+        var vals = arr.join(",");
+        if(vals != ""){
+            delList(vals);
+        }
+        else{
+            alert("请选择需要删除的内容！");
+        }
+    }
+</script>
+<include file="common_footer" menu="menu_project" nav="2"/>

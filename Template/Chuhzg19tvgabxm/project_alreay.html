@@ -1,0 +1,89 @@
+<include file="common_header" title="项目管理"/>
+<p class="curr">
+    <a>项目管理</a>&gt;&gt;
+    <span>已投项目</span>
+</p>
+<div class="content">
+    <div class="list_main">
+        <div class="title">
+            <form action="{:U('project_alreay')}" method="get">
+                <p>
+                    <label>项目名称</label><input type="text" name="title" value="{$_GET['title']}" class="txt">
+                    <label>投资日期</label><input type="text" name="start" value="{$_GET['start']}" class="timer">至<input type="text" name="end" value="{$_GET['end']}" class="timer txt">
+
+                </p>
+                <p>
+                    <!--<label>项目期限</label><input type="text" class="txt">-->
+                    <label>会员账号</label><input type="text" name="phone" value="{$_GET['phone']}" class="txt" placeholder="会员手机号码">
+                    <label>还款方式</label>
+                    <select name="type">
+                        <option value="0">全部</option>
+                        <volist name=":setProjectType()" id="t">
+                            <if condition="$_GET['type'] eq $t['id']">
+                                <option value="{$t.id}" selected="selected">{$t.name}</option>
+                                <else/>
+                                <option value="{$t.id}">{$t.name}</option>
+                            </if>
+                        </volist>
+                    </select>
+                    <input type="submit" class="sub1" value="查询">
+                    <a href="{:U('project_return')}" class="two">查看返款</a>
+                </p>
+
+                <p>
+                    已收益（总）：<span>{:sprintf("%.2f",getDataSum('invest_list','status = 1 AND pay1 > 0','pay1'))}泰铢</span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;未收益（总）：<span>{:sprintf("%.2f",getDataSum('invest_list','status = 0 AND pay1 > 0','pay1'))}泰铢</span>
+                </p>
+            </form>
+
+        </div>
+        <table>
+            <tbody>
+            <tr>
+                <th>编号</th>
+                <th>项目名称</th>
+                <th>投资人ID</th>
+                <th>投资人姓名</th>
+                <th>投资人手机号</th>
+                <th>金额（泰铢）</th>
+                <th>费率（%）</th>
+                <th>期限（天）</th>
+                <th>还款类型</th>
+                <th>开始时间</th>
+                <th>结束时间</th>
+                <th>操作</th>
+            </tr>
+            <volist name=":getData('invest','all',$where,$limit,'id desc')" id="i">
+                <tr>
+                    <td>{$i.id}</td>
+                    <td>{$i.title}</td>
+                    <td>{$i.uid}</td>
+                    <td>{:getUserField($i['uid'],'name')}</td>
+                    <td>{:getUserPhone($i['uid'])}</td>
+                    <td>{$i.money}</td>
+                    <td>{$i.rate}</td>
+                    <td>{$i.day}</td>
+                    <td>{$i.type2}</td>
+                    <td>{$i.time}</td>
+                    <td>{:date("Y-m-d H:i:s",strtotime($i['time']."+".$i['day']." day"))}</td>
+                    <td><a href="{:U('project_detials','iid='.$i['id'])}" class="look">查看详情</a></td>
+                </tr>
+            </volist>
+            </tbody>
+        </table>
+        <ul class="page">
+            {$page}
+        </ul>
+    </div>
+</div>
+</div>
+</div>
+<script>
+    $().ready(function(){
+        $('.timer').datetimepicker({
+            lang:'ch',
+            timepicker:false,
+            format:'Y-m-d'
+        });
+    });
+</script>
+<include file="common_footer" menu="menu_project" nav="1"/>

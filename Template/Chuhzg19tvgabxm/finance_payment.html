@@ -1,0 +1,144 @@
+<include file="common_header" title="财务管理"/>
+        <p class="curr">
+            <a>财务管理</a>&gt;&gt;
+            <span>充值记录</span>
+        </p>
+        <div class="content">
+            <div class="list_main">
+                <div class="title">
+                    <form action="{:U('finance_payment')}" method="get">
+                        <input type="hidden" name="type" value="1"/>
+                        <p>
+                           <label>充值账户</label><input type="text" name="phone" value="{$_GET['phone']}" class="txt" placeholder="会员手机号码">
+                           <label>提交日期</label><input type="text" name="start" value="{$_GET['start']}" class="timer">至<input type="text" name="end" value="{$_GET['end']}" class="timer">
+                        </p>
+                        <p>
+                            <label>订单号码</label><input type="text" name="orderid" value="{$_GET['orderid']}" class="txt" placeholder="支持模糊搜索">
+                           <label>支付方式</label>
+                           <select name="pay">
+                               <option value="0">全部</option>
+                               <volist name=":getInvestPayment()" id="p">
+                                   <if condition="$_GET['pay'] eq $p">
+                                       <option value="{$p}" selected="selected">{$p}</option>
+                                       <else/>
+                                       <option value="{$p}">{$p}</option>
+                                   </if>
+                               </volist>
+                           </select>
+                           <input type="submit" class="sub1" value="查询">
+                            <a href="javascript:;" onclick="delCheck()" class="four">批量删除</a>
+                        </p>
+                        <p>
+                            充值成功：<span>{:sprintf("%.2f",getDataSum('recharge',$where.' AND status = 1','money'))}泰铢</span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;充值失败：<span>{:sprintf("%.2f",getDataSum('recharge',$where.' AND status = 2','money'))}泰铢</span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;未处理：<span>{:sprintf("%.2f",getDataSum('recharge',$where.' AND status = 0','money'))}泰铢</span>
+                        </p>
+                    </form>
+                </div>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th><input type="checkbox" id="selectAll"></th>
+                            <th>序号</th>
+                            <th>订单号</th>
+                            <th>账户</th>
+                            <th>推荐人</th>
+                            <th>最上级推荐人</th>
+                            <th>姓名</th>
+                            <th>充值金额(泰铢)</th>
+                            <th>支付方式</th>
+                            <th>提交时间</th>
+                            <th>状态</th>
+                            <th>操作</th>
+                        </tr>
+                        <volist name=":getData('recharge','all',$where,$limit,'id desc')" id="r">
+                            <tr>
+                                <td><input type="checkbox" name="ck[]" value="{$r.id}"></td>
+                                <td>{$r.id}</td>
+                                <td>{$r.orderid}</td>
+                                <td>{:getUserPhone($r['uid'])}</td>
+                                <td>{:getUserTop($r['uid'])}</td>
+                                <td>{:getUserFather($r['uid'])}</td>
+                                <td>{:getUserField($r['uid'],'name')}</td>
+                                <td>{$r.money}</td>
+                                <td>
+                                    <div style="text-align: left;">
+                                        {$r.type}
+                                        <if condition="$r['reason'] neq '无'">
+                                            <br/>{$r['reason']}
+                                        </if>
+                                    </div>
+                                </td>
+                                <td>{$r.time}</td>
+                                <td>
+                                    <if condition="$r['status'] eq 0">
+                                        待审核
+                                    </if>
+                                    <if condition="$r['status'] eq 1">已完成</if>
+                                    <if condition="$r['status'] eq 2">已拒绝</if>
+                                </td>
+                                <td>
+                                    <if condition="$r['status'] eq 0">
+                                        <a href="javascript:;" onclick="isPay({$r['id']},{$r['money']})" class="status_one">确认</a>
+                                        <a href="{:U('finance_payment','reject='.$r['id'])}" class="status_three">拒绝</a>
+                                        <if condition="$r['warn'] eq 0"><a href="{:U('finance_payment','warn='.$r['id'])}" class="status_two">忽略</a></if>
+                                        <a href="javascript:;" onclick="delList({$r.id})" class="status_four">删除</a>
+                                    </if>
+                                </td>
+                            </tr>
+                        </volist>
+                    </tbody>
+                </table>
+                <ul class="page">
+                    {$page}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="isPayOk" class="mask">
+    <form class="popup" action="{:U('finance_payment')}" method="post">
+        <input type="hidden" id="pid" value="0" name="id"/>
+        <input type="hidden" name="type" value="2"/>
+        <h3>充值入款<span onclick="closeDiv('isPayOk')">×</span></h3>
+        <p>
+            <label>确认入款<span id="pmoney">0</span>泰铢？</label>
+        </p>
+        <p>
+            <input type="submit" class="sub" value="确定">
+            <input type="button" class="sub" onclick="closeDiv('isPayOk')" value="取消">
+        </p>
+    </form>
+</div>
+<script>
+    $().ready(function(){
+        $('.timer').datetimepicker({
+            lang:'ch',
+            timepicker:false,
+            format:'Y-m-d'
+        });
+    });
+    function isPay(id,money){
+        $("#pid").val(id);
+        $("#pmoney").html(money);
+        $("#isPayOk").show();
+    }
+    function delList(obj){
+        if(confirm("确认删除这条记录吗？")){
+//            window.location.href = "/admin/dellist/data/slide/list/"+obj+".html?re={:U('system_banner')}";
+            window.location.href = "{:U('dellist')}?data=recharge&list="+obj+"&re={:U('finance_payment')}";
+        }
+    }
+    function delCheck(){
+        var arr = new Array();
+        $("input[name='ck[]']:checked").each(function(i){
+            arr[i] = $(this).val();
+        });
+        var vals = arr.join(",");
+        if(vals != ""){
+            delList(vals);
+        }
+        else{
+            alert("请选择需要删除的内容！");
+        }
+    }
+</script>
+<include file="common_footer" menu="menu_finance" nav="0"/>

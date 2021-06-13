@@ -1,0 +1,34 @@
+<include file="header" nav="标列表"/>
+<div class="mobile">
+	<div class="header">版票投资</div>
+	<div class="header-nbsp"></div>
+    
+	<!-- 投资项目 -->
+	<div class="list_outer">
+		<ul>
+            <volist name="item" id="i">
+                <li>
+                    <a href="{:U('details','id='.$i['id'])}">
+                        <img src="__PUBLIC__/uploads/item/{$i.img}">
+                        <h1>{$i.title}</h1>
+                        <p class="list_cont">{$i.desc}</p>
+                        <p class="list_lab"><span>{:round($i['min'],2)}{$Think.lang.unit}起投</span><span>项目周期：{$i.day}天</span><span>每日分红{:round($i['min']*$i['rate']/100,2)}{$Think.lang.unit}</span></p>
+                        <p class="list_tip"><span>{$Think.lang.projectScale}：{:round($i['total'],2)}万{$Think.lang.unit}</span><span>{:getProjectType($i['type'])}</span></p>
+                        <div class="progressBox">
+                            <div class="progress" style="width:{:getProjectPercent($i['id'])}%"></div>
+                        </div>
+                        <span class="progressNum">{:round(getProjectPercent($i['id']),2)}%</span>
+                        <if condition="getProjectPercent($i['id']) eq 100">
+                            <img class="over" src="__PUBLIC__/mobile/img/over.png" />
+                        </if>
+                    </a>
+                </li>
+            </volist>
+		</ul>
+	</div>
+
+
+    <include file="footer" menu="list"/>
+</div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<include file="Mobile:header" nav="账户安全"/>
+<div class="mobile">
+    <div class="othertop">
+        <a class="goback" href="{:U('person')}"><img src="__PUBLIC__/mobile/img/goback.png" /></a>
+        <div class="othertop-font">安全设置</div>
+    </div>
+    <div class="header-nbsp"></div>
+    <!-- 用户设置 -->
+    <ul class="user_list set">
+    	<li class="txt"><a><img src="__PUBLIC__/mobile/img/user_tel.png">手机号<span>{$user.phone}</span></a></li>
+    </ul>
+    <ul class="user_list set">
+        <if condition="$user['auth'] eq 1">
+            <li class="txt"><a href="{:U('certification')}"><img src="__PUBLIC__/mobile/img/user_cert1.png">实名认证<span>已完成</span></a></li>
+            <else/>
+            <li class="txt"><a href="{:U('certification')}"><img src="__PUBLIC__/mobile/img/user_cert1.png">实名认证<span>未完成</span></a></li>
+        </if>
+    	<li><a href="{:U('pwd_login')}"><img src="__PUBLIC__/mobile/img/user_lpwd.png">修改登录密码</a></li>
+    	<li><a href="{:U('pwd_pay')}"><img src="__PUBLIC__/mobile/img/user_ppwd.png">修改支付密码</a></li>
+    </ul>
+</div>
+</body>
+</html>

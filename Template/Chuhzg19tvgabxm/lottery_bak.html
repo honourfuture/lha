@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+		<title>大转盘后台管理</title>
+
+		<meta name="description" content="大转盘后台管理" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<!-- basic styles -->
+
+		<link href="__PUBLIC__/Plugin/style/css/bootstrap.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="__PUBLIC__/Plugin/style/css/font-awesome.min.css" />
+
+		<!--[if IE 7]>
+		  <link rel="stylesheet" href="__PUBLIC__/Plugin/style/css/font-awesome-ie7.min.css" />
+		<![endif]-->
+
+		<!-- ace styles -->
+
+		<link rel="stylesheet" href="__PUBLIC__/Plugin/style/css/ace.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Plugin/style/css/ace-rtl.min.css" />
+		<link rel="stylesheet" href="__PUBLIC__/Plugin/style/css/ace-skins.min.css" />
+
+		<!--[if lte IE 8]>
+		  <link rel="stylesheet" href="__PUBLIC__/Plugin/style/css/ace-ie.min.css" />
+		<![endif]-->
+
+		<!-- ace settings handler -->
+
+		<script src="__PUBLIC__/Plugin/style/js/ace-extra.min.js"></script>
+
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+		<!--[if lt IE 9]>
+		<script src="__PUBLIC__/Plugin/style/js/html5shiv.js"></script>
+		<script src="__PUBLIC__/Plugin/style/js/respond.min.js"></script>
+		<![endif]-->
+		
+		<!-- javascript footer -->
+				<!--[if !IE]> -->
+		<script type="text/javascript">
+			window.jQuery || document.write("<script src='__PUBLIC__/Plugin/style/js/jquery-2.0.3.min.js'>"+"<"+"/script>");
+		</script>
+		<!-- <![endif]-->
+
+		<!--[if IE]>
+		<script type="text/javascript">
+		 	window.jQuery || document.write("<script src='__PUBLIC__/Plugin/style/js/jquery-1.10.2.min.js'>"+"<"+"/script>");
+		</script>
+		<![endif]-->
+
+		<script type="text/javascript">
+			if("ontouchend" in document) document.write("<script src='__PUBLIC__/Plugin/style/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+		</script>
+		<script src="__PUBLIC__/Plugin/style/js/bootstrap.min.js"></script>
+		<script src="__PUBLIC__/Plugin/style/js/typeahead-bs2.min.js"></script>
+
+		<!-- page specific plugin scripts -->
+
+		<!--[if lte IE 8]>
+		  <script src="__PUBLIC__/Plugin/style/js/excanvas.min.js"></script>
+		<![endif]-->
+
+		<script src="__PUBLIC__/Plugin/style/js/jquery-ui-1.10.3.custom.min.js"></script>
+		<script src="__PUBLIC__/Plugin/style/js/jquery.ui.touch-punch.min.js"></script>
+		<script src="__PUBLIC__/Plugin/style/js/jquery.slimscroll.min.js"></script>
+		<script src="__PUBLIC__/Plugin/style/js/jquery.easy-pie-chart.min.js"></script>
+		<script src="__PUBLIC__/Plugin/style/js/jquery.sparkline.min.js"></script>
+		<script src="__PUBLIC__/Plugin/style/js/flot/jquery.flot.min.js"></script>
+		<script src="__PUBLIC__/Plugin/style/js/flot/jquery.flot.pie.min.js"></script>
+		<script src="__PUBLIC__/Plugin/style/js/flot/jquery.flot.resize.min.js"></script>
+
+		<!-- ace scripts -->
+
+		<script src="__PUBLIC__/Plugin/style/js/ace-elements.min.js"></script>
+		<script src="__PUBLIC__/Plugin/style/js/ace.min.js"></script>
+		<!DOCTYPE html>
+<html lang="en">
+<include file="common_header" title=""/>
+<include file="Public_header" />
+<include file="Public_page_css" />
+	</head>
+	<body>
+<script type="text/javascript">
+var UEURL = '__ROOT__/Public/Plugin/umeditor/';
+</script>
+<link href="__PUBLIC__/Plugin/umeditor/themes/default/css/umeditor.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="__PUBLIC__/Plugin/umeditor/third-party/jquery.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="__PUBLIC__/Plugin/umeditor/umeditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="__PUBLIC__/Plugin/umeditor/umeditor.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Plugin/umeditor/lang/zh-cn/zh-cn.js"></script>
+
+<div class="col-sm-12 widget-container-span">
+	<div class="widget-box transparent">
+		<!-- <div class="widget-header">
+			<div class="widget-toolbar no-border">
+				<ul class="nav nav-tabs" id="myTab">
+					<li class="active"><a data-toggle="tab" href="#home1">职位管理</a></li>
+					<li><a data-toggle="tab" href="#home2">添加/修改职位</a></li>
+				</ul>
+			</div>
+		</div> -->
+
+		<div class="widget-body">
+			<div class="widget-main padding-12 no-padding-left no-padding-right">
+				<div class="tab-content padding-4">
+					<div id="home1" class="tab-pane ">
+
+					</div>
+					
+					<div id="home2" class="tab-pane in in active">
+						<form class="form-horizontal J_ajaxForm"  id="myform" action="{:U('chuhzg19tvgabxm/lottery')}" method="post">
+							<div class="tabbable">
+								<div class="tab-content">
+									<div class="tab-pane active">
+										<table cellpadding="2" cellspacing="2" width="100%">
+											<tbody>
+											<tr>
+													<td  align="right">每次所需积分:</td>
+													<td align="left"><input type="text" class="input col-sm-2" name="sl" value="{$result.sl}"></td>
+												</tr>
+												<tr>
+													<td  align="right">开始时间:</td>
+													<td align="left"><input type="text" class="input col-sm-2" name="kssj" value="{$result.kssj}"></td>
+												</tr>
+												<tr>
+													<td align="right">结束时间:</td>
+													<td align="left"><input type="text" class="input col-sm-2" name="jssj" value="{$result.jssj}"></td>
+												</tr>
+												<tr>
+													<td align="right" >每人最多抽奖总次数:</td>
+													<td align="left"><input type="text" class="input col-sm-2" name="mrzs" value="{$result.mrzs}"></td>
+												</tr>
+												<tr>
+													<td align="right">每人每天最多中奖次数</td>
+													<td align="left"><input type="text" class="input col-sm-2" name="mtsl" value="{$result.mtsl}"></td>
+												</tr>
+												<tr>
+													<td align="right">每天最多中奖次数:</td>
+													<td align="left"><input type="text" class="input col-sm-2" name="mrzd" value="{$result.mrzd}"></td>
+												</tr>
+												<tr>
+													<td align="right">一等奖数量:</td>
+													<td align="left"><input type="text" class="input col-sm-2" name="j1sl" value="{$result.j1sl}"></td>
+												</tr>
+												<tr>
+													<td align="right">一等奖概率:</td>
+													<td align="left"><input type="text" class="input col-sm-2" name="j1gl" value="{$result.j1gl}"></td>
+												</tr>
+												<tr>
+													<td align="right">二等奖数量:</td>
+													<td align="left"><input type="text" class="input col-sm-2" name="j2sl" value="{$result.j2sl}"></td>
+												</tr>
+												<tr>
+													<td align="right">二等奖概率:</td>
+													<td align="left"><input type="text" class="input col-sm-2" name="j2gl" value="{$result.j2gl}"></td>
+												</tr>
+												<tr>
+													<td align="right">三等奖数量:</td>
+													<td align="left"><input type="text" class="input col-sm-2" name="j3sl" value="{$result.j3sl}"></td>
+												</tr>												
+												<tr>
+													<td align="right">三等奖概率:</td>
+													<td align="left"><input type="text" class="input col-sm-2" name="j3gl" value="{$result.j3gl}"></td>
+												</tr>	
+												
+												<tr>
+													<td align="right">活动说明:</td>
+													<td align="left"><input type="text" class="input col-sm-2" name="ms" value="{$result.ms}"></td>
+												</tr>
+												<tr>
+													<td align="right">一等奖:</td>
+													<td align="left"><input type="text" class="input col-sm-2" name="j1mc" value="{$result.j1mc}"></td>
+												</tr><tr>
+													<td align="right">一等奖说明:</td>
+													<td align="left"><input type="text" class="input col-sm-2" name="j1ms" value="{$result.j1ms}"></td>
+												</tr><tr>
+													<td align="right">二等奖:</td>
+													<td align="left"><input type="text" class="input col-sm-2" name="j2mc" value="{$result.j2mc}"></td>
+												</tr><tr>
+													<td align="right">二等奖说明:</td>
+													<td align="left"><input type="text" class="input col-sm-2" name="j2ms" value="{$result.j2ms}"></td>
+												</tr><tr>
+													<td align="right">三等奖:</td>
+													<td align="left"><input type="text" class="input col-sm-2" name="j3mc" value="{$result.j3mc}"></td>
+												</tr><tr>
+													<td align="right">三等奖说明:</td>
+													<td align="left"><input type="text" class="input col-sm-2" name="j3ms" value="{$result.j3ms}"></td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+							<div class="form-actions" align='center' >
+								<button class="btn btn-primary btn_submit J_ajax_submit_btn"
+									type="submit">提交</button>
+								<input  type="reset" class="btn" value= "重置" 	/>
+							</div>
+							<input type='hidden' name='act' value="{$actionmy}" />
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<include file="common_footer" menu="menu_lottery" nav="0"/>
+		<script type="text/javascript">
+			var flag = true;
+			function reGood(id) {
+				var zwid = id;
+				//alert(zwid);
+				$.post("{:U('chuhzg19tvgabxm/getzwid')}",{"id":zwid},function(data){
+					var json = eval(data);	//得到json的解析数据
+					//alert(json);
+					//$('select[name="addmenuid"]').val(json.menu_id);
+					$('input[name="name"]').val(json.name);	//标题
+					$('input[name="remark"]').val(json.remark);	//作者
+
+					$('#myEditor').html(json.detail);	//详情
+					
+					if (flag) {
+						$('input[name="name"]').parent().append('<input type="hidden" name="zwid" value="'+json.id+'">');	
+						flag = false;
+					}else{
+
+					}
+				});
+				$('#myTab li').removeClass("active");
+				$('#myTab li').eq(1).addClass("active");
+				$('#home1').removeClass("active");
+				$('#home2').addClass("active");
+			}
+		</script>
+		<script type="text/javascript">
+	    //实例化编辑器
+	    var um = UM.getEditor('myEditor');
+	    um.addListener('blur',function(){
+	        $('#focush2').html('编辑器失去焦点了')
+	    });
+	    um.addListener('focus',function(){
+	        $('#focush2').html('')
+	    });
+	</script>
+	</div>
+</div>

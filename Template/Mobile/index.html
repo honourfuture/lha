@@ -1,0 +1,160 @@
+<include file="header" nav="首页"/>
+<div class="mobile">
+    <div class="header">
+        <img src="__PUBLIC__/uploads/logo.png" />
+        <if condition="isLogin()">
+            <a href="{:U('User/person')}">{$Think.lang.userCenter}</a>
+            <else/>
+            <a href="{:U('Mobile/login')}">注册/登录</a>
+        </if>
+    </div>
+    <div class="header-nbsp"></div>
+    <!--banner-->
+    <div class="indexbanner">
+        <div class="slide_01" id="slide_01">
+            <volist name=":getData('slide','all','type=2 AND `show`=1','','sort asc')" id="s">
+                <div class="mod_01"><a href="{$s.url}"><img src="__PUBLIC__/uploads/slide/{$s.path}" ></a></div>
+            </volist>
+        </div>
+        <div class="dotModule_new">
+            <div id="slide_01_dot"></div>
+        </div>
+    </div>
+    <script type="text/javascript" src="__PUBLIC__/mobile/js/srcoll.js"></script>
+    <script type="text/javascript">
+        //轮播图
+        $('.mod_01').css('width',document.body.offsetWidth);
+        if(document.getElementById("slide_01")){
+            var slide_01 = new ScrollPic();
+            slide_01.scrollContId   = "slide_01"; //内容容器ID
+            slide_01.dotListId      = "slide_01_dot";//点列表ID
+            slide_01.dotOnClassName = "selected";
+            slide_01.frameWidth     = document.body.offsetWidth;
+            slide_01.pageWidth      = document.body.offsetWidth;
+            slide_01.upright        = false;
+            slide_01.speed          = 10;
+            slide_01.space          = 30;
+            slide_01.initialize(); //初始化
+        }
+    </script>
+    <!--end banner-->
+    <div class="indexnav">
+        <a href="{:U('Mobile/lists')}"><img src="__PUBLIC__/mobile/img/nav1.png" /><font>{$Think.lang.investmentProject}</font></a>
+        <a href="{:U('About/index')}"><img src="__PUBLIC__/mobile/img/nav2.png" /><font>帮助中心</font></a>
+        <a href="{:U('Mobile/calculator')}"><img src="__PUBLIC__/mobile/img/calculator.png" /><font>计算器</font></a>
+        <a href="javascript:;" onclick="qiandao()"><img src="__PUBLIC__/mobile/img/nav4.png" /><font>签到</font></a>
+    </div>
+    <div class="marquee_outer">
+        <img src="__PUBLIC__/mobile/img/notice.png" />
+        <div class="marquee_txt">
+            <marquee scrollamount="3">
+                <a>{:getInfo('notice')}</a>
+            </marquee>
+        </div>
+    </div>
+
+    <!-- 投资项目 -->
+    <div class="list_outer">
+        <ul>
+            <volist name="item" id="i">
+                <li>
+                    <a href="{:U('details','id='.$i['id'])}">
+                        <img src="__PUBLIC__/uploads/item/{$i.img}">
+                        <h1>{$i.title}</h1>
+                        <p class="list_cont">{$i.desc}</p>
+                        <p class="list_lab"><span>{:round($i['min'],2)}{$Think.lang.unit}起投</span><span>项目周期：{$i.day}天</span><span>每日分红{:round($i['min']*$i['rate']/100,2)}{$Think.lang.unit}</span></p>
+                        <p class="list_tip"><span>{$Think.lang.projectScale}：{:round($i['total'],2)}万{$Think.lang.unit}</span><span>{:getProjectType($i['type'])}</span></p>
+                        <div class="progressBox">
+                            <div class="progress" style="width:{:round(getProjectPercent($i['id']),2)}%"></div>
+                        </div>
+                        <span class="progressNum">{:round(getProjectPercent($i['id']),2)}%</span>
+                        <if condition="getProjectPercent($i['id']) eq 100">
+                            <img class="over" src="__PUBLIC__/mobile/img/over.png" />
+                        </if>
+                    </a>
+                </li>
+            </volist>
+        </ul>
+    </div>
+    <if condition="getInfo('video') neq '无'">
+        <div class="vid_box">
+            <video controls="controls" preload="aut" width="100%" object-fit="contain" x5-video-player-type="h5">
+                <!-- Firefox -->
+                <source src="{:getInfo('video')}" type="video/ogg" />
+                <!-- Safari/Chrome-->
+                <source src="{:getInfo('video')}" type="video/mp4" />
+            </video>
+        </div>
+    </if>
+   <div class="contact">
+        <span class="tel">服务热线：<a href="tel:{:getInfo('tel')}"><strong>{:getInfo('tel')}</strong></a></span>
+        <a href="{:getInfo('service')}" class="kef">进入在线客服</a>
+    </div>
+    <div class="footer">
+        <p>备案号{:getInfo('icp')}</p>
+        <div class="zhenjian">
+            <!--认证代码 start-->
+             <a href="javascript:;">
+                <img src="/Public/pc/img/auth_aqwz.png" title="安全网站"/>
+            </a>
+            <a href="javascript:;">
+                <img src="/Public/pc/img/auth_cxwz.png" title="诚信网站"/>
+            </a>
+            <a href="javascript:;">
+                <img src="/Public/pc/img/auth_gwyz.png" title="官网验证"/>
+            </a>
+            <a href="javascript:;">
+                <img src="/Public/pc/img/auth_hyyz.png" title="行业验证"/>
+            </a>
+            <a href="javascript:;">
+                <img src="/Public/pc/img/auth_smyz.png" title="实名验证"/>
+            </a>
+            <a href="javascript:;">
+                <img src="/Public/pc/img/auth_kxwz.png" title="可信网站"/>
+            </a>
+           <!-- <a href="javascript:;">
+                <img src="/Public/pc/img/auth_ppgw.png" title="品牌官网"/>
+            </a>
+            <a href="javascript:;">
+                <img src="/Public/pc/img/auth_sdxy.png" title="水滴信用"/>
+            </a>
+            <a href="javascript:;">
+                <img src="/Public/pc/img/auth_hyrz.png" title="行业验证"/>
+            </a>-->
+            <!--认证代码 end-->
+        </div>
+    </div>
+    <if condition="$_SESSION['isApp'] neq 1">
+        <div class="appdown" style="width: 7.5rem;height: 1rem;background-color: rgba(0, 0, 0, 0.5);position: fixed;bottom: 1rem;">
+            <div style="width: 1rem;float:left;height: 1rem;margin: 0 0.2rem;">
+                <img src="__PUBLIC__/uploads/mlogo2.png" width="100%"/>
+            </div>
+            <div style="width: 3rem;float: left;left: 1rem;color: #fff;line-height: 0.4rem;margin: 0.1rem 0;font-size: 0.28rem;">
+                {:getInfo('webname')}<br/>
+                您身边的理财专家
+            </div>
+            <div style="width: 1rem;float:right;height: 1rem;">
+                <a href="javascript:;" onclick="$('.appdown').hide();" style="display: block;width:1rem;font-size:0.5rem;cursor: pointer;color:#fff;line-height: 1rem;text-align: center;">×</a>
+            </div>
+            <div style="width: 2rem;height: 1rem;float: right;">
+                <a href="{:getInfo('app')}" style="display:block;width:1.6rem;height: 0.6rem;margin: 0.2rem .2rem;line-height:0.6rem;text-align:center;border-radius:0.1rem;background-color: #FD5A21;color:#fff;font-size: 0.28rem;">下载APP</a>
+            </div>
+        </div>
+    </if>
+    <include file="footer" menu="index"/>
+    <if condition="getInfo('activity_status') eq 1">
+        <!--活动弹窗 S -->
+        <div class="huodongbg" style="width:100%;height:2000px;position: fixed;top: 0;left:0;background-color: rgba(0,0,0,0.35);z-index: 9999999;">
+            <div style="width:300px;height:200px;position: fixed;top: 0;left:0;right:0;bottom:0;margin:auto;background-color: #666;">
+                <a href="javascript:;" onclick="$('.huodongbg').hide();" style="width:110px;height:25px;line-height:25px;text-align: center;position:absolute;right: 5px;top: 10px;border: 1px solid #fff;color:#fff;border-radius:5px;">关闭活动广告</ a>
+                <a href="{:getInfo('activity_url')}" style="">
+                    <img src="__PUBLIC__/uploads/activity.png" width="300px" height="200px"/>
+                </a>
+            </div>
+        </div>
+        <!--活动弹窗 E-->
+    </if>
+</div>
+<script type="text/javascript" src="https://js.users.51.la/19953991.js"></script>
+</body>
+</html>

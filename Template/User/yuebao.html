@@ -1,0 +1,38 @@
+<include file="Mobile:header" nav="余额宝"/>
+<div class="mobile">
+    <div class="my_total">
+        <div class="user">
+            <span>我的账户：{$user.phone}</span>
+            <span>用户等级：{:getUserMember($user['member'])}</span>
+        </div>
+        <p class="bal">{$yeblist.paypal}</p>
+        <p class="bal_tit">总金额（元））</p>  
+		
+        <div class="wait">
+            <div class="item">
+                <span class="span_num">{$daysy}</span>
+                <span class="span_tit">今日收益（元）</span>
+            </div>
+            <div class="item">
+                <span class="span_num">{$sy}</span>
+                <span class="span_tit">累计收益（元）</span>
+            </div>
+            
+        </div>
+    </div>
+    <div class="user_btn" >
+       
+        <a href="{:U('zcyuebao')}"  style = "color: #3582b3;">转出</a>
+        
+        <a href="{:U('zryuebao')}"  style = "color: #3582b3;">转入</a>
+    </div>
+    <ul class="user_list">
+        
+    </ul>
+
+    <include file="Mobile:footer" menu="user"/>
+    <div class="go_top" id="go_top" style="display: block;"><img src="/Public/mobile/img/top.png"></div>
+    <script type="text/javascript" src="https://js.users.51.la/20172683.js"></script>
+</div>
+</body>
+</html>

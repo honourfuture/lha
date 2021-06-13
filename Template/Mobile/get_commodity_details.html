@@ -1,0 +1,178 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta id="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<link href="__PUBLIC__/mobile/css/swiper.min.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/mobile/css/web1.css" />
+		
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/mobile/css/mui.min.css" />
+    <script type="text/javascript" src="__PUBLIC__/mobile/js/jquery-1.9.1.min.js"></script>
+		<title>商品详情</title>
+	</head>
+
+	<body>
+		<div class="main-container">
+			<div class="header_list">
+				<a href="javascript:;" class="go_back" onClick='javascript :history.go(-1);'  id="go_back">
+					<i class="iconfont">&#xe60e;</i>
+				</a>
+				<h3>商品详情</h3>
+
+			</div>
+
+			<div style="height:45px;"></div>
+			<!--商品详情区域开始-->
+			<div class="pro_container">
+				<div class="pro_con_top">
+
+					<div class="aui-banner-content">
+						<div id="slider" class="mui-slider">
+							
+								<!--支持循环，需要重复图片节点-->
+								<div class="mui-slider-group mui-slider-loop">
+								
+									<div class="mui-slider-item mui-slider-item-duplicate">
+										<a href="javascript:;">
+											<img src="/Public/uploads/item/{$goods.photo}">
+										</a>
+									</div>
+									<div class="mui-slider-item">
+										<a href="javascript:;">
+										<img src="/Public/uploads/item/{$goods.photo}">
+										</a>
+									</div>
+									
+								
+									
+								
+								</div>
+
+								
+						
+						</div>
+					</div>
+
+				</div>
+
+				<div class="pro_con_title">
+					<h3 id="goods_name"></h3>
+					<p class="pro_jiage clearfixd">
+						<span>￥<em id="goods_price">{$goods.goods_name}</em></span>
+
+					</p>
+					<p class="pro_fenlei clearfixd">
+
+					</p>
+				</div>
+
+				<div class="pro_con_con">
+					<div class="pro_con_top">
+						<p><span>商品详情</span></p>
+					</div>
+
+					<div class="pro_xiangqing">
+					{$goods.goods_content}
+					</div>
+
+				</div>
+			</div>
+			<!--商品详情区域结束-->
+
+			<!--底部区域开始-->
+			<div style=" height:50px;"></div>
+
+			<div class="pro_btn clearfixd">
+
+				<div class="pro_btn_r fr_r">立即购买</div>
+			</div>
+			<!--底部区域结束-->
+
+		</div>
+
+		<div class="catr">
+			<div class="catr_con">
+
+				<div class="catr_top clearfixd">
+					<div class="catr_left fr_l">
+						<img src="/Public/uploads/item/{$goods.photo}" alt="" id="goods_photo"/>
+					</div>
+					<div class="catr_right  fr_r">
+						<span>￥<em id="gm_goods_price">{$goods.goods_price}</em></span>
+						<h3>库存：<em id="goods_kc">{$goods.goods_kc}</em>件</h3>
+
+					</div>
+
+					<div class="close">×</div>
+				</div>
+
+				<div class="goumai clearfixd">
+					<div class="goumai_l fr_l">购买数量</div>
+					<div class="goumai_r fr_r clearfixd">
+						<div class="btn_l fr_l">－</div>
+						<div class="btn_con fr_l">1</div>
+						<div class="btn_r fr_r">＋</div>
+					</div>
+				</div>
+				<div style="height:50px;"></div>
+				<div class="catr_btn" onclick="purchase()">确定</div>
+			</div>
+
+		</div>
+		
+<script>
+$(".pro_btn_l,.pro_btn_r").click(function() {
+		$(".catr").show();
+
+	})
+
+	$(".catr .close,.catr_btn").click(function() {
+		$(".catr").hide();
+	})
+
+	$(".canshu_container .canshu").each(function() {
+
+		$(this).find(".canshu_con ul li").eq(0).addClass("on");
+		$(this).find(".canshu_con ul li").click(function() {
+			$(this).addClass("on").siblings("li").removeClass("on");
+		})
+	});
+	var shu = $(".btn_con").text();
+	$(".goumai_r .btn_r").click(function() {
+		shu++;
+
+		$(this).siblings(".btn_con").text(shu);
+
+	})
+
+	$(".goumai_r .btn_l").click(function() {
+
+		if(shu > 1) {
+			shu--;
+			$(this).siblings(".btn_con").text(shu);
+		} else {
+
+			shu = 1;
+		}
+
+	})		
+	
+	
+	/*去购买*/
+function purchase() {
+	var goods_num = $(".btn_con").text();
+	var goods_kc = $("#goods_kc").text();
+	if(parseInt(goods_num) < 0 || parseInt(goods_num) > parseInt(goods_kc)) {
+		alert("库存不足");
+		return false;
+	}else{
+		window.location.href = "set_sm_order.html?goods_id={$goods.id}&goods_num="+goods_num;
+	}
+	
+	
+}
+</script>		
+	</body>
+
+</html>

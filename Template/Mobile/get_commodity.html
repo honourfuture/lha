@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta id="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<link href="__PUBLIC__/mobile/css/swiper.min.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/mobile/css/web1.css" />
+    <script type="text/javascript" src="__PUBLIC__/mobile/js/jquery-1.9.1.min.js"></script>
+		<title>首页</title>
+	</head>
+
+	<body>
+		<div class="main-container">
+			<div class="hrader">
+				<a class="go_back" id="go_back"><i></i></a>
+				<h2>商城</h2>
+			</div>
+			<div style="height:40px"></div>
+			<!--海报区域开始-->
+			<div class="banner">
+				<div class="swiper-container">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide">
+							<a href="javascript:;"><img src="__PUBLIC__/mobile/images/banner.jpg" alt="" /></a>
+						</div>
+
+					</div>
+				
+				</div>
+			
+			</div>
+			<!--海报区域结束-->
+			<!--导航区域开始-->
+			<nav class="erji_nav">
+				<ul class="clearfixd">   
+					<li data-url="tixian" class="fr_l">
+						<a href="/user/cash.html"><img src="__PUBLIC__/mobile/images/nav1.png" alt="" />
+							<p>提现</p>
+						</a>
+					</li>
+					<li data-url="chongzhi" class="fr_l">
+						<a href="/user/recharge.html"><img src="__PUBLIC__/mobile/images/nav2.png" alt="" />
+							<p>在线充值</p>
+						</a>
+					</li>
+					<li data-url="sm_class" class="fr_l">
+						<a href="sm_class.html"><img src="__PUBLIC__/mobile/images/nav3.png" alt="" />
+							<p>商品分类</p>
+						</a>
+					</li>
+					<li data-url="gongao_list" class="fr_l">
+						<a href="/about/index.html"><img src="__PUBLIC__/mobile/images/nav4.png" alt="" />
+							<p>系统公告</p>
+						</a>
+					</li>
+				</ul>
+			</nav>
+			<!--导航区域结束--
+<!--猜你喜欢区域开始-->
+			<div class="tuijian">
+				<div class="tuijian_title">
+					<p><span>推荐产品</span></p>
+				</div>
+
+				<ul class="clearfixd" id="goods_ul">
+			</ul>
+			</div>
+			<!--猜你喜欢区域结束-->
+		</div>
+	
+	</body>
+
+</html>
+<script>
+
+$(document).ready(function(){
+        $.ajax({
+            type:"post",
+            url:"/gs/get_commodityaa",
+            dataType:"json",
+            success:function(data){
+				
+					var html = "";
+					for(i = 0; i < data.length; i ++) {
+						
+							html += '<li class="fr_l"><a href="{:U('get_commodity_details')}?goods_id='+data[i].id+'" class="sm_details" data-id="'+data[i].id+'"><div class="tuijian_top"><img src="/Public/uploads/item/'+data[i].photo+'" alt="" /></div><div class="tuijian_bottom"><div class="tuijian_list_top clearfixd"><span>'+data[i].goods_name+'</span><i>￥'+data[i].goods_price+'</i></div><p>'+data[i].goods_remark+'</p></div></a></li>';
+										  
+						  $("#goods_ul").html(html);   
+					}
+		    
+				
+		
+            },
+          
+        });
+});
+</script>

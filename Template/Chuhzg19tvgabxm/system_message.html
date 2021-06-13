@@ -1,0 +1,53 @@
+<include file="common_header" title="系统管理"/>
+        <p class="curr">
+            <a>系统管理</a>&gt;&gt;
+            <span>短信设置</span>
+        </p>
+        <div class="content">
+            <div class="list_main">
+                <!--<div class="title">
+                    <a href="{:U('system_message_add')}" class="two">添加短信</a>
+                    <a href="" class="four">批量删除</a>
+                </div>-->
+                <table>
+                    <tbody>
+                        <tr>
+                            <!--<th><input type="checkbox" id="selectAll"></th>-->
+                            <th>编号</th>
+                            <th>类型</th>
+                            <th>内容</th>
+                            <th>状态</th>
+                            <th>备注</th>
+                            <!--<th>操作</th>-->
+                        </tr>
+                        <volist name=":getData('sms','all','','','id')" id="s">
+
+                            <tr>
+                                <!--<td><input type="checkbox" name="ck[]"></td>-->
+                                <td>{$s.id}</td>
+                                <td>{$s.type}</td>
+                                <td>{$s.msg}</td>
+                                <td><if condition="smsStatus($s['code']) eq 1">开启<else/>关闭</if></td>
+                                <td>{$s.code}</td>
+                                <!--<td>
+                                    <a href="{:U('system_message_edit')}" class="update">编辑</a>
+                                    <a href="" class="del">删除</a>
+                                </td>-->
+                            </tr>
+                        </volist>
+                    </tbody>
+                </table>
+                <!--<ul class="page">
+                    <li><a href="javascript:void(0);">首页</a></li>
+                    <li><a href="javascript:void(0);">&gt;&gt;</a></li>
+                    <li><a href="javascript:void(0);" class="current">1</a></li>
+                    <li><a href="javascript:void(0);">2</a></li>
+                    <li><a href="javascript:void(0);">3</a></li>
+                    <li><a href="javascript:void(0);">&lt;&lt;</a></li>
+                    <li><a href="javascript:void(0);">尾页</a></li>
+                </ul>-->
+            </div>
+        </div>
+    </div>
+</div>
+<include file="common_footer" menu="menu_system" nav="4"/>

@@ -1,0 +1,50 @@
+<include file="common_header" title="系统管理"/>
+        <p class="curr">
+            <a>系统管理</a>&gt;&gt;
+            <span>密码设置</span>
+        </p>
+        <div class="content">
+            <form action="{:U('system_pwd')}" method="post" id="ifr">
+                <div class="line">
+                    <label>原始密码：</label>
+                    <input type="password" class="short" name="old" id="old" placeholder="请输入原始密码">
+                </div>
+                <div class="line">
+                    <label>新密码：</label>
+                    <input type="password" class="short" name="pwd" id="pwd" placeholder="请输入新密码密码">
+                </div>
+                <div class="line">
+                    <label>确认密码：</label>
+                    <input type="password" class="short" name="pwd2" id="pwd2" placeholder="请输入再次输入密码">
+                </div>
+                <div class="button">
+                    <input type="submit" value="立即修改" class="submit" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $("#ifr").submit(function() {
+        var oldpwd = $("#old").val();
+        var pwd = $("#pwd").val();
+        var pwd2 = $("#pwd2").val();
+        if (oldpwd.length <= 0) {
+            alert("请输入原密码！");
+            return false;
+        }
+        if (pwd.length < 6 || pwd.length > 16) {
+            alert("请输入6-16个字符的新密码！");
+            return false;
+        }
+        if (pwd2.length < 6 || pwd2.length > 16) {
+            alert( "请再次输入6-16个字符的新密码！");
+            return false;
+        }
+        if (pwd != pwd2) {
+            alert( "两次密码不一致！");
+            return false;
+        }
+    })
+</script>
+<include file="common_footer" menu="menu_system" nav="7"/>

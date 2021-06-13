@@ -1,0 +1,180 @@
+<include file="common_header" title="抽奖设置管理"/>
+       
+<p class="curr">
+    <a>抽奖管理</a>&gt;&gt;
+    <span>抽奖设置</span>
+</p>
+<div class="content">
+    <form action="{:U('prize_set')}" method="post">
+        <div class="line">
+            <label>抽奖设置：</label>
+        </div>
+        <div class="line">
+            <label>结束时间：</label>
+            <input type="text" name="endtime" value="{$result.endtime}" class="short timer">
+        </div>
+        <div class="line">
+            <label>活动规则：</label>
+            <textarea name="rule">{$result.rule}。</textarea>
+        </div>
+        <!--<div class="line">-->
+            <!--<label>中奖记录：</label>-->
+            <!--<textarea name="content" placeholder="一行一条，按照‘手机号码,奖品名称’"></textarea>-->
+        <!--</div>-->
+        <hr>
+        <br>
+        <div class="line">
+            <label>奖品设置：</label>
+            <span style="color:#f00;">（一共6个奖项，第6为谢谢参与，请酌情把谢谢参与的概率考虑进去，总概率是100）</span>
+        </div>
+        <div class="line">
+            <label>一等奖奖品：</label>
+            <input type="text" name="name1" value="{$result.name1}" class="short" placeholder="奖品名称，如100泰铢或者苹果电脑">
+        </div>
+        <div class="line">
+            <label>一等奖类型：</label>
+            <select name="type1">
+                <option value="1" {if condition="$result.type1==1"} selected{/if}>现金</option>
+                <option value="2" {if condition="$result.type1==2"} selected{/if}>实物</option>
+            </select>
+        </div>
+        <div class="line">
+            <label>一等奖奖金：</label>
+            <input type="text" name="money1" value="{$result.money1}" class="short" placeholder="如设置实物请忽略">
+        </div>
+        <div class="line">
+            <label>一等奖概率：</label>
+            <input type="text" name="odds1" value="{$result.odds1}" class="short" placeholder="0-100，数字越大中奖概率越高">
+        </div>
+        <div class="line">
+            <label>一等奖中奖描述：</label>
+            <input type="text" name="reason1" value="{$result.reason1}" placeholder="中奖后提示客户的内容，如：恭喜你抽中苹果电脑一台，请联系客服领取！">
+        </div>
+        <br>
+        <div class="line">
+            <label>二等奖奖品：</label>
+            <input type="text" name="name2" value="{$result.name2}" class="short" placeholder="奖品名称，如100泰铢或者苹果电脑">
+        </div>
+        <div class="line">
+            <label>二等奖类型：</label>
+            <select name="type2">
+                <option value="1" {if condition="$result.type2==1"} selected{/if}>现金</option>
+                <option value="2" {if condition="$result.type2==2"} selected{/if}>实物</option>
+            </select>
+        </div>
+        <div class="line">
+            <label>二等奖奖金：</label>
+            <input type="text" name="money2" value="{$result.money2}" class="short" placeholder="如设置实物请忽略">
+        </div>
+        <div class="line">
+            <label>二等奖概率：</label>
+            <input type="text" name="odds2" value="{$result.odds2}" class="short" placeholder="0-100，数字越大中奖概率越高">
+        </div>
+        <div class="line">
+            <label>二等奖中奖描述：</label>
+            <input type="text" name="reason2" value="{$result.reason2}" placeholder="中奖后提示客户的内容，如：恭喜你抽中苹果电脑一台，请联系客服领取！">
+        </div>
+        <br>
+        <div class="line">
+            <label>三等奖奖品：</label>
+            <input type="text" name="name3" value="{$result.name3}" class="short" placeholder="奖品名称，如100泰铢或者苹果电脑">
+        </div>
+        <div class="line">
+            <label>三等奖类型：</label>
+            <select name="type3">
+                <option value="1" {if condition="$result.type3==1"} selected{/if}>现金</option>
+                <option value="2" {if condition="$result.type3==2"} selected{/if}>实物</option>
+            </select>
+        </div>
+        <div class="line">
+            <label>三等奖奖金：</label>
+            <input type="text" name="money3" value="{$result.money3}" class="short" placeholder="如设置实物请忽略">
+        </div>
+        <div class="line">
+            <label>三等奖概率：</label>
+            <input type="text" name="odds3" value="{$result.odds3}" class="short" placeholder="0-100，数字越大中奖概率越高">
+        </div>
+        <div class="line">
+            <label>三等奖中奖描述：</label>
+            <input type="text" name="reason3" value="{$result.reason3}" placeholder="中奖后提示客户的内容，如：恭喜你抽中苹果电脑一台，请联系客服领取！">
+        </div>
+        <br>
+        <div class="line">
+            <label>四等奖奖品：</label>
+            <input type="text" name="name4" value="{$result.name4}" class="short" placeholder="奖品名称，如100泰铢或者苹果电脑">
+        </div>
+        <div class="line">
+            <label>四等奖类型：</label>
+            <select name="type4">
+                <option value="1" {if condition="$result.type4==1"} selected{/if}>现金</option>
+                <option value="2" {if condition="$result.type4==2"} selected{/if}>实物</option>
+            </select>
+        </div>
+        <div class="line">
+            <label>四等奖奖金：</label>
+            <input type="text" name="money4" value="{$result.money4}" class="short" placeholder="如设置实物请忽略">
+        </div>
+        <div class="line">
+            <label>四等奖概率：</label>
+            <input type="text" name="odds4" value="{$result.odds4}" class="short" placeholder="0-100，数字越大中奖概率越高">
+        </div>
+        <div class="line">
+            <label>四等奖中奖描述：</label>
+            <input type="text" name="reason4" value="{$result.reason4}" placeholder="中奖后提示客户的内容，如：恭喜你抽中苹果电脑一台，请联系客服领取！">
+        </div>
+        <br>
+        <div class="line">
+            <label>五等奖奖品：</label>
+            <input type="text" name="name5" value="{$result.name5}" class="short" placeholder="奖品名称，如100泰铢或者苹果电脑">
+        </div>
+        <div class="line">
+            <label>五等奖类型：</label>
+            <select name="type5">
+                <option value="1" {if condition="$result.type5==1"} selected{/if}>现金</option>
+                <option value="2" {if condition="$result.type5==2"} selected{/if}>实物</option>
+            </select>
+        </div>
+        <div class="line">
+            <label>五等奖奖金：</label>
+            <input type="text" name="money5" value="{$result.money5}" class="short" placeholder="如设置实物请忽略">
+        </div>
+        <div class="line">
+            <label>五等奖概率：</label>
+            <input type="text" name="odds5" value="{$result.odds5}" class="short" placeholder="0-100，数字越大中奖概率越高">
+        </div>
+        <div class="line">
+            <label>五等奖中奖描述：</label>
+            <input type="text" name="reason5" value="{$result.reason5}" placeholder="中奖后提示客户的内容，如：恭喜你抽中苹果电脑一台，请联系客服领取！">
+        </div>
+        <br>
+        <div class="button">
+            <input type="submit" value="立即提交" class="submit">
+            <input type="reset" value="重置" class="reset">
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+    function showPreview(source) {
+        var file = source.files[0];
+        if(window.FileReader) {
+            var fr = new FileReader();
+            console.log(fr);
+            var portrait = document.getElementById('portrait');
+            fr.onloadend = function(e) {
+                portrait.src = e.target.result;
+            };
+            fr.readAsDataURL(file);
+            portrait.style.display = 'block';
+        }
+    }
+    $().ready(function(){
+        $('.timer').datetimepicker({
+            lang:'ch',
+            timepicker:true,
+            format:'Y-m-d H:i',
+            step:'60',
+            scrollInput:false,
+            ShowCheckBox:true
+        });
+    });
+</script>

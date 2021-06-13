@@ -1,0 +1,89 @@
+<include file="common_header" title="财务管理"/>
+        <p class="curr">
+            <a>财务管理</a>&gt;&gt;
+            <span>提现申请</span>
+        </p>
+        <div class="content">
+            <div class="list_main">
+                <div class="title">
+                    <form action="{:U('finance_invoice')}" method="get">
+                        <p>
+                           <label>提现账户</label><input type="text" name="phone" value="{$_GET['phone']}" class="txt" placeholder="会员手机号码">
+                           <label>申请日期</label><input type="text" name="start" value="{$_GET['start']}" class="timer">至<input type="text" name="end" value="{$_GET['end']}" class="timer">
+                        </p>
+                        <p>
+                           <label>处理进度</label>
+                           <select name="status">
+                               <option value="0" <if condition="$_GET['status'] eq 0"> selected="selected"</if>>全部</option>
+                               <option value="1" <if condition="$_GET['status'] eq 1"> selected="selected"</if>>处理中</option>
+                               <option value="2" <if condition="$_GET['status'] eq 2"> selected="selected"</if>>到账成功</option>
+                               <option value="3" <if condition="$_GET['status'] eq 3"> selected="selected"</if>>交易失败</option>
+                           </select>
+                           <input type="submit" class="sub1" value="查询">
+                        </p>
+                        <p>
+                            提现成功：<span>{:sprintf("%.2f",getDataSum('cash',$where.' AND status = 1','money'))}泰铢</span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;提现失败：<span>{:sprintf("%.2f",getDataSum('cash',$where.' AND status = 2','money'))}泰铢</span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;未处理：<span>{:sprintf("%.2f",getDataSum('cash',$where.' AND status = 0','money'))}泰铢</span>
+                        </p>
+                    </form>
+                </div>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>订单号</th>
+                            <th>账户</th>
+                            <th>提现金额(泰铢)</th>
+                            <th>实际到账金额(泰铢)</th>
+                            <th>开户银行</th>
+                            <th>处理进度</th>
+                            <th>申请时间</th>
+                            <th>操作</th>
+                        </tr>
+                        <volist name=":getData('cash','all',$where,$limit,'id desc')" id="c">
+                            <tr>
+                                <td>{$c.id}</td>
+                                <td>{:getUserPhone($c['uid'])}</td>
+                                <td>{$c.money}</td>
+                                <td>{$c.sjmoney}</td>
+                                <td class="le">账户名称：{$c.name}
+                                    <br>开户银行：{$c.bank}
+                                    <br>银行账号：{$c.account}
+                                </td>
+                                <td>
+                                    <if condition="$c['status'] eq 0">
+                                        待提现
+                                    </if>
+                                    <if condition="$c['status'] eq 1">
+                                        提现成功
+                                    </if>
+                                    <if condition="$c['status'] eq 2">
+                                        提现失败
+                                    </if>
+                                </td>
+                                <td>{$c.time}</td>
+                                <td>
+                                    <if condition="$c['status'] eq 0">
+                                        <a href="{:U('finance_invoice','type=1&id='.$c['id'])}" class="status_one">同意</a>
+                                        <a href="{:U('finance_invoice','type=2&id='.$c['id'])}" class="status_four">拒绝</a>
+                                    </if>
+                                </td>
+                            </tr>
+                        </volist>
+                    </tbody>
+                </table>
+                <ul class="page">
+                    {$page}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $().ready(function(){
+        $('.timer').datetimepicker({
+            lang:'ch',
+            timepicker:false,
+            format:'Y-m-d'
+        });
+    });
+</script>
+<include file="common_footer" menu="menu_finance" nav="1"/>

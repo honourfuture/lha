@@ -1,0 +1,330 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta id="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<link href="__PUBLIC__/mobile/css/swiper.min.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/mobile/css/web1.css" />
+
+		<script type="text/javascript" src="__PUBLIC__/mobile/js/jquery-1.9.1.min.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/mobile/js/template.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/mobile/js/aui.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/mobile/js/mui.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/mobile/js/mui.min.js"></script>
+
+		<title>我的订单</title>
+	</head>
+
+	<body>
+		<div class="main-container">
+			<div class="header_list">
+				<a href="javascript:;" class="go_back" onClick="javascript :history.go(-1);" id="go_back">
+					<i class="iconfont">&#xe60e;</i>
+				</a>
+				<h3>我的订单</h3>
+			</div>
+			<div style="height:45px;"></div>
+			<section class="aui-myOrder-content">
+				<div class="m-tab demo-small-pitch" data-ydui-tab>
+					<div class="aui-myOrder-fix">
+						<ul class="tab-nav">
+							<li onclick="load_data(0);" class="tab-nav-item tab-active">
+								<a href="javascript:;">全部</a>
+							</li>
+							<li onclick="load_data(1);" class="tab-nav-item">
+								<a href="javascript:;">待付款</a>
+							</li>
+							<li onclick="load_data(2);" class="tab-nav-item">
+								<a href="javascript:;">待发货</a>
+							</li>
+							<li onclick="load_data(3);" class="tab-nav-item">
+								<a href="javascript:;">待收货</a>
+							</li>
+							<li onclick="load_data(4);" class="tab-nav-item">
+								<a href="javascript:;">已完成</a>
+							</li>
+						</ul>
+					</div>
+					<div class="tab-panel">
+						<div class="tab-panel-item tab-active">
+							<ul id="order_all"></ul>
+						</div>
+						<div class="tab-panel-item">
+							<ul id="order_1"></ul>
+						</div>
+						<div class="tab-panel-item">
+							<ul id="order_2"></ul>
+						</div>
+						<div class="tab-panel-item">
+							<ul id="order_3"></ul>
+						</div>
+						<div class="tab-panel-item">
+							<ul id="order_4"></ul>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+		<script id="order_all_script" type="text/html">
+			<% if(list.length >0){%>
+			<%for(i = 0; i < list.length; i ++) {%>
+			<li>
+				<div class="aui-list-title-info">
+					<a href="javascript:;" class="aui-well">
+						<div class="aui-well-bd">
+							<%=list[i].order_time%>
+						</div>
+						<div class="aui-well-ft">
+							<% if(list[i].state == 1){%> 待付款
+							<% }else if(list[i].state == 2){%> 待发货
+							<% }else if(list[i].state == 3){%> 待收货
+							<% }else {%> 已完成
+							<%}%>
+						</div>
+					</a>
+					<%for(j = 0; j < list[i].goods.length; j ++) {%>
+					<a href="javascript:;" class="aui-list-product-fl-item">
+						<div class="aui-list-product-fl-img">
+							<img src="/Public/uploads/item/<%=list[i].goods[j].goods_pic%>" alt="">
+						</div>
+						<div class="aui-list-product-fl-text">
+							<h3 class="aui-list-product-fl-title"><%=list[i].goods[j].goods_name%></h3>
+							<div class="aui-list-product-fl-mes">
+								<div>
+									<span class="aui-list-product-item-price">
+                                <em>{$Think.lang.unitSymbol}</em>
+                                <%=list[i].goods[j].goods_price%>
+                            </span>
+								</div>
+								<div class="aui-btn-purchase">
+									x
+									<%=list[i].goods[j].goods_num%>
+								</div>
+							</div>
+						</div>
+					</a>
+					<%}%>
+				</div>
+				<div class="aui-list-title-btn">
+					<% if(list[i].state == 1){%>
+					<a href="javascript:;" data-type="1" data-id="<%=list[i].order_id%>" class="cc_order">取消订单</a>
+					<a href="javascript:;" class="order_details" data-id="<%=list[i].order_id%>">订单详情</a>
+					<a href="javascript:;" data-type="2" data-id="<%=list[i].order_id%>" class="red-color cc_order">立即付款</a>
+					<%}else if(list[i].state == 2){%>
+					<a href="javascript:;" class="order_details" data-id="<%=list[i].order_id%>">订单详情</a>
+					<% if(list[i].tixingfahuo == 1){%>
+					<a href="javascript:;">已提醒发货</a>
+					<%}else {%>
+					<a href="javascript:;" data-type="3" data-id="<%=list[i].order_id%>" class="cc_order">提醒发货</a>
+					<%}%>
+					<%}else if(list[i].state == 3){%>
+					<a href="javascript:;" class="order_details" data-id="<%=list[i].order_id%>">订单详情</a>
+					<a href="javascript:;" data-type="4" data-id="<%=list[i].order_id%>" class="cc_order">物流信息</a>
+					<a href="javascript:;" data-type="5" data-id="<%=list[i].order_id%>" class="cc_order">确认收货</a>
+					<%}else {%>
+					<a href="javascript:;" class="order_details" data-id="<%=list[i].order_id%>">订单详情</a>
+					<a href="javascript:;" data-type="1" data-id="<%=list[i].order_id%>" class="cc_order">删除订单</a>
+					<a href="javascript:;">已完成</a>
+					<%}%>
+				</div>
+				<div class="aui-dri"></div>
+			</li>
+			<%}%>
+			<%}%>
+		</script>
+
+		<div class="tan_float" id="pay" style="display: none;">
+				<div class="tan_con">
+					<h3>"已提交订单，请电击确定进行支付"</h3>
+					<div class="tan_input">
+						<input type="hidden" value = "1111" id="two_pwd" placeholder="请输入二级密码" />
+					</div>			
+					<div class="tan_btn">
+						<div class=" quxiao_btn1">取消</div>
+						<div class=" quding_btn" >确定</div>
+					</div>
+				</div>
+		</div>
+
+		<div class="tan_float" id="kd" style="display: none;">
+			<div class="tan_con">
+				<h3>快递公司:<em id="kd_name"></em></h3>
+				<h3>快递单号:<em id="kd_dh"></em></h3>
+				<h3>发货时间:<em id="fh_time"></em></h3>
+				<div class="tan_btn">
+					<div class=" quxiao_btn1">确定</div>
+				</div>
+			</div>
+		</div>
+
+	</body>
+	
+	<script>
+
+
+$("body").on('tap','a.cc_order',function() {
+
+	var order_id = $(this).attr("data-id");
+		var type = $(this).attr('data-type');
+		operation_order(order_id, type)	
+});
+$("body").on('tap','a.quxiao_btn1',function() {
+	$(".tan_float").css("display", "none");
+});
+$("body").on('tap','a.order_details',function() {
+			var order_id = $(this).attr("data-id");
+		if(order_id != '') {
+			window.location.href = "sm_order_details.html?order_id="+order_id;
+			 
+		}
+	
+	});
+$(".quxiao_btn1").click(function() {
+		$(".tan_float").css("display", "none");
+	});
+	$(".quding_btn").click(function() {
+
+		var two_pwd = $("#two_pwd").val();
+	$.ajax({
+            type:"post",
+            url:"/gs/pay_order",
+			
+      
+			success: function(res) {
+				console.log(res.status);
+				if(res.status == 1) {
+					alert("兑换成功");
+					window.location.href = "my_order.html?state=2";
+				} else {
+				alert("兑换失败积分不足");
+				
+				
+			
+				}
+
+			},
+		
+		});
+
+	});
+	/**
+ * 
+ * @param {Object} order_id 订单ID
+ * @param {Object} type[1.删除订单，2立即付款，3提醒发货，4物流信息，5确认收货]
+ */
+function operation_order(order_id, type) {
+
+	
+	if(!order_id || !type) {
+		alert("操作失败");
+		return false;
+	}
+	switch(type) {
+		case "1":
+			
+					modify_order(order_id, type);
+		
+			break;
+		case "2":
+			$("#pay").css("display", "block");
+			break;
+		case "3":
+			modify_order(order_id, type);
+			break;
+		case "4":
+			modify_order(order_id, type);
+			break;
+		case "5":
+		
+					modify_order(order_id, type);
+			
+			break;
+		default:
+			alert("操作失败");
+			break;
+	}
+	
+}
+function modify_order(order_id, type) {
+
+	$.ajax( '/gs/operation_order', {
+		data: {
+			
+			order_id: order_id,
+			type: type,
+		
+		},
+		dataType: 'json', //服务器返回json格式数据
+		type: 'post', //HTTP请求类型
+		async: false,
+		timeout: 10000, //超时时间设置为10秒；
+		success: function(res) {
+
+			if(res.status == 1) {
+				var flag = res.info;
+				if(flag.code == 4) {
+					$("#kd_name").text(flag.data.kd_name);
+					$("#kd_dh").text(flag.data.kd_dh);
+					$("#fh_time").text(flag.data.fh_time);
+					$("#kd").css("display", "block");
+				} else {
+					pullData("all");
+					alert(flag.msg);
+				}
+			} else {
+				is_error(res.info);
+			}
+		},
+		
+	});
+}
+	</script>
+	<script>
+	
+
+
+
+	var l_type = "all";
+		pullData(l_type);
+	function load_data(state) {
+	
+	l_type = state;
+
+	pullData(state);
+
+}
+function pullData(state) {
+//var state = '2';
+	//plus.nativeUI.showWaiting("提交订单中…");
+	  $.ajax({
+            type:"get",
+            url:"/gs/my_order_alaj.html?state="+state,
+			
+            dataType:"json",
+			
+			success: function(res) {
+				
+					 if(res.status == 1) {
+							var html = "";
+							if(res.info.length > 0) {
+
+								var script = "order_all_script";
+								html = template.render(script, {
+									list: res.info
+								}); 
+							} else {
+								html = '<li style="text-align: center;margin-top: 50%;margin-bottom: 100%"><img src="__PUBLIC__/mobile/images/meiyou.png" style="width: 5rem;"/></li>';
+							}
+							$("#order_" + state).html(html);
+						} else {
+							alert(res.info);
+						}
+
+		},
+		
+	});
+}
+</script>
+
+</html>

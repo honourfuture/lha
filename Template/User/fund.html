@@ -1,0 +1,32 @@
+<include file="Mobile:header" nav="资金记录"/>
+<div class="mobile">
+    <div class="othertop">
+        <a class="goback" href="javascript:history.back();"><img src="__PUBLIC__/mobile/img/goback.png" /></a>
+        <div class="othertop-font">资金记录</div>
+    </div>
+    <div class="header-nbsp"></div>
+    <div class="record_outer">
+    	<table>
+    		<tr>
+    			<th>摘要</th>
+    			<th>金额</th>
+                <th>时间</th>
+    		</tr>
+            <volist name="finance" id="f">
+                <tr>
+                    <td>{$f.reason}</td>
+                    <td>
+                        <if condition="$f['type'] eq 1">
+                            <span style="color:#008000;">+{$f.money}</span>
+                            <else/>
+                            <span style="color:red;">-{$f.money}</span>
+                        </if>
+                    </td>
+                    <td>{:date('m-d H:i',strtotime($f['time']))}</td>
+                </tr>
+            </volist>
+    	</table>
+    </div>
+</div>
+</body>
+</html>

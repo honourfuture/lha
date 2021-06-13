@@ -1,0 +1,177 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta id="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<link href="__PUBLIC__/mobile/css/swiper.min.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/mobile/css/web1.css" />
+
+		<script type="text/javascript" src="__PUBLIC__/mobile/js/jquery-1.9.1.min.js"></script>
+	
+			<script type="text/javascript" src="__PUBLIC__/mobile/js/template.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/mobile/js/mui.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/mobile/js/mui.min.js"></script>
+		<title>收货地址</title>
+	</head>
+
+	<body>
+		<div class="main-container">
+			<div class="header_list">
+				<a href="javascript:;" class="go_back" onClick="javascript :history.go(-1);" id="go_back">
+					<i class="iconfont">&#xe60e;</i>
+				</a>
+				<h3>收货地址</h3>
+			</div>
+
+			<div style="height:45px;"></div>
+
+			<section class="aui-myOrder-content" id="address_div">
+				<script id="address_script" type="text/html">
+					<% if(list.length >0){%>
+					<%for(i = 0; i < list.length; i ++) {%>
+					<div class="aui-Address-box" >
+						<div class="aui-Address-box-item">
+							<div class="aui-Address-box-item-bd">
+								<p>
+									<%=list[i].name%>
+								</p>
+							</div>
+							<div class="aui-Address-box-item-ft">
+								<p>
+									<%=list[i].phone%>
+								</p>
+							</div>
+						</div>
+						<div class="aui-Address-box-item">
+							<div class="aui-Address-box-item-bd">
+
+								<p>
+									
+									<%=list[i].area%>
+									<%=list[i].details%>
+								</p>
+							</div>
+						</div>
+						<div class="aui-Address-box-item">
+							<div class="aui-Address-box-item-bd">
+								<p>
+									<input type="radio" name="radio1" id ="radio1" value="<%=list[i].address_id%>" class="check goods-check goodsCheck" <% if(list[i].default ==1){%>checked="checked" <%}%>style="background-size: 17px 17px;">
+									<em style="padding-left:24px;">默认地址</em></p>
+							</div>
+							<div class="aui-Address-box-item-ft">
+								<p>
+								
+									<span onclick="del_address(<%=list[i].address_id%>)">
+										<i class="iconfont"></i>删除
+									</span>
+								</p>
+							</div>
+						</div>
+					</div>
+					<%}%>
+					<%}%>
+				</script>
+			</section>
+			<div class="aui-out">
+				<a href="javascript:;" id="add_address">新建收货地址</a>
+			</div>
+		</div>
+	</body>
+<script>
+
+$(document).ready(function(){
+        $.ajax({
+            type:"post",
+            url:"/gs/get_address",
+			
+            dataType:"json",
+            success:function(res){
+				if(res.status == 1 && res.info != null) {
+				var script = "address_script";
+				var html = template.render(script, {
+					list: res.info,
+
+				});
+				$("#address_div").html(html);
+
+			} 
+			
+		
+            },
+          
+        });
+		
+	$("#add_address").click(function() {
+
+		window.location.href = "sm_add_address.html";
+	
+	});
+
+	
+
+});
+
+$("body").on('tap','input[name="radio1"]',function() {
+
+			$.ajax('/gs/default_address', {
+			data: {
+				
+				address_id: $(this).val(),
+
+			},
+			dataType: 'json', //服务器返回json格式数据
+			type: 'post', //HTTP请求类型
+			async: false,
+			timeout: 10000, //超时时间设置为10秒；
+			success: function(res) {
+
+				
+				if(res.status == 1) {
+
+				} else {
+					is_error(res.info);
+				}
+
+			},
+		
+		});
+});
+
+function del_address(address_id) {
+ var r=confirm("是否删除？")
+  if (r==true){
+	   $.ajax('/gs/del_address', {
+					data: {
+
+						address_id: address_id,
+
+					},
+					dataType: 'json', //服务器返回json格式数据
+					type: 'post', //HTTP请求类型
+					async: false,
+					timeout: 10000, //超时时间设置为10秒；
+					success: function(res) {
+							console.log(res);
+				
+						if(res.status == 1) {
+							location.reload();
+						} else {
+							is_error(res.info);
+						}
+
+					},
+					error: function(xhr, type, errorThrown) {
+						mui.alert('网络延时,请重新加载!', '系统提示');
+
+					}
+				});
+	}
+	
+	
+			
+	
+
+}
+</script>
+</html>

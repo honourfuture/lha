@@ -1,0 +1,90 @@
+ <div id="footer">
+<div class="footer">
+	<div class="footer_content">
+		<div class="c_content_top">
+			<div class="c_service_time">
+				<img alt="服务电话" src="/images/time.jpg">
+				<p style="font-size:36px">{:getInfo('tel')}</p>
+                <p>09:00-20:00（周一到周日）</p>
+			</div>
+			
+			
+			
+			
+			<div class="erweima" style="float: left;width: 300px;text-align: center;margin-top: 50px; margin-left: 30px;">
+				<div style="float: left;"><img style="width: 100px;height: 100px;" src="__PUBLIC__/uploads/app.png">
+				<p style="font-size:16px;margin-top: 5px; color:#fff;">APP下载</p>
+				</div>
+				<div style="float: right;"><img style="width: 100px;height: 100px;" src="__PUBLIC__/uploads/wechat.png">
+				<p style="font-size:16px;margin-top: 5px; color:#fff;">微信公众号</p>
+				</div>
+               
+			</div>
+			
+			
+			
+			<div class="c_service_link">
+				<ul>
+					<li>关于我们</li>
+					<li><a href="/list-2-1.html">公司简介</a></li>
+					<li><a href="/list-3-1.html">邀请好友</a></li>
+					
+				</ul>
+				<ul>
+					<li>新手帮助</li>
+					<li><a href="/list-34-1.html">会员等级</a></li>
+					<li><a href="/list-8-1.html">安全保障</a></li>
+					
+				</ul>
+				<ul>
+					<li>其他服务</li>
+					<li><a href="/list-14-1.html">收益试算</a></li>
+					<li><a href="/list-5-1.html">联系我们</a></li>
+					
+				</ul>
+				
+			</div>
+		</div>
+	
+
+
+	</div>
+</div>
+
+
+
+<div class="footer_in">
+	<div class="c_more_link"> 
+ <div class="copyRight">Copyright © {:date('Y')} {:getInfo('company')} 版权所有 公司地址：{:getInfo('address')} </div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+<script src="__PUBLIC__/pc/js/pageSwitch.min.js"></script>
+<script type="text/javascript">
+    $("#container").PageSwitch({
+        direction:'horizontal',
+        easing:'ease-in',
+        duration:500,
+        autoPlay:true,
+        loop:'false'
+    });
+    $(function() {
+        var nav = "[nav]";
+        if(isNaN(nav)){
+            $(".nav-outer .nav li").eq(0).addClass("active");
+        }
+        else{
+            $(".nav-outer .nav li").eq(nav).addClass("active");
+        }
+    });
+</script>
+</body>
+</html>

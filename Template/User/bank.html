@@ -1,0 +1,94 @@
+<include file="Mobile:header" nav="银行入款"/>
+<script type="text/javascript" src="__PUBLIC__/mobile/js/clipboard.min.js"></script>
+<style type="text/css">
+    ul{margin:.5rem auto 0;padding-bottom: .3rem;border-top: 1px solid #ccc;}
+    ul:nth-child(1){padding-bottom: 0;}
+    li{line-height: .8rem;height: .8rem;background-color: #fff;border-bottom: 1px solid #ccc;clear: both;width: 6.5rem;padding:0 .5rem;}
+    li span{display: block;float:left;width: 1.5rem;font-size: .28rem;}
+    li input[type='text']{display: block;float: left;width: 3.8rem;height: .8rem;border: none;font-size: .28rem;}
+    li input[type='button']{display: block;float: right;width: 1rem;height: .6rem;border: none;margin: .1rem 0;font-size: .28rem;}
+    input[type='submit']{width: 90%;margin:0 auto .5rem;border: none;height: .8rem;display: block;background-color: #4f79bc;color:#fff;font-size: .28rem;}
+</style>
+<div class="mobile" style="background-color: #efefee;">
+    <div class="othertop">
+        <a class="goback" href="{:U('person')}"><img src="__PUBLIC__/mobile/img/goback.png" /></a>
+        <div class="othertop-font">银行入款充值</div>
+    </div>
+    <div class="header-nbsp"></div>
+    <div style="color:#666;text-align: center;font-size: .4rem;padding-top: 20px;">
+        银行入款 {$money} 元
+    </div>
+    <div style="width: 100%;margin: auto;">
+        <ul>
+            <li>
+                <span>收款银行：</span>
+                <input type="text" value="{:getInfo('pay_bank_type')}" readonly/>
+            </li>
+            <li>
+                <span>收款人：</span>
+                <input type="button" value="复制" class="btn"/>
+                <input type="text" value="{:getInfo('pay_bank_name')}" id="cname" readonly/>
+            </li>
+            <li>
+                <span>收款账号：</span>
+                <input type="button" value="复制" class="btn2"/>
+                <input type="text" value="{:getInfo('pay_bank_account')}" id="caccount" readonly/>
+            </li>
+        </ul>
+        <form method="post" action="{:U('bank')}" id="ifr">
+            <input type="hidden" value="{$orderid}" name="orderid"/>
+            <ul>
+                <li>
+                    <span>付款人：</span>
+                    <input type="text" name="name" id="name" value="" placeholder="请输入转账人姓名"/>
+                </li>
+                <li>
+                    <span>转账附言：</span>
+                    <input type="text" name="reason" id="reason" value="" placeholder="请输入转账附言"/>
+                </li>
+            </ul>
+            <input type="submit" value="提交"/>
+        </form>
+    </div>
+    <div style="padding: 0 .4rem .4rem;font-size: .32rem;color:#666;line-height: .5rem;background-color: #efefee;">
+        {:getInfo('pay_bank')}
+    </div>
+</div>
+<script type="text/javascript">
+    $("#ifr").submit(function(){
+        var name = $("#name").val();
+        var reason = $("#reason").val();
+        if(name.length < 2){
+            msg("错误","请输入付款人姓名！",1);
+            return false;
+        }
+    });
+    var content = $("#cname").val();
+    var content2 = $("#caccount").val();
+    var clipboard = new Clipboard('.btn', {
+        text: function() {
+            return content;
+        }
+    });
+    clipboard.on('success', function(e) {
+        msg("成功","付款人姓名复制成功！",1);
+    });
+
+    clipboard.on('error', function(e) {
+        console.log(e);
+    });
+    var clipboard2 = new Clipboard('.btn2', {
+        text: function() {
+            return content2;
+        }
+    });
+    clipboard2.on('success', function(e) {
+        msg("成功","收款账号复制成功！",1);
+    });
+
+    clipboard2.on('error', function(e) {
+        console.log(e);
+    });
+</script>
+</body>
+</html>

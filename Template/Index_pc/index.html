@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{:getInfo('webname')}-首页</title>
+<link rel="stylesheet" href="__PUBLIC__/pc/css/pageSwitch.min.css?k={:rand(1,99999)}">
+<link rel="stylesheet" href="__PUBLIC__/pc/css/public.css?k={:rand(1,99999)}">
+<link rel="stylesheet" href="__PUBLIC__/pc/css/index.css?k={:rand(1,99999)}">
+<script src="__PUBLIC__/pc/js/jquery-1.10.2.min.js" type="text/javascript"></script>
+
+</head>
+<body>
+
+<include file="nav"/>
+<div id="container">
+	<ul class="sections">
+        <volist name=":getData('slide','all','type=1 AND `show`=1','','sort asc')" id="s">
+            <li class="section" >
+                <a href="{$s.url}" style="background: url('__PUBLIC__/uploads/slide/{$s.path}') no-repeat center;"></a>
+            </li>
+        </volist>
+	</ul>
+</div>
+<div class="scc-content">
+	<h1 class="showCase-title">公司产业<span>INDUSTRY</span></h1>
+	<ul>
+		<li>
+			<a href="" title="影视传媒">
+				<img src="__PUBLIC__/pc/img/cy1.png">
+				<span>新能源传媒</span>
+				<!--<p class="case-bg"><img src="__PUBLIC__/pc/img/case_bg.png?k={:rand(1,99999)}"></p>-->
+			</a>
+		</li>
+		<li>
+			<a href="" title="影视投资">
+				<img src="__PUBLIC__/pc/img/cy2.png">
+				<span>新能源投资</span>
+				<!--<p class="case-bg"><img src="__PUBLIC__/pc/img/case_bg.png?k={:rand(1,99999)}"></p>-->
+			</a>
+		</li>
+		<li>
+			<a href="" title="影视经纪">
+				<img src="__PUBLIC__/pc/img/cy3.png">
+				<span>新能源经纪</span>
+				<!--<p class="case-bg"><img src="__PUBLIC__/pc/img/case_bg.png?k={:rand(1,99999)}"></p>-->
+			</a>
+		</li>
+		<li>
+			<a href="" title="影视发行">
+				<img src="__PUBLIC__/pc/img/cy4.png">
+				<span>新能源发行</span>
+			<!--<p class="case-bg"><img src="__PUBLIC__/pc/img/case_bg.png?k={:rand(1,99999)}"></p>-->
+			</a>
+		</li>
+		<li>
+			<a href="" title="影视平台">
+				<img src="__PUBLIC__/pc/img/cy5.png">
+				<span>新能源平台</span>
+			<!--<p class="case-bg"><img src="__PUBLIC__/pc/img/case_bg.png?k={:rand(1,99999)}"></p>-->
+			</a>
+		</li>
+		<li>
+			<a href="" title="影视科技">
+				<img src="__PUBLIC__/pc/img/cy6.png">
+				<span>新能源科技</span>
+				<!--<p class="case-bg"><img src="__PUBLIC__/pc/img/case_bg.png?k={:rand(1,99999)}"></p>-->
+			</a>
+		</li>
+		<li>
+			<a href="" title="影视众投">
+				<img src="__PUBLIC__/pc/img/cy7.png">
+				<span>新能源众投</span>
+			<!--<p class="case-bg"><img src="__PUBLIC__/pc/img/case_bg.png?k={:rand(1,99999)}"></p>-->
+			</a>
+		</li>
+		<li>
+			<a href="" title="查看更多">
+				<img src="__PUBLIC__/pc/img/show_more.jpg">
+			</a>
+		</li>
+	</ul>
+</div>
+<div class="main-outer">
+	<div class="about-us">
+		<h1 class="showCase-title about">关于我们<span>ABOUT US</span></h1>
+		<p>{:getInfo('company')}成立于2017年5月15日，注册资金：5000万元，公司集新能源开发、建设、运营于一体，公司秉承产融结合、协同创新的战略思想，以集中和分布式并重发展的战略定位，持续为社会提供清洁、安全、高效、可持续发展的绿色能源。
+
+	</div>
+</div>
+<div class="index-team" >
+	<h1 class="showCase-title">公司团队<span>OUR TEAM</span></h1>
+	<ul>
+		<li>
+			<a href="">
+				<img src="__PUBLIC__/pc/img/team1.jpg">
+				<p class="team-bg">飞龙<span>明星团队</span></p>
+			</a>
+		</li>
+		<li>
+			<a href="">
+				<img src="__PUBLIC__/pc/img/team2.jpg">
+				<p class="team-bg">朱琳<span>明星团队</span></p>
+			</a>
+		</li>
+		<li>
+			<a href="">
+				<img src="__PUBLIC__/pc/img/team3.jpg">
+				<p class="team-bg">刘建华<span>明星团队</span></p>
+			</a>
+		</li>
+		<li>
+			<a href="">
+				<img src="__PUBLIC__/pc/img/team4.jpg">
+				<p class="team-bg">黄宏<span>明星团队</span></p>
+			</a>
+		</li>
+		<li>
+			<a href="">
+				<img src="__PUBLIC__/pc/img/team5.jpg">
+				<p class="team-bg">刘向金<span>明星团队</span></p>
+			</a>
+		</li>
+		<li>
+			<a href="">
+				<img src="__PUBLIC__/pc/img/team6.jpg">
+				<p class="team-bg">赵婷婷<span>明星团队</span></p>
+			</a>
+		</li>
+		<li>
+			<a href="">
+				<img src="__PUBLIC__/pc/img/team7.jpg">
+				<p class="team-bg">孙涛<span>明星团队</span></p>
+			</a>
+		</li>
+		<li>
+			<a href="">
+				<img src="__PUBLIC__/pc/img/team8.jpg">
+				<p class="team-bg">王国民<span>明星团队</span></p>
+			</a>
+		</li>
+		
+	</ul>
+</div>
+
+
+
+
+<div class="cooperate">
+	<h1 class="showCase-title">合作客户<span>CUSTOMER</span></h1>
+	<ul>
+
+	 <volist name=":getData('slide','all','type=3 AND `show`=1','','sort asc')" id="s">
+           
+      
+		<li>
+			<a href="{$s.url}"><img src="__PUBLIC__/uploads/slide/{$s.path}"></a>
+		</li>
+		  </volist>
+	</ul>
+</div>
+
+
+
+
+
+<div class="cle p10"></div>
+<style>
+.licaistep-wrapper {
+	width: 100%;
+	background: url(/images/steps_bg.jpg) no-repeat;
+	height:220px;
+}
+.licaistep-wrapper ul {
+	overflow: hidden;
+	zoom: 1;
+	width: 1130px;
+	margin: 0 auto;
+}
+.licaistep-wrapper ul li {
+	float: left;
+	display: inline;
+	margin: 0 30px;
+	height: 68px;
+}
+.licaistep-wrapper ul li img {
+	float: left;
+	display: inline;
+}
+.licaistep-wrapper ul li .steps_content {
+	float: left;
+	display: inline;
+	color: #FFFFFF;
+	margin: 8px 0 0 18px;
+}
+.licaistep-wrapper ul li .zhehao {
+	width: 12px;
+	height: 24px;
+	margin-top: 22px;
+}
+.licaistep-wrapper .licaistep-btn {
+	width: 207px;
+	margin: 0 auto;
+	clear: both;
+	margin-top: 35px;
+}
+.licaistep-wrapper .licaistep-btn button {
+	width: 205px;
+	height: 41px;
+	border: 1px #FFFFFF solid;
+	border-radius: 4px;
+	background: rgba(255,255,255,0);
+	font-size: 16px;
+}
+.licaistep-wrapper .licaistep-btn button:hover {
+	background: rgba(255,255,255,.2);
+}
+.licaistep-wrapper .licaistep-btn button a {
+	color: #FFFFFF;
+}
+.homepage_module_title {
+	text-align: center;
+	padding: 30px 0;
+}
+.homepage_module_title h2 {
+	font-size: 26px;
+	color: #FFFFFF;
+	margin-bottom: 18px;
+}
+.
+.homepage_module_title2 h2 {
+	z-index: 9999;
+	position: absolute;
+	width: 229px;
+	top: 0;
+	left: 40%;
+	background:url(/images/H2_BG.png) no-repeat top;
+}
+
+.hzhb-wrapper .homepage_module_title h2 {
+	color: #999999;
+}
+</style>
+
+<div class="licaistep-wrapper">
+    <div class="homepage_module_title">
+        <h2>"投资理财，仅需3步"</h2>
+    </div>
+    <ul>
+        <li><img alt="" src="/images/steps1.png">
+            <div class="steps_content">
+                <p style="font-size:16px;">1.注册会员</p>
+                <p>注册成为会员，完成实名认证</p>
+            </div></li>
+     
+        <li><img alt="" src="/images/steps2.png">
+            <div class="steps_content">
+                <p style="font-size:16px;">2.账户充值</p>
+                <p>投资前需为账户注入投资资金</p>
+            </div></li>
+     
+        <li><img alt="" src="/images/steps3.png">
+            <div class="steps_content">
+                <p style="font-size:16px;">3.投资理财</p>
+                <p>选择心仪的项目投资，坐等收益</p>
+            </div></li>
+    </ul>
+
+</div>
+
+
+
+<include file="footer" nav="0"/>

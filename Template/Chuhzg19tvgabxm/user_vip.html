@@ -1,0 +1,152 @@
+<include file="common_header" title="会员管理"/>
+        <p class="curr">
+            <a>会员管理</a>&gt;&gt;
+            <span>等级设置</span>
+        </p>
+        <div class="content">
+            <div class="list_main">
+                <div class="title">
+                    <a class="two" onclick="showDiv('mask_add')">添加等级</a>
+                    <a href="javascript:;" onclick="delCheck()" class="four">批量删除</a>
+                </div>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th><input type="checkbox" id="selectAll"></th>
+                            <th>编号</th>
+                            <th>等级名称</th>
+                            <th>邀请人数</th>
+                            <th>加息率（%）</th>
+                            <th>现金奖励</th>
+                            <th>签到奖励</th>
+                            <th>操作</th>
+                        </tr>
+                        <volist name=":getData('user_member','all','','','value asc')" id="m">
+                            <tr>
+                                <td><input type="checkbox" name="ck[]" value="{$m.id}"></td>
+                                <td data-id="{$m.id}">{$m.id}</td>
+                                <td data-name="{$m.name}">{$m.name}</td>
+                                <td data-num="{$m.value}">{$m.value}</td>
+                                <td data-rate="{$m.rate}">{$m.rate}</td>
+                                <td data-cash-reward="{$m.cash_reward}">{$m.cash_reward}</td>
+                                <td data-sign-reward="{$m.sign_reward}">{$m.sign_reward}</td>
+                                <td>
+                                    <a href="javascript:void(0);" class="update">编辑</a>
+                                    <a href="javascript:;" onclick="delList({$m.id})" class="del">删除</a>
+                                </td>
+                            </tr>
+                        </volist>
+                    </tbody>
+                </table>
+                <ul class="page">
+                    {$page}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="mask_add" class="mask">
+    <form class="popup" action="{:U('user_vip')}" onsubmit="return isSubmit()" method="post" id="ifr">
+        <input type="hidden" name="type" value="1"/>
+        <h3>添加会员等级<span onclick="closeDiv('mask_add')">×</span></h3>
+            <p>
+                <label>等级名称</label>
+                <input type="text" name="name" id="name" value="">
+            </p>
+            <p>
+                <label>邀请人数</label>
+                <input type="number" min="0" max="9999999" name="value" id="value" value="">
+            </p>
+            <p>
+                <label>加息利率</label>
+                <input type="text" name="rate" id="rate" value="">
+            </p>
+            <p>
+                <label>现金奖励</label>
+                <input type="text" name="cash_reward" id="cash_reward" value="">
+            </p>
+            <p>
+                <label>签到奖励</label>
+                <input type="text" name="sign_reward" id="sign_reward" value="">
+            </p>
+            <p><input type="submit" class="sub" value="确定添加"></p>
+    </form>
+</div>
+<div id="mask_edit" class="mask"></div>
+<script>
+$().ready(function(){
+    $("tr .update").click(function(){
+    	$("#mask_edit").empty();
+    	var id = $(this).parent().prevAll("td:nth-child(2)").attr("data-id");
+    	var name = $(this).parent().prevAll("td:nth-child(3)").attr("data-name");
+    	var num = $(this).parent().prevAll("td:nth-child(4)").attr("data-num");
+    	var rate = $(this).parent().prevAll("td:nth-child(5)").attr("data-rate");
+        var cash_reward = $(this).parent().prevAll("td:nth-child(6)").attr("data-cash-reward");
+        var sign_reward = $(this).parent().prevAll("td:nth-child(7)").attr("data-sign-reward");
+    	var html1 = "<form class='popup' action='{:U('user_vip')}' method='post'>\
+    	                <input type='hidden' name='type' value='2'>\
+    		             <h3>修改会员等级<span class='close_div'>×</span></h3>\
+    		             <p><label>等级名称</label><input type='text' name='name' id='name' value='"+name+"'></p>\
+    		             <p><label>邀请人数</label><input type='text' min='0' max='9999999' name='value' id='value' value='"+num+"'></p>\
+    		             <p><label>加息利率</label><input type='text' name='rate' id='rate' value='"+rate+"'></p>\
+    		             <p><label>现金奖励</label><input type='text' name='cash_reward' id='cash_reward' value='"+cash_reward+"'></p>\
+    		             <p><label>签到奖励</label><input type='text' name='sign_reward' id='sign_reward' value='"+sign_reward+"'></p>\
+    		             <input type='hidden' name='id' value='"+id+"'>\
+    		             <p><input type='submit' class='sub' value='确定修改'></p>\
+    		         </form>"
+    	$("#mask_edit").append(html1);
+    	$("#mask_edit").show();
+    });
+    $('#mask_edit').on('click','.close_div',function(){
+    	$("#mask_edit").hide();
+    });
+});
+function isSubmit(){
+    var name = $("#name").val();
+    var value = $("#value").val();
+    var rate = $("#rate").val();
+    var cash_reward = $("#cash_reward").val();
+    var sign_reward = $("#sign_reward").val();
+    if(name.length == 0){
+        alert("请输入等级名称！");
+        return false;
+    }
+    if(value.length == 0){
+        alert("请输入等级积分！");
+        return false;
+    }
+    if(rate.length == 0){
+        alert("请输入等级利率！");
+        return false;
+    }
+    if(cash_reward.length == 0){
+        alert("请输入现金奖励！");
+        return false;
+    }
+
+    if(sign_reward.length == 0){
+        alert("请输入签到奖励！");
+        return false;
+    }
+}
+function delList(obj){
+    if(confirm("确认删除这条记录吗？")){
+//        window.location.href = "/admin/dellist/data/user_member/list/"+obj+".html?re={:U('user_vip')}";
+        window.location.href = "{:U('dellist')}?data=user_member&list="+obj+"&re={:U('user_vip')}";
+    }
+}
+function delCheck(){
+    var arr = new Array();
+    $("input[name='ck[]']:checked").each(function(i){
+        arr[i] = $(this).val();
+    });
+    var vals = arr.join(",");
+    if(vals != ""){
+        delList(vals);
+    }
+    else{
+        alert("请选择需要删除的内容！");
+    }
+}
+</script>
+<include file="common_footer" menu="menu_user" nav="1"/>

@@ -1,0 +1,77 @@
+<include file="Mobile:header" nav="转出余额宝"/>
+<div class="mobile">
+    <div class="othertop">
+        <a class="goback" href="{:U('yuebao')}"><img src="__PUBLIC__/mobile/img/goback.png" /></a>
+        <div class="othertop-font">转出余额宝</div>
+    </div>
+    <div class="header-nbsp"></div>
+    <!-- 提现 -->
+    <form action="{:U('zcyuebao')}" method="post" id="ifr">
+        
+
+        </div>
+        <div class="blank_card">
+            <p>转出金额</p>
+            <label class="big">￥</label><input class="big" name="money" id="money" type="text" />
+            <p>可转出金额 <span id="userMoney">{$user.yebmoney}</span>元</p>
+        </div>
+        <div class="blank_card">
+            <label>交易密码</label><input type="password" name="pwd" id="pwd" placeholder="请输入交易密码" />
+        </div>
+        <div class="blank_card" style="display: none;">
+             <label>手续费</label> 2元
+        </div>
+        <div class="blank_card" style="display: none;">
+             <label>时间</label> 预计30分钟内到账
+        </div>
+        <input type="submit" value="确认转出" class="input_btn">
+    </form>
+<!-- 提现  end-->
+</div>
+<script>
+$(function(){
+    //下拉银行卡
+    $(".bank_xl li a").bind('click',function(){
+       $('#chose_input').val($(this).attr('title'));
+        $('.bank_xl').slideUp();
+        $("#chose_bank").parent().find('.jt_xz img').addClass('down');
+    });
+    $("#chose_bank").click(function(){
+        $('.bank_xl').slideDown();
+        $("#chose_bank").prev().find('img').removeClass('down');
+    });
+    $("#ifr").submit(function(){
+        var userMoney = "{$user.yebmoney}";
+        var bank = $("#bank").val();
+        var money = $("#money").val();
+        var min = "{:getInfo('cash')}";
+        var pwd = $("#pwd").val();
+        var auth = parseInt("{$user.auth}");
+        if(auth == 0){
+            msg("错误","请认证后再进行转出！",2,"{:U('User/certification')}");
+            return false;
+        }
+       
+        if(money.length <= 0){
+            msg("错误","请输入提现金额！",1);
+            return false;
+        }
+        if(isNaN(money)){
+            $("#money").val("");
+            msg("错误","请输入正确的提现金额！",1);
+            return false;
+        }
+        
+        if(parseFloat(money) > parseFloat(userMoney)){
+            msg("错误","转出余额不能大于余额宝余额！",1);
+            return false;
+        }
+        if(pwd.length < 6 || pwd.length > 16){
+            msg("错误","请输入正确的交易密码！",1);
+            return false;
+        }
+    })
+})
+</script>
+</body>
+</html>

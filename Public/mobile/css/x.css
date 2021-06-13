@@ -1,0 +1,80 @@
+.max { margin:0 auto; padding-left:1%; padding-right:1%; box-sizing:border-box; height:auto; overflow:hidden;}
+.platformData { padding-top:0px; margin:0 auto; min-height:140px;}
+.itemList {
+
+    width: 99%!important;
+
+    margin-bottom: 10px!important;
+
+    background: #fff;
+
+    margin: 10px auto;
+
+    border: 1px #ddd solid;
+
+    clear: both;
+
+	}
+	a.itemList:focus { color:#333;}
+
+a.itemList:link { color:#333;}
+
+a.itemList:visited { color:#333;}
+
+a.itemList:hover { color:#333;}	
+
+a.itemList:active { color:#333;}
+
+
+
+.investTitle { border-bottom:1px #ccc solid; height:32px; line-height:25px;}
+
+.investTitle img { width:25px; margin-right:10px; margin-bottom:-8px;  }
+
+.investTitle a { color:#333;}
+.investInfo,.transferInfo { padding-top:10px;}
+
+.investInfo{ font-size:13px;}
+
+.investInfo li { width:30%; text-align:center; line-height:30px;}
+
+.investInfo li.one{border-right: 1px #ddd solid; line-height:30px;}
+
+.investInfo li.one em{ color:#E34A5C; font-size:35px}
+
+.investInfo li.one span{ color:#E34A5C;}
+
+.investInfo li.two{ width:70%; float:left; text-align:left; padding-left:10px; }
+
+.investInfo li.two dd{ font-size:12px; float:left; width:49%;}
+
+.investInfo li.two dd em{font-size:14px;color:#fb661e;}
+
+.investInfo li em{ font-size:18px; color:#D6382E;}
+
+.investInfo li img,.transferInfo li img { padding-top:3px; width:25px;}
+
+.project-foot{text-align: left;color: #C8C8C8;font-size: 12px; text-indent:10px; padding-bottom:5px; width:100%;}
+.itemList .investTitle {margin: 0 auto;width:98%;height: 40px;border-bottom: 1px #ddd solid;font-size:16px; line-height:40px; text-indent:8px}
+
+.jdt1,.jdt3,.jdt{float:left; color:#D6382E; font-size:14px}
+
+.jdt3{margin-left:5px;color:#D6382E;}
+
+.jdt{margin-top:9px; margin-bottom:10px;}
+
+span.jdt{background:#ccc;width:50%;height:10px;line-height:10px;display:block;border-radius: 10px;}
+
+span.jdt i{background:#D6382E;height:10px;line-height:10px;display:block;border-radius: 10px;}
+
+
+
+
+
+ul li { list-style:none; float:left;}
+
+
+
+
+body {color:#333; font-size:15px; padding-bottom:60px;  line-height:22px; font-family:"Î¢ÈíÑÅºÚ";background: #f5f5f5;}
+

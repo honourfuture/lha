@@ -1,0 +1,118 @@
+<include file="common_header" title="项目管理"/>
+        <p class="curr">
+            <a>项目管理</a>&gt;&gt;
+            <a href="{:U('project_list')}">项目列表</a>&gt;&gt;
+            <span>添加项目</span>
+        </p>
+        <div class="content">
+            <form action="{:U('project_add')}" method="post" enctype="multipart/form-data">
+        	   <div class="line">
+                    <label>项目分类：</label>
+                    <select name="class">
+                        <volist name=":getprojectclass()" id="t">
+                            <option value="{$t.id}">{$t.name}</option>
+                        </volist>
+                    </select>
+                </div>
+                <div class="line">
+                    <label>项目名称：</label>
+                    <input type="text" name="title" placeholder="请输入项目名称" class="short"/>
+                </div>
+                <div class="line">
+                    <label>项目描述：</label>
+                    <input type="text" name="desc" placeholder="请输入项目描述" maxlength="144"/>
+                </div>
+                <div class="line">
+                    <label>项目封面：</label>
+                    <div class="uploads">
+                        <img src="__PUBLIC__/admin/img/no_img.jpg" id="portrait">
+                        <input type="file" class="file" name="img"  accept="image/*" onchange="showPreview(this)">
+                    </div>
+                </div>
+                <div class="line">
+                    <label>项目金额（万泰铢）：</label>
+                    <input type="text" name="total" placeholder="请输入金额" class="short"/>
+                </div>
+				
+				<div class="line">
+					<label style="color:#FF0000">上级分润（%）：</label>
+					<input type="text" name="frbl"  placeholder="请输入分润比例" class="short"/>
+				</div>
+
+				<div class="line">
+					<label style="color:#FF0000">红包额度：</label>
+					<input type="text" name="red"  placeholder="请输入红包金额" class="short"/>
+				</div>
+				
+                <div class="line">
+                    <label>收益率（%）：</label>
+                    <input type="text" name="rate" placeholder="请输入收益率" class="short" />
+                </div>
+                <div class="line">
+                    <label>虚拟进度（%）：</label>
+                    <input type="text" name="percent" placeholder="请输入虚拟进度" class="short" />
+                </div>
+                <div class="line">
+                    <label>期限（天）：</label>
+                    <input type="text" name="day" placeholder="请输入期限" class="short" />
+                </div>
+                <div class="line">
+                    <label>还款方式：</label>
+                    <select name="type">
+                        <volist name=":setProjectType()" id="t">
+                            <option value="{$t.id}">{$t.name}</option>
+                        </volist>
+                    </select>
+                </div>
+                <div class="line">
+                    <label>起投金额（泰铢）：</label>
+                    <input type="text" name="min" placeholder="请输入起投金额" class="short"/>
+                </div>
+                <div class="line">
+                    <label>最大投资金额（泰铢）：</label>
+                    <input type="text" name="max" placeholder="请输入最大投资金额" class="short"/>
+                </div>
+                <div class="line">
+                    <label>最大投资次数：</label>
+                    <input type="number" min="1" max="99999" name="num" placeholder="请输入最大投资次数" class="short"/>
+                </div>
+                <div class="line">
+                    <label>担保公司：</label>
+                    <input type="text" name="guarantee" placeholder="请输入担保公司" class="short"/>
+                </div>
+                <div class="line">
+                    <label>开始时间：</label>
+                    <input type="text" name="time" placeholder="请输入时间" value="{:date('Y-m-d H:i:s')}" class="short timer" />
+                </div>
+                <div class="line">
+                    <label class="tp">项目说明：</label>
+                    <textarea class="cke_editor" id="container" name="content"></textarea>
+                </div>
+                <div class="line">
+                    <label>排序（从小到大）：</label>
+                    <input type="number" name="sort" min="1" max="999999" value="1" placeholder="请输入排序" class="short"/>
+                </div>
+                <div class="button">
+                    <input type="submit" value="立即提交" class="submit" />
+                    <input type="reset" value="重置" class="reset"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="__PUBLIC__/UEditor/ueditor.config.js"></script>
+<script type="text/javascript" src="__PUBLIC__/UEditor/ueditor.all.js"></script>
+<script type="text/javascript">
+    var editor = UE.getEditor('container');
+    $().ready(function(){
+        $('.timer').datetimepicker({
+        	lang:'ch',
+            timepicker:true,
+            format:'Y-m-d H:i',
+            step:'60',
+            scrollInput:false,
+            ShowCheckBox:true
+        });
+    });
+</script>
+<include file="common_footer" menu="menu_project" nav="0"/>

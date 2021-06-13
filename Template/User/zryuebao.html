@@ -1,0 +1,84 @@
+<include file="Mobile:header" nav="转入余额宝"/>
+<div class="mobile">
+    <div class="othertop">
+        <a class="goback" href="{:U('yuebao')}"><img src="__PUBLIC__/mobile/img/goback.png" /></a>
+        <div class="othertop-font">转入余额宝</div>
+    </div>
+    <div class="header-nbsp"></div>
+    <!-- 提现 -->
+    <form action="{:U('zryuebao')}" method="post" id="ifr">
+        
+
+        </div>
+        <div class="blank_card">
+            <p>转入金额</p>
+            <label class="big">￥</label><input class="big" name="money" id="money" type="text" />
+            <p>可用余额 <span id="userMoney">{$user.money}</span>元</p>
+            
+        </div>
+        <div class="blank_card">
+            <label>交易密码</label><input type="password" name="pwd" id="pwd" placeholder="请输入交易密码" />
+        </div>
+        <div class="blank_card" style="display: none;">
+             <label>手续费</label> 2元
+        </div>
+        <div class="blank_card" style="display: none;">
+             <label>时间</label> 预计30分钟内到账
+        </div>
+        <div class="blank_card" >
+        <p style="color:red;">每次最少转入 <span id="userMoney">{$v.min_money}</span>元,最多可转入<span id="userMoney">{$v.max_money}</span>元</p>
+        </div>
+        <input type="submit" value="确认转入" class="input_btn">
+    </form>
+<!-- 提现  end-->
+</div>
+<script>
+$(function(){
+    //下拉银行卡
+    
+    $("#ifr").submit(function(){
+        var userMoney = $("#userMoney").text();
+        var bank = $("#bank").val();
+        var money = $("#money").val();
+        var min = "{:getInfo('min_money')}";
+        var max_money= "{:getInfo('max_money')}"
+        var pwd = $("#pwd").val();
+        var auth = parseInt("{$user.auth}");
+        if(auth == 0){
+            msg("错误","请认证后再进行转入！",2,"{:U('User/certification')}");
+            return false;
+        }
+        if(bank == 0){
+            msg("错误","请选择或者添加提现银行卡！",1);
+            return false;
+        }
+        if(money.length <= 0){
+            msg("错误","请输入转入金额！",1);
+            return false;
+        }
+        if(isNaN(money)){
+            $("#money").val("");
+            msg("错误","请输入正确的转入金额！",1);
+            return false;
+        }
+        if(parseFloat(money) < parseFloat(min)){
+            msg("错误","小于最低提现金额"+min+"元！",1);
+            return false;
+        }
+        if(parseFloat(money) > parseFloat(max_money)){
+            msg("错误","小于最低提现金额"+min+"元！",1);
+            return false;
+        }
+        if(parseFloat(money) > parseFloat(userMoney)){
+            msg("错误","转入金额不能大于用户余额！",1);
+            return false;
+        }
+        if(pwd.length < 6 || pwd.length > 16){
+            msg("错误","请输入正确的交易密码！",1);
+            return false;
+        }
+    })
+})
+</script>
+</body>
+</html>

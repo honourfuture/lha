@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="target-densitydpi=device-dpi, width=device-width,height=device-height, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0,shrink-to-fit=no" />
+<meta name="format-detection" content="telephone=no" />
+<!--em标准js代码，请放在页面的最上方，前面最好不要再有JS代码或JS文件-->
+<script type="text/javascript" src="__PUBLIC__/xin_mobile/staticfaxian/js/rem.js"></script>
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/xin_mobile/staticfaxian/css/css.css" />
+<title>发现</title>
+   <style>
+@keyframes fadein{
+    0%{opacity: 0;
+         }
+    100%{
+        opacity: 1;
+
+    }
+}
+@-webkit-keyframes fadein{
+        0%{opacity: 0;
+         }
+    100%{
+        opacity: 1;
+
+    }
+}
+@-moz-keyframes fadein{
+        0%{opacity: 0;
+         }
+    100%{
+        opacity: 1;
+
+    }
+}
+@-o-keyframes fadein{
+        0%{opacity: 0;
+         }
+    100%{
+        opacity: 1;
+
+    }
+}
+@-ms-keyframes fadein{
+        0%{opacity: 0;
+         }
+    100%{
+        opacity: 1;
+
+    }
+}
+body{
+    animation:fadein 0.1s linear 1;
+    -webkit-animation:fadein 0.3s linear 1;
+    -moz-animation:fadein 0.3s linear 1;
+    -o-animation:fadein 0.3s linear 1;
+    -ms-animation:fadein 0.3s linear 1;
+}
+</style>
+</head>
+
+<body>		
+	
+	<div class="header">
+		
+	</div>
+	<div class="header_zw"></div>
+
+	<div class="find_nav">
+	
+	  <volist name=":getData('article', 'all', 'type=1', '', 'time desc')" id="t">
+	  <if condition="$t.keyword neq ''">
+		
+		<a href="{$t['keyword']}"> 
+		<else /> 
+		<a href="{:U('details','id='.$t['id'])}"> 
+		</if>
+		 
+			<img src="/Public/uploads/item/{$t.photo}" alt="">
+			<span>{$t.title}</span>
+		</a>
+	 </volist>
+		
+		<div class="clear"></div>
+	</div>
+
+	<div class="find_new">
+  <volist name=":getData('article', 'all', 'type=1006', '', 'time desc')" id="t">
+		<div class="find_head">
+			<div class="tit">{$t.title}</div>
+			<!-- <a href="#" class="more">查看更多 ></a> -->
+		</div>
+		<if condition="$t.keyword neq ''">
+		
+		<a href="{$t['keyword']}" class="new_item"> 
+		<else /> 
+		<a href="{:U('details','id='.$t['id'])}" class="new_item"> 
+		</if>
+			<div class="photo">
+				<img src="/Public/uploads/item/{$t.photo}" alt="">
+			</div>
+			<!-- <div class="name">
+				邀请好友签到最高获得888元现金大礼包
+			</div> -->
+		</a>
+ </volist>
+	</div>
+
+	<div class="find_new">
+		
+		<div class="find_head">
+			<div class="tit">最新资讯</div>
+			<!-- <a href="#" class="more">查看更多 ></a> -->
+		</div>
+
+  <volist name=":getData('article', 'all', 'type=1007', '', 'time desc')" id="t">
+	<if condition="$t.keyword neq ''">
+		
+		<a href="{$t['keyword']}" class="ne_item2"> 
+		<else /> 
+		<a href="{:U('details','id='.$t['id'])}" class="ne_item2"> 
+		</if>
+			<div class="c_left">
+				<div class="name">{$t.title}</div>
+			<!--	<div class="date">{$t.time}</div>-->
+			</div>
+			<div class="photo">
+				<img src="/Public/uploads/item/{$t.photo}" alt="">
+			</div>
+			<div class="clear"></div>
+		</a>		
+
+	 </volist>	
+
+	</div>
+
+
+	
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/xin_mobile/staticfaxian/css/foot.css" />
+<div class="hh"></div>
+<footer class='footer'>
+<a href="/Mobile/index/index.html"><img src="__PUBLIC__/xin_mobile/staticfaxian/picture/rbtn_home_hot_normal.png"></a>
+<a href="/Mobile/lists.html"><img src="__PUBLIC__/xin_mobile/staticfaxian/picture/rbtn_home_product_normal.png">
+</a><a href="/gs/get_commodity.html"><img src="__PUBLIC__/xin_mobile/staticfaxian/picture/icon_sanbiao_home.png"></a>
+<a href="#"><img src="__PUBLIC__/xin_mobile/staticfaxian/picture/rbtn_home_find_checked.png"></a>
+<a href="/user/person.html"><img src="__PUBLIC__/xin_mobile/staticfaxian/picture/rbtn_home_my_normal.png"></a>
+
+</footer>
+	
+</body>
+<script type="text/javascript" src="__PUBLIC__/xin_mobile/staticfaxian/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/xin_mobile/staticfaxian/js/base.js"></script>
+<script type="text/javascript">
+var link=document.getElementsByTagName('link')[0];
+    var sUserAgent = navigator.userAgent.toLowerCase();
+    var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+    var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+    var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+    var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+    var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+    var bIsAndroid = sUserAgent.match(/android/i) == "android";
+    var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+    var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+    if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) {
+    }
+    else{
+        location.href="https://www.baidu.com"
+
+    }
+</script>
+<script type="text/javascript">
+  var system = {};
+  var p = navigator.platform;
+  var u = navigator.userAgent;
+
+  system.win = p.indexOf("Win") == 0;
+  system.x11 = (p == "X11") || (p.indexOf("Linux") == 0);
+  if (system.win  || system.xll) else {
+      window.location.href = " http://www.baidu.com";
+    }
+  }
+</script>
+
+<script type="text/javascript" src="__PUBLIC__/xin_mobile/staticfaxian/js/bda090ba14a94dc786a4164247ee8fcf.js"></script>
+
+</html>

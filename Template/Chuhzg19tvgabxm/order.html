@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<include file="common_header" title="订单列表"/>
+<include file="Public_header" />
+<include file="Public_page_css" />
+
+<body class="gray-bg wrapper wrapper-content">
+
+
+<link rel="stylesheet" type="text/css" media="all" href="__PUBLIC__/sldate/daterangepicker-bs3.css" />
+<script src="__PUBLIC__/Admin/js/jquery.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/sldate/moment.js"></script>
+<script type="text/javascript" src="__PUBLIC__/sldate/daterangepicker.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#reservation').daterangepicker(null, function(start, end, label) {
+            console.log(start.toISOString(), end.toISOString(), label);
+        });
+    });
+</script>
+
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5><i class="fa fa-tasks"></i> 订单列表</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row">
+
+                    <form name="admin_list_sea" class="form-search" method="post" action="__URL__/index">
+                        <div  class="col-sm-2">
+                            <div class="input-group" style="width: 240px">
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                <input type="text" class="form-control" name="reservation" id="reservation" class="sl-date" value="{$s}" placeholder="点击选择日期范围"/>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="input-group">
+                                <input type="text" name="key" id="key" class="form-control" value="{$val}" placeholder="输入订单号进行搜索" />
+                                <span class="input-group-btn">
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> 搜索</button>
+				            </span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="hr-line-dashed"></div>
+                <form id="leftnav" name="leftnav" method="post" action="" >
+                    <input type="hidden" name="checkk" id="checkk" value="1" />
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr class="long-tr">
+                            <th>序号</th>
+                            <th>订单编号</th>
+                            <th>订单用户</th>
+                            <th>订单商品</th>
+                            <th>支付价格</th>
+                            <th>下单时间</th>
+
+                            <th>下单地址</th>
+
+                            <th>支付时间</th>
+                            <th>发货时间</th>
+                            <th>状态</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <foreach name="list" item="v" key="k">
+                            <tr class="long-td">
+                                <td>{$k+1}</td>
+                                <td>{$v.order_sn}</td>
+                                <td>{$v.member_name}</td>
+                                <td><a onclick="details({$v.order_id},'{$v.order_sn}')">点击查看详情</a></td>
+                                <td>{$v.total}</td>
+                                <td>{$v.add_time|date='Y-m-d H:i:s',###}</td>
+
+                                    <th>{$v.address}</th>
+
+
+                                <if condition="$v.pay_time eq ''">
+                                    <td style="color: red">未支付</td>
+                                    <else />
+                                    <td>{$v['pay_time']|date='Y-m-d H:i:s',###}</td>
+                                </if>
+
+                                <if condition="$v.fh_time eq ''">
+                                    <td style="color: red">未发货</td>
+                                    <else />
+                                    <td>{$v['fh_time']|date='Y-m-d H:i:s',###}</td>
+                                </if>
+                                <if condition="$v['state'] eq 1">
+                                    <td style="color: red">待付款</td>
+                                    <elseif condition="$v['state'] eq 2"/>
+                                    <td style="color: red">待发货<a onclick="fh({$v.order_id})">点击发货</a></td>
+                                    <elseif condition="$v['state'] eq 3"/>
+                                    <td style="color: red">已发货<a onclick="ck({$v.order_id})">查看详情</a></td>
+                                    <else />
+                                    <td style="color: #008200">已完成</td>
+                                </if>
+
+                                <td> <a href="javascript:;" onclick="return del_order({$v.order_id});" class="btn btn-danger btn-xs">
+                                    <i class="fa fa-trash-o"></i> 删除</a></td>
+
+                            </tr>
+                        </foreach>
+                        </tbody>
+                    </table>
+                </form>
+                <div class="pages" style=" text-align: right;">
+                    {$page}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal inmodal fade" id="myModal6" tabindex="-1" role="dialog"  aria-hidden="true">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 id="number">订单号：</h4>
+
+            </div>
+            <div class="modal-body" id="my_order">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal inmodal fade" id="myModal7" tabindex="-1" role="dialog"  aria-hidden="true">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4>输入发货信息</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal"  method="post" action="{:U('chuhzg19tvgabxm/fh_order')}" onsubmit="return toVaild()">
+                    <input id="order_id" type="hidden" name="order_id" value=""/>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">快递名称</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="kd_name" id="kd_name" placeholder="输入快递名称" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">快递单号</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="kd_dh" id="kd_dh" placeholder="输入快递单号" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-8">
+                            <button class="btn btn-sm btn-primary" type="submit" style="float: right">发货</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+	<script src="__PUBLIC__/Admin/js/bootstrap.min.js?v=2.1.4"></script>
+<include file="common_footer" menu="menu_order" nav="0"/>
+</body>
+<script>
+    $(function () {
+        $('#state').change(function(){
+            var p1=$(this).val();//这就是selected的值
+            location.href = '__URL__/index/state/'+p1+'.html';
+        })
+
+    });
+    function ck(order_id) {
+        $.post("{:U('chuhzg19tvgabxm/ck_order')}",{order_id:order_id},function (data) {
+		console.log();
+            var obj = JSON.parse(data);
+            if(obj.state == 3){
+                var a = "已发货";
+            }else{
+                var a = "已收货";
+            }
+            layer.alert('发货信息：</br></br>' +
+                '快递公司：'+obj.kd_name+'</br>快递编号：'+obj.kd_dh+'</br>' +
+                '订单状态：'+a+'</br>', {
+                title:false,
+                skin: 'layer-ext-moon'
+            });
+        });
+    }
+    function toVaild() {
+        var order_id = $('#order_id').val();
+        var kd_name = $('#kd_name').val();
+        var kd_dh = $('#kd_dh').val();
+        if(order_id == ""){
+            layer.msg("发货失败");
+            return false;
+        }
+        if(kd_name == ""){
+            layer.msg("请输入快递名称");
+            $('#kd_name').focus();
+            return false;
+        }
+        if(kd_dh == ""){
+            layer.msg("请输入快递单号");
+            $('#kd_dh').focus();
+            return false;
+        }
+    }
+    function fh(order_id) {
+        $("#order_id").val(order_id);
+        $("#myModal7").modal('show');
+    }
+    function del_order(order_id) {
+        var msg = "删除后，将无法找回！请确认是否删除";
+        layer.confirm(msg,function(){
+            $.post("{:U('chuhzg19tvgabxm/del_order')}",{order_id:order_id},function (data) {
+                if(data == 1){
+                    window.location.reload();
+                }
+            });
+        });
+    }
+    function details(order_id,order_number) {
+        var laod = layer.load(2);
+        $("#number").text("订单号：" + order_number);
+        $.post("{:U('chuhzg19tvgabxm/r_order')}",{order_id:order_id},function (data) {
+		
+            var obj = JSON.parse(data);
+
+            var html = '';
+            for(var i=0;i<obj.length;i++){
+                html += ' <div class="feed-element">' +
+                    '         <a href="javascript:;" class="pull-left">' +
+                    '            <img alt="image" class="img-circle" src="/Public/uploads/item/'+obj[i].goods_photo+'">' +
+                    '         </a>' +
+                    '         <div class="media-body ">' +
+                    '           <small class="pull-right text-navy">数量：'+obj[i].goods_num+'</small>' +
+                    '           <small class="text-muted">'+obj[i].goods_name+'</small>' +
+                    '            <br>' +
+                    '            <small class="text-muted" style="color: red">价格：'+obj[i].goods_price+' </small>' +
+                    '          </div>' +
+                    '      </div>';
+            }
+            $("#my_order").html(html);
+            layer.close(laod);
+            $("#myModal6").modal('show');
+
+        });
+
+    }
+</script>
+
+</html>

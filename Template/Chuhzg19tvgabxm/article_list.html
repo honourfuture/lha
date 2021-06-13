@@ -1,0 +1,95 @@
+<include file="common_header" title="文章管理"/>
+        <p class="curr">
+            <a>文章管理</a>&gt;&gt;
+            <span>文章列表</span>
+        </p>
+        <div class="content">
+            <div class="list_main">
+                <div class="title">
+                    <form action="{:U('article_list')}" method="get">
+                        <p>
+                           <label>文章标题</label><input type="text" name="title" value="{$_GET['title']}" class="txt">
+                           <label>发布日期</label><input type="text" name="start" value="{$_GET['start']}" class="timer">至<input type="text" name="end" value="{$_GET['end']}" class="timer">
+                        </p>
+                        <p>
+                           <!--<label>关键字</label><input type="text" class="txt">-->
+                           <label>文章类型</label>
+                           <select name="type">
+                               <option value="0">全部</option>
+                               <volist name=":getData('article_type','all','','','sort')" id="t">
+                                   <if condition="$t['id'] eq $_GET['type']">
+                                       <option value="{$t.id}" selected="selected">{$t.name}</option>
+                                       <else/>
+                                       <option value="{$t.id}">{$t.name}</option>
+                                   </if>
+                               </volist>
+                           </select>
+                           <input type="submit" class="sub1" value="查询">
+                           <a href="{:U('article_add')}" class="two">添加文章</a>
+                            <a href="javascript:;" onclick="delCheck()" class="four">批量删除</a>
+                        </p>
+                    </form>
+                </div>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th><input type="checkbox" id="selectAll"></th>
+                            <th>标题</th>
+                            <th>文章类型</th>
+                            <!--<th>关键字</th>-->
+                            <th>状态</th>
+                            <th>发布时间</th>
+                            <th>操作</th>
+                        </tr>
+                        <volist name=":getData('article','all',$where,$limit,'id desc')" id="a">
+                            <tr>
+                                <td><input type="checkbox" name="ck[]" value="{$a.id}"></td>
+                                <td>{$a.title}</td>
+                                <td>{:getArticleType($a['type'])}</td>
+                                <!--<td>{$a.keyword}</td>-->
+                                <td><if condition="$a['show'] eq 1">显示<else/>隐藏</if></td>
+                                <td>{$a.time}</td>
+                                <td>
+                                    <a href="{:U('article_edit','id='.$a['id'])}" class="update">编辑</a>
+                                    <a href="javascript:;" onclick="delList({$a.id})" class="del">删除</a>
+                                </td>
+                            </tr>
+                        </volist>
+                    </tbody>
+                </table>
+                <ul class="page">
+                    {$page}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $().ready(function(){
+        $('.timer').datetimepicker({
+            lang:'ch',
+            timepicker:false,
+            format:'Y-m-d'
+        });
+    });
+    function delList(obj){
+        if(confirm("确认删除这条记录吗？")){
+//            window.location.href = "/admin/dellist/data/article/list/"+obj+".html?re={:U('article_list')}";
+            window.location.href = "{:U('dellist')}?data=article&list="+obj+"&re={:U('article_list')}";
+        }
+    }
+    function delCheck(){
+        var arr = new Array();
+        $("input[name='ck[]']:checked").each(function(i){
+            arr[i] = $(this).val();
+        });
+        var vals = arr.join(",");
+        if(vals != ""){
+            delList(vals);
+        }
+        else{
+            alert("请选择需要删除的内容！");
+        }
+    }
+</script>
+<include file="common_footer" menu="menu_article" nav="1"/>

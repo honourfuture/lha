@@ -1,0 +1,56 @@
+<include file="common_header" title="系统管理"/>
+        <p class="curr">
+            <a>系统管理</a>&gt;&gt;
+            <span>奖励设置</span>
+        </p>
+        <div class="content">
+            <form action="{:U('system_reward')}" method="post">
+                <div class="line">
+                    <label>用户注册（泰铢）：</label>
+                    <input type="text" name="register" value="{:getReward('register')}" class="short"/><span>用户首次注册所得现金红包</span>
+                </div>
+                <div class="line">
+                    <label>邀请注册（泰铢）：</label>
+                    <input type="text" name="register2" value="{:getReward('register2')}" class="short"/><span>用户邀请好友注册所得现金红包</span>
+                </div>
+                <div class="line">
+                    <label>邀请充值（%）：</label>
+                    <input type="text" name="recharge" value="{:getReward('recharge')}" class="short"/><span>用户邀请好友投资所得现金红包占该好友充值金额的比例</span>
+                </div>
+                <div class="line">
+                    <label>邀请投资1级（%）：</label>
+                    <input type="text" name="invest1" value="{:getReward('invest1')}"  class="short"/><span>用户邀请好友投资所得现金红包占该好友投资金额的比例</span>
+                </div>
+                <div class="line">
+                    <label>邀请投资2级（%）：</label>
+                    <input type="text" name="invest2" value="{:getReward('invest2')}"  class="short"/><span>用户邀请好友投资所得现金红包占该好友投资金额的比例</span>
+                </div>
+                <div class="line">
+                    <label>邀请投资3级（%）：</label>
+                    <input type="text" name="invest3" value="{:getReward('invest3')}"  class="short"/><span>用户邀请好友投资所得现金红包占该好友投资金额的比例</span>
+                </div>
+                <div class="line">
+                    <label>每日签到奖励（泰铢）：</label>
+                    <input type="text" name="qiandao" value="{:getReward('qiandao')}"  class="short"/><span>用户每天签到获得的奖励</span>
+                </div>
+			<!--li>	<div class="line">
+                    <label>收益率：</label>
+                    <input type="text" name="shouyilu" value="{:getReward('shouyilu')}"  class="short"/><span>用户每天余额宝获得的奖励</span>
+                </div> 
+				<div class="line">
+                    <label>设置存进余额宝的资金：</label>
+                    <input type="text" name="zijin" value="{:getReward('zijin')}"  class="short"/><span>设置存进余额宝的最大资金</span>
+                </div></li-->
+				<div class="line">
+                    <label>充值多少赠送多少积分</label>
+                    <input type="text" name="chongzhijifen" value="{:getReward('chongzhijifen')}"  class="short"/><span>写1 那么就是 1:1</span>
+                </div>
+                <div class="button">
+                    <input type="submit" value="立即提交" class="submit" />
+                </div>
+                <input type="hidden" value="">
+            </form>
+        </div>
+    </div>
+</div>
+<include file="common_footer" menu="menu_system" nav="1"/>

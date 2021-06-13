@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html class="ui-page-login"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <title>投资列表</title>
+    <link href="__PUBLIC__/xin_mobile/static/css/mui.min.css" rel="stylesheet">
+    <link href="__PUBLIC__/xin_mobile/static/css/app.css" rel="stylesheet">
+    
+  <style type="text/css">
+    .cate_list_img.mui-table-view .mui-media-object{line-height: 33px;max-width: 33px;height: 33px;margin:7px 20px 7px 10px !important;}
+    .mui-table-view-cell.mui-media{padding: 16px 65px 16px 15px; }.mui-table-view{ background:#eee}.mui-table-view-cell.mui-media{ background:#fff; margin-bottom:10px;}
+  </style>
+<style>
+@keyframes fadein{
+    0%{opacity: 0;
+         }
+    100%{
+        opacity: 1;
+
+    }
+}
+@-webkit-keyframes fadein{
+        0%{opacity: 0;
+         }
+    100%{
+        opacity: 1;
+
+    }
+}
+@-moz-keyframes fadein{
+        0%{opacity: 0;
+         }
+    100%{
+        opacity: 1;
+
+    }
+}
+@-o-keyframes fadein{
+        0%{opacity: 0;
+         }
+    100%{
+        opacity: 1;
+
+    }
+}
+@-ms-keyframes fadein{
+        0%{opacity: 0;
+         }
+    100%{
+        opacity: 1;
+
+    }
+}
+body{
+    animation:fadein 0.1s linear 1;
+    -webkit-animation:fadein 0.3s linear 1;
+    -moz-animation:fadein 0.3s linear 1;
+    -o-animation:fadein 0.3s linear 1;
+    -ms-animation:fadein 0.3s linear 1;
+}
+</style>
+  </head>
+  <body class="mui-android mui-android-5 mui-android-5-0">
+  
+  <header class="mui-bar mui-bar-nav">
+
+  </header>
+
+
+
+
+
+  <style>
+  .mui-media-body{
+    color:red;
+  }
+    .close .mui-media-body{
+      color: #000;
+    }
+  </style>
+  <div class="mui-content">
+    <div class="nav_img" style="margin-top: 10px;">
+      <img src="__PUBLIC__/xin_mobile/static/picture/icon_sercuity_bg.png" width="100%" style="display:block">
+        </div>
+    
+    <ul class="mui-table-view mui-table-view-chevron cate_list_img" style="margin-top: 10px;">
+	 <volist name="project_class" id="i">
+      <li class="mui-table-view-cell mui-media " style="width: 100%;">
+        <!-- <a class="mui-navigate-right" href="/mobile/project/productlist1.html{:U('project','id='.$i['id'])}"> -->
+			<a class="mui-navigate-right" href="{:U('project','id='.$i['id'])}">
+          <img class="mui-media-object mui-pull-left" src="/Public/uploads/item/{$i.img2}">
+          <div class="mui-media-body">
+            {$i.name}           <p class="mui-ellipsis" style="margin-top: 5px;">{$i.note}</p>
+          </div>
+        </a> 
+      </li>
+	</volist>
+
+
+
+    </ul>
+
+
+    
+
+    <div class="mui-slider" style="margin: 10px 0;" id="slider" >
+          <div class="mui-slider-group mui-slider-loop" > 
+            <!-- 额外增加的一个节点(循环轮播：第一个节点是最后一个图文表格) -->
+              <div class="mui-slider-item mui-slider-item-duplicate">
+                  <ul class="mui-table-view mui-grid-view">
+                      <li class="mui-table-view-cell mui-media mui-col-xs-6"><a href="javascript:;"><img class="mui-media-object" src="__PUBLIC__/xin_mobile/static/picture/5b0fba72b7515.jpg"></a></li>
+                      <li class="mui-table-view-cell mui-media mui-col-xs-6"><a href="javascript:;"><img class="mui-media-object" src="__PUBLIC__/xin_mobile/static/picture/5b0fba6402abb.jpg"></a></li>
+                  </ul>
+              </div>
+              <div class="mui-slider-item">
+                  <ul class="mui-table-view mui-grid-view">
+                      <li class="mui-table-view-cell mui-media mui-col-xs-6"><a href="javascript:;"><img class="mui-media-object" src="__PUBLIC__/xin_mobile/static/picture/5b0fba7b72881.jpg"></a></li>
+                      <li class="mui-table-view-cell mui-media mui-col-xs-6"><a href="javascript:;"><img class="mui-media-object" src="__PUBLIC__/xin_mobile/static/picture/5b0fba8c279b3.jpg"></a></li>
+                  </ul>
+              </div>
+              <div class="mui-slider-item">
+                  <ul class="mui-table-view mui-grid-view">
+                      <li class="mui-table-view-cell mui-media mui-col-xs-6"><a href="javascript:;"><img class="mui-media-object" src="__PUBLIC__/xin_mobile/static/picture/5b0fba72b7515.jpg"></a></li>
+                      <li class="mui-table-view-cell mui-media mui-col-xs-6"><a href="javascript:;"><img class="mui-media-object" src="__PUBLIC__/xin_mobile/static/picture/5b0fba6402abb.jpg"></a></li>
+                  </ul>
+              </div>
+              <!-- 额外增加的一个节点(循环轮播：最后一个节点是第一个图文表格) -->
+              <div class="mui-slider-item mui-slider-item-duplicate">
+                  <ul class="mui-table-view mui-grid-view">
+                      <li class="mui-table-view-cell mui-media mui-col-xs-6"><a href="javascript:;"><img class="mui-media-object" src="__PUBLIC__/xin_mobile/static/picture/5b0fba7b72881.jpg"></a></li>
+                      <li class="mui-table-view-cell mui-media mui-col-xs-6"><a href="javascript:;"><img class="mui-media-object" src="__PUBLIC__/xin_mobile/static/picture/5b0fba8c279b3.jpg"></a></li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </div><script type="text/javascript" src="__PUBLIC__/xin_mobile/static/js/rem.js"></script>
+
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/xin_mobile/static/css/foot.css" />
+
+<footer class=footer>
+<a href="/Mobile/index/index.html"><img src="__PUBLIC__/xin_mobile/static/picture/rbtn_home_hot_normal.png"></a>
+<a href="#"><img src="__PUBLIC__/xin_mobile/static/picture/rbtn_home_product_checked.png"></a>
+<a href="/gs/get_commodity.html"><img src="__PUBLIC__/xin_mobile/static/picture/icon_sanbiao_home.png"></a>
+<a href="/about/index.html"><img src="__PUBLIC__/xin_mobile/static/picture/rbtn_home_find_normal.png"></a>
+<a href="/user/person.html"><img src="__PUBLIC__/xin_mobile/static/picture/rbtn_home_my_normal.png"></a></footer>
+  <script type="text/javascript" src="__PUBLIC__/xin_mobile/static/js/mui.js"></script>
+  <script type="text/javascript" src="__PUBLIC__/xin_mobile/static/js/jquery-1.11.1.js"></script>
+  </br></br>
+  <script>
+    mui.init();
+    var slider = mui("#slider");
+    slider.slider({
+     interval: 5000
+    });
+  </script>
+<script type="text/javascript">
+var link=document.getElementsByTagName('link')[0];
+    var sUserAgent = navigator.userAgent.toLowerCase();
+    var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+    var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+    var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+    var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+    var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+    var bIsAndroid = sUserAgent.match(/android/i) == "android";
+    var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+    var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+    if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) {
+    }
+    else{
+        location.href="https://www.baidu.com"
+
+    }
+</script>
+<script type="text/javascript">
+  var system = {};
+  var p = navigator.platform;
+  var u = navigator.userAgent;
+
+  system.win = p.indexOf("Win") == 0;
+  system.x11 = (p == "X11") || (p.indexOf("Linux") == 0);
+  if (system.win  || system.xll) else {
+      window.location.href = " http://www.baidu.com";
+    }
+  }
+</script>
+<script type="text/javascript">
+function getmnconfig(){
+  return {
+    customerId:"",
+    customerName:""
+  };
+}
+</script> 
+<script type="text/javascript" src="__PUBLIC__/xin_mobile/static/js/b912961fe0db4d398b3e5162fa765206.js"></script>
+
+</body></html>

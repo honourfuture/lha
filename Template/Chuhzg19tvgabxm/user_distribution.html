@@ -1,0 +1,159 @@
+<include file="common_header" title="分销"/>
+<include file="Public_header" />
+<include file="Public_page_css" />
+        <p class="curr">
+            <a>分销管理</a>&gt;&gt;
+            <span>分销列表({:getUsername($uid)})的所有下线</span>
+        </p>
+        <div class="content">
+            <div class="list_main">
+              <div class="title">
+                    <form action="{:U('user_list')}" method="get">
+                        <input type="hidden" name="online" value="{$_GET['online']}"/>
+                        <p>
+                         {:dataarr($results,$uid)}
+						    <label>充值总额：</label><label>{$tixian}</label>&nbsp;&nbsp;&nbsp;&nbsp;
+							<label>提现总额：</label><label>{$chongzhi}</label>
+                        </p>
+                      
+                    </form>
+                </div>
+                <div class="width_table">
+	                <table style="width:1900px;">
+	                    <tbody>
+	                        <tr>
+	                            <th>ID</th>
+	                            <th>姓名</th>
+	                            <th>手机号</th>
+	                            <th>状态</th>
+	                            <th>分销等级</th>
+                              <th> 充值总额</th>
+    		
+    			<th>提现总额</th>
+	                            <th>账户余额</th>
+	                            <th>账户积分</th>
+								<th>提现总额</th>
+								<th>投资总额</th>
+								<th>待收利息</th>
+								<th>待收本金</th>
+								<th>成长值</th>
+								<th>时间</th>
+								<!--<th>登录IP</th>-->
+	                            <th>冻结</th>
+	                            <th style="width:200px">操作</th>
+	                        </tr>
+						
+                           	<volist name="results" id="u">
+                                <tr>
+                                    <td>{$u.id}</td>
+                                    <td>{$u.name}</td>
+                                    <td>{$u.phone}</td>
+                                    <td>
+                                        <if condition="getUserStatus($u['id']) eq 1">
+                                            <p style="background-color:#5cb85c;color:#fff;">在线</p>
+                                            <else/>
+                                            <p style="background-color:#ccc;color:#fff;">离线</p>
+                                        </if>
+                                    </td>
+									
+                                    <td>{:getUserMember($u['member'])}</td>
+                                   <td>{$u.sum}</td>
+                 
+                    <td> {$u.tixiansum}</td>
+                                    <td>{$u.money}</td>
+                                    <td>{$u.jifen}</td>
+                                    <td>{:getUserCashMoney($u['id'])}</td>
+                                    <td>{:getUserInvestMoney($u['id'])}</td>
+                                    <td>{:getUserUnIncome($u['id'])}</td>
+                                    <td>{:getUserUnPrincipal($u['id'])}</td>
+                                    <td>{$u.value}</td>
+                                    <td>注册时间：{$u.time}
+                                        <br>最近操作：{:date('Y-m-d H:i:s',$u['logintime'])}
+                                    </td>
+                                    <!--<td>500.00</td>-->
+                                    <td>
+                                        <if condition="$u['clock'] eq 0">
+                                            <p style="background-color:#5cb85c;color:#fff;padding:5px 0;">正常</p>
+                                            <else/>
+                                            <p style="background-color:red;color:#fff;padding:5px 0;">冻结</p>
+                                        </if>
+                                    </td>
+                                    <td>
+                                        <a href="{:U('user_details','id='.$u['id'])}" class="status_three">详情</a>
+                                        <if condition="$u['clock'] eq 0">
+                                            <a href="javascript:;" onclick="upStatus({$u['id']},2)" class="status_four">冻结</a>
+                                            <else/>
+                                            <a href="javascript:;" onclick="upStatus({$u['id']},1)" class="status_one">解冻</a>
+                                        </if>
+											
+                                        	<a href="javascript:;" onclick="upStatus({$u['id']},3)" class="status_four">删除</a><!---->
+                                        	<a href="javascript:;" onclick="fh({$u['id']})" class="status_three">发消息</a><!---->
+                                    </td>
+                                </tr>
+                            </volist>
+	              
+	                    </tbody>
+	                </table>
+                </div>
+                <ul class="page">
+                    {$page}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal inmodal fade" id="myModal7" tabindex="-1" role="dialog"  aria-hidden="true">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4>输入信息</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal"  method="post" action="{:U('chuhzg19tvgabxm/zhannei_add')}" onsubmit="return toVaild()">
+                    <input id="order_id" type="hidden" name="uid" value=""/>
+           
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">消息</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="content" id="kd_dh" placeholder="输入消息" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-8">
+                            <button class="btn btn-sm btn-primary" type="submit" style="float: right">发送</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="__PUBLIC__/Admin/js/bootstrap.min.js?v=2.1.4"></script>
+<script type="text/javascript">
+
+ function fh(order_id) {
+        $("#order_id").val(order_id);
+        $("#myModal7").modal('show');
+    }
+    function upStatus(obj,type){
+        var msg = "";
+        if(type == 1){
+            msg = "确认冻结该分销吗？";
+        }
+        if(type == 2){
+            msg = "确认解冻该分销吗？";
+        }
+        if(type == 3){
+            msg = "确认删除该分销吗？";
+        }
+        if(confirm(msg)){
+//            window.location.href = "/admin/user_update_status/id/"+obj+"/type/"+type+".html?re={:U('')}";
+            window.location.href = "{:U('user_update_status')}?id="+obj+"&type="+type+"&re={:U('')}";
+        }
+    }
+</script>
+<include file="common_footer" menu="menu_user" nav="0"/>

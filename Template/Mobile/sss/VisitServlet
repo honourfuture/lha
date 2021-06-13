@@ -1,0 +1,4 @@
+XtimGlobalObject.setWaitInfo(-1);
+XtimGlobalObject.openOnlineServiceBoxIsShow();
+XtimGlobalObject.startCheckAgentMsgFun();
+

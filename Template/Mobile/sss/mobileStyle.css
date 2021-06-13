@@ -1,0 +1,970 @@
+html,body{
+	color:#505050;
+}
+
+p {margin-bottom: 0;margin-top: 0;}
+
+.msg{position:relative;color:#505050;max-width:75%; padding:6px;line-height:1.5;margin-bottom:10px;-webkit-border-radius:5px;-moz-border-radius:5px;-ms-border-radius:5px;-o-border-radius:5px;border-radius:5px;}
+.msg-title{margin:0 -3px 3px;padding:0 3px 3px;}
+.msg-cursor{position:absolute;top:8px;height:11px;width:6px;}
+.msg-content{word-wrap:break-word;overflow:auto;}
+.msg-content a{text-decoration:underline;}
+.msg-server{float:left;margin-left:10px;margin-top:5px;border:1px solid #C7E78B;background:#fff;border: solid 1px #C3C3C3}
+.msg-client{float:right;margin-right:10px;margin-top:5px;border:1px solid #E6E6E6;background:#E6E6E6;}
+.msg-server .msg-cursor{background:url(arrow_l.png) no-repeat;left:-6px;}
+.msg-client .msg-content{color:#505050;}
+.msg-client .msg-cursor{background:url(arrow_r.png) no-repeat;right:-6px;}
+		
+#container{
+	width:100%;
+	MARGIN: 0px auto;
+    background:#F7F7F7;
+    position: absolute;
+    left:0px;
+    right:0px;
+    top:45px;
+    bottom:73px;
+}
+
+.xtbtnStyle:hover {
+	background: #f47c20;
+}
+
+.xtMobileChatWindowDivStyle{
+	background-color: #FFFFFF;
+	border-color:#F48533;
+}
+
+.xtMobileChatWindowThemStyle{
+	background-color: #FDE2B5;
+}
+
+#xtChatWindowToolbar{
+	width:100%;
+	background-color:#6578ea;
+	position: absolute;
+	left:0px;
+	right:0px;
+	top:0px;
+}
+
+.xtMobileChatWindowShodawStyle{
+	background-color:#DDD;
+}
+
+.agentRowStyle{
+	padding:8px;
+	text-align:left;
+	vertical-align:middle;
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	word-break:keep-all;
+}
+
+.agentGroupStyle{
+	padding:5px;
+	PADDING-LEFT:0px;
+	PADDING-RIGHT:0px;
+	text-align:center;
+	vertical-align:middle;
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	word-break:keep-all;
+	border-top: solid 1px #f5f5f5;
+}
+
+#xtChatWindowSendmsgDiv{
+	height:auto; 
+	width:100%; 
+	background-color:#FFFFFF;
+	border:solid 0px #ccc;
+    border-top-width: 1px;
+}
+
+#xtSendMsgButtonContainer{
+	width:70px;
+	text-align:center;
+}
+
+#xtChatWindowMsgInputBox{
+	width:100%;
+	padding:2px;
+	border:solid 0px #ccc;
+	border-bottom-width: 1px;
+	color: #666;
+	background-color: transparent;
+	min-height:25px;
+	max-height:120px;
+	outline:none;
+	vertical-align:middle;
+	font-size: 15px; 
+	word-wrap: break-word; 
+	word-break: break-all;
+	-webkit-user-modify: read-write-plaintext-only;
+	overflow-x:hidden;
+    overflow-y:auto;
+}
+
+#faceButton{
+	border: 0px;
+	width:32px;
+	height:32px;
+	background: url(chatting_img.svg) center no-repeat;
+	outline: none;
+}
+
+#uploadfileButton{
+   	float:left;
+	border: 0px;
+	width:22px;
+	height:22px;
+	overflow: hidden;
+	background: url(uploadfile.svg) no-repeat;
+	outline: none;
+	margin-left: 12px;
+	display: inline-block;
+	margin-top: 3px;
+}
+
+#uploadfile{
+	display:inline-block;
+	width:22px;
+	height:22px;
+	opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+#appraiseButton{
+	float:left;
+	border: 0px;
+	width:22px;
+	height:22px;
+	background: url(appraiseicon.svg) center no-repeat;
+	outline: none;
+	margin-top: 3px;
+    margin-left: 12px;
+    display: inline-block;
+}
+
+#customerinfoButton{
+	float:left;
+	border: 0px;
+	width:22px;
+	height:22px;
+	background: url(customerinfo.svg) center no-repeat;
+	outline: none;
+    margin-left: 12px;
+    display: inline-block;
+    margin-top: 4px;
+}
+
+#miniTelphoneButton{
+	float:left;
+	border: 0px;
+	width:22px;
+	height:22px;
+	background: url(gophone.svg) center no-repeat;
+	outline: none;
+    margin-left: 12px;
+    display: inline-block;
+    margin-top: 4px;
+}
+
+#imgButton{
+	float:left;
+	border: 0px;
+	width:22px;
+	height:22px;
+	overflow: hidden;
+    display: inline-block;
+	background: url(insertimg.svg) no-repeat;
+	outline: none;
+    margin-left: 8px;
+    margin-top: 3px;
+}
+
+#uploadimg{
+	display:inline-block;
+	width:22px;
+	height:22px;
+	opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+#gobacklabel{
+	float:left;
+	line-height: 45px;
+	margin-left: 5px;
+	color:#FFF;
+	font-size: 24px;
+	margin-right:5px;
+	font-family:Verdana, Geneva, sans-serif;
+}
+
+#titlelabel{
+	float:left;
+	line-height: 45px;
+	margin-left: 5px;
+	color:#FFF;
+}
+
+
+#changeagentbuttoncontainer{
+	float:right;
+}
+
+#gophonenumber{
+	float:right;
+	border: 0px;
+	padding:0px;
+	margin-top:10px;
+	margin-right:10px;
+	width:42px;
+	height:32px;
+	background: url(phoneicon.svg) no-repeat;
+	background-size:24px 24px;
+	display: none;
+}
+
+#agentheadicon{
+	border-radius:50%;
+	float:left;
+	width:35px;
+	height:35px;
+	margin-top: 5px;
+	margin-left: 5px;
+	display: none;
+}
+
+#changeAgentbutton{
+	display: inline-block;
+	border: 0px;
+	margin-top:6px;
+	width:42px;
+	height:32px;
+	background: url(contact_list.svg) no-repeat;
+	background-size:32px 32px;
+	outline: none;
+}
+
+#xtChatWindowMsgBox{
+	padding: 2px;
+	padding-top:5px;
+	height:100%;
+	overflow:auto;
+	text-align: left; 
+	word-wrap: break-word; 
+	word-break: break-all;
+	-webkit-overflow-scrolling: touch;
+}
+
+#xtSendMsgButton{
+	color: #fff;
+	border:0px;
+	padding:10px 5px 10px 5px;
+	background: #5892fe;
+	-webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+ 	text-align: center;
+	text-decoration: none;
+	width:60px;
+	text-align: center;
+	height:30px;
+	line-height: 12px;
+	outline: none;
+}
+
+#maincontainer{
+	height:100%
+}
+
+#xtsendMsgInputSubDiv{
+	padding-left:5px;
+	padding-right:5px;
+}
+
+#faceButtonDiv{
+	width:45px;
+	vertical-align: middle;
+	text-align: center;
+	padding-top:3px;
+}
+
+#xtChatWindowDiv * {
+	border:none;
+	width:auto;
+	height:auto;
+	font-size:12px;
+	padding: 0px;
+    margin: 0px;
+}
+
+#xtChatWindowDiv{
+	position: fixed;
+	border: solid 1px #6578ea;
+	right:5px;
+	bottom:50px;
+	width:70%;
+	 -webkit-box-shadow:0 0 3px #0CC;  
+    -moz-box-shadow:0 0 3px #0CC;  
+    box-shadow:0 0 3px #0CC; 
+    z-index: 2147483647;
+    padding: 0px;
+    margin: 0px;
+}
+
+#xtmsgtitlecontainer{
+	display:block;
+	width:100%;
+	background: #6578ea;
+	height:28px;
+	color:#fff;
+	padding: 0px;
+    margin: 0px;
+}
+
+#xtmsgtitlecontainerlabel{
+	float:left;
+	width:auto;
+	margin: 3px;
+	padding:0px;
+}
+
+#xtmsgtitlecontainerclosebutton{
+	float:right;
+	width:25px;
+	height:25px;
+	margin: 3px;
+	padding:0px;
+}
+
+#xtmsgbodycontainer{
+	background: #fff;
+}
+
+#xtmsgbodycontainercontext{
+	padding: 3px;
+	border: none;
+}
+
+
+#xtmsgbuttoncontainer{
+	background: #fff;
+	height:40px;
+	vertical-align: middle;
+}
+
+#xtmsgbuttonopenbutton{
+	float:right;
+	display: inline-block;
+	color: #fef4e9;
+	border:0px;
+	padding:5px 5px 5px 5px;
+	background: #5892fe;
+	-webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+ 	text-align: center;
+	text-decoration: none;
+	margin:3px;
+	width:60px;
+	height:auto;
+}
+
+#xtOnlineServiceDiv * {
+	border:none;
+	width:auto;
+	height:auto;
+}
+
+#xtOnlineServiceIcon{
+	position:fixed;
+	border:none;
+	width:auto;
+	height:auto;
+    z-index: 2147483647;
+}
+
+.xtOnlineServiceDivstyle{
+	width:auto;
+	height:auto;
+	position: fixed;
+	border:solid 1px #ccc;
+	background: #f0f0f0;
+	padding:5px;
+	vertical-align:middle;
+   -webkit-box-shadow:0 0 3px #0CC;  
+   -moz-box-shadow:0 0 3px #0CC;  
+   box-shadow:0 0 3px #0CC;
+   height:auto;
+}
+
+#agentscontainer{
+	display:none;
+	position:absolute;
+	left:0px;
+	top:45px;
+	right:0px;
+	background: #fff;
+	border-bottom: solid 1px #ccc;
+   -webkit-box-shadow:0 0 3px #0CC;  
+    -moz-box-shadow:0 0 3px #0CC;  
+    box-shadow:0 0 3px #0CC;  
+}
+
+.xtsitelinkstyle{
+	display:none;
+}
+
+#agentNameTitle{
+	line-height:20px;
+	font-size:15px;
+	margin-top: 3px;
+}
+
+#agentSignature{
+	line-height:20px;
+	font-size:12px;
+}
+
+
+#xtminititletab{
+	float:right;
+	color:#5892fe;
+	margin-top: 6px;
+	margin-right: 5px;
+	cursor: pointer;
+	display:none;
+}
+
+#xtmsgrobotbodycontainercontext{
+	padding: 3px;
+	border: none;
+	height:100%;
+	margin: 0px 0px 0px 0px;
+	overflow:scroll;
+	display: none;
+}
+
+#miniwinwaitingpanel{
+	margin: 0px;
+	padding:0px;
+	width:100%;
+	height:25px;
+	line-height:25px;
+	text-align:center;
+    border-bottom:solid 1px #ccc;
+    background-color:#ffffff;
+	display:none;
+}
+
+#chattoolbar{
+	height:32px;
+	background: #f5f5f5;
+}
+
+
+#miniappraiseWindowBox{
+	width:85%;
+	height:auto;
+	word-wrap: break-word; 
+	word-break: break-all;
+	border: solid 1px #ccc;
+	border-radius:5px;
+	-webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    clear: both;
+    color:#666;
+    margin: 0px 0px 8px 25px;
+    padding:3px;
+    background: #fff;
+    position: relative;
+}
+
+#miniappraisesubmitbutton{
+	color: #fff;
+	border:0px;
+	background: #5892fe;
+	-webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+ 	text-align: center;
+	text-decoration: none;
+	width:100px;
+	height:30px;
+	display: inline-block;
+}
+
+.miniappraiseitem{
+	width:100%;
+	height:25px;
+	line-height:25px;
+	vertical-align: middle;
+	text-align: left;
+	padding-left:5px;
+	margin: 0px 0px 0px 0px;
+	padding:0px;
+}
+
+#miniappraiseTitle{
+	width:100%;
+	height:20px;
+	padding:2px;
+	vertical-align: middle;
+	text-align: center;
+	margin: 0px 0px 0px 0px;
+	padding:0px;
+}
+
+#miniappraisesubmitlayout{
+	height:35px;
+	width:100%;
+	text-align: center;
+	vertical-align: middle;
+	padding-top:5px;
+	margin: 0px 0px 0px 0px;
+	padding:0px;
+}
+
+#miniappraiseremarks{
+	width:95%;
+	margin-left: 5px;
+	height:30px;
+	border:solid 1px #f5f5f5;
+	resize:none;
+	outline: none;
+	overflow: auto;
+}
+
+#miniappraiseItems{
+	margin: 0px 0px 0px 0px;
+	width:100%;
+	padding:0px;
+}
+
+#miniappraiseremarklayout{
+	border: none;
+	width:100%;
+	height:auto;
+	margin: 0px 0px 0px 0px;
+	padding:0px;
+}
+
+
+#miniCustomerInfoWindowBox{
+	width:85%;
+	height:auto;
+	word-wrap: break-word; 
+	word-break: break-all;
+	border: solid 1px #ccc;
+	border-radius:5px;
+	-webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    clear: both;
+    margin:0px;
+    margin-left: 25px;
+    color:#666;
+    margin-bottom: 8px;
+    padding:3px;
+    background: #fff;
+    position: relative;
+}
+
+.mnclosePanelIcon{
+	position: absolute;
+	top:7px;
+	right:7px;
+	width:13px;
+	height:13px;
+	background:url(closewin.png) no-repeat;
+}
+
+.minicustomerinforow{
+	margin: 0px 0px 0px 0px;
+	width:100%;
+	padding:0px;
+}
+
+#minicustomerinfosubmitbutton{
+	color: #fff;
+	border:0px;
+	background: #5892fe;
+	-webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+ 	text-align: center;
+	text-decoration: none;
+	width:100px;
+	height:30px;
+	display: inline-block;
+}
+
+#minicustomersubmitlayout{
+	height:35px;
+	width:100%;
+	text-align: center;
+	vertical-align: middle;
+	padding-top:5px;
+	margin: 0px 0px 0px 0px;
+	padding:0px;
+}
+
+#minacustomerInfoTitle{
+	width:100%;
+	height:20px;
+	line-height:20px;
+	padding:2px;
+	vertical-align: middle;
+	text-align: center;
+	margin: 0px 0px 0px 0px;
+	padding:0px;
+}
+
+#minicustomercontent{
+	width:100%;
+	padding:5px;
+	margin: 0px 0px 0px 0px;
+	padding:0px;
+}
+
+.minicustomerinputTextStyle
+{
+	border:solid 1px #dedede;
+	padding:8px;
+	-webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    width:90%;
+    margin:5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color:#999;
+}
+
+#sendmsglayout{
+	position: absolute;
+	left:0px;
+	right:0px;
+	bottom:0px;
+}
+
+
+#miniTelpanelWindowBox{
+	width:250px;
+	height:auto;
+	border: solid 1px #ccc;
+	border-radius:5px;
+	-webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    clear: both;
+    margin:0px;
+    margin-left: 8px;
+    color:#666;
+    margin-bottom: 8px;
+    padding:5px;
+    background-color: #ffffff
+}
+
+#mntelpaneltitle{
+	height:auto;
+	width:100%;
+	margin:0px;
+	margin-bottom:1px;
+	padding:3px;
+	text-align: center;
+	color:#666;
+}
+
+#mntelpaneldesc{
+	height:auto;
+	width:100%;
+	margin:0px;
+	padding:1px;
+	padding-left:5px;
+	text-align: left;
+	color:#999;
+}
+
+#mntelpaneldesc ul{
+	margin: 2px;
+    padding: 0px 0px 0px 20px;
+}
+
+#mntelpaneldesc ul li{
+	 list-style-type:disc;
+	 color:#999;
+	 float:none;
+}
+
+#mntelpanelinput{
+	height:auto;
+	width:100%;
+	margin:0px;
+	padding:0px;
+	color:#666;
+	display: table;
+    border-collapse: separate;
+}
+
+#mntelpanelinput input:first-child{
+    border: solid 1px #9f89fc;
+    padding: 3px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    color: #999;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    height:30px;
+    display: table-cell;
+    vertical-align: middle;
+    width:100%;
+    box-sizing: border-box;
+}
+
+#mntelpanelinput span{
+	background-color: #9f89fc;
+	padding: 0px 0px 0px 0px;
+	border:0px;
+    text-align: center;
+    border-radius: 5px;
+    border-left: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    height:30px;
+    width:50px;
+    display: table-cell;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+#mntelpanelinput div{
+	height:22px;
+	width:22px;
+	background: url(gophone1.png) no-repeat;
+	border:0px;
+	padding:0px;
+	margin: 0px;
+	display:inline-block;
+	margin-top: 3px;
+}
+
+#mntelpanelfooter{
+	height:auto;
+	width:100%;
+	margin:0px;
+	padding:3px;
+	color:#ff4f4f;
+	text-align: center;
+}
+
+.mnSoundRecordIcon{
+	border: 0px;
+    width: 32px;
+    height: 32px;
+    background: url(soundRecord.svg) center no-repeat;
+    outline: none;
+    margin-left:5px;
+    display: none;
+}
+
+.mnTextInputIcon{
+	border: 0px;
+    width: 32px;
+    height: 32px;
+    background: url(keyboard.svg) center no-repeat;
+    margin-left:5px;
+    outline: none;
+}
+
+#mnSoundRecordButton{
+	border: solid 1px #C3C3C3;
+    width: 100%;
+	height: 25px;
+	outline: none;
+	border-radius: 5px;
+	text-align:center;
+	padding:3px;
+	user-select:none;
+	display: none;
+}
+
+#mnSoundRecordButton:active{
+	background: #f5f5f5;
+}
+
+#mnsendproductbutton{
+	color: #fff;
+	border:0px;
+	padding:10px 5px 10px 5px;
+	background: #5892fe;
+	-webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+ 	text-align: center;
+	text-decoration: none;
+	width:auto;
+	text-align: center;
+	height:30px;
+	line-height: 12px;
+	outline: none;
+}
+
+#mnnewsMsgContainer{
+	width:100%;
+	max-width: 300px;
+	height: auto;
+	padding: 0px;
+    margin: 0px;
+    cursor: pointer;
+    border: 1px solid  #cccccc;
+    background-color: #ffffff;
+}
+
+#mnnewsMsgImg{
+	width:100%;
+	height: auto;
+	max-height:200px;
+	padding: 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+
+#mnnewsMsgImg img{
+	border: 0;
+	width: 100%;
+	height: auto;
+}
+
+#mnnewsMsgTitle{
+	width:95%;
+	height: auto;
+	padding: 0px;
+	padding-top:5px;
+	padding-bottom:5px;
+    margin: 0px;
+    font-size: 16px;
+    white-space:nowrap; 
+    overflow:hidden;
+    text-decoration: none;
+}
+
+#mnnewsMsgTitle span{
+	padding: 5px;
+}
+
+#mnnewsMsgDesc{
+	width:95%;
+	height: auto;
+	max-height:30px;
+	padding: 0px;
+	padding-bottom:5px;
+    margin: 0px;
+    color:#999999;
+    overflow: hidden;
+    text-decoration: none;
+    padding-left: 5px;
+}
+
+#mnnewsMsgDesc span{
+	padding: 5px;
+	word-wrap:break-word;
+}
+
+
+.agentListverticalStyle{
+	 position: fixed;
+	 max-width: 80px;
+	 width:auto;
+	 height:auto;
+	 padding:5px 5px 5px 5px;
+	 margin:0px;
+	 background-color: #6578ea;
+	 font-size: 12px;
+	 color: #ffffff;
+	  border-radius: 5px;
+}
+
+.agentListhorticalStyle{
+	 position: fixed;
+	 max-height: 80px;
+	 width:auto;
+	 height:auto;
+	 padding:5px 5px 5px 5px;
+	 margin:0px;
+	 background-color: #6578ea;
+	 font-size: 12px;
+	 color: #ffffff;
+	 border-radius: 5px;
+}
+
+.mnagentlistitemverticalStyle{
+	 margin: 0px;
+     padding: 0px;
+     list-style: none;
+}
+
+.mnagentlistitemverticalStyle li{
+	 margin: 0px;
+	 float:none;
+	 position: relative;
+	 text-align: center;
+	 box-sizing: border-box;
+	 padding: 5px 0px 16px 0px; 
+	 border-bottom: 1px solid #fff;
+	 width:auto;
+	 height:auto;
+}
+
+.mnagentlistitemverticalStyle li img{
+	border:0px;
+	vertical-align: middle;
+}
+
+.mnagentlistitemverticalStyle li a{
+	color:#ffffff;
+	text-decoration: none;
+}
+
+.mnagentlistitemverticalStyle li:last-child{
+	border-bottom: 0px;
+	padding: 5px 5px 5px 5px;
+}
+
+
+.mnagentlistitemhorticalStyle{
+	 margin: 0px;
+     padding: 0px;
+     list-style: none;
+}
+
+.mnagentlistitemhorticalStyle li{
+	 margin: 0px;
+	 float: left;
+	 position: relative;
+	 text-align: center;
+	 box-sizing: border-box;
+	 padding: 0px 16px 0px 5px; 
+	 border-right: 1px solid #fff;
+	 width:auto;
+	 height:auto;
+}
+
+.mnagentlistitemhorticalStyle li img{
+	border:0px;
+	vertical-align: middle;
+}
+
+.mnagentlistitemhorticalStyle li a{
+	color:#ffffff;
+	text-decoration: none;
+}
+
+.mnagentlistitemhorticalStyle li:last-child{
+	border-right: 0px;
+	padding: 10px 5px 5px 10px;
+}
+

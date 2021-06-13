@@ -1,0 +1,58 @@
+<include file="common_header" title="会员管理"/>
+        <p class="curr">
+            <a>会员管理</a>&gt;&gt;
+            <span>会员关联网</span>
+        </p>
+        <div class="content">
+            <div class="list_main">
+                <div class="title">
+                    <form action="{:U('user_relation')}" method="get">
+                        <p>
+                           <label>搜索</label><input type="text" class="txt" name="phone" value="{$_GET['phone']}" style="width:200px;" placeholder="会员手机号码">
+                           <label>类型</label>
+                            <select name="type">
+                                <option value="1" <if condition="$_GET['type'] eq 1"> selected="selected"</if>>查看上级</option>
+                                <option value="2" <if condition="$_GET['type'] eq 2"> selected="selected"</if>>查看下级</option>
+                            </select>
+                           <input type="submit" class="sub1" value="查询">
+                        </p>
+                    </form>
+                </div>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>序号</th>
+                            <th>手机号</th>
+                            <th>姓名</th>
+                            <th>余额</th>
+                            <th>是否认证</th>
+                            <th>推荐人手机号</th>
+                            <th>操作</th>
+                        </tr>
+                        <volist name="user" id="u">
+                            <tr>
+                                <td>{$u.id}</td>
+                                <td>{$u.phone}</td>
+                                <td>{$u.name}</td>
+                                <td>{$u.money}</td>
+                                <td>
+                                    <if condition="$u['auth'] eq 0">
+                                        未认证
+                                        <else/>
+                                        已认证
+                                    </if>
+                                </td>
+                                <td>{:getUserPhone($u['top'])}</td>
+                                <td><a href="{:U('user_details','id='.$u['id'])}" target="_blank" class="look">查看详情</a></td>
+                            </tr>
+                        </volist>
+                    </tbody>
+                </table>
+                <ul class="page">
+                    {$page}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<include file="common_footer" menu="menu_user" nav="2"/>

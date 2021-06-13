@@ -1,0 +1,97 @@
+<include file="common_header" title="系统管理"/>
+        <p class="curr">
+            <a>系统管理</a>&gt;&gt;
+            <span>幻灯片设置</span>
+        </p>
+        <div class="content">
+            <div class="list_main">
+                <div class="title">
+                    <form action="{:U('system_banner')}" method="get">
+                        <p>
+                           <label>幻灯片类型</label>
+                           <select name="type">
+                               <option value="0" <if condition="$_GET['type'] eq 0"> selected="selected"</if>>全部</option>
+                               <option value="1" <if condition="$_GET['type'] eq 1"> selected="selected"</if>>电脑幻灯片</option>
+                               <option value="2" <if condition="$_GET['type'] eq 2"> selected="selected"</if>>手机幻灯片</option>
+							   <option value="3" <if condition="$_GET['type'] eq 3"> selected="selected"</if>>合作伙伴图片</option>
+                           </select>
+                           <input type="submit" class="sub1" value="查询">
+                           <a href="{:U('system_banner_add')}" class="two">添加幻灯片</a>
+                            <a href="javascript:;" onclick="delCheck()" class="four">批量删除</a>
+                        </p>
+                    </form>
+                </div>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th><input type="checkbox" id="selectAll"></th>
+                            <th>图片</th>
+                            <th>图片路径</th>
+                            <th>链接地址</th>
+                            <th>类型</th>
+                            <th>排序</th>
+                            <th>状态</th>
+                            <th>操作</th>
+                        </tr>
+                        <volist name=":getData('slide','all',$where,$limit,'id,sort asc')" id="s">
+                            <tr>
+                                <td><input type="checkbox" name="ck[]" value="{$s.id}"></td>
+                                <td><img src="__PUBLIC__/uploads/slide/{$s.path}"></td>
+                                <td><span title="其他地方请直接调用">__PUBLIC__/uploads/slide/{$s.path}</span></td>
+                                <td>{$s.url}</td>
+                                <td>
+                                    <if condition="$s['type'] eq 1">
+                                        电脑幻灯片
+										 </if>
+                                        <if  condition="$s['type'] eq 2">
+                                        手机幻灯片
+										</if>
+										 <if  condition="$s['type'] eq 3">
+										 合作伙伴图片
+                                    </if>
+                                </td>
+                                <td>{$s.sort}</td>
+                                <td>
+                                    <if condition="$s['show'] eq 1">
+                                        显示
+                                        <else/>
+                                        隐藏
+                                    </if>
+                                </td>
+                                <td>
+                                    <a href="{:U('system_banner_edit','id='.$s['id'])}" class="update">编辑</a>
+                                    <a href="javascript:;" onclick="delList({$s.id})" class="del">删除</a>
+                                </td>
+                            </tr>
+                        </volist>
+                    </tbody>
+                </table>
+                <ul class="page">
+                    {$page}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function delList(obj){
+        if(confirm("确认删除这条记录吗？")){
+//            window.location.href = "/admin/dellist/data/slide/list/"+obj+".html?re={:U('system_banner')}";
+            window.location.href = "{:U('dellist')}?data=slide&list="+obj+"&re={:U('system_banner')}";
+        }
+    }
+    function delCheck(){
+        var arr = new Array();
+        $("input[name='ck[]']:checked").each(function(i){
+            arr[i] = $(this).val();
+        });
+        var vals = arr.join(",");
+        if(vals != ""){
+            delList(vals);
+        }
+        else{
+            alert("请选择需要删除的内容！");
+        }
+    }
+</script>
+<include file="common_footer" menu="menu_system" nav="2"/>

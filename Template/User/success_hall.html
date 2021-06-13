@@ -1,0 +1,77 @@
+<include file="Mobile:header" nav="{$Think.lang.cityPartner}"/>
+<div class="mobile">
+    <div class="othertop">
+        <a class="goback" href="javascript:history.back();"><img src="__PUBLIC__/mobile/img/goback.png" /></a>
+        <div class="othertop-font">{$Think.lang.achievementHall}</div>
+    </div>
+    <!-- 推荐有奖 -->
+    <div class="company">
+	    <div class="firends_to">
+	    	<a style="width: 100%;" id="inteCode"><img src="__PUBLIC__/mobile/img/code.png" /><span style="width:4rem;">邀请二维码 推荐人ID:({$uid})</span></a>
+	    </div>
+    </div>
+
+    <div style="padding: .4rem .1rem;">
+    <div class="task">
+        <h3 class="title"><i></i>{$Think.lang.achievementHall}<i></i></h3>
+        <ul>
+            <volist name="userMembers" id="userMember">
+            <li>
+                <img src="__PUBLIC__/uploads/icon-sigin.png" alt="">
+                <div class="info">
+                    <p class="t">
+                        <span>{$userMember.name}</span>
+                        <img src="__PUBLIC__/uploads/icon-gold.png">
+                        <span class="red">{$userMember.cash_reward} {$Think.lang.unitSymbol}</span>
+                    </p>
+                    <p class="desc">{$Think.lang.needInvite}: {$userMember.hasSubUser}/{$userMember.value}</p>
+                </div>
+                <a href="javascript:void(0)" <if condition="$userMember['allowReceive'] eq 0">onclick="receive({$userMember['id']})"</if>>
+                    <if condition="$userMember['isReceive'] eq 0">{$Think.lang.receive}</if>
+                    <if condition="$userMember['isReceive'] eq 1">{$Think.lang.received}</if>
+                </a>
+            </li>
+            </volist>
+        </ul>
+    </div>
+    </div>
+</div>
+<script type="text/javascript">
+
+    function receive(id) {
+        var url = "/handle/receive";
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: {user_member: id},
+            dataType: "json",
+            success: function (result) {
+                if (result['code'] == "000") {
+                    msg("提示",result['msg'],2,'/user/success_hall.html');
+                } else {
+                    if(result['code'] == "003"){
+                        msg("错误",result['msg'],2,'/user/certification.html');
+                    }
+                    else{
+                        msg("错误",result['msg'],2,'/user/success_hall.html');
+                    }
+                }
+            },
+            error: function () {
+                msg("错误","网络繁忙，签到失败！",1);
+            }
+        });
+    }
+    $().ready(function(){
+    	$("#inteCode").click(function(){
+    		$(".cover_bg").show();
+    	});
+    	$(".cover_bg").click(function(){
+            $(".cover_bg").hide();
+        });
+
+
+    });
+</script>
+</body>
+</html>

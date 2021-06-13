@@ -1,0 +1,146 @@
+<include file="common_header" title="文章管理"/>
+        <p class="curr">
+            <a>文章管理</a>&gt;&gt;
+            <span>文章类型</span>
+        </p>
+        <div class="content">
+            <div class="list_main">
+                <div class="title">
+                    <a class="two" onclick="showDiv('mask_add')">添加类型</a>
+                    <a href="javascript:;" onclick="delCheck()" class="four">批量删除</a>
+                </div>
+                <table>
+                    <tbody>
+
+                    <tr>
+                        <th><input type="checkbox" id="selectAll"></th>
+                        <th>编号</th>
+                        <th>类型名称</th>
+                        <th>类型图标</th>
+                        <th>排序</th>
+                        <th>电脑版显示</th>
+                        <th>操作</th>
+                    </tr>
+                    <volist name=":getData('article_type','all','','','sort')" id="t">
+                        <tr>
+                            <td><input type="checkbox" name="ck[]" value="{$t.id}"></td>
+                            <td data-id="{$t.id}">{$t.id}</td>
+                            <td data-name="{$t.name}">{$t.name}</td>
+                            <td data-name="{$t.ico}">{$t.ico}</td>
+                            <td data-sort="{$t.sort}">{$t.sort}</td>
+                            <td data-show="{$t.show}"> <if condition="$t['show'] eq 0">否<else/>是</if></td>
+                            <!--<td data-show="{$t.show}">
+                                <if condition="$t['show'] eq 0">
+                                    <div class="iosopen close">
+                                        <div class="ios no on"></div>
+                                        <span class="off no on">否</span>
+                                    </div>
+                                    <else/>
+                                    <div class="iosopen">
+                                        <div class="ios"></div>
+                                        <span class="off">是</span>
+                                    </div>
+                                </if>
+                            </td>-->
+                            <td>
+                                <a href="javascript:void(0);" class="update">编辑</a>
+                                <a href="javascript:;" onclick="delList({$t.id})" class="del">删除</a>
+                            </td>
+                        </tr>
+                    </volist>
+                    </tbody>
+                </table>
+                <ul class="page">
+                    {$page}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="mask_add" class="mask">
+    <form class="popup" action="{:U('article_type_add')}" method="post">
+        <h3>添加类型<span onclick="closeDiv('mask_add')">×</span></h3>
+        <p>
+            <label>类型名称</label>
+            <input name="name" type="text">
+        </p>
+        <p>
+            <label>显示排序</label>
+            <input name="sort" type="number" min="0" max="99999">
+        </p>
+        <p>
+            <label>电脑显示</label>
+            <select name="show">
+                <option value="1">是</option>
+                <option value="0">否</option>
+            </select>
+        </p>
+        <p>
+            <label>分类图标</label>
+            <select name="ico">
+                <option value="notice">网站公告</option>
+                <option value="company">公司简介</option>
+                <option value="user">会员等级</option>
+                <option value="safe">安全保障</option>
+                <option value="tel">联系我们</option>
+                <option value="photo">平台资质</option>
+                <option value="pay">支付方式</option>
+                <option value="help">帮助中心</option>
+            </select>
+        </p>
+        <p><input type="submit" class="sub" value="确定添加"></p>
+    </form>
+</div>
+<div id="mask_edit" class="mask"></div>
+<script>
+    $().ready(function(){
+        $("tr .update").click(function(){
+            $("#mask_edit").empty();
+            var id = $(this).parent().prevAll("td:nth-child(2)").attr("data-id");
+            var name = $(this).parent().prevAll("td:nth-child(3)").attr("data-name");
+            var sort = $(this).parent().prevAll("td:nth-child(5)").attr("data-sort");
+            var show = $(this).parent().prevAll("td:nth-child(6)").attr("data-show");
+            var showvar = "";
+            if(show==0){
+                showvar = "<p><label>电脑显示</label><select name='show'><option value='1'>是</option><option value='0' selected='selected'>否</option></select></p>";
+            }
+            else{
+                showvar = "<p><label>电脑显示</label><select name='show'><option value='1' selected='selected'>是</option><option value='0'>否</option></select></p>";
+            }
+            var html1 = "<form class='popup' action='{:U(\"article_type_edit\")}' method='post'>\
+    		             <h3>修改文章类型<span class='close_div'>×</span></h3>\
+    		             <p><label>类型名称</label><input type='text' name='name' value='"+name+"'></p>\
+    		             <p><label>显示排序</label><input type='number' name='sort' min='0' max='99999' value='"+sort+"'></p>\
+    		             "+showvar+"\
+    		             <p> <label>分类图标</label> <select name='ico'> <option value='notice'>网站公告</option> <option value='company'>公司简介</option> <option value='user'>会员等级</option> <option value='safe'>安全保障</option> <option value='tel'>联系我们</option> <option value='photo'>平台资质</option> <option value='pay'>支付方式</option> <option value='help'>帮助中心</option> </select> </p>\
+    		             <input type='hidden' name='id' value='"+id+"'>\
+    		             <p><input type='submit' class='sub' value='确定修改'></p>\
+    		         </form>"
+            $("#mask_edit").append(html1);
+            $("#mask_edit").show();
+        });
+        $('#mask_edit').on('click','.close_div',function(){
+            $("#mask_edit").hide();
+        });
+    });
+    function delList(obj){
+        if(confirm("确认删除这条记录吗？")){
+//            window.location.href = "/admin/dellist/data/article_type/list/"+obj+".html?re={:U('article_type')}";
+            window.location.href = "{:U('dellist')}?data=article_type&list="+obj+"&re={:U('article_type')}";
+        }
+    }
+    function delCheck(){
+        var arr = new Array();
+        $("input[name='ck[]']:checked").each(function(i){
+            arr[i] = $(this).val();
+        });
+        var vals = arr.join(",");
+        if(vals != ""){
+            delList(vals);
+        }
+        else{
+            alert("请选择需要删除的内容！");
+        }
+    }
+</script>
+<include file="common_footer" menu="menu_article" nav="0"/>

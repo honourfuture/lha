@@ -1,0 +1,68 @@
+<include file="Mobile:header" nav="绑定银行卡"/>
+<div class="mobile">
+    <div class="othertop">
+        <a class="goback" href="{:U('person')}"><img src="__PUBLIC__/mobile/img/goback.png" /></a>
+        <div class="othertop-font">绑定银行卡</div>
+    </div>
+    <div class="header-nbsp"></div>
+<!-- 银行卡 -->
+    <volist name="bank" id="b">
+        <div class="mycard">
+            <p><span class="card_name">{$b.bank}</span><a href="{:U('del_card','id='.$b['id'])}" style="float: right;">删除此卡</a></p>
+            <p><span class="card_type">储蓄卡</span></p>
+            <p>
+                <span class="card_num">{:getBankFirst($b['account'])}</span>
+                <span class="card_num">****</span>
+                <span class="card_num">****</span>
+                <span class="card_num">{:getBankEnd($b['account'])}</span>
+            </p>
+        </div>
+    </volist>
+    <form action="{:U('add_card')}" method="post" class="mycard_add">
+        <h3>添加银行卡</h3>
+        <div class="input_text">
+            <i><img src="__PUBLIC__/mobile/img/icon_card.png"></i>
+            <input type="text" name="bank" id="bank" placeholder="请输入所属银行，如：中国工商银行">
+        </div>
+        <div class="input_text">
+            <i><img src="__PUBLIC__/mobile/img/icon_card.png"></i>
+            <input type="text" name="account" id="account" placeholder="请输入储蓄卡号">
+        </div>
+        <div class="error_tips"></div>
+        <p class="action">
+            <input type="submit" value="提交" class="sub" />
+            <input type="button" value="取消" class="sub del" />
+        </p>
+    </form>
+    <a class="input_btn">+添加银行卡</a>
+<!-- 银行卡  end-->
+
+</div>
+</body>
+<script>
+    $().ready(function(){
+    	$(".input_btn").click(function(){
+    		$(this).css("display","none");
+    		$(".mycard_add").css("display","block");
+    		$(".mycard").css("display","none");
+    	});
+    	$(".del").click(function(){
+            $(".input_btn").css("display","block");
+            $(".mycard_add").css("display","none");
+            $(".mycard").css("display","block");
+        });
+        $(".mycard_add").submit(function(){
+            var bank = $("#bank").val();
+            var account = $("#account").val();
+            if(bank.length < 4){
+                msg("错误","请输入正确的所属银行！",1);
+                return false;
+            }
+            if(account.length < 6){
+                msg("错误","请输入正确的银行卡号！",1);
+                return false;
+            }
+        });
+    });
+</script>
+</html>

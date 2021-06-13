@@ -1,0 +1,38 @@
+<include file="Mobile:header" nav="推广记录"/>
+<div class="mobile">
+    <div class="othertop">
+        <a class="goback" href="javascript:history.back();"><img src="__PUBLIC__/mobile/img/goback.png" /></a>
+        <div class="othertop-font">推广记录</div>
+    </div>
+    <div class="header-nbsp"></div>
+    <div class="record_outer">
+    	<table>
+    		<tr>
+    		  
+                        </p>
+    			<th>时间</th>
+					<th>用户名</th>
+    			<th> 充值总额({$tixian})</th>
+    		
+    			<th>提现总额({$chongzhi})</th>
+    		</tr>
+            <volist name="results" id="i">
+		
+					 <tr>
+             
+                    <td>{:date('m-d H:i',strtotime($i['time']))}</td>
+					   <td>{:getUsername($i['id'])}</td>
+                    <td>{$i.sum}</td>
+                 
+                    <td> {$i.tixiansum}</td>
+                </tr>
+				
+		
+               
+            </volist> 
+			
+    	</table>
+    </div>
+</div>
+</body>
+</html>

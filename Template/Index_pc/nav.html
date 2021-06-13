@@ -1,0 +1,33 @@
+<div class="header-outer">
+    <div class="header">
+        <p class="top-tele"><em></em>财富热线：</p>
+        <span class="tele-num">{:getInfo('tel')}</span>
+        <p class="top-time">服务时间：08:30-22:30  周一到周日</p>
+		<span class="top-bg wechat">
+           <span class="tk"> <img src="__PUBLIC__/uploads/wechat.png"></span>
+        </span>
+        <span class="top-bg top-qq">
+            <span class="tt-bg">
+                <a class="qq-h" href="">{:getInfo('qq')}</a>
+            </span>
+        </span>
+        <span class="top-bg mobile-app">
+            <span class="mobile-er"><img src="__PUBLIC__/uploads/app.png"></span>
+        </span>
+    </div>
+</div>
+<div class="nav-outer">
+    <div class="nav">
+        <a href="/"><img src="__PUBLIC__/uploads/logo.png"></a>
+        <ul>
+            <li><a href="{:U('Index/index')}">公司首页</a></li>
+            <volist name=":getData('article_type','all','`show`=1','','sort')" id="t">
+			
+			<?php if($t["id"]!=4 && $t["id"]!=5 ) { ?>
+                <li><a href="{:U('Index/about','id='.$t['id'])}">{$t.name}</a></li>
+			<?php } ?>
+				
+            </volist>
+        </ul>
+    </div>
+</div>

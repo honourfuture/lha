@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<meta name="format-detection" content="telephone=no, email=no" />
+		<meta charset="UTF-8">
+		<title>订单详情</title>
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/mobile/css/iconfont.css">
+		<link rel="icon" type="image/x-icon" href="favicon.ico">
+		<link href="iTunesArtwork@2x.png" sizes="114x114" rel="apple-touch-icon-precomposed">
+		<link rel="stylesheet" href="__PUBLIC__/mobile/css/web1.css">
+	<script type="text/javascript" src="__PUBLIC__/mobile/js/jquery-1.9.1.min.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/mobile/js/template.js"></script>
+		<script type="text/javascript" src="__PUBLIC__/mobile/js/aui.js"></script>
+	</head>
+
+	<body id="sm_order_html">
+		<script id="sm_order_details" type="text/html">
+			<section class="header_fahuo">
+				<a href="javascript:;" class="you" id="go_back" onClick="javascript :history.go(-1);"><i class="iconfont">&#xe60e;</i></a>
+				<h2>订单详情</h2>
+			</section>
+			<section class="aui-address-content">
+				<div class="mairu_top">
+					<div class="left">
+						<span>
+							<% if(o.state == 1){%> 待付款
+							<% }else if(o.state == 2){%> 待发货
+							<% }else if(o.state == 3){%> 待收货
+							<% }else {%> 已完成
+							<%}%>
+						</span>
+					</div>
+					<div class="right">
+						<img src="__PUBLIC__/mobile/images/shouhuo.png">
+					</div>
+				</div>
+				<div class="aui-address-box">
+					<div class="aui-address-box-list">
+						<a href="javascript:;" class="aui-address-box-default aui_address_boxcon">
+							<ul>
+								<li>
+									<strong><%=a.name%> <%=a.phone%></strong>
+									<%if(a.default == 1){%><span class="aui-tag aui-tag-default" id="aui-default">默认</span>
+									<%}%>
+								</li>
+								<li>
+									<i class="aui-icon aui-icon-address"></i>
+									<%=a.area%>
+									<%=a.details%>
+								</li>
+							</ul>
+						</a>
+					</div>
+				</div>
+				<div class="aui-dri"></div>
+
+				<div class="aui-list-product-float-item">
+					<% if(g.length >0){%>
+					<%for(i = 0; i < g.length; i ++) {%>
+					<a href="javascript:;" class="aui-list-product-fl-item">
+						<div class="aui-list-product-fl-img">
+							<img src="/Public/uploads/item/<%=g[i].goods_photo%>" alt="">
+						</div>
+						<div class="aui-list-product-fl-text">
+							<h3 class="aui-list-product-fl-title"><%=g[i].goods_name%></h3>
+							<div class="aui-list-product-fl-mes">
+								<div>
+									<span class="aui-list-product-item-price">
+								<em>{$Think.lang.unitSymbol}</em>
+								<%=g[i].goods_price%>
+							</span>
+								</div>
+
+							</div>
+							<div class="aui-list-product-fl-mes" style="margin-top:3px;">
+
+							</div>
+							<div class="aui-list-product-fl-mes" style="margin-top:3px;">
+								<div class="aui-btn-purchase">
+									<p class="p">共<%=g[i].goods_num%>件商品&nbsp;总计:<em>￥<%=g[i].goods_price*g[i].goods_num%></em></p>
+								</div>
+							</div>
+						</div>
+					</a>
+					<%}%>
+					<%}%>
+
+					<div class="daifukuan_xqcon_text">
+						<div class="left" style="width: 100%;">
+
+							<p><span>运费：</span><i>￥<%=o.freight%></i></p>
+							<p><span>实付款：</span><i>￥<%=o.total%></i></p>
+						</div>
+
+					</div>
+				</div>
+				<% if(o.state != 1){%> 
+					<div class="daifukuan_xqcon_fukuanxx">
+						<span>付款信息</span>
+						<p>支付方式：积分支付</p>
+						<p>支付金额：￥<%=o.total%></p>
+					
+						<p>订单时间：2018-06-08</p>
+					</div>
+				<%}%>
+				
+				<% if(o.state > 2){%> 
+				<div class="daifukuan_xqcon_fukuanxx">
+					<span>配送信息</span>
+					<p>配送方式：<%=o.kd_name%></p>
+					<p>配送单号：<%=o.kd_dh%></p>
+				</div>
+				<%}%>
+				<div style="height:60px;"></div>
+
+			</section>
+		</script>
+	</body>
+
+<script>
+$.ajax('/gs/get_order_details', {
+		data: {
+		
+			order_id:{$order_id},
+		
+		},
+		dataType: 'json', //服务器返回json格式数据
+		type: 'post', //HTTP请求类型
+		async: false,
+		timeout: 10000, //超时时间设置为10秒；
+		success: function(res) {
+			console.log(res);
+			if(res.status == 1) {
+				var script = "sm_order_details";
+				var html = template.render(script, {
+					a: res.info.address,
+					o: res.info.order,
+					g: res.info.goods,
+
+				});
+				$("#sm_order_html").html(html);
+			} else {
+				is_error(res.info);
+			}
+
+		},
+		
+	});
+</script>
+</html>

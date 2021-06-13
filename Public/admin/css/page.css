@@ -1,0 +1,87 @@
+.page {
+    clear: both;
+    font-size: 14px;
+    height: 31px;
+    text-align: center;
+    margin: 40px auto;
+}
+
+.page span{
+    color: #999;
+    height: 31px;
+    line-height: 31px;
+    margin: 0 4px;
+}
+
+.page span a {
+    border: 1px solid #e4e4e4;
+    color: #999;
+    cursor: pointer;
+    display: inline-block;
+    height: 29px;
+    line-height: 29px;
+    padding: 0 10px;
+    margin: 0 5px;
+    text-align: center;
+    border-radius: 2px;
+}
+.page .current{
+    padding: 0 10px;
+    background: #189f92 none repeat scroll 0 0;
+    border: 1px solid #189f92;
+    color: #fff;
+    font-weight: bold;
+    display: inline-block;
+    height: 29px;
+    line-height: 29px;
+    border-radius: 2px;
+}
+.page span.current a {
+    background: #189f92 none repeat scroll 0 0;
+    border: 1px solid #189f92;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 2px;
+}
+.page span.current a:hover {
+   color: #fff;
+}
+.page span a:hover {
+    border: 1px solid #189f92;
+    color: #189f92;
+}
+.page span.f-noClick a {
+    background: #f4f4f4 none repeat scroll 0 0;
+    color: #cbcbcb;
+    cursor: default;
+}
+.page span.f-noClick a:hover {
+    border: 1px solid #e6e6e6;
+    color: #cbcbcb;
+}
+
+.page span em {
+    margin: 0 3px;
+}
+
+.page span input {
+    background: #f9f9f9 none repeat scroll 0 0;
+    border-color: #bfbfbf #e6e6e6 #e6e6e6 #bfbfbf;
+    border-style: solid;
+    border-width: 1px;
+    color: #9d9d9d;
+    height: 29px;
+    line-height: 29px;
+    margin-right: 3px;
+    position: relative;
+    text-align: center;
+    width: 45px;
+}
+
+
+
+
+
+
+
+

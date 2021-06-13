@@ -1,0 +1,210 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta id="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<link href="__PUBLIC__/mobile/css/swiper.min.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/mobile/css/web1.css" />
+		
+		<title>提交订单</title>
+	</head>
+
+	<body>
+		<div class="main-container">
+			<div class="header_list">
+				<a href="javascript:;" onClick='javascript :history.go(-1);' class="go_back">
+					<i class="iconfont">&#xe60e;</i>
+				</a>
+				<h3>提交订单</h3>
+			</div>
+			<div style="height:45px;"></div>
+
+			<section class="aui-address-content" id="sm_html">
+			<div id = 'ssss'>
+			</div>
+				
+
+					<div class="aui-dri"></div>
+					<div class="aui-list-product-float-item">
+						<a href="javascript:;" class="aui-list-product-fl-item address">
+							<div class="aui-list-product-fl-img">
+								<img src="/Public/uploads/item/{$goods.photo}" alt="">
+							</div>
+							<div class="aui-list-product-fl-text">
+								<h3 class="aui-list-product-fl-title">{$order_param.goods_name}</h3>
+								<div class="aui-list-product-fl-mes">
+									<div>
+										<span class="aui-list-product-item-price">
+											<em>{$Think.lang.unitSymbol}</em>
+											{$order_param.goods_price}
+										</span>
+									</div>
+									<div class="aui-btn-purchase">
+										<span>x{$order_param.goods_num}</span>
+									</div>
+								</div>
+
+							</div>
+						</a>
+					</div>
+					<div class="aui-address-well">
+						
+						<a href="javascript:;" class="aui-address-cell aui-fl-arrow aui-fl-arrow-clear">
+							<div class="aui-address-cell-bd">
+								<h3 style="font-size: 1rem">商品金额</h3>
+								<p style="font-size: 1rem">运费</p>
+							</div>
+							<div class="aui-address-cell-ft">
+								<span class="aui-red">￥{$order_param.goods_total}</span><br>
+								<span class="aui-red">+￥{$order_param.goods_freight}</span>
+							</div>
+						</a>
+					</div>
+					<div class="aui-address-well">
+						<div class="jine_radio" style="padding:10px 15px;">
+							<p style="margin-bottom: 1rem">支付方式：</p>
+							<ul class="clearfixd zhifu_xuanze">
+								<li class="clearfixd">
+									<input type="radio" name="radio1" value="" checked/>
+									<i></i>
+									<span>积分兑换</span>
+								</li>
+							</ul>
+						</div>
+					</div>
+		
+			</section>
+			<style>
+				
+			</style>
+			<div class="tan_float" style="display: none;">
+				<div class="tan_con">
+					<h3>"已提交订单，请点击确定进行支付"</h3>
+					<div class="tan_input">
+						<input type="hidden" value = "1111" id="two_pwd" placeholder="请输入二级密码" />
+					</div>			
+					<div class="tan_btn">
+						<div class=" quxiao_btn1">取消</div>
+						<div class=" quding_btn" >确定</div>
+					</div>
+				</div>
+			</div>
+			<div style="height:55px;"></div>
+			<div class="gouwuche_bottom clearfixd">
+				<div class="gouwu_bottom_l fr_l">
+					<p>实付款：<span>￥<em id="total"></em></span></p>
+				</div>
+				<div class="gouwu_bottom_r fr_r">
+					<!--<a href="javascript:;" >提交订单</a>-->
+					<a href="javascript:;" onclick="sub_order();">提交订单</a>
+				</div>
+			</div>
+		</div>
+	</body>
+<script type="text/javascript" src="__PUBLIC__/mobile/js/jquery-1.9.1.min.js"></script>
+<script>
+
+$(document).ready(function(){
+        $.ajax({
+            type:"post",
+            url:"/gs/get_sm_order",
+			
+            dataType:"json",
+            success:function(data){
+				 var id_html = "";
+				console.log(data.info);
+				if(data.info.address == null || data.info.address == ""){
+					id_html +='<div class="aui-address-box">';
+					id_html +='<div class="aui-out">';
+					id_html +='<a href="javascript:;" class="address">新建收货地址</a>';
+					id_html +='</div>';
+					id_html +='</div>';
+
+					}else{
+					id_html +='<div class="aui-address-box">';
+						id_html +='<div class="aui-address-box-list">';
+						id_html +='	<a href="javascript:;" class="aui-address-box-default address">';
+						id_html +='		<ul>';
+								id_html +='	<li>';
+						id_html +='				<strong>'+data.info.address.name+'   	'+data.info.address.phone+'</strong>';
+									if(data.info.address.default == 1){
+							id_html +='			<span class="aui-tag aui-tag-default" id="aui-default">默认</span>';
+									}
+						id_html +='			</li>';
+							id_html +='		<li>';
+						id_html +='				<i class="aui-icon aui-icon-address"></i>';
+							id_html +='			'+data.info.address.area+'';
+							id_html +='			'+data.info.address.details+'';
+							id_html +='		</li>';
+							id_html +='	</ul>';
+							id_html +='</a>';
+					id_html +='	</div>';
+				id_html +='	</div>';
+					}
+				$('#ssss').html(id_html);
+				$("#total").text(data.info.total);
+		
+            },
+          
+        });
+		
+		
+		
+$("#ssss").click(function() {
+
+	window.location.href = "sm_address.html?type=1";
+});	
+	$(".quxiao_btn1").click(function() {
+		$(".tan_float").css("display", "none");
+	});
+$(".quding_btn").click(function() {
+
+		var two_pwd = $("#two_pwd").val();
+	$.ajax({
+            type:"post",
+            url:"/gs/pay_order",
+			
+      
+			success: function(res) {
+				console.log(res.status);
+				if(res.status == 1) {
+					alert("兑换成功");
+					window.location.href = "my_order.html?state=2";
+				} else {
+				alert("兑换失败积分不足");
+				
+				
+			
+				}
+
+			},
+		
+		});
+
+	});
+});
+
+function sub_order() {
+	//plus.nativeUI.showWaiting("提交订单中…");
+	  $.ajax({
+            type:"post",
+            url:"/gs/sub_order",
+			
+            dataType:"json",
+	 
+			success: function(res) {
+				console.log(res);
+			if(res.status == 1) {
+					$(".tan_float").css("display", 'block');
+				} else {
+				is_error(res.info);
+			}
+
+		},
+	
+	});
+}
+</script>
+
+</html>

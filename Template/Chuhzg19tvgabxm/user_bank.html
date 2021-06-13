@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>后台管理 - 银行卡</title>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/admin/css/page.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/admin/css/style.css" />
+    <link rel="stylesheet" href="__PUBLIC__/admin/css/jquery.datetimepicker.css"/>
+    <script src="__PUBLIC__/admin/js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/admin/js/jquery.datetimepicker.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/admin/js/public.js"></script>
+</head>
+<body style="min-width: 0;">
+<div class="main" style="min-width: 0;">
+    <div class="main_right">
+        <div class="content">
+            <div class="list_main">
+                <table width="" style="width:460px;">
+                    <tbody>
+                    <tr>
+                        <th>持卡人</th>
+                        <th>手机号码</th>
+                        <th>所属银行</th>
+                        <th>银行卡号</th>
+                    </tr>
+                    <php>$uid = getValue('id');$bank = getData("bank","all","uid='$uid'","","id desc");</php>
+                    <volist name="bank" id="b">
+                        <tr>
+                            <td>{:getUserField($b['uid'],'name')}</td>
+                            <td>{:getUserPhone($b['uid'])}</td>
+                            <td>{$b.bank}</td>
+                            <td>{$b.account}</td>
+                        </tr>
+                    </volist>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<include file="common_footer" menu="menu_user" nav="0"/>

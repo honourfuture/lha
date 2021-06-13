@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<meta name="description" content="微信">
+<title>大转盘</title>
+<script type="text/javascript">var yyuc_jspath = "__PUBLIC__/@system";</script>
+<script type="text/javascript" src="__PUBLIC__/static/js/jquery.js"></script>
+<script type="text/javascript" src="__PUBLIC__/static/js/yyucadapter.js"></script>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/static/css/page.css" />
+<link href="__PUBLIC__/static/css/xym.css" rel="stylesheet" type="text/css">
+<link href="__PUBLIC__/static/css/zwj.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+
+</style>
+</head>
+<body onload="tijiao()">
+
+
+<div class="m_ggl"><!-- start -->
+
+	<div class="m_ylzjxx">
+		<table class="ggltb">
+		<tr>
+		<td class="ggltd"></td>
+		<td><h1>{$now_hd.name}</h1></td>
+		<td class="ggltd"></td>
+		</tr>
+		</table>
+	</div>
+	<br/>
+	<div class="m_ylzjxx"><!-- 恭喜中奖栏目 start -->
+		<empty name='last_ren'>目前还没人中奖，快来试一试。
+		<else />恭喜{$last_ren.tel}获得{$last_ren.jx}等奖
+		</empty>
+	</div><!-- 恭喜中奖栏目 end -->
+	<div class="main" style="background: url('__PUBLIC__/static/images/dzpppq.png') no-repeat top center;background-size: 320px auto;">
+	<div id="rotate_outercont" style="display:block;">
+			<div id="outer-cont">
+				<div id="outer" style="-webkit-transform: rotate(786deg);-moz-transform: rotate(786deg);transform: rotate(786deg);"><img src="__PUBLIC__/static/images/dzp.png"></div>
+			</div>
+			<div id="inner-cont">
+				<div id="inner"><img src="__PUBLIC__/static/images/dzpzz.png"></div>
+			</div>
+	</div>
+	</div>
+	<div class="m_yljpsm" style="margin-top: 0px;">
+	<div class="m_yljpsms">
+	<h2 style="background: url('__PUBLIC__/static/images/stitle.png') no-repeat; color: white;">奖项设置：</h2>
+	<notempty name="now_hd.j1mc">
+		<div class="m_yljpsmnr">{$now_hd.j1mc}：{$now_hd.j1ms}。数量：{$now_hd.j1sl}</div>
+	</notempty>
+	<notempty name="now_hd.j2mc">
+		<div class="m_yljpsmnr">{$now_hd.j2mc}：{$now_hd.j2ms}。数量：{$now_hd.j2sl}</div>
+	</notempty>
+	<notempty name="now_hd.j3mc">
+		<div class="m_yljpsmnr">{$now_hd.j3mc}：{$now_hd.j3ms}。数量：{$now_hd.j3sl}</div>
+	</notempty>
+	<notempty name="now_hd.j4mc">
+		<div class="m_yljpsmnr">{$now_hd.j4mc}：{$now_hd.j4ms}。数量：{$now_hd.j4sl}</div>
+	</notempty>
+	<notempty name="now_hd.j5mc">
+		<div class="m_yljpsmnr">{$now_hd.j5mc}：{$now_hd.j5ms}。数量：{$now_hd.j5sl}</div>
+	</notempty>
+	<notempty name="now_hd.j6mc">
+		<div class="m_yljpsmnr">{$now_hd.j6mc}：{$now_hd.j6ms}。数量：{$now_hd.j6sl}</div>
+	</notempty>
+	<notempty name="now_hd.j7mc">
+		<div class="m_yljpsmnr">{$now_hd.j7mc}：{$now_hd.j7ms}。数量：{$now_hd.j7sl}</div>
+	</notempty>
+	<notempty name="now_hd.j8mc">
+		<div class="m_yljpsmnr">{$now_hd.j8mc}：{$now_hd.j8ms}。数量：{$now_hd.j8sl}</div>
+	</notempty>
+	</div>
+	</div>
+	<div class="m_yljpsm">
+	<div class="m_yljpsms">
+	<h2 style="background: url('__PUBLIC__/static/images/stitle.png') no-repeat; color: white;">活动说明：</h2>
+	<div class="m_yljpsmnr">您今天还有<span id="syjhspan">{$sycs}</span> 次参与机会</div>
+	<div class="m_yljpsmnr">每次所需积分<span id="syjhspan"><notempty name="now_hd.sl">{$now_hd.sl}</notempty></span> </div>
+	<div class="m_yljpsmnr">{$now_hd.ms}</div>
+	</div>
+	</div>
+
+</div>
+<?php if ($sycs >0){ ?>
+<script type="text/javascript">
+	var flag_num = {$flag_num};
+	function check_my() {
+		if(flag_num == 0) {
+			//alert("请先关注公众号，发送大转盘参加抽奖！");	
+			$('#login').slideDown('normal');
+			return false;
+		} else {
+			return true;
+		}
+	}
+$(function() {	
+    window.requestAnimFrame = (function() {
+        return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+        function(callback) {
+            window.setTimeout(callback, 1000 / 60)
+        }
+    })();
+    var totalDeg = 360 * 2 + 0;
+    var steps = [];
+    var lostDeg = [36, 66, 96, 156, 186, 216, 276, 306, 336];
+    var prizeDeg = [6, 126, 246,66,186,306,36,226];
+    var prize, sncode;
+	var prize_type = [];
+    var now = 0;
+    var a = 0.06;
+    var outter, inner, timer, running = false;
+    function countSteps() {
+        var t = Math.sqrt(2 * totalDeg / a);
+        var v = a * t;
+        for (var i = 0; i < t; i++) {
+            steps.push((2 * v * i - a * i * i) / 2)
+        }
+        steps.push(totalDeg)
+    }
+    function step() {
+        outter.style.webkitTransform = 'rotate(' + steps[now++] + 'deg)';
+        outter.style.MozTransform = 'rotate(' + steps[now++] + 'deg)';
+        if (now < steps.length) {
+			running = true;
+            requestAnimFrame(step);
+        } else {
+            running = false;
+            setTimeout(function() {
+            	tellcjok('xydzp');
+            },
+            200)
+        }
+    }
+    function start(deg) {
+        deg = deg || lostDeg[parseInt(lostDeg.length * Math.random())];
+        running = true;
+        clearInterval(timer);
+        totalDeg = 360 * 4 + deg;
+        steps = [];
+        now = 0;
+        countSteps();
+        requestAnimFrame(step)
+    }
+    window.start = start;
+    outter = document.getElementById('outer');
+    inner = document.getElementById('inner');
+    i = 10;
+	//抽奖开始的 点击事件 2014/11/4 张义诚
+    $("#inner").click(function() {
+		$.ajax({
+			url:'__URL__/kouchu/',
+			data:{ hid:$('#hdid').val()},
+			type:'post',
+			success:function(msg){
+				if(msg == 0) {
+					tusi('积分不足');return;
+				}else{
+				sta();
+				}
+			}
+		});
+		//if(flag_num == 0) {
+		//	alert("请输入手机号登录再盘参加抽奖！");  return;
+		//}
+      
+    })
+	function sta(){
+	  if (running) return;
+        timer = setInterval(function() {
+            i += 5;
+            outter.style.webkitTransform = 'rotate(' + i + 'deg)';
+            outter.style.MozTransform = 'rotate(' + i + 'deg)'
+        },
+        1);
+        setTimeout(function(){
+        	clearInterval(timer);
+        	 prize = $('#hdjxmc').val();
+             start(prizeDeg[parseInt($('#hdjx').val())-1])
+        },1000);
+	}
+});
+
+</script>
+<input type="hidden" id="hdid" value="{$now_hd.id}" />
+<input type="hidden" id="hdjx" value="{$jx}" />
+<input type="hidden" id="hdjxmc" value="{$jxmc}" />
+<?php } ?>
+<script src="__PUBLIC__/static/js/hammer.js"></script>
+<!-- <script src="__PUBLIC__/static/js/wx.js"></script> -->
+<div id="zjtzdiv" style="display: none;position: fixed;width: 100%; bottom: 0px;z-index:9999;">
+<div class="Pop-upbox" id="usermsg" >
+        <div class="upbox_top">
+            <h1>恭喜中奖：</h1>
+            <a href=""><div class="close" style="display: none;"></div></a>
+        </div>
+        <div class="upbox_cens">
+        <div>
+恭喜获得奖品:{$jxmc}。
+请留下收货地址<br/>
+
+        </div>
+     <div style="margin-top: 5px;">
+ 地址：<input type="text" id="dizhi" class="sinput">
+     </div>
+        
+        </div>
+        <div class="upbox_cen">
+            <a href="javascript:void(0);" onclick="javascript:tellcjxxok('xydzp')" ><div class="button_1"><span>确认信息</span></div></a>
+        </div>
+</div>
+</div>
+
+<!--  tishi enter telephone  start -->
+<div id="login" style="display: none;position: fixed;width: 100%; bottom: 0px;z-index:9999;">
+<div class="Pop-upbox" id="usermsg" >
+	<div class="upbox_top">
+		<h1>每次所需积分（<notempty name="now_hd.sl">{$now_hd.sl}</notempty>）：</h1>
+		<a href=""><div class="close" style="display: none;"></div></a>
+	</div>
+	<div class="upbox_cens" style = "dispplay:none">
+	
+	<input type='hidden' id='logact' name='logact'   value="{$actmy}" />
+	</div>
+	</div>
+	<div class="upbox_cen">
+		<a href="javascript:tijiao()"><div class="button_1"><span>确定</span></div></a>
+	</div>
+</div>
+</div>
+<!-- enter telephone end -->
+
+<div class="mfooter" id="wxgjfooter" style="text-align: center;width: 100%;height: 20px;line-height: 20px;margin-top:10px;">
+<span class="sp2"><a href="http://<?php echo $_SERVER['WEI_URL']; ?>" style="color: #5e5e5e;font-size: 12px;">@<?php echo $_SERVER['WEB_NAME']; ?>提供技术支持</a></span>
+</div>
+<div style="width: 0px;height: 0px;overflow: hidden;">
+
+</div>
+<script>
+function tellcjok(fs){
+	//alert(fs);
+	$.ajax({
+		url:'__URL__/toendhd/',
+		data:{ hid:$('#hdid').val()},
+		type:'post',
+		success:function(jx){
+			var jsonData=eval("("+jx+")");   //alert(jsonData.jmxm); alert(jsonData.recordid);
+			///alert(jx); alert(jsonData.0); alert(jx && (jsonData.0 != '0'));
+			if(jx && (jsonData.jmxm!= 0))  {
+				$('#zjtzdiv').slideDown('normal');
+				window.lid = jsonData.recordid;
+			}else{
+				tusi('很遗憾，您没有中奖');
+				setTimeout(function(){
+					location.reload(true);
+				},1888);
+			}
+		}
+	});
+}
+function tellcjxxok(fs){
+	//var sjh = $.trim($('#tel').val());
+	var un = $.trim($('#un').val());
+	var dizhi = $.trim($('#dizhi').val());
+	if(un !=''){
+		$.ajax({
+			url:'__URL__/toendhd/',
+			data:{ hid:$('#hdid').val(),un:un,dizhi:dizhi,'lid':window.lid},
+			type:'post',
+			success:function(jx){
+				tusi('提交成功');
+				setTimeout(function(){
+					location.reload(true);
+				},1888);
+				
+			}
+		});
+	}else{
+		tusi('请填写完整信息');
+		return false;
+	}	
+}
+//登录请求的方法
+function tijiao() {
+	var tel = $.trim($('#tel').val());
+	var logact = $('#logact').val();
+	if(logact !=''){
+		$.ajax({
+			url:'__URL__/login/',
+			data:{tel:tel,logact:logact},
+			type:'post',
+			success:function(msg){
+				//alert(msg);
+				if(msg == 1) {
+					
+					
+				} else {
+					tusi('登录失败，请重新登录');
+				}
+			}
+		});
+	}else{
+		tusi('请填写完整信息');
+		return false;
+	}	
+}
+</script>
+</body></html>

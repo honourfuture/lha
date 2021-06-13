@@ -1,0 +1,76 @@
+/* 代码整理：懒人之家 www.lanrenzhijia.com */
+.lanrenzhijia{
+    line-height: 20px;
+    font-size: 11px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0px;
+    margin: 0px;
+    position: relative;
+    display: none;
+}
+.lanrenzhijia .lanrenzhijia_nav{
+    filter: alpha(opacity=60);
+    opacity: 0.6;
+    padding: 0px;
+    margin: 0px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+.lanrenzhijia .lanrenzhijia_nav li{
+    box-shadow:2px 2px 3px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow:2px 2px 3px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow:2px 2px 3px rgba(0, 0, 0, 0.5);
+    -o-box-shadow:2px 2px 3px rgba(0, 0, 0, 0.5);
+    -khtml-box-shadow:2px 2px 3px rgba(0, 0, 0, 0.5);
+    margin-left: 6px;
+    position: relative;
+    float: left;
+}
+.lanrenzhijia .lanrenzhijia_nav li a{
+    padding-left: 8px;
+    padding-right: 8px;
+}
+.lanrenzhijia ul{
+    margin: 0px;
+    background-position:center center;
+    background-repeat: no-repeat;
+}
+.lanrenzhijia ul li{
+     border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -o-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    padding: 0px;
+    margin: 0px;
+    list-style: none;
+    position: absolute;
+}
+.lanrenzhijia ul li p{
+    margin: 0px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    padding-left: 5px;
+    padding-right: 5px;
+    filter: alpha(opacity=60);
+    opacity: 0.6;
+    font-size: 13px;
+    line-height: 23px;
+}
+.lanrenzhijia ul li a{
+    text-decoration: none;
+}
+.lanrenzhijia ul li a img{
+    border: none;
+}
+h2{
+	color: red;
+	text-align:center;
+}
+pre{
+	padding: 4px;
+	border: #F90 dotted 1px;
+}
+/* 代码整理：懒人之家 www.lanrenzhijia.com */

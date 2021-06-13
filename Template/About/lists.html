@@ -1,0 +1,46 @@
+<include file="Mobile:header" nav="文章列表"/>
+<body>
+<div class="mobile">
+    <div class="othertop">
+        <a class="goback" href="javascript:history.back();"><img src="__PUBLIC__/mobile/img/goback.png" /></a>
+        <div class="othertop-font">{$name}</div>
+    </div>
+    <div class="header-nbsp"></div>
+    <!-- 公告列表 -->
+    <ul class="mnote">
+        <volist name="article" id="a">
+            <li>
+                <a href="{:U('details','id='.$a['id'])}">
+                    <h1>{$a.title}</h1>
+                    <!--<span>{:date("Y-m-d",strtotime($a['time']))}</span>-->
+                </a>
+            </li>
+        </volist>
+    </ul>
+	
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/xin_mobile/staticfaxian/css/foot.css" />
+<div class="footer_nav">
+    <a href="/mobile/index.html">
+        <img src="/Public/mobile/img/home_blue.png">
+        <span class="active">首页</span>
+    </a>
+    <a href="/mobile/lists.html">
+        <img src="/Public/mobile/img/invest.png">
+        <span class="">投资项目</span>
+    </a>
+    <a href="/user/person.html">
+        <img src="/Public/mobile/img/user.png">
+        <span>会员中心</span>
+    </a>
+    <a href="/about/index.html">
+        <img src="/Public/mobile/img/about.png">
+        <span>关于我们</span>
+    </a>
+    <a href="https://www.4lpv0.cn/im.htm?pid=297ec46175de952a0175df7d060d00ca">
+        <img src="/Public/mobile/img/kefu.png">
+        <span class="active">在线客服</span>
+    </a>
+</div>
+</div>
+</body>
+</html>
