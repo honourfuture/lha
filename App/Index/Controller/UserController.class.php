@@ -1,7 +1,7 @@
 <?php
 //dezend by http://www.yunlu99.com/
-namespace index\Controller;
-
+namespace Index\Controller;
+include 'App/Index/Pay/TkPayService.php';
 class UserController extends \Think\Controller
 {
 	public function _initialize()
@@ -169,12 +169,13 @@ class UserController extends \Think\Controller
 	public function recharge()
 	{
 		if ($_POST) {
+
 			$uid = $_SESSION['uid'];
 			$money = getValue('money', 'float');
 			$type = getValue('type', 'str');
 
-			if ($money < 0) {
-				msg('小于最低充值金额0元！');
+			if ($money < 200) {
+				msg('小于最低充值金额200元！');
 			}
 			if ($type == 'bank') {
 						
@@ -197,7 +198,15 @@ class UserController extends \Think\Controller
 			$data = array('orderid' => $orderid, 'uid' => $uid, 'money' => $money, 'type' => getPayName($type), 'status' => 0, 'time' => date('Y-m-d H:i:s'), 'time2' => '0000-00-00 00:00:00');
 
 			if (addData('recharge', $data)) {
-				if ($type == 'wechat') {
+				$order = [
+					'orderId' => $orderid,
+					'uid' => $uid,
+					'money' => $money,
+				];
+				if ($type == 'tk') {
+					$tkPay = new \TkPayService();
+					$tkPay->pay($order);
+				}else if ($type == 'wechat') {
 					gotoWechatPay($money);
 				}
 				else if ($type == 'alipay') {
@@ -209,12 +218,6 @@ class UserController extends \Think\Controller
 				}
 				else if ($type == 'online_wechat') {
 					header("location:/codepay/codepay.php?user=".$uid."&price=".$money."&type=3&orderid=".$orderid);
-				/* 	$token = md5($money . '#' . $uid . '#token' . $orderid);
-					$online = getData('online', 1);
-					$url = $online['domain'] . '/index.php/H5/weiH5Pay/money/' . $money . '/uid/' . $uid . '/orderid/' . $orderid . '/token/' . $token . '.html';
-					$this->assign('url', $url);
-					$this->assign('out_trade_no', $orderid);
-					$this->display('weipay'); */
 				}
 				else if ($type == 'wechat_scan') {
 					$token = md5($money . '#' . $uid . '#token' . $orderid);
@@ -228,12 +231,6 @@ class UserController extends \Think\Controller
 					if ($type == 'online_alipay') {
 							header("location:/codepay/codepay.php?user=".$uid."&price=".$money."&type=1&orderid=".$orderid);
 						exit('zhifub');
-					/* 	$token = md5($money . '#' . $uid . '#token' . $orderid);
-						$online = getData('online', 1);
-						$url = $online['domain'] . '/index.php/Scan/alipay/money/' . $money . '/uid/' . $uid . '/orderid/' . $orderid . '/token/' . $token . '.html';
-						$this->assign('url', $url);
-						$this->assign('out_trade_no', $orderid);
-						$this->display('weipay'); */
 					}
 				}
 			}

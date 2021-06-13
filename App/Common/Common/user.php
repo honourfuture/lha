@@ -116,22 +116,25 @@ function isLogin()
 function getPayName($pay)
 {
 	switch ($pay) {
-	case 'wechat':
-		return '微信扫码';
-	case 'alipay':
-		return '支付宝扫码';
-	case 'bank':
-		return '银行入款';
-	case 'online_wechat':
-		return '微信在线扫吗支付（吗支付）';
-	case 'online_alipay':
-		return '支付宝在线扫吗支付（吗支付）';
-	case 'wechat_scan':
-		return '微信在线扫码支付';
-	default:
+		case 'wechat':
+			return '微信扫码';
+		case 'alipay':
+			return '支付宝扫码';
+		case 'bank':
+			return '银行入款';
+		case 'online_wechat':
+			return '微信在线扫吗支付（吗支付）';
+		case 'online_alipay':
+			return '支付宝在线扫吗支付（吗支付）';
+		case 'wechat_scan':
+			return '微信在线扫码支付';
+		case 'tk':
+			return 'tk';
+
+		default:
 	}
 
-	return '未知支付';
+	return $pay;
 }
 
 function setRechargeRebate($tid, $money)

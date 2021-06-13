@@ -320,11 +320,8 @@ $return_url = $_SERVER["SERVER_PORT"] == '80' ? '/' : '//'.$_SERVER['SERVER_NAME
 
 
         </div>
-
         <div class="tip-text">
         </div>
-
-
     </div>
     <div class="foot">
         <div class="inner">

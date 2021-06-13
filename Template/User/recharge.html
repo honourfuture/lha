@@ -15,11 +15,14 @@
         </div>
         <div class="blank_card">
             <label>充值方式</label>
-            <if condition="getInfo('qr_alipay_status') eq 1"><label style="padding-right: .2rem;width: auto;"><input type="radio" value="alipay" name="type"> 支付宝</label></if>
-            <if condition="getInfo('qr_wechat_status') eq 1"><label style="padding-right: .2rem;width: auto;"><input type="radio" value="wechat" name="type"> 微信</label></if>
-            <if condition="getInfo('pay_bank_status') eq 1"><label style="padding-right: .2rem;width: auto;"><input type="radio" value="bank" name="type"> 银行入款</label></if>
-            <if condition="getInfo('online_wechat') eq 1"><label style="padding-right: .2rem;width: auto;"><input type="radio" value="online_wechat" name="type"> 微信充值</label></if>
-            <if condition="getInfo('online_wechat') eq 1"><label style="padding-right: .2rem;width: auto;"><input type="radio" value="online_alipay" name="type"> 支付宝充值</label></if>
+            <!--<if condition="getInfo('qr_alipay_status') eq 1"><label style="padding-right: .2rem;width: auto;"><input type="radio" value="alipay" name="type"> 支付宝</label></if>-->
+            <!--<if condition="getInfo('qr_wechat_status') eq 1"><label style="padding-right: .2rem;width: auto;"><input type="radio" value="wechat" name="type"> 微信</label></if>-->
+            <!--<if condition="getInfo('pay_bank_status') eq 1"><label style="padding-right: .2rem;width: auto;"><input type="radio" value="bank" name="type"> 银行入款</label></if>-->
+            <!--<if condition="getInfo('online_wechat') eq 1"><label style="padding-right: .2rem;width: auto;"><input type="radio" value="online_wechat" name="type"> 微信充值</label></if>-->
+            <!--<if condition="getInfo('online_wechat') eq 1"><label style="padding-right: .2rem;width: auto;"><input type="radio" value="online_alipay" name="type"> 支付宝充值</label></if>-->
+            <if condition="getInfo('is_tk_open') eq 1"><label style="padding-right: .2rem;width: auto;"><input type="radio" value="tk" name="type"> Tk</label></if>
+
+
             <!--<label><input type="radio" value="3" name="style" id="selected"> 银行卡</label>-->
         </div>
         <div class="blank_card" id="blank">
@@ -89,14 +92,10 @@ $("#ifr").submit(function(){
         msg("错误","充值金额有误！",1);
         return false;
     }
-    if(money < 100){
-        msg("错误","最低充值金额100元！",1);
+    if(money < 200){
+        msg("错误","最低充值金额200元！",1);
         return false;
-    } 
-	<!-- if(money < icar){ -->
-        <!-- msg("错误",".01元！",1); -->
-        <!-- return false; -->
-    <!-- } -->
+    }
     var type = $("input:radio[name='type']:checked").val();
     if(type == null){
         msg("错误","请选择支付方式！",1);
