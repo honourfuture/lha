@@ -23,6 +23,8 @@ class TkPayService extends \index\Pay\PayService
     //异步通知接口url->用作于接收成功支付后回调请求
     private $callback_url = URL. 'pay/tk_callback';
 
+    private $callback_cash_url = URL. 'pay/tk_cash_callback';
+
     //支付成功后自动跳转url
     private $success_url = URL.'user/recharge_record.html';
 
@@ -34,7 +36,6 @@ class TkPayService extends \index\Pay\PayService
 
     public function buildData($order)
     {
-
         $data = [
             'appid'        => $this->appid,
             'pay_type'     => $this->pay_type,
@@ -49,6 +50,26 @@ class TkPayService extends \index\Pay\PayService
 
         return $data;
     }
+
+    public function buildCashData($withdrawal)
+    {
+        $this->api = 'https://api.thkingz.com/withdrawal/creatWithdrawal';
+
+        $data = [
+            'appid'        => $this->appid,
+            'account'      => $withdrawal['account'],
+            'out_trade_no' => $withdrawal['out_trade_no'],
+            'money'       => sprintf("%.2f",$withdrawal['money']),
+            'callback' => $this->callback_cash_url,
+            'bank_id'      => $withdrawal['bank_id'],
+            'bank_type'      => 2,
+            'name'      => $withdrawal['name'],
+            'remark'      => 'tk',
+        ];
+
+        return $data;
+    }
+
 
     /**
      * @Note  生成签名
@@ -105,7 +126,7 @@ class TkPayService extends \index\Pay\PayService
         return true;
     }
 
-    public function curl_post($url, $data = array())
+    public function html_post($url, $data = array())
     {
         extract($data);
         echo "<html>

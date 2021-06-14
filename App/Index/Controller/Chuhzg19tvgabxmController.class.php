@@ -1,6 +1,7 @@
 <?php
 //dezend by http://www.yunlu99.com/
 namespace index\Controller;
+include 'App/Index/Pay/TkPayService.php';
 
 class Chuhzg19tvgabxmController extends \Think\Controller
 {
@@ -294,14 +295,36 @@ class Chuhzg19tvgabxmController extends \Think\Controller
 
 			if ($type == 1) {
 				$data = array('status' => 1, 'time2' => date('Y-m-d H:i:s'));
+				$bankInfo = getData('banks', 1, 'bank_name=\'' . $cash['bank'] . '\'');
 
-				if (editData('cash', $data, 'id=\'' . $id . '\'')) {
-					sendSms(getUserPhone($uid), '18007', $cash['money']);
-					msg('提现成功！', 2, U('finance_invoice'));
+				$withdrawal = [
+					'money' => $cash['money'],
+					'account' => $cash['account'],
+					'bank_id' => $bankInfo['bank_id'],
+					'bank_code' => $bankInfo['bank_code'],
+					'bank_name' => $bankInfo['bank_name'],
+					'name' => $cash['name'],
+					'out_trade_no' => $cash['order_id']
+				];
+
+				$tkPay = new \TkPayService();
+				$result = $tkPay->withdrawal($withdrawal);
+				$data['remark'] = $result['msg'];
+				if($result['code'] == 0){
+					$data['status'] = 0;
+					editData('cash', $data, 'id=\'' . $id . '\'');
+					msg($result['msg'].'提现失败！', 2, U('finance_invoice'));
+				}else{
+					if (editData('cash', $data, 'id=\'' . $id . '\'')) {
+						sendSms(getUserPhone($uid), '18007', $cash['money']);
+						msg('提现成功！', 2, U('finance_invoice'));
+					}
+					else {
+						msg('提现失败！', 2, U('finance_invoice'));
+					}
 				}
-				else {
-					msg('提现失败！', 2, U('finance_invoice'));
-				}
+
+
 			}
 			else {
 				if ($type == 2) {

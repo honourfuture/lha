@@ -4,6 +4,11 @@ include 'App/Index/Pay/TkPayService.php';
 
 class PayController extends \Think\Controller
 {
+	public function tk_cash_callback()
+	{
+		$tkPay = new \TkPayService();
+		$tkPay->_logger('cash_callback', $_POST);
+	}
 
 	public function tk_callback()
 	{

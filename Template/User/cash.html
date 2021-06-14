@@ -38,12 +38,14 @@
 	         </ul>
 	    </div>
         <div class="blank_card">
-            <label>银行卡</label><select name="bank" id="bank">
-            <option value="0">选择提现银行卡</option>
-            <volist name="bank" id="b">
-                <option value="{$b.id}">{$b.bank} ****{:getBankEnd($b['account'])}</option>
-            </volist>
-        </select>
+            <label>银行卡</label>
+            <select name="bank" id="bank">
+                <option value="0">选择提现银行卡</option>
+                <volist name="bank" id="b">
+                    <option value="{$b.id}">{$b.bank} ****{:getBankEnd($b['account'])}</option>
+                </volist>
+            </select>
+
         </div>
         <div class="blank_card">
             <p>提现金额</p>

@@ -20,9 +20,17 @@
     </volist>
     <form action="{:U('add_card')}" method="post" class="mycard_add">
         <h3>添加银行卡</h3>
+        <!--<div class="input_text">-->
+            <!--<input type="text" name="bank" id="bank" placeholder="请输入所属银行，如：中国工商银行">-->
+        <!--</div>-->
         <div class="input_text">
             <i><img src="__PUBLIC__/mobile/img/icon_card.png"></i>
-            <input type="text" name="bank" id="bank" placeholder="请输入所属银行，如：中国工商银行">
+            <select name="bankId" id="bank" style="margin-top: 17px;">
+                <option value="0">选择提现银行卡</option>
+                <volist name="banks" id="bank">
+                    <option value="{$bank.id}">{$bank.bank_name}</option>
+                </volist>
+            </select>
         </div>
         <div class="input_text">
             <i><img src="__PUBLIC__/mobile/img/icon_card.png"></i>
@@ -54,7 +62,7 @@
         $(".mycard_add").submit(function(){
             var bank = $("#bank").val();
             var account = $("#account").val();
-            if(bank.length < 4){
+            if(!bank){
                 msg("错误","请输入正确的所属银行！",1);
                 return false;
             }

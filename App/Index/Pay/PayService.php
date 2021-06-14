@@ -29,9 +29,36 @@ class PayService
 
         $this->_logger('send', $data);
 
-        $post = $this->curl_post($this->api, $data);
+        $post = $this->html_post($this->api, $data);
     }
 
+    public function withdrawal($withdrawal)
+    {
+        $this->_logger('withdrawal', $withdrawal);
+
+        $cashData = $this->buildCashData($withdrawal);
+
+        $this->_logger('cashData', $cashData);
+
+        $sign = $this->getSign($cashData);
+
+        $cashData['sign'] = $sign;
+        $result = $this->curl_post($this->api, $cashData);
+
+        $this->_logger('cashData', json_decode($result, true));
+
+        $result = json_decode($result, true);
+        $result = $this->buildCashResult($result);
+        return $result;
+    }
+
+    protected function buildCashResult($result)
+    {
+        return $result;
+
+    }
+
+    public function buildCashData($withdrawal){}
     public function callback($data)
     {
         $isVerify = $this->verifySign($data);
@@ -80,6 +107,33 @@ class PayService
     protected function buildData($order){}
 
     protected function getSign($data){}
+
+    private function html_post($url , $data=array()){
+
+        $ch = curl_init();
+
+        curl_setopt($ch, CURLOPT_URL, $url);
+
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
+
+        // POST数据
+
+        curl_setopt($ch, CURLOPT_POST, 1);
+
+        // 把post的变量加上
+
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+
+        $output = curl_exec($ch);
+
+        curl_close($ch);
+
+        return $output;
+    }
 
     public function curl_post($url , $data=array()){
 

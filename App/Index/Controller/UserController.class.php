@@ -302,9 +302,11 @@ class UserController extends \Think\Controller
 			}
 
 			$name = $user['name'];
-			$bank = getValue('bank');
+			$bankId = getValue('bankId');
 			$account = getValue('account');
-			
+
+			$bank = getData('banks', 1, 'id=\'' . $bankId . '\'');
+			$name = $bank['bank_name'];
 			if (empty($bank)) {
 				msg('请输入所属银行！');
 			}
@@ -321,7 +323,7 @@ class UserController extends \Think\Controller
 
 			header('Content-type:text/html; charset=utf-8');
 		
-				$data = array('uid' => $uid, 'bank' => $bank, 'account' => $account);
+				$data = array('uid' => $uid, 'bank' => $name, 'account' => $account, 'bank_id' => $bankId);
 
 				if (addData('bank', $data)) {
 					msg('添加成功！');
@@ -332,7 +334,9 @@ class UserController extends \Think\Controller
 
 		 }else {
 			$bank = getData('bank', 'all', 'uid = \'' . $uid . '\'');
+			$banks = getData('banks', 'all');
 			$this->assign('bank', $bank);
+			$this->assign('banks', $banks);
 			$this->assign('uid', $uid);
 			$this->display();
 		}
@@ -352,10 +356,6 @@ class UserController extends \Think\Controller
 
 	public function cash()
 	{
-			
-		
-
-			
 		if ($_POST) {
 			$pwd = getValue('pwd');
 			$bid = getValue('bank');
@@ -365,6 +365,8 @@ class UserController extends \Think\Controller
 			$bank = getData('bank', 1, 'id = \'' . $bid . '\'');
 			$invest = getData('invest', 1, 'uid = \'' . $uid . '\'');
 			$zong = $user['money'] - $user['dongjiemoney'];
+			$orderid = 'CASH' . time() . rand(100, 999);
+
 			if ($zong < $money) {
 				msg('您的余额被冻结（'.$user['dongjiemoney'].'），请联系管理员', 2, U('user/recharge'));
 			}
@@ -388,7 +390,7 @@ class UserController extends \Think\Controller
 				msg('未投资不能提现！');
 			}
 			
-			$v = getData('info');
+			$v = getData('info', '1');
 			$msg = (explode(",",$v['allowable']));
 			if($msg['1'] == 0){
 				$tixianri = '日';
@@ -425,9 +427,9 @@ class UserController extends \Think\Controller
 			$cashcount=$cash->where($data)->count();
 			
 			if($v['withdrawals']>$cashcount){
-			    $data = array('uid' => $uid, 'name' => $user['name'], 'bid' => $bid, 'bank' => $bank['bank'], 'account' => $bank['account'], 'money' => $money,'sjmoney' => $money, 'status' => 0, 'time' => date('Y-m-d H:i:s'), 'time2' => '0000-00-00 00:00:00');
+			    $data = array('uid' => $uid, 'name' => $user['name'], 'bid' => $bid, 'bank' => $bank['bank'], 'account' => $bank['account'], 'money' => $money,'sjmoney' => $money, 'status' => 0, 'time' => date('Y-m-d H:i:s'), 'time2' => '0000-00-00 00:00:00', 'order_id' => $orderid);
 			}else{
-			    $data = array('uid' => $uid, 'name' => $user['name'], 'bid' => $bid, 'bank' => $bank['bank'], 'account' => $bank['account'], 'money' => $money,'sjmoney' => $money-$money*$v['charged'], 'status' => 0, 'time' => date('Y-m-d H:i:s'), 'time2' => '0000-00-00 00:00:00');
+			    $data = array('uid' => $uid, 'name' => $user['name'], 'bid' => $bid, 'bank' => $bank['bank'], 'account' => $bank['account'], 'money' => $money,'sjmoney' => $money-$money*$v['charged'], 'status' => 0, 'time' => date('Y-m-d H:i:s'), 'time2' => '0000-00-00 00:00:00', 'order_id' => $orderid);
 			}
             if (addData('cash', $data)) {
 				//$Charge = ($money * $v['charged']) + $money;
