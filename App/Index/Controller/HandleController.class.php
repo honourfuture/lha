@@ -158,9 +158,9 @@ class HandleController extends \Think\Controller
 
 		unset($_SESSION['smsRandCode']);
 
-		if (!judge($phone, 'phone')) {
-			$this->ajaxReturn(array('0', '手机号码格式不正确！'));
-		}
+//		if (!judge($phone, 'phone')) {
+//			$this->ajaxReturn(array('0', '手机号码格式不正确！'));
+//		}
 
 		if (getData('user', 1, 'phone=\'' . $phone . '\'')) {
 			$this->ajaxReturn(array('0', '该手机号已存在！'));

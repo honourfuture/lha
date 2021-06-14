@@ -30,47 +30,45 @@ function sendSms($phone, $code, $msg)
 		return reSmsCode('004');
 	}
 
-	$sign = '【' . $name . '】';
-	$msg = str_replace('【', '[', $msg);
-	$msg = str_replace('】', ']', $msg);
+	$sign = '[' . $name . ']';
+	$msg = str_replace('[', '[', $msg);
+	$msg = str_replace(']', ']', $msg);
 	$smsMsg = str_replace('###', $msg, $sign . $sms['msg']);
-	//$apikey = getInfo('smskey');
-	//$url = 'https://sms.yunpian.com/v2/sms/single_send.json';
-	$encoded_text = urlencode($smsMsg);
-	//$mobile = urlencode($phone);
-	//$post_string = 'apikey=' . $apikey . '&text=' . $encoded_text . '&mobile=' . $mobile;
-	//$msg = vpost($url, $post_string);
-//	$msg = json_decode($msg, true);
-	
-	
-    $id = 'lc168168';
-    $pwd = '318bc882b01a6aac5806';
-    $to = $phone;
-    $encoded_text = urlencode($smsMsg);
 
-    $url="http://utf8.api.smschinese.cn/?Uid={$id}&Key={$pwd}&smsMob={$to}&smsText={$encoded_text}";
-	
-	$msg = file_get_contents($url);	
 
-	if ($msg) {
+	$account = SMS_USER;
+	$datetime = date('YmdHis');
+	$numbers = $phone;
+	$content = urlencode($smsMsg);
+	$smsKey = SMS_KEY;
+	$smsSign = md5($account.$smsKey.$datetime);
+	$url = "http://sms.skylinelabs.cc:20003/sendsmsV2?account={$account}&sign={$smsSign}&datetime={$datetime}&numbers={$numbers}&content={$content}";
+	$result = file_get_contents($url);
+//
+//	$id = 'lc168168';
+//    $pwd = '318bc882b01a6aac5806';
+//    $to = $phone;
+//    $encoded_text = urlencode($smsMsg);
+//
+//    $url="http://utf8.api.smschinese.cn/?Uid={$id}&Key={$pwd}&smsMob={$to}&smsText={$encoded_text}";
+//
+//	$msg = file_get_contents($url);
+	$msg = json_decode($result, true);
+
+	if($msg['status'] == 0){
 		$recode = '000';
-	}
-	else if (0 < $msg['code']) {
-		$recode = '004';
-	}
-	else {
-		if ($msg['code'] < 0 && -50 < $msg['code']) {
-			$recode = '005';
-		}
-		else if ($msg['code'] == -50) {
-			$recode = '006';
-		}
-		else {
-			$recode = '009';
-		}
+	}else{
+		$recode = '006';
 	}
 
-	$data = array('phone' => $phone, 'msg' => $smsMsg, 'code' => $recode . '#' . smsErrorCode($msg['code']), 'time' => date('Y-m-d H:i:s'));
+	$data = array(
+		'phone' => $phone,
+		'msg' => $smsMsg,
+		'code' => $recode . '#' . smsErrorCode($msg['code']),
+		'time' => date('Y-m-d H:i:s'),
+		'result' => $result,
+	);
+
 	addData('sms_list', $data);
 	return reSmsCode($recode);
 }
