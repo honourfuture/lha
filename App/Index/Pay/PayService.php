@@ -121,7 +121,7 @@ class PayService
             $uid = $recharge['uid'];
             $type = $recharge['type'];
 
-            if (editData('recharge', array('status' => 1, 'time2' => date('Y-m-d H:i:s')), 'id = \'' . $orderId . '\'')) {
+            if (editData('recharge', array('status' => 1, 'time2' => date('Y-m-d H:i:s')), 'orderid = \'' . $orderId . '\'')) {
                 addFinance($uid, $money, $type . '入款' . $money . '元', 1, getUserField($uid, 'money'));
                 setNumber('user', 'money', $money, 1, 'id=\'' . $uid . '\'');
                 $tid = getUserField($uid, 'top');
@@ -145,7 +145,7 @@ class PayService
 
     protected function getSign($data){}
 
-    private function html_post($url , $data=array()){
+    public function html_post($url , $data=array()){
 
         $ch = curl_init();
 
