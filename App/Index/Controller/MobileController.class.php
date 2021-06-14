@@ -209,6 +209,16 @@ class MobileController extends \Think\Controller {
                 msg('投资失败！', 2, U('details', 'id=\'' . $id . '\''));
             }
         } else {
+            $open = 0;
+
+            $startTime = strtotime(date('Y-m-d 09:05:00'));
+            $endTime = strtotime(date('Y-m-d 15:00:00'));
+
+            $time = time();
+            if($time >= $startTime && $time <= $endTime){
+                $open = 1;
+            }
+            $this->assign('open', $open);
             $this->assign('data', $data);
             $this->display();
         }

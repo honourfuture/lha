@@ -55,11 +55,15 @@
         <div class="blank_card">
             <label>交易密码</label><input type="password" name="pwd" id="pwd" placeholder="请输入交易密码" />
         </div>
-        <div class="blank_card" style="display: none;">
-             <label>手续费</label> 2元
+        <div class="blank_card" >
+             <label>手续费</label> 100 泰铢
         </div>
         <div class="blank_card" style="display: none;">
              <label>时间</label> 预计30分钟内到账
+        </div>
+        <div class="blank_card">
+            <label>提现时间</label>
+            早上9：05至下午3：00点.(周一到周五,周六日无法提现)
         </div>
         <input type="submit" value="确认提现" class="input_btn">
     </form>
@@ -78,6 +82,11 @@ $(function(){
         $("#chose_bank").prev().find('img').removeClass('down');
     });
     $("#ifr").submit(function(){
+        let open = {$open};
+        if(open == 0){
+            msg("错误","当前时间不允许提现！",1);
+            return false;
+        }
         var userMoney = $("#userMoney").text();
         var bank = $("#bank").val();
         var money = $("#money").val();

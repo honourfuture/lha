@@ -28,6 +28,9 @@
     			<li>
     				<label>结息时间</label><span>满 <em class="time">24小时</em> 自动结息</span>
     			</li>
+				<li>
+					<label>投资时间</label><span>早上9：05至下午3：00点截至</span>
+				</li>
     			<li>
     				<label>投资金额</label><br/>
     				<div class="caculate">
@@ -70,7 +73,13 @@
             }
         });
         $("#ifr").submit(function(){
-            var money = $("#money").val();
+			let open = {$open};
+			if(open == 0){
+				msg("错误","当前非投资时间！",1);
+				return false;
+			}
+
+			var money = $("#money").val();
             if(money > maxNum){
                 msg("错误","投资金额不能大于项目剩余投资额度！",1);
                 return false;

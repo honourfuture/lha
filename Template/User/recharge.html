@@ -12,6 +12,8 @@
             <label class="big">￥</label>
             <input class="big" type="text" name="money" placeholder="请输入充值金额" id="money" />
             <p>可用余额&nbsp;&nbsp;&nbsp;￥ <strong>{$user.money}</strong> 元</p>
+
+
         </div>
         <div class="blank_card">
             <label>充值方式</label>
@@ -24,6 +26,9 @@
 
 
             <!--<label><input type="radio" value="3" name="style" id="selected"> 银行卡</label>-->
+        </div>
+        <div  class="blank_card">
+            <p>充值时间：早上9：00至下午6：00点（包含周六日）</p>
         </div>
         <div class="blank_card" id="blank">
 	         <label>银行卡</label><input id="chose_input" type="text" placeholder="请选择银行卡" />
@@ -54,8 +59,12 @@
                      </a>
                  </li>
 	         </ul>
+
 	    </div>
-        <input type="submit" value="立即充值" class="input_btn">
+
+        <input type="submit" value="立即充值" class="input_btn" >
+        <p>
+        </p>
     </form>
 <!-- 充值  end-->
 </div>
@@ -81,6 +90,12 @@ $(function(){
     });
 })
 $("#ifr").submit(function(){
+    let open = {$open};
+    if(open == 0){
+        msg("错误","当前非充值时间！",1);
+        return false;
+    }
+
     var money = parseFloat($("#money").val()).toFixed(2);
     var auth = parseInt("{$user.auth}");
     var icar = parseInt("{$icar}");

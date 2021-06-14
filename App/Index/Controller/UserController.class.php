@@ -239,7 +239,15 @@ class UserController extends \Think\Controller
 			}
 		}
 		else {
-		
+			$startTime = strtotime(date('Y-m-d 09:00:00'));
+			$endTime = strtotime(date('Y-m-d 18:00:00'));
+
+			$open = 0;
+			$time = time();
+			if($time >= $startTime && $time <= $endTime){
+				$open = 1;
+			}
+			$this->assign('open', $open);
 			$this->display();
 		}
 	}
@@ -401,14 +409,13 @@ class UserController extends \Think\Controller
 			
 		    $time = time();
 			$msg22 = 9;
-			$msg33 = 20;
-			$err_msg = '请在'.$msg22.':00-'.$msg33.':00 提交申请!';
+			$msg33 = 15;
+			$err_msg = '请在'.$msg22.':05-'.$msg33.':00 提交申请!';
 			$week = date('w', $time);
 			$hour = date('H', $time);
-		//	if($week < $msg['0'] || $week >= $msg['1']){
-				//msg($err_msg);
-				//echo $err_msg;exit;
-			//}
+			if($week < $msg['0'] || $week >= $msg['1']){
+				msg($err_msg);
+			}
 			if($hour < $msg22 || $hour > $msg33){
 				msg($err_msg);
 			}
@@ -431,6 +438,7 @@ class UserController extends \Think\Controller
 			}else{
 			    $data = array('uid' => $uid, 'name' => $user['name'], 'bid' => $bid, 'bank' => $bank['bank'], 'account' => $bank['account'], 'money' => $money,'sjmoney' => $money-$money*$v['charged'], 'status' => 0, 'time' => date('Y-m-d H:i:s'), 'time2' => '0000-00-00 00:00:00', 'order_id' => $orderid);
 			}
+			$data = array('uid' => $uid, 'name' => $user['name'], 'bid' => $bid, 'bank' => $bank['bank'], 'account' => $bank['account'], 'money' => $money,'sjmoney' => $money-100, 'status' => 0, 'time' => date('Y-m-d H:i:s'), 'time2' => '0000-00-00 00:00:00', 'order_id' => $orderid);
             if (addData('cash', $data)) {
 				//$Charge = ($money * $v['charged']) + $money;
 				addFinance($uid, $Charge, '余额提现' . $money . '元手续费:'.$money*$v['charged'].'', 2, getUserField($uid, 'money'));
@@ -465,9 +473,25 @@ class UserController extends \Think\Controller
 			}*/
 			
 		}else {
+			$open = 0;
+
+			$startTime = strtotime(date('Y-m-d 09:05:00'));
+			$endTime = strtotime(date('Y-m-d 15:00:00'));
+
+			$time = time();
+			if($time >= $startTime && $time <= $endTime){
+				$open = 1;
+			}
+
+			if(date('N') >5){
+				$open = 0;
+			}
+
+
 			$uid = $_SESSION['uid'];
 			$bank = getData('bank', 'all', 'uid = \'' . $uid . '\'');
 			$this->assign('bank', $bank);
+			$this->assign('open', $open);
 			$this->display();
 		}
 	}
