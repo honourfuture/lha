@@ -294,7 +294,7 @@ class Chuhzg19tvgabxmController extends \Think\Controller
 			$money = $cash['money'];
 
 			if ($type == 1) {
-				$data = array('status' => 1, 'time2' => date('Y-m-d H:i:s'));
+				$data = array('status' => 0, 'time2' => date('Y-m-d H:i:s'));
 				$bankInfo = getData('banks', 1, 'bank_name=\'' . $cash['bank'] . '\'');
 
 				$withdrawal = [

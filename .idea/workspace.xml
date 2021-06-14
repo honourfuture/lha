@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="68480f67-f626-45fe-a052-4ab649d40c9e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/Index/Controller/Chuhzg19tvgabxmController.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/Index/Controller/Chuhzg19tvgabxmController.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/Index/Controller/PayController.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/Index/Controller/PayController.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/Index/Controller/UserController.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/Index/Controller/UserController.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/Index/Pay/PayService.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/Index/Pay/PayService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/Index/Pay/TkPayService.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/Index/Pay/TkPayService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Template/User/add_card.html" beforeDir="false" afterPath="$PROJECT_DIR$/Template/User/add_card.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Template/User/cash.html" beforeDir="false" afterPath="$PROJECT_DIR$/Template/User/cash.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ThinkPHP/Library/Think/Think.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/ThinkPHP/Library/Think/Think.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Template/Chuhzg19tvgabxm/finance_invoice.html" beforeDir="false" afterPath="$PROJECT_DIR$/Template/Chuhzg19tvgabxm/finance_invoice.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,11 +21,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/App/Index/Controller/PayController.class.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="162">
               <caret line="9" column="30" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Template/Chuhzg19tvgabxm/finance_invoice.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="406">
+              <caret line="62" column="46" selection-start-line="62" selection-start-column="46" selection-end-line="62" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -56,11 +57,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/App/Index/Controller/Chuhzg19tvgabxmController.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="315" column="46" selection-start-line="315" selection-start-column="46" selection-end-line="315" selection-end-column="46" />
+            <state relative-caret-position="134">
+              <caret line="296" column="43" selection-start-line="296" selection-start-column="43" selection-end-line="296" selection-end-column="43" />
             </state>
           </provider>
         </entry>
@@ -78,7 +79,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>senderid</find>
       <find>phone</find>
       <find>maxlength</find>
       <find>p://utf8.api.smschinese</find>
@@ -108,6 +108,7 @@
       <find>curl_post</find>
       <find>json_decode</find>
       <find>tk_callback</find>
+      <find>实际到账金额(泰铢)</find>
     </findStrings>
     <replaceStrings>
       <replace>{$Think.lang.inviteFriends}</replace>
@@ -140,7 +141,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/App/Index/Conf/tags.php" />
         <option value="$PROJECT_DIR$/App/Index/Controller/IndexController.class.php" />
         <option value="$PROJECT_DIR$/App/Index/Lang/pt-br.php" />
         <option value="$PROJECT_DIR$/Template/Mobile/header.html" />
@@ -189,8 +189,9 @@
         <option value="$PROJECT_DIR$/ThinkPHP/Library/Think/Think.class.php" />
         <option value="$PROJECT_DIR$/App/Index/Pay/TkPayService.php" />
         <option value="$PROJECT_DIR$/App/Index/Pay/PayService.php" />
-        <option value="$PROJECT_DIR$/App/Index/Controller/Chuhzg19tvgabxmController.class.php" />
         <option value="$PROJECT_DIR$/App/Index/Controller/PayController.class.php" />
+        <option value="$PROJECT_DIR$/Template/Chuhzg19tvgabxm/finance_invoice.html" />
+        <option value="$PROJECT_DIR$/App/Index/Controller/Chuhzg19tvgabxmController.class.php" />
       </list>
     </option>
   </component>
@@ -314,12 +315,12 @@
       <workItem from="1623477709197" duration="8292000" />
       <workItem from="1623520010610" duration="10795000" />
       <workItem from="1623577091256" duration="19059000" />
-      <workItem from="1623657841302" duration="11008000" />
+      <workItem from="1623657841302" duration="11329000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="79621000" />
+    <option name="totallyTimeSpent" value="79942000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -350,9 +351,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Public/config.ini">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/codepay/index.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -626,13 +624,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/App/Index/Controller/Chuhzg19tvgabxmController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="315" column="46" selection-start-line="315" selection-start-column="46" selection-end-line="315" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ThinkPHP/Library/Think/Think.class.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -651,6 +642,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
           <caret line="9" column="30" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Template/Chuhzg19tvgabxm/finance_invoice.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="406">
+          <caret line="62" column="46" selection-start-line="62" selection-start-column="46" selection-end-line="62" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App/Index/Controller/Chuhzg19tvgabxmController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="134">
+          <caret line="296" column="43" selection-start-line="296" selection-start-column="43" selection-end-line="296" selection-end-column="43" />
         </state>
       </provider>
     </entry>

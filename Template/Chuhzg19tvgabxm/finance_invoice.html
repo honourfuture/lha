@@ -35,6 +35,7 @@
                             <th>实际到账金额(泰铢)</th>
                             <th>开户银行</th>
                             <th>处理进度</th>
+                            <th>接口进度</th>
                             <th>申请时间</th>
                             <th>操作</th>
                         </tr>
@@ -59,6 +60,8 @@
                                         提现失败
                                     </if>
                                 </td>
+                                <td>{$c.remark}</td>
+
                                 <td>{$c.time}</td>
                                 <td>
                                     <if condition="$c['status'] eq 0">
