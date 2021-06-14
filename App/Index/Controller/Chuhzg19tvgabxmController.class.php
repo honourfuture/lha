@@ -618,8 +618,8 @@ class Chuhzg19tvgabxmController extends \Think\Controller
 				msg('该手机号码已注册！');
 			}
 
-			if (!empty($top) && !judge($top, 'phone')) {
-				msg('请输入正确的推荐人手机号码！');
+			if (!empty($top) && !judge($top, 'int')) {
+				msg('请输入正确的推荐人Id！');
 			}
 
 			if (!judge($phone, 'phone')) {
@@ -650,7 +650,7 @@ class Chuhzg19tvgabxmController extends \Think\Controller
 				$data['password2'] = md5($pwd2);
 			}
 
-			$data['top'] = getUserId($top) ?: 0;
+			$data['top'] = getUserField($top, 'id') ?: 0;
 			$data["reg_ip"]=$_SERVER['REMOTE_ADDR'];
 			if (addData('user', $data)) {
 				msg('添加成功！', 2, U('user_list'));

@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="68480f67-f626-45fe-a052-4ab649d40c9e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/Common/Common/other.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/Common/Common/other.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/Index/Controller/HandleController.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/Index/Controller/HandleController.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Template/Mobile/reg.html" beforeDir="false" afterPath="$PROJECT_DIR$/Template/Mobile/reg.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ThinkPHP/Library/Think/Think.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/ThinkPHP/Library/Think/Think.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/Index/Controller/Chuhzg19tvgabxmController.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/Index/Controller/Chuhzg19tvgabxmController.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Template/Chuhzg19tvgabxm/user_add.html" beforeDir="false" afterPath="$PROJECT_DIR$/Template/Chuhzg19tvgabxm/user_add.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,71 +14,41 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/App/Common/Common/other.php">
+        <entry file="file://$PROJECT_DIR$/Template/Chuhzg19tvgabxm/user_add.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="403">
-              <caret line="72" column="29" lean-forward="true" selection-start-line="72" selection-start-column="29" selection-end-line="72" selection-end-column="29" />
+            <state relative-caret-position="180">
+              <caret line="10" column="82" selection-start-line="10" selection-start-column="82" selection-end-line="10" selection-end-column="82" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/App/Index/Controller/HandleController.class.php">
+        <entry file="file://$PROJECT_DIR$/App/Index/Controller/Chuhzg19tvgabxmController.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="249">
-              <caret line="160" column="33" selection-start-line="160" selection-start-column="28" selection-end-line="160" selection-end-column="33" />
+            <state relative-caret-position="370">
+              <caret line="622" column="13" lean-forward="true" selection-start-line="622" selection-start-column="13" selection-end-line="622" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Template/Mobile/reg.html">
+        <entry file="file://$PROJECT_DIR$/App/Common/Common/user.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="15" column="97" selection-start-line="15" selection-start-column="97" selection-end-line="15" selection-end-column="97" />
+            <state relative-caret-position="218">
+              <caret line="97" column="17" lean-forward="true" selection-start-line="97" selection-start-column="17" selection-end-line="97" selection-end-column="17" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ThinkPHP/Library/Think/Think.class.php">
+        <entry file="file://$PROJECT_DIR$/App/Common/Common/system.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="26" column="19" lean-forward="true" selection-start-line="26" selection-start-column="19" selection-end-line="26" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/App/Index/Lang/thai.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="494">
-              <caret line="43" column="27" lean-forward="true" selection-start-line="43" selection-start-column="27" selection-end-line="43" selection-end-column="27" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/App/Index/Lang/zh-cn.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-136" />
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/App/Index/Lang/en-us.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="43" column="29" lean-forward="true" selection-start-line="43" selection-start-column="29" selection-end-line="43" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Public/config.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="16" column="16" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="16" />
+            <state relative-caret-position="290">
+              <caret line="182" column="21" selection-start-line="182" selection-start-column="18" selection-end-line="182" selection-end-column="21" />
+              <folding>
+                <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+                <element signature="e#55#61#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -90,8 +57,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>app_key</find>
-      <find>提示：发生错误</find>
       <find>include</find>
       <find>include_once</find>
       <find>./Public</find>
@@ -119,7 +84,9 @@
       <find>phone</find>
       <find>maxlength</find>
       <find>p://utf8.api.smschinese</find>
+      <find>推荐人手机号</find>
       <find>$recode</find>
+      <find>$top</find>
     </findStrings>
     <replaceStrings>
       <replace>{$Think.lang.inviteFriends}</replace>
@@ -166,7 +133,6 @@
         <option value="$PROJECT_DIR$/#U5b89#U88c5#U8bf4#U660e.txt" />
         <option value="$PROJECT_DIR$/Template/Mobile/footer.html" />
         <option value="$PROJECT_DIR$/App/Index/Controller/Bcdrwr49fdnController.class.php" />
-        <option value="$PROJECT_DIR$/App/Index/Controller/Chuhzg19tvgabxmController.class.php" />
         <option value="$PROJECT_DIR$/Template/Chuhzg19tvgabxm/user_vip.html" />
         <option value="$PROJECT_DIR$/Template/Mobile/details.html" />
         <option value="$PROJECT_DIR$/Template/Mobile/lists3.html" />
@@ -200,6 +166,8 @@
         <option value="$PROJECT_DIR$/Template/Mobile/reg.html" />
         <option value="$PROJECT_DIR$/ThinkPHP/Library/Think/Think.class.php" />
         <option value="$PROJECT_DIR$/App/Common/Common/other.php" />
+        <option value="$PROJECT_DIR$/Template/Chuhzg19tvgabxm/user_add.html" />
+        <option value="$PROJECT_DIR$/App/Index/Controller/Chuhzg19tvgabxmController.class.php" />
       </list>
     </option>
   </component>
@@ -233,6 +201,13 @@
               <item name="p2p" type="462c0819:PsiDirectoryNode" />
               <item name="App" type="462c0819:PsiDirectoryNode" />
               <item name="Index" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="p2p" type="b2602c69:ProjectViewProjectNode" />
+              <item name="p2p" type="462c0819:PsiDirectoryNode" />
+              <item name="App" type="462c0819:PsiDirectoryNode" />
+              <item name="Index" type="462c0819:PsiDirectoryNode" />
+              <item name="Controller" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="p2p" type="b2602c69:ProjectViewProjectNode" />
@@ -302,12 +277,12 @@
       <workItem from="1623477709197" duration="8292000" />
       <workItem from="1623520010610" duration="10795000" />
       <workItem from="1623577091256" duration="19059000" />
-      <workItem from="1623657841302" duration="2322000" />
+      <workItem from="1623657841302" duration="3000000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="70935000" />
+    <option name="totallyTimeSpent" value="71613000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -338,9 +313,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Template/Index_pc/details.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/Template/Index_pc/nav.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="576">
@@ -492,13 +464,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/App/Common/Common/user.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="676">
-          <caret line="136" column="16" lean-forward="true" selection-start-line="136" selection-start-column="16" selection-end-line="136" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Template/User/recharge.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
@@ -544,13 +509,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/App/Index/Controller/Chuhzg19tvgabxmController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="623" lean-forward="true" selection-start-line="623" selection-end-line="623" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ThinkPHP/ThinkPHP.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -568,28 +526,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/App/Common/Common/system.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="178" column="9" selection-start-line="178" selection-start-column="9" selection-end-line="178" selection-end-column="9" />
-          <folding>
-            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
-            <element signature="e#55#61#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Public/config.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
           <caret line="16" column="16" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ThinkPHP/Library/Think/Think.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="26" column="19" lean-forward="true" selection-start-line="26" selection-start-column="19" selection-end-line="26" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -600,10 +540,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/App/Index/Lang/en-us.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="43" column="29" lean-forward="true" selection-start-line="43" selection-start-column="29" selection-end-line="43" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App/Common/Common/other.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="403">
+          <caret line="72" column="29" selection-start-line="72" selection-start-column="29" selection-end-line="72" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/App/Index/Controller/HandleController.class.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="249">
           <caret line="160" column="33" selection-start-line="160" selection-start-column="28" selection-end-line="160" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ThinkPHP/Library/Think/Think.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="26" column="19" lean-forward="true" selection-start-line="26" selection-start-column="19" selection-end-line="26" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -619,17 +580,35 @@
         <state relative-caret-position="-136" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/App/Index/Lang/en-us.php">
+    <entry file="file://$PROJECT_DIR$/App/Common/Common/user.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="43" column="29" lean-forward="true" selection-start-line="43" selection-start-column="29" selection-end-line="43" selection-end-column="29" />
+        <state relative-caret-position="218">
+          <caret line="97" column="17" lean-forward="true" selection-start-line="97" selection-start-column="17" selection-end-line="97" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/App/Common/Common/other.php">
+    <entry file="file://$PROJECT_DIR$/App/Common/Common/system.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="403">
-          <caret line="72" column="29" lean-forward="true" selection-start-line="72" selection-start-column="29" selection-end-line="72" selection-end-column="29" />
+        <state relative-caret-position="290">
+          <caret line="182" column="21" selection-start-line="182" selection-start-column="18" selection-end-line="182" selection-end-column="21" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+            <element signature="e#55#61#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App/Index/Controller/Chuhzg19tvgabxmController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="370">
+          <caret line="622" column="13" lean-forward="true" selection-start-line="622" selection-start-column="13" selection-end-line="622" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Template/Chuhzg19tvgabxm/user_add.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="82" selection-start-line="10" selection-start-column="82" selection-end-line="10" selection-end-column="82" />
         </state>
       </provider>
     </entry>
