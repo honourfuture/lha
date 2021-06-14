@@ -71,6 +71,42 @@ class PayService
         $this->success($orderId);
     }
 
+    public function cash_callback($result){
+        $isVerify = $this->verifySign($result['data']);
+        if(!$isVerify){
+            $this->_logger('验签失败', $result);
+        }
+
+        $orderId = $result['data']['out_trade_no'];
+        $msg = $result['msg'];
+
+        if($result['code'] == 0){
+            $this->cash_error($orderId, $msg);
+        }else{
+            $this->cash_success($orderId, $msg);
+        }
+    }
+    public function cash_error($orderId, $msg)
+    {
+        $data = array('status' => 0, 'time2' => date('Y-m-d H:i:s'), 'remark' => $msg);
+        $cash = getData('cash', 1, 'order_id=\'' . $orderId . '\'');
+        editData('cash', $data, 'id=\'' . $cash['id'] . '\'');
+        echo 'error';
+    }
+
+    public function cash_success($orderId, $msg)
+    {
+        $data = array('status' => 1, 'time2' => date('Y-m-d H:i:s'), 'remark' => $msg);
+        if(!$data){
+            echo 'error';
+        }
+        $cash = getData('cash', 1, 'order_id=\'' . $orderId . '\'');
+        if (editData('cash', $data, 'id=\'' . $cash['id'] . '\'')) {
+            sendSms(getUserPhone($cash['uid']), '18007', $cash['money']);
+        }
+        echo 'success';
+    }
+
     protected function buildOrderId($data){}
 
     public function success($orderId)
@@ -92,6 +128,7 @@ class PayService
                 setRechargeRebate($tid, $money);
                 sendSms(getUserPhone($uid), '18005', $money);
                 $this->_logger('入款成功', $recharge);
+                echo 'success';
             }
             else {
                 $this->_logger('入款失败', $recharge);

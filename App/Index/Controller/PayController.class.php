@@ -8,6 +8,8 @@ class PayController extends \Think\Controller
 	{
 		$tkPay = new \TkPayService();
 		$tkPay->_logger('cash_callback', $_POST);
+
+		$tkPay->cash_callback($_POST);
 	}
 
 	public function tk_callback()
