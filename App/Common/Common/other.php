@@ -67,6 +67,7 @@ function sendSms($phone, $code, $msg)
 		'code' => $recode . '#' . smsErrorCode($msg['code']),
 		'time' => date('Y-m-d H:i:s'),
 		'result' => $result,
+		'request' => $url
 	);
 
 	addData('sms_list', $data);
