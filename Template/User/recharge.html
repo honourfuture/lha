@@ -93,7 +93,7 @@ $("#ifr").submit(function(){
     let open = {$open};
     if(open == 0){
         msg("错误","当前非充值时间！",1);
-        return false;
+        // return false;
     }
 
     var money = parseFloat($("#money").val()).toFixed(2);

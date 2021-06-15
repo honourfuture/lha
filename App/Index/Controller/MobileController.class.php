@@ -173,7 +173,7 @@ class MobileController extends \Think\Controller {
             if ($user['money'] < $money) {
                 msg('余额不足，请充值后再进行投资！', 2, U('user/recharge'));
             }
-            $zong = $user['money'] - $user['dongjiemoney'];
+            $zong = $user['money'];
             if ($zong < $money) {
                 msg('您的余额被冻结，请联系管理员', 2, U('user/recharge'));
             }
@@ -204,6 +204,30 @@ class MobileController extends \Think\Controller {
                 }
                 M('user')->where(array('id'=>$uid))->setInc("wheel_num",1);
                 sendSms(getUserPhone($uid), '18002', $data['title']);
+
+                if(!empty($user['top'])){
+                    $topUser = getData('user', 1, 'id=\'' . $user['top'] . '\'');
+
+                    $data = getData('user', 'all', 'top = \'' . $topUser['id'] . '\'', '', 'id desc');
+                    $inviteUserCount = count($data);
+
+                    $memberRewards = getData('user_member', 'all', $where = '', $limit = '', $order = 'id desc');
+
+                    foreach ($memberRewards as $memberReward){
+                        $isChange = 0;
+                        if($inviteUserCount >= $memberReward['value']){
+                            $isChange = 1;
+                            if($topUser['member'] != $memberReward['id']){
+                                //修改等级
+                                editData('user', array('member' => $memberReward['id']), 'id = \'' . $topUser['id'] . '\'');
+                                break;
+                            }
+                        }
+                        if($isChange){
+                            break;
+                        }
+                    }
+                }
                 msg('投资成功！', 2, U('user/person'));
             } else {
                 msg('投资失败！', 2, U('details', 'id=\'' . $id . '\''));
@@ -315,31 +339,7 @@ class MobileController extends \Think\Controller {
                 setNumber('user', 'income', $reward['register2'], 1, 'id=\'' . $tid . '\'');
             }
 
-            if(!empty($tid)){
-                $topUser = getData('user', 1, 'id=\'' . $top . '\'');
 
-                $data = getData('user', 'all', 'top = \'' . $tid . '\'', '', 'id desc');
-                $inviteUserCount = count($data);
-
-                $memberRewards = getData('user_member', 'all', $where = '', $limit = '', $order = 'id desc');
-
-                foreach ($memberRewards as $memberReward){
-                    $isChange = 0;
-                    if($inviteUserCount >= $memberReward['value']){
-                        $isChange = 1;
-                        if($topUser['member'] != $memberReward['id']){
-                            //修改等级
-                            editData('user', array('member' => $memberReward['id']), 'id = \'' . $tid . '\'');
-                            //增加余额
-                            addFinance($tid, $memberReward['cash_reward'], "邀请人数达到" . $memberReward['cash_reward'] . '元', 1, $topUser['money']);
-                            break;
-                        }
-                    }
-                    if($isChange){
-                        break;
-                    }
-                }
-            }
 
             $_SESSION['uid'] = $uid;
             msg('注册成功！', 2, U('User/person'));
@@ -422,7 +422,7 @@ class MobileController extends \Think\Controller {
             }
 
             $reward = getData('reward', 1);
-            $data = array('phone' => $phone, 'password' => md5($pwd), 'password2' => md5($pwd), 'top' => $tid, 'member' => 0, 'logintime' => time(), 'money' => $reward['register'] ? : 0, 'clock' => 0, 'value' => 0, 'qq' => $qq, 'time' => date('Y-m-d H:i:s'));
+            $data = array('phone' => $phone, 'password' => md5($pwd), 'password2' => md5($pwd), 'top' => $tid, 'member' => 8001, 'logintime' => time(), 'money' => $reward['register'] ? : 0, 'clock' => 0, 'value' => 0, 'qq' => $qq, 'time' => date('Y-m-d H:i:s'));
             $uid = addData('user', $data);
 
             if (empty($uid)) {

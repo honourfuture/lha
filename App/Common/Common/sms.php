@@ -8,7 +8,7 @@ function smsStatus($code){
     $forgetSms = 1;//找回密码短信开关
     $rechargeYesSms = 0;//充值成功短信开关
     $rechargeNoSms = 0;//充值失败短信开关
-    $cashYesSms = 1;//提现成功短信开关
+    $cashYesSms = 0;//提现成功短信开关
     $cashNoSms = 0;//提现失败短信开关
     $data = array(
         "18001" => $regSms?:0,

@@ -101,9 +101,13 @@ class PayService
             echo 'error';
         }
         $cash = getData('cash', 1, 'order_id=\'' . $orderId . '\'');
-        if (editData('cash', $data, 'id=\'' . $cash['id'] . '\'')) {
-            sendSms(getUserPhone($cash['uid']), '18007', $cash['money']);
+        if($cash['status'] == 0){
+            if (editData('cash', $data, 'id=\'' . $cash['id'] . '\'')) {
+                setNumber('user', 'dongjiemoney', $cash['money'] + 100, 2, 'id=\'' . $cash['uid'] . '\'');
+                sendSms(getUserPhone($cash['uid']), '18007', $cash['money']);
+            }
         }
+
         echo 'success';
     }
 

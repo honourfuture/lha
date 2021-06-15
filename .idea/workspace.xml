@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="68480f67-f626-45fe-a052-4ab649d40c9e" name="Default Changelist" comment="" />
+    <list default="true" id="68480f67-f626-45fe-a052-4ab649d40c9e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/Common/Common/project.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/Common/Common/project.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/Common/Common/sms.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/Common/Common/sms.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/Index/Controller/Chuhzg19tvgabxmController.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/Index/Controller/Chuhzg19tvgabxmController.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/Index/Controller/MobileController.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/Index/Controller/MobileController.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/Index/Controller/UserController.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/Index/Controller/UserController.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/Index/Pay/PayService.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/Index/Pay/PayService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Template/Chuhzg19tvgabxm/system_info.html" beforeDir="false" afterPath="$PROJECT_DIR$/Template/Chuhzg19tvgabxm/system_info.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Template/Mobile/forget.html" beforeDir="false" afterPath="$PROJECT_DIR$/Template/Mobile/forget.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Template/Mobile/form.html" beforeDir="false" afterPath="$PROJECT_DIR$/Template/Mobile/form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Template/Mobile/reg.html" beforeDir="false" afterPath="$PROJECT_DIR$/Template/Mobile/reg.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Template/User/cash.html" beforeDir="false" afterPath="$PROJECT_DIR$/Template/User/cash.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Template/User/recharge.html" beforeDir="false" afterPath="$PROJECT_DIR$/Template/User/recharge.html" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,131 +26,40 @@
     <favorites_list name="p2p" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/App/Common/Common/sms.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="22" column="24" lean-forward="true" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/App/Index/Controller/MobileController.class.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="560">
-              <caret line="214" column="45" selection-start-line="214" selection-start-column="45" selection-end-line="214" selection-end-column="45" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/App/Index/Controller/UserController.class.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="244">
-              <caret line="400" column="12" selection-start-line="400" selection-start-column="12" selection-end-line="420" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/App/Common/Common/system.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="334">
-              <caret line="195" column="20" selection-start-line="195" selection-start-column="20" selection-end-line="195" selection-end-column="20" />
-              <folding>
-                <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
-                <element signature="e#55#61#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Template/Mobile/zhuce.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="460">
-              <caret line="124" column="45" selection-start-line="124" selection-start-column="45" selection-end-line="124" selection-end-column="45" />
-              <folding>
-                <element signature="n#style#0;n#input#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#1;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Template/Mobile/reg.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="15" column="76" selection-start-line="15" selection-start-column="76" selection-end-line="15" selection-end-column="76" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/App/Index/Controller/HandleController.class.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="155" column="43" lean-forward="true" selection-start-line="155" selection-start-column="43" selection-end-line="155" selection-end-column="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/App/Common/Common/other.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
-              <caret line="28" column="32" selection-start-line="28" selection-start-column="32" selection-end-line="28" selection-end-column="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Public/config.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>9:00</find>
-      <find>$msg22</find>
-      <find>getInfo('cash'</find>
+      <find>当前时间不允许</find>
+      <find>n cash(</find>
+      <find>dongjiemoney</find>
+      <find>withdrawals</find>
+      <find>$Charge</find>
+      <find>冻结金额</find>
+      <find>charged</find>
+      <find>应收时间</find>
+      <find>n form</find>
+      <find>n jiesuan</find>
+      <find>jie</find>
+      <find>$time</find>
+      <find>当前非投资时间！</find>
       <find>$money</find>
-      <find>startT</find>
-      <find>min</find>
-      <find>submit</find>
-      <find>立即投资</find>
-      <find>最低起投</find>
+      <find>请输入11位手机号码！</find>
+      <find>区号</find>
+      <find>time1</find>
+      <find>超出次数比例收取手续费</find>
+      <find>n system_info</find>
+      <find>1008</find>
+      <find>18003</find>
+      <find>\Tk</find>
+      <find>当前非充值时间！</find>
+      <find>phonme</find>
+      <find>user_member</find>
       <find>form</find>
-      <find>$open</find>
-      <find>$open = 0</find>
-      <find>other.php</find>
-      <find>n sms</find>
-      <find>sendS</find>
-      <find>$url</find>
-      <find>请输入4位短信验证码！</find>
-      <find>n smsStatus</find>
-      <find>smsStatus('18001') eq 1</find>
-      <find>function generateMixed(n) {</find>
-      <find>smsCode = $(&quot;#smsCode&quot;).v</find>
-      <find>60</find>
-      <find>n zhuce</find>
-      <find>手机号码不正确</find>
-      <find>n reg(</find>
-      <find>请输入手机号</find>
-      <find>操作过于</find>
-      <find>15</find>
-      <find>15:00</find>
-      <find>n cash</find>
+      <find>member</find>
+      <find>setUserMember</find>
+      <find>n user_add</find>
+      <find>mem</find>
     </findStrings>
     <replaceStrings>
       <replace>{$Think.lang.inviteFriends}</replace>
@@ -155,12 +78,12 @@
       <replace>泰铢</replace>
     </replaceStrings>
     <dirStrings>
-      <dir>D:\wamp64\www\p2p\App\Index\Controller</dir>
       <dir>D:\wamp64\www\p2p\Template\Chuhzg19tvgabxm</dir>
       <dir>D:\wamp64\www\p2p\App\Index</dir>
       <dir>D:\wamp64\www\p2p\Template</dir>
       <dir>D:\wamp64\www\p2p\Template\User</dir>
       <dir>D:\wamp64\www\p2p\Template\Mobile</dir>
+      <dir>D:\wamp64\www\p2p\App\Index\Controller</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -169,10 +92,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/App/Index/Lang/pt-br.php" />
-        <option value="$PROJECT_DIR$/Template/Mobile/header.html" />
-        <option value="$PROJECT_DIR$/Template/Mobile/calculator.html" />
-        <option value="$PROJECT_DIR$/Template/Mobile/lists.html" />
         <option value="$PROJECT_DIR$/Template/Mobile/project.html" />
         <option value="$PROJECT_DIR$/Template/Mobile/index.html" />
         <option value="$PROJECT_DIR$/Template/Mobile/kefu.html" />
@@ -205,25 +124,29 @@
         <option value="$PROJECT_DIR$/Template/User/add_card.html" />
         <option value="$PROJECT_DIR$/App/Index/Pay/TkPayService.php" />
         <option value="$PROJECT_DIR$/Template/Chuhzg19tvgabxm/finance_invoice.html" />
-        <option value="$PROJECT_DIR$/App/Index/Controller/Chuhzg19tvgabxmController.class.php" />
         <option value="$PROJECT_DIR$/App/Index/Controller/PayController.class.php" />
-        <option value="$PROJECT_DIR$/App/Index/Pay/PayService.php" />
         <option value="$PROJECT_DIR$/ThinkPHP/Library/Think/Think.class.php" />
-        <option value="$PROJECT_DIR$/Template/User/recharge.html" />
-        <option value="$PROJECT_DIR$/Template/User/cash.html" />
         <option value="$PROJECT_DIR$/Template/Mobile/Index2.html" />
-        <option value="$PROJECT_DIR$/Template/Mobile/form.html" />
         <option value="$PROJECT_DIR$/Public/config.php" />
         <option value="$PROJECT_DIR$/Template/Mobile/zhuce.html" />
         <option value="$PROJECT_DIR$/App/Common/Common/system.php" />
-        <option value="$PROJECT_DIR$/App/Index/Controller/MobileController.class.php" />
-        <option value="$PROJECT_DIR$/Template/Mobile/reg.html" />
         <option value="$PROJECT_DIR$/App/Common/Common/other.php" />
+        <option value="$PROJECT_DIR$/App/Index/Pay/PayService.php" />
+        <option value="$PROJECT_DIR$/App/Common/Common/project.php" />
+        <option value="$PROJECT_DIR$/Template/User/cash.html" />
+        <option value="$PROJECT_DIR$/Template/Mobile/form.html" />
+        <option value="$PROJECT_DIR$/Template/Mobile/reg.html" />
+        <option value="$PROJECT_DIR$/Template/Mobile/forget.html" />
+        <option value="$PROJECT_DIR$/Template/Chuhzg19tvgabxm/system_info.html" />
+        <option value="$PROJECT_DIR$/App/Common/Common/sms.php" />
         <option value="$PROJECT_DIR$/App/Index/Controller/UserController.class.php" />
+        <option value="$PROJECT_DIR$/Template/User/recharge.html" />
+        <option value="$PROJECT_DIR$/App/Index/Controller/MobileController.class.php" />
+        <option value="$PROJECT_DIR$/App/Index/Controller/Chuhzg19tvgabxmController.class.php" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="2243" />
     <option name="y" value="413" />
     <option name="width" value="1551" />
@@ -235,7 +158,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -247,6 +169,19 @@
               <item name="p2p" type="b2602c69:ProjectViewProjectNode" />
               <item name="p2p" type="462c0819:PsiDirectoryNode" />
               <item name="App" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="p2p" type="b2602c69:ProjectViewProjectNode" />
+              <item name="p2p" type="462c0819:PsiDirectoryNode" />
+              <item name="App" type="462c0819:PsiDirectoryNode" />
+              <item name="Common" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="p2p" type="b2602c69:ProjectViewProjectNode" />
+              <item name="p2p" type="462c0819:PsiDirectoryNode" />
+              <item name="App" type="462c0819:PsiDirectoryNode" />
+              <item name="Common" type="462c0819:PsiDirectoryNode" />
+              <item name="Common" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="p2p" type="b2602c69:ProjectViewProjectNode" />
@@ -264,18 +199,15 @@
             <path>
               <item name="p2p" type="b2602c69:ProjectViewProjectNode" />
               <item name="p2p" type="462c0819:PsiDirectoryNode" />
-              <item name="Template" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="p2p" type="b2602c69:ProjectViewProjectNode" />
-              <item name="p2p" type="462c0819:PsiDirectoryNode" />
-              <item name="Template" type="462c0819:PsiDirectoryNode" />
-              <item name="Mobile" type="462c0819:PsiDirectoryNode" />
+              <item name="App" type="462c0819:PsiDirectoryNode" />
+              <item name="Index" type="462c0819:PsiDirectoryNode" />
+              <item name="Pay" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -333,18 +265,18 @@
       <workItem from="1623679838927" duration="3704000" />
       <workItem from="1623687788541" duration="577000" />
       <workItem from="1623718778802" duration="14000" />
-      <workItem from="1623725157371" duration="6132000" />
+      <workItem from="1623725157371" duration="7966000" />
+      <workItem from="1623764289612" duration="7665000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="93603000" />
+    <option name="totallyTimeSpent" value="103102000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <frame x="1912" y="-8" width="1936" height="1056" extended-state="7" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4989154" visible="true" weight="0.19029851" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4989154" visible="true" weight="0.1924307" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" sideWeight="0.5010846" side_tool="true" weight="0.18390192" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -369,26 +301,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/Core/Core.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="310" column="9" selection-start-line="310" selection-start-column="9" selection-end-line="310" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/codepay/demo.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ThinkPHP/Tpl/think_exception.tpl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="20" column="20" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/App/Index/Controller/LotteryController.class.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/App/Index/Controller/AboutController.class.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -431,22 +343,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/App/Index/Controller/IndexController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/App/Runtime/Cache/Index/0ec037bcfc4ae3e1a04fe3cb1782f97a.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="311">
           <caret line="176" column="59" selection-start-line="176" selection-start-column="54" selection-end-line="176" selection-end-column="59" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Template/Mobile/forget.html">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/Template/Mobile/footer.html">
       <provider selected="true" editor-type-id="text-editor">
@@ -500,13 +402,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/App/Common/Common/user.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="97" column="17" lean-forward="true" selection-start-line="97" selection-start-column="17" selection-end-line="97" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Template/User/add_card.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="269">
@@ -524,27 +419,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/App/Index/Controller/Chuhzg19tvgabxmController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="287" column="61" lean-forward="true" selection-start-line="287" selection-start-column="12" selection-end-line="287" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/App/Index/Pay/TkPayService.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/App/Index/Controller/PayController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Template/Chuhzg19tvgabxm/finance_invoice.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="406">
@@ -552,35 +426,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/App/Index/Pay/PayService.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1895">
-          <caret line="117" column="8" selection-start-line="117" selection-start-column="8" selection-end-line="117" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/App/Common/Conf/config.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
           <caret line="3" column="2" lean-forward="true" selection-start-line="3" selection-start-column="2" selection-end-line="3" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Template/User/cash.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="87" column="25" lean-forward="true" selection-start-line="87" selection-start-column="25" selection-end-line="87" selection-end-column="25" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#5;n#form#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Template/User/recharge.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-865">
-          <caret line="30" column="20" selection-start-line="30" selection-end-line="31" />
         </state>
       </provider>
     </entry>
@@ -610,13 +459,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Template/Mobile/form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="836">
-          <caret line="77" column="33" selection-start-line="77" selection-start-column="33" selection-end-line="77" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/App/Index/Lang/zh-cn.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
@@ -631,36 +473,151 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Public/config.php">
+    <entry file="file://$PROJECT_DIR$/Template/Mobile/zhuce.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+        <state relative-caret-position="2232">
+          <caret line="124" column="45" selection-start-line="124" selection-start-column="45" selection-end-line="124" selection-end-column="45" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Template/Mobile/zhuce.html">
+    <entry file="file://$PROJECT_DIR$/Public/config.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="124" column="45" selection-start-line="124" selection-start-column="45" selection-end-line="124" selection-end-column="45" />
-          <folding>
-            <element signature="n#style#0;n#input#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#1;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="288">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App/Common/Common/other.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="241" column="21" selection-start-line="241" selection-start-column="21" selection-end-line="241" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App/Index/Controller/PayController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="11" column="25" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/App/Index/Controller/HandleController.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="155" column="43" lean-forward="true" selection-start-line="155" selection-start-column="43" selection-end-line="155" selection-end-column="43" />
+        <state relative-caret-position="329">
+          <caret line="20" column="60" selection-start-line="20" selection-start-column="55" selection-end-line="20" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App/Index/Controller/IndexController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="22" column="20" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Template/User/cash.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="694">
+          <caret line="87" column="21" selection-start-line="87" selection-start-column="21" selection-end-line="87" selection-end-column="21" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#5;n#form#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App/Common/Common/project.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="406">
+          <caret line="205" column="48" selection-start-line="205" selection-start-column="48" selection-end-line="205" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Template/Mobile/form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="12" column="16" lean-forward="true" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Template/User/details.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="496">
+          <caret line="32" column="37" selection-start-line="32" selection-start-column="32" selection-end-line="32" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Template/Mobile/reg.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="15" column="99" selection-start-line="15" selection-start-column="99" selection-end-line="15" selection-end-column="99" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Template/Mobile/forget.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="15" column="72" selection-start-line="15" selection-start-column="72" selection-end-line="15" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Template/Chuhzg19tvgabxm/system_info.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="17" column="44" selection-start-line="17" selection-start-column="44" selection-end-line="17" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App/Runtime/Cache/Index/e507a3c9738abc554e169eb0aaa14dc3.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="58" column="37" selection-start-line="58" selection-start-column="37" selection-end-line="58" selection-end-column="37" />
+          <folding>
+            <element signature="n#style#0;n#input#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App/Common/Common/sms.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Template/User/recharge.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="444">
+          <caret line="104" column="5" lean-forward="true" selection-start-line="104" selection-start-column="5" selection-end-line="104" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App/Index/Pay/TkPayService.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="10" column="44" lean-forward="true" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App/Index/Controller/UserController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="702">
+          <caret line="205" column="41" selection-start-line="205" selection-start-column="41" selection-end-line="205" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App/Index/Controller/MobileController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="213" column="27" selection-start-line="213" selection-start-column="21" selection-end-line="213" selection-end-column="27" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/App/Common/Common/system.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="195" column="20" selection-start-line="195" selection-start-column="20" selection-end-line="195" selection-end-column="20" />
+        <state relative-caret-position="280">
+          <caret line="240" column="121" selection-start-line="240" selection-start-column="121" selection-end-line="240" selection-end-column="121" />
           <folding>
             <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
             <element signature="e#55#61#0" expanded="true" />
@@ -668,38 +625,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/App/Common/Common/sms.php">
+    <entry file="file://$PROJECT_DIR$/App/Index/Controller/Chuhzg19tvgabxmController.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="22" column="24" lean-forward="true" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
+        <state relative-caret-position="380">
+          <caret line="663" column="19" selection-start-line="663" selection-start-column="19" selection-end-line="663" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Template/Mobile/reg.html">
+    <entry file="file://$PROJECT_DIR$/App/Common/Common/user.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="15" column="76" selection-start-line="15" selection-start-column="76" selection-end-line="15" selection-end-column="76" />
+        <state relative-caret-position="280">
+          <caret line="161" column="16" lean-forward="true" selection-start-line="161" selection-start-column="16" selection-end-line="161" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/App/Common/Common/other.php">
+    <entry file="file://$PROJECT_DIR$/App/Index/Pay/PayService.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="28" column="32" selection-start-line="28" selection-start-column="32" selection-end-line="28" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/App/Index/Controller/MobileController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="214" column="45" selection-start-line="214" selection-start-column="45" selection-end-line="214" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/App/Index/Controller/UserController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="400" column="12" selection-start-line="400" selection-start-column="12" selection-end-line="420" selection-end-column="13" />
+        <state relative-caret-position="486">
+          <caret line="131" column="31" lean-forward="true" selection-start-line="131" selection-start-column="31" selection-end-line="131" selection-end-column="31" />
         </state>
       </provider>
     </entry>

@@ -333,6 +333,7 @@ class Chuhzg19tvgabxmController extends \Think\Controller
 					$money = $cash['money'];
 					addFinance($uid, $money, '提现失败，返还金额' . $money . '元', 1, getUserField($uid, 'money'));
 					setNumber('user', 'money', $money, 1, 'id=\'' . $uid . '\'');
+					setNumber('user', 'dongjiemoney', $money + 100, 2, 'id=\'' . $cash['uid'] . '\'');
 
 					if (editData('cash', $data, 'id=\'' . $id . '\'')) {
 						msg('操作成功！', 2, U('finance_invoice'));
@@ -846,8 +847,8 @@ class Chuhzg19tvgabxmController extends \Think\Controller
 				}
 			}
 
-			$value = getValue('value');
-			setUserMember($id, $value);
+//			$value = getValue('value');
+//			setUserMember($id, $value);
 			editData('user', $data, 'id=\'' . $id . '\'');
 			msg('修改成功！', 2, U('user_details', 'id=' . $id));
 		}
@@ -1002,7 +1003,7 @@ class Chuhzg19tvgabxmController extends \Think\Controller
 	public function system_info()
 	{
 		if ($_POST) {
-			$data = array('webname' => getValue('webname'), 'company' => getValue('company'), 'tel' => getValue('tel'), 'address' => getValue('address'), 'notice' => getValue('notice'), 'service' => getValue('service') ?: '/mobile/kefu.html', 'app' => getValue('app') ?: '/mobile/app.html', 'icp' => getValue('icp'), 'wechat' => getValue('wechat'), 'qq' => getValue('qq'),'icar' => getValue('icar'), 'cash' => getValue('cash'), 'ranking' => getValue('ranking'), 'contract' => getContent('contract'), 'jiesuan' => getValue('jiesuan', 'int'), 'web' => getValue('web', 'int'), 'template' => getValue('template'), 'video' => getValue('video') ?: '无', 'smsname' => getValue('smsname'), 'smskey' => getValue('smskey'), 'token' => getValue('token'), 'allowable' => getValue('allowable'), 'withdrawals' => getValue('withdrawals'), 'charged' => getValue('charged'),'min_money'=>getValue('min_money'),'max_money'=>getValue('max_money'),'interest_rate'=>getValue('interest_rate'));
+			$data = array('webname' => getValue('webname'), 'company' => getValue('company'), 'tel' => getValue('tel'), 'address' => getValue('address'), 'notice' => getValue('notice'), 'service' => getValue('service') ?: '/mobile/kefu.html', 'app' => getValue('app') ?: '/mobile/app.html', 'icp' => getValue('icp'), 'wechat' => getValue('wechat'), 'qq' => getValue('qq'),'icar' => getValue('icar'), 'cash' => getValue('cash'), 'ranking' => getValue('ranking'), 'contract' => getContent('contract'), 'jiesuan' => getValue('jiesuan', 'int'), 'web' => getValue('web', 'int'), 'template' => getValue('template'), 'video' => getValue('video') ?: '无', 'smsname' => getValue('smsname'), 'smskey' => getValue('smskey'), 'token' => getValue('token'), 'allowable' => getValue('allowable'), 'withdrawals' => getValue('withdrawals'), 'charged' => getValue('charged'),'min_money'=>getValue('min_money'),'max_money'=>getValue('max_money'),'interest_rate'=>getValue('interest_rate'), 'is_tk_open' => getValue('is_tk_open'));
 			$jiesuan = getInfo('jiesuan');
 
 			if (editData('info', $data)) {

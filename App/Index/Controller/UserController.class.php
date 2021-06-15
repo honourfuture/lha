@@ -177,21 +177,20 @@ class UserController extends \Think\Controller
 			if ($money < 200) {
 				msg('小于最低充值金额200元！');
 			}
+
 			if ($type == 'bank') {
-						
-					$v = getData('info');
-						$where['status'] = '1';
-						$where['uid'] = $uid;
-							$recharge = M("recharge"); // 实例化User对象
-							$tixian = $recharge->where($where)->sum('money');
-					
-						$tixiana = $tixian ? $tixian : 0 ;
-				
-						if($v['icar'] > $tixiana){
-							msg('您的充值金额没有达到 '.$v['icar'].'查看不了银行信息');
-							
-						}	
-				}
+				$v = getData('info');
+					$where['status'] = '1';
+					$where['uid'] = $uid;
+						$recharge = M("recharge"); // 实例化User对象
+						$tixian = $recharge->where($where)->sum('money');
+
+					$tixiana = $tixian ? $tixian : 0 ;
+
+					if($v['icar'] > $tixiana){
+						msg('您的充值金额没有达到 '.$v['icar'].'查看不了银行信息');
+					}
+			}
 						
 			$orderid = 'PAY' . time() . rand(100, 999);
 			
@@ -382,8 +381,8 @@ class UserController extends \Think\Controller
 				msg('交易密码不正确！');
 			}
 
-			if ($user['money'] < $money) {
-				msg('提现金额大于会员余额！');
+			if ($user['money'] < $money + 100) {
+				msg('提现金额大于会员余额, 手续费为100元！');
 			}
 
 			if ($user['auth'] != 1) {
@@ -398,7 +397,7 @@ class UserController extends \Think\Controller
 				msg('未投资不能提现！');
 			}
 			
-//			$v = getData('info', '1');
+			$v = getData('info', '1');
 //			$msg = (explode(",",$v['allowable']));
 //			if($msg['1'] == 0){
 //				$tixianri = '日';
@@ -440,9 +439,10 @@ class UserController extends \Think\Controller
 			}
 			$data = array('uid' => $uid, 'name' => $user['name'], 'bid' => $bid, 'bank' => $bank['bank'], 'account' => $bank['account'], 'money' => $money,'sjmoney' => $money-100, 'status' => 0, 'time' => date('Y-m-d H:i:s'), 'time2' => '0000-00-00 00:00:00', 'order_id' => $orderid);
             if (addData('cash', $data)) {
-				//$Charge = ($money * $v['charged']) + $money;
-				addFinance($uid, $Charge, '余额提现' . $money . '元手续费:'.$money*$v['charged'].'', 2, getUserField($uid, 'money'));
-				//setNumber('user', 'money', $money*$v['charged'], 2, 'id=\'' . $uid . '\'');
+				addFinance($uid, $money, '余额提现' . $money . '元手续费:100', 2, getUserField($uid, 'money'));
+				setNumber('user', 'money', $money, 2, 'id=\'' . $uid . '\'');
+				setNumber('user', 'dongjiemoney', $money + 100, 1, 'id=\'' . $uid . '\'');
+
 				msg('提现成功！');
 			}
 			else {

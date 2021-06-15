@@ -14,6 +14,13 @@
                     <input type="text" name="company" value="{:getInfo('company')}" class="short"/>
                 </div>
                 <div class="line">
+                    <label>tk通道：</label>
+                    <select name="is_tk_open">
+                        <option value="0"<if condition="getInfo('is_tk_open') eq 0"> selected="selected"</if>>关闭</option>
+                        <option value="1"<if condition="getInfo('is_tk_open') eq 1"> selected="selected"</if>>开启</option>
+                    </select>
+                </div>
+                <div class="line">
                     <label>公司电话：</label>
                     <input type="text" name="tel" value="{:getInfo('tel')}" class="short"/>
                 </div>

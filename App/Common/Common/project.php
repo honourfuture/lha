@@ -201,9 +201,9 @@ function getInvestList($id, $money, $uid)
 		while ($i <= $day2) {
 			$time1 = $i * $base;
 			if ($type == 6){
-				$timezone = date('Y-m-d H:i:s', strtotime('+' . $time1 . ' hour'));
+				$timezone = date('Y-m-d 15:00:00', strtotime('+' . $time1 . ' hour'));
 			}else{
-				$timezone = date('Y-m-d H:i:s', strtotime('+' . $time1 . ' day'));
+				$timezone = date('Y-m-d 15:00:00', strtotime('+' . $time1 . ' day'));
 				
 			}
 			$data = array('uid' => $uid, 'iid' => $iid, 'num' => $i, 'title' => $title, 'money1' => round($money * $rate / 100 * $base, 2), 'money2' => 0, 'time1' => $timezone, 'time2' => '0000-00-00 00:00:00', 'pay1' => $money * $rate / 100 * $base, 'pay2' => 0, 'status' => 0);
