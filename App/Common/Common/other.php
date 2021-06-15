@@ -26,7 +26,7 @@ function sendSms($phone, $code, $msg)
 	$before = date('Y-m-d H:i:s', strtotime('-1 day'));
 	$beforeSms = getData('sms_list', 'all', 'phone=\'' . $phone . '\' AND time > \'' . $before . '\' AND code LIKE \'000#%\'');
 
-	if (10 <= count($beforeSms)) {
+	if (100 <= count($beforeSms)) {
 		return reSmsCode('004');
 	}
 
