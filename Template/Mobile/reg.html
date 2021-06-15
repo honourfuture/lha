@@ -34,7 +34,7 @@
                     <div class="input_text">
                         <i><img src="__PUBLIC__/mobile/img/icon_code.png"></i>
                         <input type="text" id="smsCode" name="smscode" placeholder="请输入短信验证码">
-                        <button id="getcode" type="button" onclick="regcode(60)">发送</button>
+                        <button id="getcode" type="button" onclick="regcode(300)">发送</button>
                     </div>
                 </if>
           
@@ -85,7 +85,8 @@
         var pwd2 = $("#pwd2").val();
         var code = $("#code").val();
       
-        // var smsCode = $("#smsCode").val();        if(phone.length != 11){
+        var smsCode = $("#smsCode").val();
+        // if(phone.length != 11){
         //     msg("错误","请输入11位手机号码！",1);
         //     return false;
         // }

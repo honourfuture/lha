@@ -111,7 +111,9 @@
     function isSubmit(){
         var phone = $("#phone").val();
         var code = $("#code").val();
-    <if condition="smsStatus('18001') eq 1">var smsCode = $("#smsCode").val();</if>
+        <if condition="smsStatus('18001') eq 1">
+            var smsCode = $("#smsCode").val();
+        </if>
         var pwd = $("#pwd").val();
         var pwd2 = $("#pwd2").val();
 
