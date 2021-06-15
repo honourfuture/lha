@@ -20,7 +20,7 @@ class MobileController extends \Think\Controller {
         }
 
         $message = [
-            '邀请用户获得:', '通过幸运抽奖获得:', '投资收益:'
+            '邀请用户获得:', '投资收益:'
         ];
 
         $fakerPhones = $this->fakerPhone();
@@ -29,7 +29,7 @@ class MobileController extends \Think\Controller {
             $faker = [
                 'phone' => $this->_hide($fakerPhones[rand(0, 2000)]),
                 'cash' => rand(1000, 9999),
-                'message' => $message[rand(0, 2)]
+                'message' => $message[rand(0, 1)]
             ];
 
             $fakers[] = $faker;

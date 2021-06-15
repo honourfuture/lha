@@ -3,18 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="68480f67-f626-45fe-a052-4ab649d40c9e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/Common/Common/project.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/Common/Common/project.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/Common/Common/sms.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/Common/Common/sms.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/Index/Controller/Chuhzg19tvgabxmController.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/Index/Controller/Chuhzg19tvgabxmController.class.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App/Index/Controller/MobileController.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/Index/Controller/MobileController.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/Index/Controller/UserController.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/Index/Controller/UserController.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/Index/Pay/PayService.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/Index/Pay/PayService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Template/Chuhzg19tvgabxm/system_info.html" beforeDir="false" afterPath="$PROJECT_DIR$/Template/Chuhzg19tvgabxm/system_info.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Template/Mobile/forget.html" beforeDir="false" afterPath="$PROJECT_DIR$/Template/Mobile/forget.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Template/Mobile/form.html" beforeDir="false" afterPath="$PROJECT_DIR$/Template/Mobile/form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Template/Mobile/reg.html" beforeDir="false" afterPath="$PROJECT_DIR$/Template/Mobile/reg.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Template/User/cash.html" beforeDir="false" afterPath="$PROJECT_DIR$/Template/User/cash.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Template/User/recharge.html" beforeDir="false" afterPath="$PROJECT_DIR$/Template/User/recharge.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,11 +15,20 @@
     <favorites_list name="p2p" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/App/Index/Controller/MobileController.class.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="460">
+              <caret line="31" column="47" selection-start-line="31" selection-start-column="47" selection-end-line="31" selection-end-column="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>当前时间不允许</find>
       <find>n cash(</find>
       <find>dongjiemoney</find>
       <find>withdrawals</find>
@@ -60,6 +58,7 @@
       <find>setUserMember</find>
       <find>n user_add</find>
       <find>mem</find>
+      <find>幸运抽奖</find>
     </findStrings>
     <replaceStrings>
       <replace>{$Think.lang.inviteFriends}</replace>
@@ -141,12 +140,12 @@
         <option value="$PROJECT_DIR$/App/Common/Common/sms.php" />
         <option value="$PROJECT_DIR$/App/Index/Controller/UserController.class.php" />
         <option value="$PROJECT_DIR$/Template/User/recharge.html" />
-        <option value="$PROJECT_DIR$/App/Index/Controller/MobileController.class.php" />
         <option value="$PROJECT_DIR$/App/Index/Controller/Chuhzg19tvgabxmController.class.php" />
+        <option value="$PROJECT_DIR$/App/Index/Controller/MobileController.class.php" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="2243" />
     <option name="y" value="413" />
     <option name="width" value="1551" />
@@ -266,15 +265,16 @@
       <workItem from="1623687788541" duration="577000" />
       <workItem from="1623718778802" duration="14000" />
       <workItem from="1623725157371" duration="7966000" />
-      <workItem from="1623764289612" duration="7665000" />
+      <workItem from="1623764289612" duration="7790000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="103102000" />
+    <option name="totallyTimeSpent" value="103227000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4989154" visible="true" weight="0.1924307" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -607,13 +607,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/App/Index/Controller/MobileController.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="213" column="27" selection-start-line="213" selection-start-column="21" selection-end-line="213" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/App/Common/Common/system.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
@@ -643,6 +636,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="486">
           <caret line="131" column="31" lean-forward="true" selection-start-line="131" selection-start-column="31" selection-end-line="131" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App/Index/Controller/MobileController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="31" column="47" selection-start-line="31" selection-start-column="47" selection-end-line="31" selection-end-column="47" />
         </state>
       </provider>
     </entry>
