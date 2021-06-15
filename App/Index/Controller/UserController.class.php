@@ -398,27 +398,27 @@ class UserController extends \Think\Controller
 				msg('未投资不能提现！');
 			}
 			
-			$v = getData('info', '1');
-			$msg = (explode(",",$v['allowable']));
-			if($msg['1'] == 0){
-				$tixianri = '日';
-				
-			}else{
-				$tixianri = $msg['1'];
-			}
-			
-		    $time = time();
-			$msg22 = 9;
-			$msg33 = 15;
-			$err_msg = '请在'.$msg22.':05-'.$msg33.':00 提交申请!';
-			$week = date('w', $time);
-			$hour = date('H', $time);
-			if($week < $msg['0'] || $week >= $msg['1']){
-				msg($err_msg);
-			}
-			if($hour < $msg22 || $hour > $msg33){
-				msg($err_msg);
-			}
+//			$v = getData('info', '1');
+//			$msg = (explode(",",$v['allowable']));
+//			if($msg['1'] == 0){
+//				$tixianri = '日';
+//
+//			}else{
+//				$tixianri = $msg['1'];
+//			}
+//
+//		    $time = time();
+//			$msg22 = 9;
+//			$msg33 = 15;
+//			$err_msg = '请在'.$msg22.':05-'.$msg33.':00 提交申请!';
+//			$week = date('w', $time);
+//			$hour = date('H', $time);
+//			if($week < $msg['0'] || $week >= $msg['1']){
+//				msg($err_msg);
+//			}
+//			if($hour < $msg22 || $hour > $msg33){
+//				msg($err_msg);
+//			}
 			
 					
 			$cash = M("cash"); // 实例化User对象
