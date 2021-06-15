@@ -193,6 +193,7 @@ function judge($str, $type)
 		$char = '/^[\\x{4e00}-\\x{9fa5}]+[·•]?[\\x{4e00}-\\x{9fa5}]+$/u';
 	}
 	else if ($type == 'phone') {
+		return true;
 		$char = '/^1[3456789]{1}\\d{9}$/';
 	}
 	else if ($type == 'tel') {
