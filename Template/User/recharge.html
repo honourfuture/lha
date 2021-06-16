@@ -11,7 +11,7 @@
             <p>充值金额</p>
             <label class="big">￥</label>
             <input class="big" type="text" name="money" placeholder="请输入充值金额" id="money" />
-            <p>可用余额&nbsp;&nbsp;&nbsp;￥ <strong>{$user.money}</strong> 元</p>
+            <p>可用余额&nbsp;&nbsp;&nbsp;￥ <strong>{$user.money}</strong> {$Think.lang.unit}</p>
 
 
         </div>
@@ -108,7 +108,7 @@ $("#ifr").submit(function(){
         return false;
     }
     if(money < 200){
-        msg("错误","最低充值金额200元！",1);
+        msg("错误","最低充值金额200{$Think.lang.unit}！",1);
         return false;
     }
     var type = $("input:radio[name='type']:checked").val();

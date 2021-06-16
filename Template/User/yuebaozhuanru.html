@@ -11,7 +11,7 @@
             <p>转入金额</p>
             <label class="big">￥</label>
             <input class="big" type="text" name="money" placeholder="请输入转入金额" id="money" />
-            <p>可用余额&nbsp;&nbsp;&nbsp;￥ <strong>{$user.money}</strong> 元</p>
+            <p>可用余额&nbsp;&nbsp;&nbsp;￥ <strong>{$user.money}</strong> {$Think.lang.unit}</p>
         </div>
       
     
@@ -46,7 +46,7 @@ $("#ifr").submit(function(){
     var zijin = parseInt(" {:getReward('zijin')}");
 	
 if(money > zijin){
-        msg("错误","最高转入金额{:getReward('zijin')}元！",1);
+        msg("错误","最高转入金额{:getReward('zijin')}{$Think.lang.unit}！",1);
         return false; 
     }
 
@@ -55,7 +55,7 @@ if(money > zijin){
         return false;
     }
     if(money < 0.01){
-        msg("错误","最低转入金额0.01元！",1);
+        msg("错误","最低转入金额0.01{$Think.lang.unit}！",1);
         return false;
     }
   

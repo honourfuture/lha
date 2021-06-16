@@ -7,7 +7,7 @@
         </div>
         <div class="header-nbsp"></div>
         <div style="color:#fff;text-align: center;font-size: .4rem;padding: 20px 0;">
-            微信充值 {$money} 元
+            微信充值 {$money} {$Think.lang.unit}
         </div>
         <div style="width: 96%;padding: 0 2%;">
             <img src="__PUBLIC__/uploads/scan/{:getInfo('qr_wechat_img')}?k={:rand(1,99999)}" width="100%"/>
@@ -24,7 +24,7 @@
         </div>
         <div class="header-nbsp"></div>
         <div style="color:#fff;text-align: center;font-size: .4rem;padding: 20px 0;">
-            支付宝充值 {$money} 元
+            支付宝充值 {$money} {$Think.lang.unit}
         </div>
         <div style="width: 96%;padding: 0 2%;">
             <img src="__PUBLIC__/uploads/scan/{:getInfo('qr_alipay_img')}?k={:rand(1,99999)}" width="100%"/>

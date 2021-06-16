@@ -30,7 +30,7 @@
 	        </tr>
 	        <tr>
 	            <td>投入本金数额<br>（下称"甲方投资本金"）</td>
-	            <td>{$invest.money}元</td>
+	            <td>{$invest.money}{$Think.lang.unit}</td>
 	        </tr>
 	        <tr>
 	            <td>协议期（天）</td>
@@ -49,8 +49,8 @@
 	            <td>{:date('Y-m-d',strtotime('+'.$invest['day'].' day',strtotime($invest['time'])))}</td>
 	        </tr>
 	        <tr>
-	            <td>应收本息（元）</td>
-	            <td>{:getInvestMoney($invest['id'])+$invest['money']}元</td>
+	            <td>应收本息（{$Think.lang.unit}）</td>
+	            <td>{:getInvestMoney($invest['id'])+$invest['money']}{$Think.lang.unit}</td>
 	        </tr>
 	        <tr>
 	            <td>还款方式</td>

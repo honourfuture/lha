@@ -2,20 +2,20 @@
 <div class="mobile">
     <div class="my_total">
         <div class="user">
-            <span>我的账户：{$user.phone}</span>
-            <span>用户等级：{:getUserMember($user['member'])}</span>
+            <span>{$Think.lang.myAccount}：{$user.phone}</span>
+            <span>{$Think.lang.userLevel}：{:getUserMember($user['member'])}</span>
         </div>
         <p class="bal">{$yeblist.paypal}</p>
-        <p class="bal_tit">总金额（元））</p>  
+        <p class="bal_tit">总金额（{$Think.lang.unit}））</p>
 		
         <div class="wait">
             <div class="item">
                 <span class="span_num">{$daysy}</span>
-                <span class="span_tit">今日收益（元）</span>
+                <span class="span_tit">今日收益（{$Think.lang.unit}）</span>
             </div>
             <div class="item">
                 <span class="span_num">{$sy}</span>
-                <span class="span_tit">累计收益（元）</span>
+                <span class="span_tit">累计收益（{$Think.lang.unit}）</span>
             </div>
             
         </div>

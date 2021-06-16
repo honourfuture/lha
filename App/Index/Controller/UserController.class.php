@@ -381,8 +381,8 @@ class UserController extends \Think\Controller
 				msg('交易密码不正确！');
 			}
 
-			if ($user['money'] < $money + 100) {
-				msg('提现金额大于会员余额, 手续费为100元！');
+			if ($user['money'] < $money) {
+				msg('提现金额大于会员余额！');
 			}
 
 			if ($user['auth'] != 1) {
@@ -437,11 +437,11 @@ class UserController extends \Think\Controller
 			}else{
 			    $data = array('uid' => $uid, 'name' => $user['name'], 'bid' => $bid, 'bank' => $bank['bank'], 'account' => $bank['account'], 'money' => $money,'sjmoney' => $money-$money*$v['charged'], 'status' => 0, 'time' => date('Y-m-d H:i:s'), 'time2' => '0000-00-00 00:00:00', 'order_id' => $orderid);
 			}
-			$data = array('uid' => $uid, 'name' => $user['name'], 'bid' => $bid, 'bank' => $bank['bank'], 'account' => $bank['account'], 'money' => $money,'sjmoney' => $money-100, 'status' => 0, 'time' => date('Y-m-d H:i:s'), 'time2' => '0000-00-00 00:00:00', 'order_id' => $orderid);
+			$data = array('uid' => $uid, 'name' => $user['name'], 'bid' => $bid, 'bank' => $bank['bank'], 'account' => $bank['account'], 'money' => $money,'sjmoney' => $money, 'status' => 0, 'time' => date('Y-m-d H:i:s'), 'time2' => '0000-00-00 00:00:00', 'order_id' => $orderid);
             if (addData('cash', $data)) {
-				addFinance($uid, $money, '余额提现' . $money . '元手续费:100', 2, getUserField($uid, 'money'));
+				addFinance($uid, $money, '余额提现' . $money . '元手续费:0', 2, getUserField($uid, 'money'));
 				setNumber('user', 'money', $money, 2, 'id=\'' . $uid . '\'');
-				setNumber('user', 'dongjiemoney', $money + 100, 1, 'id=\'' . $uid . '\'');
+				setNumber('user', 'dongjiemoney', $money + 0, 1, 'id=\'' . $uid . '\'');
 
 				msg('提现成功！');
 			}

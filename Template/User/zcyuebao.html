@@ -13,13 +13,13 @@
         <div class="blank_card">
             <p>转出金额</p>
             <label class="big">￥</label><input class="big" name="money" id="money" type="text" />
-            <p>可转出金额 <span id="userMoney">{$user.yebmoney}</span>元</p>
+            <p>可转出金额 <span id="userMoney">{$user.yebmoney}</span>{$Think.lang.unit}</p>
         </div>
         <div class="blank_card">
             <label>交易密码</label><input type="password" name="pwd" id="pwd" placeholder="请输入交易密码" />
         </div>
         <div class="blank_card" style="display: none;">
-             <label>手续费</label> 2元
+             <label>手续费</label> 2{$Think.lang.unit}
         </div>
         <div class="blank_card" style="display: none;">
              <label>时间</label> 预计30分钟内到账

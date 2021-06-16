@@ -7,8 +7,8 @@
     <div class="header-nbsp"></div>
 	<div class="contract_box deta">
 	    <div class="data_name">
-	        <span style="display: inline-block;width: 3rem;">投资金额：{$invest.money}元</span>
-	        <span style="display: inline-block;width: 3rem;">预期效益：{:getInvestMoney($invest['id'])}元</span><br/>
+	        <span style="display: inline-block;width: 3rem;">投资金额：{$invest.money}{$Think.lang.unit}</span>
+	        <span style="display: inline-block;width: 3rem;">预期效益：{:getInvestMoney($invest['id'])}{$Think.lang.unit}</span><br/>
 	        <span style="display: inline-block;width: 3rem;">投资时间：{:date('Y-m-d',strtotime($invest['time']))}</span>
 	        <span style="display: inline-block;width: 3rem;">到期时间：{:date('Y-m-d',strtotime('+'.$invest['day'].' day',strtotime($invest['time'])))}</span><br/>
 	        <span>收益方式：{$invest.type2}</span>

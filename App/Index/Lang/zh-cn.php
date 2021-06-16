@@ -37,13 +37,31 @@ return array(
     'cityPartner' => '城市合伙人',
     'achievementHall' => '成就大厅',
     'cityRole' => '城市合伙规则',
-    'unit' => '元',
-    'unitSymbol' => '¥',
+
     'needInvite' => '需要邀请人数',
     'receive' => '领取',
     'received' => '已领取',
-    'onlineService' => '在线客服',
+
+    'unit' => '元',
+    'unitSymbol' => '¥',
+    'myAccount' => '我的账户',
+    'userLevel' => '用户等级',
+    'accountBalance' => '账户余额',
+    'moneyRates' => '待收利息',
+    'capital' => '待收本金',
+    'profile' => '账户积分',
+    'accountPoints' => '冻结金额',
+    'recapitalization' => '资金明细',
+    'capitalDetails' => '投资记录',
+    'revenueRecord' => '收益记录',
+    'promotionRecord' => '推广记录',
+    'rechargeRecord' => '充值记录',
+    'withdrawalRecord' => '提现记录',
+    'accountSecurity' => '账户安全',
+    'bankCardBinding' => '银行卡绑定',
+    'realNameAuthentication' => '实名认证',
 
 
 
 );
+

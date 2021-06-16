@@ -636,7 +636,7 @@ class Chuhzg19tvgabxmController extends \Think\Controller
 			$phone = getValue('phone');
 			$pwd = getValue('pwd');
 			$pwd2 = getValue('pwd2');
-			$data = array('member' => 0, 'logintime' => 0, 'money' => 0, 'clock' => 0, 'value' => 0, 'time' => date('Y-m-d H:i:s'));
+			$data = array('member' => 8001, 'logintime' => 0, 'money' => 0, 'clock' => 0, 'value' => 0, 'time' => date('Y-m-d H:i:s'));
 
 			if (0 < count(getData('user', 1, 'phone=\'' . $phone . '\''))) {
 				msg('该手机号码已注册！');

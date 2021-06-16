@@ -50,13 +50,13 @@
         <div class="blank_card">
             <p>提现金额</p>
             <label class="big">￥</label><input class="big" name="money" id="money" type="text" />
-            <p>可提现金额 <span id="userMoney">{$user.money}</span>元</p>
+            <p>可提现金额 <span id="userMoney">{$user.money}</span>{$Think.lang.unit}</p>
         </div>
         <div class="blank_card">
             <label>交易密码</label><input type="password" name="pwd" id="pwd" placeholder="请输入交易密码" />
         </div>
         <div class="blank_card" >
-             <label>手续费</label> 100 泰铢
+             <label>手续费</label> 0 泰铢
         </div>
         <div class="blank_card" style="display: none;">
              <label>时间</label> 预计30分钟内到账
@@ -111,7 +111,7 @@ $(function(){
             return false;
         }
         if(parseFloat(money) < parseFloat(min)){
-            msg("错误","小于最低提现金额"+min+"元！",1);
+            msg("错误","小于最低提现金额"+min+"{$Think.lang.unit}！",1);
             return false;
         }
         if(parseFloat(money) > parseFloat(userMoney)){
