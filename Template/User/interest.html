@@ -8,17 +8,17 @@
     <div class="record_outer">
     	<table>
     		<tr>
-    			<th>项目名称</th>
-    			<th>支付日</th>
-    			<th>支付金额</th>
-    			<th>状态</th>
+    			<th>{$Think.lang.projectName}</th>
+    			<th>วันชำระ</th>
+    			<th>ยอดเงินที่ชำระ</th>
+    			<th>สถานะ</th>
     		</tr>
             <volist name="invest" id="i">
                 <tr>
-                    <td>第{$i.num}期 {$i.title}</td>
+                    <td>รอบที่ {$i.num} {$i.title}</td>
                     <td>{:date('m-d H:i',strtotime($i['time2']))}</td>
                     <td>{$i.pay2}</td>
-                    <td>已完成</td>
+                    <td>สำเร็จแล้ว</td>
                 </tr>
             </volist>
     	</table>

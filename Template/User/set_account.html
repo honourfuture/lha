@@ -7,16 +7,16 @@
     <div class="header-nbsp"></div>
     <!-- 用户设置 -->
     <ul class="user_list set">
-    	<li class="txt"><a><img src="__PUBLIC__/mobile/img/user_tel.png">手机号<span>{$user.phone}</span></a></li>
+    	<li class="txt"><a><img src="__PUBLIC__/mobile/img/user_tel.png">เบอร์มือถือ<span>{$user.phone}</span></a></li>
     </ul>
     <ul class="user_list set">
         <if condition="$user['auth'] eq 1">
-            <li class="txt"><a href="{:U('certification')}"><img src="__PUBLIC__/mobile/img/user_cert1.png">{$Think.lang.realNameAuthentication}<span>已完成</span></a></li>
+            <li class="txt"><a href="{:U('certification')}"><img src="__PUBLIC__/mobile/img/user_cert1.png">{$Think.lang.realNameAuthentication}<span>เสร็จแล้ว</span></a></li>
             <else/>
-            <li class="txt"><a href="{:U('certification')}"><img src="__PUBLIC__/mobile/img/user_cert1.png">{$Think.lang.realNameAuthentication}<span>未完成</span></a></li>
+            <li class="txt"><a href="{:U('certification')}"><img src="__PUBLIC__/mobile/img/user_cert1.png">{$Think.lang.realNameAuthentication}<span>ยังไม่สำเร็จ</span></a></li>
         </if>
-    	<li><a href="{:U('pwd_login')}"><img src="__PUBLIC__/mobile/img/user_lpwd.png">修改登录密码</a></li>
-    	<li><a href="{:U('pwd_pay')}"><img src="__PUBLIC__/mobile/img/user_ppwd.png">修改支付密码</a></li>
+    	<li><a href="{:U('pwd_login')}"><img src="__PUBLIC__/mobile/img/user_lpwd.png">แก้ไขรหัสผ่านเข้าสู่ระบบ</a></li>
+    	<li><a href="{:U('pwd_pay')}"><img src="__PUBLIC__/mobile/img/user_ppwd.png">เปลี่ยนรหัสผ่านชำระเงิน</a></li>
     </ul>
 </div>
 </body>

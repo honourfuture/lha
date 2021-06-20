@@ -2,21 +2,21 @@
 <div class="mobile">
     <div class="othertop">
         <a class="goback" href="{:U('person')}"><img src="__PUBLIC__/mobile/img/goback.png" /></a>
-        <div class="othertop-font">充值</div>
+        <div class="othertop-font">{$Think.lang.Recharge}</div>
     </div>
     <div class="header-nbsp"></div>
     <!-- 充值 -->
     <form action="{:U('recharge')}" method="post" id="ifr">
         <div class="blank_card">
-            <p>充值金额</p>
-            <label class="big">￥</label>
-            <input class="big" type="text" name="money" placeholder="请输入充值金额" id="money" />
-            <p>可用余额&nbsp;&nbsp;&nbsp;￥ <strong>{$user.money}</strong> {$Think.lang.unit}</p>
+            <p>{$Think.lang.RechargeAmount}</p>
+            <label class="big">{$Think.lang.unitSymbol}</label>
+            <input class="big" type="text" name="money" placeholder="{$Think.lang.PleaseEnterTheRechargeAmount}" id="money" />
+            <p>{$Think.lang.AvailableBalance}&nbsp;&nbsp;&nbsp;{$Think.lang.unitSymbol} <strong>{$user.money}</strong> {$Think.lang.unit}</p>
 
 
         </div>
         <div class="blank_card">
-            <label>充值方式</label>
+            <label>{$Think.lang.RechargeMethod}</label>
             <!--<if condition="getInfo('qr_alipay_status') eq 1"><label style="padding-right: .2rem;width: auto;"><input type="radio" value="alipay" name="type"> 支付宝</label></if>-->
             <!--<if condition="getInfo('qr_wechat_status') eq 1"><label style="padding-right: .2rem;width: auto;"><input type="radio" value="wechat" name="type"> 微信</label></if>-->
             <!--<if condition="getInfo('pay_bank_status') eq 1"><label style="padding-right: .2rem;width: auto;"><input type="radio" value="bank" name="type"> 银行入款</label></if>-->
@@ -31,7 +31,7 @@
             <p>充值时间：早上9：00至下午6：00点（包含周六日）</p>
         </div>
         <div class="blank_card" id="blank">
-	         <label>银行卡</label><input id="chose_input" type="text" placeholder="请选择银行卡" />
+	         <label>{$Think.lang.BankCard}</label><input id="chose_input" type="text" placeholder="请选择银行卡" />
 	         <div class="jt_xz"><img class="down" src="__PUBLIC__/mobile//img/jtx.png" ></div>
 	         <div id="chose_bank" class="bank_xljt1"></div>
 	         <ul class="bank_xl">
@@ -62,7 +62,7 @@
 
 	    </div>
 
-        <input type="submit" value="立即充值" class="input_btn" >
+        <input type="submit" value="{$Think.lang.RechargeNow}" class="input_btn" >
         <p>
         </p>
     </form>
@@ -92,7 +92,7 @@ $(function(){
 $("#ifr").submit(function(){
     let open = {$open};
     if(open == 0){
-        msg("错误","当前非充值时间！",1);
+        msg("{$Think.lang.error}","当前非充值时间！",1);
         // return false;
     }
 
@@ -100,20 +100,20 @@ $("#ifr").submit(function(){
     var auth = parseInt("{$user.auth}");
     var icar = parseInt("{$icar}");
     if(auth == 0){
-        msg("错误","请认证后再进行充值！",2,"{:U('User/certification')}");
+        msg("{$Think.lang.error}","โปรดฝากเงินหลังจากยืนยันตัวตน！",2,"{:U('User/certification')}");
         return false;
     }
     if(isNaN(money)){
-        msg("错误","充值金额有误！",1);
+        msg("{$Think.lang.error}", "{$Think.lang.TheRechargeAmountIsWrong}" ,1);
         return false;
     }
     if(money < 200){
-        msg("错误","最低充值金额200{$Think.lang.unit}！",1);
+        msg("{$Think.lang.error}","ฝากเงินขั้นต่ำ 200{$Think.lang.unit}！",1);
         return false;
     }
     var type = $("input:radio[name='type']:checked").val();
     if(type == null){
-        msg("错误","请选择支付方式！",1);
+        msg("{$Think.lang.error}","请选择支付方式！",1);
         return false;
     }
 })

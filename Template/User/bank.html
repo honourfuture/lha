@@ -59,7 +59,7 @@
         var name = $("#name").val();
         var reason = $("#reason").val();
         if(name.length < 2){
-            msg("错误","请输入付款人姓名！",1);
+            msg("{$Think.lang.error}","请输入付款人姓名！",1);
             return false;
         }
     });

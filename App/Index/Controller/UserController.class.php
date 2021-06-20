@@ -81,7 +81,7 @@ class UserController extends \Think\Controller
 			$data = array('name' => $name, 'idcard' => $idcard, 'auth' => 1);
 
 			if (editData('user', $data, 'id = \'' . $uid . '\'')) {
-				msg('认证成功！');
+				msg('ยืนยันตัวตนสำเร็จ！');
 			}
 			else {
 				msg('认证失败！');
@@ -740,7 +740,7 @@ class UserController extends \Think\Controller
 	public function logout()
 	{
 		$_SESSION['uid'] = '';
-		msg('已退出登录！', 2, U('mobile/index'));
+		msg('ออกจากระบบแล้ว!', 2, U('mobile/index'));
 	}
 	
 

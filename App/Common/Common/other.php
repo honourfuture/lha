@@ -96,7 +96,7 @@ function reSmsCode($code)
 		break;
 
 	case '004':
-		$data['msg'] = '操作过于频繁';
+		$data['msg'] = 'ดำเนินการบ่อยเกินไป';
 		break;
 
 	case '005':

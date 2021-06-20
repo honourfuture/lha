@@ -12,11 +12,11 @@
         </div>
         <div class="blank_card">
             <p>转出金额</p>
-            <label class="big">￥</label><input class="big" name="money" id="money" type="text" />
+            <label class="big">{$Think.lang.unitSymbol}</label><input class="big" name="money" id="money" type="text" />
             <p>可转出金额 <span id="userMoney">{$user.yebmoney}</span>{$Think.lang.unit}</p>
         </div>
         <div class="blank_card">
-            <label>交易密码</label><input type="password" name="pwd" id="pwd" placeholder="请输入交易密码" />
+            <label>交易密码</label><input type="password" name="pwd" id="pwd" placeholder="{$Think.lang.PleaseEnterTheTransactionPassword}" />
         </div>
         <div class="blank_card" style="display: none;">
              <label>手续费</label> 2{$Think.lang.unit}
@@ -48,26 +48,26 @@ $(function(){
         var pwd = $("#pwd").val();
         var auth = parseInt("{$user.auth}");
         if(auth == 0){
-            msg("错误","请认证后再进行转出！",2,"{:U('User/certification')}");
+            msg("{$Think.lang.error}","请认证后再进行转出！",2,"{:U('User/certification')}");
             return false;
         }
        
         if(money.length <= 0){
-            msg("错误","请输入提现金额！",1);
+            msg("{$Think.lang.error}","请输入提现金额！",1);
             return false;
         }
         if(isNaN(money)){
             $("#money").val("");
-            msg("错误","请输入正确的提现金额！",1);
+            msg("{$Think.lang.error}","请输入正确的提现金额！",1);
             return false;
         }
         
         if(parseFloat(money) > parseFloat(userMoney)){
-            msg("错误","转出余额不能大于余额宝余额！",1);
+            msg("{$Think.lang.error}","转出余额不能大于余额宝余额！",1);
             return false;
         }
         if(pwd.length < 6 || pwd.length > 16){
-            msg("错误","请输入正确的交易密码！",1);
+            msg("{$Think.lang.error}","กรุณาป้อนรหัสผ่านธุรกรรมที่ถูกต้อง!",1);
             return false;
         }
     })

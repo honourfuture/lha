@@ -14,22 +14,22 @@
                 <div class="inner">
                     <p>
                         <span class="span2">{$Think.lang.projectScale}</span>
-                        <span class="span1">￥<i>{:round($data['total'],2)}</i>万{$Think.lang.unit}</span>
+                        <span class="span1">￥<i>{:round($data['total'],2)}</i>W{$Think.lang.unit}</span>
                     </p>
                     <p>
-                        <span class="span2">每份分红</span>
-                        <span class="span1"><i>{:round($data['min']*$data['rate']/100,2)}</i>{$Think.lang.unit}起</span>
+                        <span class="span2">{$Think.lang.EveryDividend}</span>
+                        <span class="span1"><i>{:round($data['min']*$data['rate']/100,2)}</i>{$Think.lang.unit}</span>
                     </p>
                     <p>
-                        <span class="span2">投资周期</span>
-                        <span class="span1"><i>{$data.day}</i>天</span>
+                        <span class="span2">{$Think.lang.InvestmentCycle}</span>
+                        <span class="span1"><i>{$data.day}</i>{$Think.lang.day}</span>
                     </p>
                 </div>
             </li>
-            <li>分红方式：{:getProjectType($data['type'])}</li>
+            <li>{$Think.lang.DividendMethod}：{:getProjectType($data['type'])}</li>
             <li>{$Think.lang.startingAmount}：{:round($data['min'],2)}{$Think.lang.unit}</li>
-            <li>担保机构：{$data.guarantee}</li>
-            <li>投资零风险：本金保障
+            <li>{$Think.lang.GuaranteeAgency}：{$data.guarantee}</li>
+            <li>{$Think.lang.ZeroInvestmentRisk}：{$Think.lang.PrincipalProtection}
                 <div class="progressBox1">
                     <div class="progress1" style="width:{:getProjectPercent($data['id'])}%"></div>
                     <span class="progressNum1">{:round(getProjectPercent($data['id']),2)}%</span>
@@ -40,57 +40,67 @@
     <div class="details_foot">
         <div class="tabs">
             <span class="on">{$Think.lang.investmentDetails}</span>
-            <span>项目资料</span>
+            <span>{$Think.lang.ProjectInformation}</span>
         </div>
         <div class="explain_outer">
             <table class="table">
                 <tr>
-                    <td><span>项目名称</span></td>
+                    <td><span>{$Think.lang.ProjectName}</span></td>
                     <td>{$data.title}</td>
                 </tr>
                 <tr>
-                    <td>项目金额：</td>
-                    <td><i>{:round($data['total'],2)}万</i>{$Think.lang.unit}；</td>
+                    <td>{$Think.lang.ProjectAmount}：</td>
+                    <td><i>{:round($data['total'],2)}W</i>{$Think.lang.unit}；</td>
                 </tr>
                 <tr>
-                    <td>每天分红：</td>
-                    <td><i>按每日{:round($data['rate'],2)}%的收益（保本保息）</i></td>
+                    <td>{$Think.lang.DailyDividend}：</td>
+                    <td><i>ตามรายได้ {:round($data['rate'],2)}% ต่อวัน（คุ้มครองเงินต้นและดอกเบี้ย）</i></td>
                 </tr>
                 <tr>
-                    <td>投资金额：</td>
-                    <td><i>最低起投{$data.min}{$Think.lang.unit}</i>（限买{$data.num}份）</td>
+                    <td>จำนวนเงินลงทุน：</td>
+                    <td><i>ลงทุนขั้นต่ำ{$data.min}{$Think.lang.unit}</i>（จำกัด{$data.num}ชุด）</td>
                 </tr>
                 <tr>
-                    <td>项目期限：</td>
-                    <td><i>{$data.day}个</i>自然日；</td>
+                    <td>วันหมดเขตโครงการ：</td>
+                    <td><i>{$data.day}วัน</i>วันธรรมดา；</td>
                 </tr>
                 <tr>
-                    <td>收益计算：</td>
-                    <td><i><if condition="$data['type'] neq 4">每天分红{:round($data['min']*$data['rate']/100,2)}{$Think.lang.unit}<else/>本金复利分红</if></i>*<i>{$data.day}天</i>=总收益<i><if condition="$data['type'] neq 4">{:round($data['min']*$data['rate']/100*$data['day'],2)}<else/>{:getFuliIncome($data['min'],$data['rate'],$data['day'])}</if></i>{$Think.lang.unit}；</td>
+                    <td>การคำนวณกำไร：</td>
+                    <td><i>
+                        <if condition="$data['type'] neq 4">
+                            จ่ายเงินปันผลรายวัน{:round($data['min']*$data['rate']/100,2)}{$Think.lang.unit}
+                        <else/>本金复利分红</if>
+                    </i>*<i>{$data.day}{$Think.lang.day}</i>=กำไรรวม<i>
+                        <if condition="$data['type'] neq 4">
+                            {:round($data['min']*$data['rate']/100*$data['day'],2)}
+                        <else/>{:getFuliIncome($data['min'],$data['rate'],$data['day'])}
+                        </if>
+                    </i>{$Think.lang.unit}；</td>
                 </tr>
                 <tr>
-                    <td>还款方式：</td>
-                    <td>{:getProjectType($data['type'])} 节假日照常收益；</td>
+                    <td>รูปแบบการคืนเงิน：</td>
+                    <td>{:getProjectType($data['type'])} และรับกำไรตามปกติในวันหยุด；</td>
                 </tr>
                 <tr>
-                    <td>结算时间：</td>
-                    <td>当天15点投资，第二天15点系统自动计息结算收益（例如在15:00成功投资，则在下个自然日15:00收到分红），到期系统将当日分红和产品本金一起返还到您的会员账号中；</td>
+                    <td>เวลาชำระบัญชี: ：</td>
+                    <td>ลงทุนเวลา 15.00 น.ของวันนี้  ระบบจะคำนวณและชำระดอกเบี้ยให้อัตโนมัติเวลา 15.00 น.ของวันถัดไป(ตัวอย่างเช่น  หากวันนี้คุณลงทุนเมื่อเวลา 15.00 น. คุณจะได้รับเงินปันผลในวันพรุ่งนี้เวลา 15.00 น.)  เมื่อครบกำหนดเวลา ระบบจะคืนเงินปันผลของวันนั้นพร้อมกับเงินต้นของผลิตภัณฑ์ไปยังบัญชีสมาชิกของคุณ</td>
                 </tr>
                 <tr>
-                    <td>可投金额：</td>
-                    <td>投资期间只要产品未投满，投资者均可自由投资；</td>
+                    <td>ยอดเงินที่สามารถลงทุนได้：</td>
+                    <td>ในระหว่างการลงทุน  ตราบใดที่สินค้ายังไม่เต็ม นักลงทุนก็ยังสามารถลงทุนได้อย่างอิสระ；</td>
                 </tr>
                 <!--<tr>
                     <td>资金用途：</td>
                     <td>新手版票体验项目</td>
                 </tr>-->
                 <tr>
-                    <td>安全保障：</td>
-                    <td>{$data.guarantee}对平台上的每一笔投资提供<i>100%本金保障</i>，平台设立风险备用金，对本金承诺全额垫付；</td>
+                    <td>การคุ้มครองความปลอดภัย：</td>
+                    <td>{$data.guarantee}ให้ความคุ้มครองเงินต้น<i>100%สำหรับทุกการลงทุนบนแพลตฟอร์ม</i>， นอกจากนี้แพลตฟอร์มยังจัดตั้งกองทุนสำรองความเสี่ยงพร้อมกับสัญญาว่าจะชำระเงินต้นเต็มจำนวนให้กับนักลงทุน</td>
                 </tr>
                 <tr>
-                    <td>项目概述：</td>
-                    <td>本项目筹集资金<i>{:round($data[total],2)}万</i>{$Think.lang.unit}，投资本项目（<if condition="$data['type'] neq 4">按每日分红<i>{:round($data['min']*$data['rate']/100,2)}{$Think.lang.unit}/天</i><else/><i>本金复利分红/天</i></if>）项目周期为<i>{$data.day}</i>个自然日，所筹集资金用于该项目直投运作，作为投资者分红固定且无任何风险，所操作一切风险都由公司与担保公司一律承担，投资者不需要承担任何风险。</td>
+                    <td>ภาพรวมโครงการ：</td>
+                    <!--<td>โครงการนี้ได้ระดมทุนจำนวน<i>{:round($data[total],2)} W</i>{$Think.lang.unit}，และนำมาลงทุนในโครงการ<if condition="$data['type'] neq 4">按每日分红<i>{:round($data['min']*$data['rate']/100,2)}{$Think.lang.unit}/天</i><else/><i>本金复利分红/天</i></if>）项目周期为<i>{$data.day}</i>个自然日，所筹集资金用于该项目直投运作，作为投资者分红固定且无任何风险，所操作一切风险都由公司与担保公司一律承担，投资者不需要承担任何风险。</td>-->
+                    <td>โครงการนี้ได้ระดมทุนจำนวน {:round($data[total],2)} ล้านบาท  และนำมาลงทุนในโครงการ(ตามเงินปันผลรายวัน {:round($data['min']*$data['rate']/100,2)} บาท/วัน) รอบวันธรรมดา 1 วัน  ซึ่งเงินที่ระดมมาได้ถูกนำมาดำเนินการลงทุนโดยตรงกับโครงการนี้  สำหรับการลงทุนในโครงการ  เงินปันผลของนักลงทุนจะคงที่และปราศจากความเสี่ยง  ซึ่งทางบริษัทและบริษัทผู้ค้ำประกันความเสี่ยงจะเป็นผู้รับผิดชอบความเสี่ยงที่เกิดขึ้นทั้งหมด  นักลงทุนไม่จำเป็นต้องรับผิดชอบกับความเสี่ยงใด ๆ ทั้งสิ้น</td>
                 </tr>
 
                 </tr>
@@ -105,7 +115,7 @@
         <if condition="getProjectPercent($data['id']) eq 100">
             <a href="javascript:;" style="background-color: #888;">项目已满</a>
             <else/>
-            <a href="{:U('form','id='.$data['id'])}">马上投资</a>
+            <a href="{:U('form','id='.$data['id'])}">ลงทุนเดี๋ยวนี้</a>
         </if>
     </div>
 </div>

@@ -2,7 +2,7 @@
 //dezend by http://www.yunlu99.com/
 function getProjectType($pid)
 {
-	$str = '到期还本还息';
+	$str = 'คืนเงินต้นและดอกคืนเงินต้นและดอกเบี้ยเมื่อครบกำหนดเบี้ยเมื่อครบกำหนด';
 
 	switch ($pid) {
 	case 1:
@@ -22,7 +22,7 @@ function getProjectType($pid)
 		break;
 
 	case 5:
-		$str = '到期还本还息';
+		$str = 'คืนเงินต้นและดอกคืนเงินต้นและดอกเบี้ยเมื่อครบกำหนดเบี้ยเมื่อครบกำหนด';
 		break;	
 	case 6:
 		$str = '每小时返息,到期还本';
@@ -39,7 +39,7 @@ function setProjectType()
 		array('id' => 2, 'name' => '每周返息,到期还本'),
 		array('id' => 3, 'name' => '每月返息,到期还本'),
 		array('id' => 4, 'name' => '每日复利,保本保息'),
-		array('id' => 5, 'name' => '到期还本还息'),
+		array('id' => 5, 'name' => 'คืนเงินต้นและดอกคืนเงินต้นและดอกเบี้ยเมื่อครบกำหนดเบี้ยเมื่อครบกำหนด'),
 		array('id' => 6, 'name' => '每小时返息,到期还本')
 		);
 	return $data;
@@ -118,10 +118,10 @@ function getInvestStatus($id)
 	$invest = getData('invest_list', 'all', 'status = 0 AND iid = \'' . $id . '\'');
 
 	if (0 < count($invest)) {
-		return '未完成';
+		return 'ยังไม่สำเร็จ';
 	}
 
-	return '已完成';
+	return 'สำเร็จแล้ว';
 }
 
 function getInvestSchedule($id)

@@ -66,7 +66,7 @@ class HandleController extends \Think\Controller
 		$today = date('Y-m-d 00:00:00');
 
 		if ($today <= $user['qiandao']) {
-			$data = array('code' => '002', 'msg' => '每天只能签到一次！');
+			$data = array('code' => '002', 'msg' => L('signOnlyOne'));
 			$this->ajaxReturn($data);
 		}
 
@@ -86,9 +86,9 @@ class HandleController extends \Think\Controller
 			}
 
 
-			$data = array('code' => '000', 'msg' => '签到成功，获得' . $money . '元！');
+			$data = array('code' => '000', 'msg' => L('unit') . $money . L('unit'));
 			editData('user', array('qiandao' => date('Y-m-d H:i:s')), 'id=\'' . $uid . '\'');
-			addFinance($uid, $money, '每日签到，获得奖励' . $money . '元', 1, getUserField($uid, 'money'));
+			addFinance($uid, $money, L('unit') . $money . L('unit'), 1, getUserField($uid, 'money'));
 			setNumber('user', 'money', $money, 1, 'id=\'' . $uid . '\'');
 			setNumber('user', 'income', $money, 1, 'id=\'' . $uid . '\'');
 			$this->ajaxReturn($data);
@@ -153,7 +153,7 @@ class HandleController extends \Think\Controller
 		}
 
 		if ($code != $randcode) {
-			$this->ajaxReturn(array('-2', '图形验证码不正确！'));
+			$this->ajaxReturn(array('-2', 'รหัสยืนยันกราฟิกไม่ถูกต้อง!'));
 		}
 
 		unset($_SESSION['smsRandCode']);
@@ -171,7 +171,7 @@ class HandleController extends \Think\Controller
 		$data = sendSms($phone, '18001', $rand);
 
 		if ($data['code'] == '000') {
-			$this->ajaxReturn(array('1', '发送成功！'));
+			$this->ajaxReturn(array('1', 'ส่งสำเร็จ！'));
 		}
 		else {
 			$this->ajaxReturn(array('0', $data['msg'] . '！'));
@@ -193,7 +193,7 @@ class HandleController extends \Think\Controller
 		}
 
 		if ($code != $randcode) {
-			$this->ajaxReturn(array('-2', '图形验证码不正确！'));
+			$this->ajaxReturn(array('-2', 'รหัสยืนยันกราฟิกไม่ถูกต้อง!'));
 		}
 
 		unset($_SESSION['smsRandCode']);
@@ -211,7 +211,7 @@ class HandleController extends \Think\Controller
 		$data = sendSms($phone, '18004', $rand);
 
 		if ($data['code'] == '000') {
-			$this->ajaxReturn(array('1', '发送成功！'));
+			$this->ajaxReturn(array('1', 'ส่งสำเร็จ！'));
 		}
 		else {
 			$this->ajaxReturn(array('0', $data['msg'] . '！'));

@@ -1681,10 +1681,7 @@ class Chuhzg19tvgabxmController extends \Think\Controller
 	public function prize_set(){
 	    
 	    if(IS_POST){
-	        
-	       $data=I();
-    	   
-    	    if(M('wheel')->where(array('id'=>1))->save($data)){
+    	    if(M('wheel')->where(array('id'=>1))->save($_POST)){
     	        $this->success('操作成功',U('chuhzg19tvgabxm/prize_set'), 1);
     	    }else{
     	         $this->error('操作失败');

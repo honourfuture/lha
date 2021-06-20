@@ -75,31 +75,31 @@
         $("#ifr").submit(function(){
 			let open = {$open};
 			if(open == 0){
-				msg("错误","当前非投资时间！",1);
+				msg("{$Think.lang.error}","ตอนนี้ไม่ใช่เวลาลงทุน！",1);
 				return false;
 			}
 
 			var money = $("#money").val();
             if(money > maxNum){
-                msg("错误","投资金额不能大于项目剩余投资额度！",1);
+                msg("{$Think.lang.error}","投资金额不能大于项目剩余投资额度！",1);
                 return false;
             }
             if(money < minNum){
-                msg("错误","投资金额不能小于项目最小投资额度！",1);
+                msg("{$Think.lang.error}","投资金额不能小于项目最小投资额度！",1);
                 return false;
             }
             if(money > maxNum2){
-                msg("错误","投资金额不能大于项目最大投资额度！",1);
+                msg("{$Think.lang.error}","จำนวนเงินลงทุนต้องไม่เกินจำนวนสูงสุดของโครงการ!",1);
                 return false;
             }
             var userMoney2 = Number($("#userMoney2").val());
             if(money > userMoney2){
-                msg("错误","投资金额不能大于您的余额！",1);
+                msg("{$Think.lang.error}","投资金额不能大于您的余额！",1);
                 return false;
             }
             var pwd = $("#pwd").val();
             if(pwd.length < 6 || pwd.length > 16){
-                msg("错误","请输入正确的交易密码！",1);
+                msg("{$Think.lang.error}","กรุณาป้อนรหัสผ่านธุรกรรมที่ถูกต้อง!",1);
                 return false;
             }
         });

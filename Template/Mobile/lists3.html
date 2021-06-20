@@ -30,10 +30,10 @@
                                     </li>
                                     <li>
                                         <em>
-                                            <span class="li-title">項目進度：</span>
+                                            <span class="li-title">ความคืบหน้าของโครงการ：</span>
                                             <span class="jdt1">&nbsp;&nbsp;</span>
-                                            <span class="jdt"><i style="width:76.69%"></i></span>
-                                            <span class="jdt3">76.69%</span>
+                                            <span class="jdt"><i style="width:{:round(getProjectPercent($i['id']),2)}%"></i></span>
+                                            <span class="jdt3">{:round(getProjectPercent($i['id']),2)}%</span>
                                         </em>
                                     </li>
                                     <div class="clear"></div>

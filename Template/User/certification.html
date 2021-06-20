@@ -8,22 +8,22 @@
         <div class="login_bg">
 	        <if condition="$user['auth'] eq 1">
                 <div class="input_text cert">
-                    <label>姓名</label>
-                    <input type="text" readonly="readonly" value="{$user.name}" placeholder="输入姓名">
+                    <label>ชื่อและนามสกุล</label>
+                    <input type="text" readonly="readonly" value="{$user.name}" placeholder="ชื่อและนามสกุล">
                 </div>
                 <div class="input_text cert">
-                    <label>身份证号码</label>
-                    <input type="text" readonly="readonly" value="{$user.idcard}" placeholder="输入有效身份证号">
+                    <label>หมายเลขประจำตัวประชาชน</label>
+                    <input type="text" readonly="readonly" value="{$user.idcard}" placeholder="หมายเลขประจำตัวประชาชน">
                 </div>
                 <else/>
                 <form action="{:U('certification')}" method="post">
                     <div class="input_text cert">
-                        <label>姓名</label>
-                        <input type="text" name="name" placeholder="输入姓名">
+                        <label>ชื่อและนามสกุล</label>
+                        <input type="text" name="name" placeholder="ชื่อและนามสกุล">
                     </div>
                     <div class="input_text cert">
-                        <label>身份证号码</label>
-                        <input type="text" name="idcard" placeholder="输入有效身份证号">
+                        <label>หมายเลขประจำตัวประชาชน</label>
+                        <input type="text" name="idcard" placeholder="หมายเลขประจำตัวประชาชน">
                     </div>
                     <input type="submit" class="input_btn" value="立即认证" />
                 </form>

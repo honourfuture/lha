@@ -18,7 +18,7 @@
 <div style="width: 100%;height: 1000px;position: fixed;top: 0;left: 0;background-color: rgba(0,0,0,0.35);">
     <div style="width: 320px;height: 180px;border-radius:3px;overflow:hidden;margin: auto;position: fixed;top: 0;left: 0;right: 0;bottom: 0;background-color: #fff;box-shadow: 0 0 15px #999;">
         <div style="width: 100%;height:50px;line-height: 50px;background-color: #cfcfcf;">
-            <label style="margin-left:10px;color:#666;">温馨提示</label>
+            <label style="margin-left:10px;color:#666;">พรอมต์</label>
             <label style="font-size: 12px;color:#888;float:right;display: block;margin-right: 10px;"><b id="wait"><?php echo($waitSecond); ?></b>秒后跳转</label>
 
             <div style="clear:both;"></div>

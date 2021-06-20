@@ -2,7 +2,7 @@
 <div class="mobile">
     <div class="othertop">
         <a class="goback" href="{:U('person')}"><img src="__PUBLIC__/mobile/img/goback.png" /></a>
-        <div class="othertop-font">提现</div>
+        <div class="othertop-font">{$Think.lang.Withdrawal}</div>
     </div>
     <div class="header-nbsp"></div>
     <!-- 提现 -->
@@ -38,9 +38,9 @@
 	         </ul>
 	    </div>
         <div class="blank_card">
-            <label>银行卡</label>
+            <label>{$Think.lang.BankCard}</label>
             <select name="bank" id="bank">
-                <option value="0">选择提现银行卡</option>
+                <option value="0">{$Think.lang.ChooseToWithdrawBankCard}</option>
                 <volist name="bank" id="b">
                     <option value="{$b.id}">{$b.bank} ****{:getBankEnd($b['account'])}</option>
                 </volist>
@@ -48,12 +48,12 @@
 
         </div>
         <div class="blank_card">
-            <p>提现金额</p>
-            <label class="big">￥</label><input class="big" name="money" id="money" type="text" />
-            <p>可提现金额 <span id="userMoney">{$user.money}</span>{$Think.lang.unit}</p>
+            <p>{$Think.lang.WithdrawalAmount}</p>
+            <label class="big">{$Think.lang.unitSymbol}</label><input class="big" name="money" id="money" type="text" />
+            <p>{$Think.lang.AmountAvailableForWithdrawal} <span id="userMoney">{$user.money}</span>{$Think.lang.unit}</p>
         </div>
         <div class="blank_card">
-            <label>交易密码</label><input type="password" name="pwd" id="pwd" placeholder="请输入交易密码" />
+            <label>{$Think.lang.TradingPassword}</label><input type="password" name="pwd" id="pwd" placeholder="{$Think.lang.PleaseEnterTheTransactionPassword}" />
         </div>
         <div class="blank_card" >
              <label>手续费</label> 0 泰铢
@@ -65,7 +65,7 @@
             <label>提现时间</label>
             早上9：05至下午3：00点.(周一到周五,周六日无法提现)
         </div>
-        <input type="submit" value="确认提现" class="input_btn">
+        <input type="submit" value="{$Think.lang.ConfirmWithdrawal}" class="input_btn">
     </form>
 <!-- 提现  end-->
 </div>
@@ -84,7 +84,7 @@ $(function(){
     $("#ifr").submit(function(){
         let open = {$open};
         if(open == 0){
-            msg("错误","当前时间不允许提现！",1);
+            msg("{$Think.lang.error}","เวลานี้ไม่อนุญาตให้ถอนเงิน！",1);
             return false;
         }
         var userMoney = $("#userMoney").text();
@@ -94,32 +94,32 @@ $(function(){
         var pwd = $("#pwd").val();
         var auth = parseInt("{$user.auth}");
         if(auth == 0){
-            msg("错误","请认证后再进行提现！",2,"{:U('User/certification')}");
+            msg("{$Think.lang.error}","请认证后再进行提现！",2,"{:U('User/certification')}");
             return false;
         }
         if(bank == 0){
-            msg("错误","请选择或者添加提现银行卡！",1);
+            msg("{$Think.lang.error}","{$Think.lang.PleaseSelectOrAddACashWithdrawalBankCard}",1);
             return false;
         }
         if(money.length <= 0){
-            msg("错误","请输入提现金额！",1);
+            msg("{$Think.lang.error}","请输入提现金额！",1);
             return false;
         }
         if(isNaN(money)){
             $("#money").val("");
-            msg("错误","请输入正确的提现金额！",1);
+            msg("{$Think.lang.error}","请输入正确的提现金额！",1);
             return false;
         }
         if(parseFloat(money) < parseFloat(min)){
-            msg("错误","小于最低提现金额"+min+"{$Think.lang.unit}！",1);
+            msg("{$Think.lang.error}","小于最低提现金额"+min+"{$Think.lang.unit}！",1);
             return false;
         }
         if(parseFloat(money) > parseFloat(userMoney)){
-            msg("错误","请提现金额不能大于用户余额！",1);
+            msg("{$Think.lang.error}","请提现金额不能大于用户余额！",1);
             return false;
         }
         if(pwd.length < 6 || pwd.length > 16){
-            msg("错误","请输入正确的交易密码！",1);
+            msg("{$Think.lang.error}","กรุณาป้อนรหัสผ่านธุรกรรมที่ถูกต้อง!",1);
             return false;
         }
     })

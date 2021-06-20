@@ -8,19 +8,19 @@
     <div class="record_outer">
     	<table>
     		<tr>
-    			<th>项目名称</th>
-    			<th>投资金额</th>
-    			<th>状态</th>
-    			<th>详情</th>
-    			<th>合同</th>
+    			<th>ชื่อโครงการ</th>
+    			<th>ยอดเงินลงทุน</th>
+    			<th>สถานะ</th>
+    			<th>รายละเอียด</th>
+    			<th>สัญญา</th>
     		</tr>
             <volist name="invest" id="v">
                 <tr>
                     <td>{$v.title}</td>
                     <td>{$v.money}</td>
                     <td>{:getInvestStatus($v['id'])}</td>
-                    <td><a href="{:U('details','id='.$v['id'])}" class="a1">查看</a></td>
-                    <td><a href="{:U('contract','id='.$v['id'])}" class="a2">查看</a></td>
+                    <td><a href="{:U('details','id='.$v['id'])}" class="a1">ดู</a></td>
+                    <td><a href="{:U('contract','id='.$v['id'])}" class="a2">ดู</a></td>
                 </tr>
             </volist>
     	</table>

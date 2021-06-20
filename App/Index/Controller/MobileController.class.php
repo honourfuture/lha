@@ -20,7 +20,7 @@ class MobileController extends \Think\Controller {
         }
 
         $message = [
-            '邀请用户获得:', '投资收益:'
+            L('inviteUserToGet'), L('investmentIncome')
         ];
 
         $fakerPhones = $this->fakerPhone();
@@ -167,7 +167,7 @@ class MobileController extends \Think\Controller {
             $pwd = getValue('pwd');
 
             if ($user['password2'] != md5($pwd)) {
-                msg('请输入正确的交易密码！', 2, U('form', 'id=\'' . $id . '\''));
+                msg('กรุณาป้อนรหัสผ่านธุรกรรมที่ถูกต้อง!', 2, U('form', 'id=\'' . $id . '\''));
             }
 
             if ($user['money'] < $money) {
@@ -228,7 +228,7 @@ class MobileController extends \Think\Controller {
                         }
                     }
                 }
-                msg('投资成功！', 2, U('user/person'));
+                msg('ลงทุนสำเร็จ！', 2, U('user/person'));
             } else {
                 msg('投资失败！', 2, U('details', 'id=\'' . $id . '\''));
             }
@@ -266,7 +266,7 @@ class MobileController extends \Think\Controller {
             $top = getValue('top');
             $qq = getValue('qq', 'int') ? : 0;
             if (empty($top)) {
-                msg('必须填写推荐人ID！');
+                msg('จำเป็นต้องป้อน ID ผู้แนะนำ');
             }
             $regtop = getData('user', 1, 'id=\'' . $top . '\'');
             if (!$regtop) {
@@ -277,7 +277,7 @@ class MobileController extends \Think\Controller {
             }
 
             if (!judge($phone, 'phone')) {
-                msg('手机号码不正确！');
+                msg('หมายเลขโทรศัพท์ไม่ถูกต้อง!');
             }
 
             if (strlen($pwd) < 6 || 16 < strlen($pwd)) {
@@ -378,7 +378,7 @@ class MobileController extends \Think\Controller {
             }
 
             if (!judge($phone, 'phone')) {
-                msg('手机号码不正确！');
+                msg('หมายเลขโทรศัพท์ไม่ถูกต้อง!');
             }
 
             if (strlen($pwd) < 6 || 16 < strlen($pwd)) {
@@ -471,7 +471,7 @@ class MobileController extends \Think\Controller {
             }
 
             if (!judge($phone, 'phone')) {
-                msg('手机号码不正确！');
+                msg('หมายเลขโทรศัพท์ไม่ถูกต้อง!');
             }
             $code = getValue('smscode', 'int');
             if ($code != 6666) {
@@ -588,7 +588,7 @@ class MobileController extends \Think\Controller {
             }
 
             if (!judge($phone, 'phone')) {
-                msg('手机号码不正确！');
+                msg('หมายเลขโทรศัพท์ไม่ถูกต้อง!');
             }
 
             if (strlen($pwd) < 6 || 16 < strlen($pwd)) {

@@ -7,7 +7,7 @@
     <!-- 推荐有奖 -->
     <div class="company">
 	    <div class="firends_to">
-	    	<a style="width: 100%;" id="inteCode"><img src="__PUBLIC__/mobile/img/code.png" /><span style="width:4rem;">邀请二维码 推荐人ID:({$uid})</span></a>
+	    	<a style="width: 100%;" id="inteCode"><img src="__PUBLIC__/mobile/img/code.png" /><span style="width:4rem;">รหัสคำเชิญ QR ID ผู้แนะนำ:({$uid})</span></a>
 
 	    </div>
         <div id="qrcode" class="qrcode" style="width:3.06rem;margin: auto;padding: .1rem;background-color: #fff;"></div>
@@ -23,12 +23,12 @@
                 correctLevel : QRCode.CorrectLevel.H
             });
         </script>
-	    <h2 class="planner_h2"><span>我推荐的会员(一级)</span></h2>
+	    <h2 class="planner_h2"><span>สมาชิกที่ฉันแนะนำ (ระดับ 1)</span></h2>
 	    <div class="planner_rule">       
 	        <table>
 	        	<tr>
-	        		<th>推广会员</th>
-	        		<th>注册时间</th>
+	        		<th>สมาชิกโปรโมชั่น</th>
+	        		<th>เวลาลงทะเบียน</th>
 	        	</tr>
                 <volist name="firstUsers" id="d">
                     <tr>
@@ -38,12 +38,12 @@
                 </volist>
 	        </table>
 	    </div>
-        <h2 class="planner_h2"><span>我推荐的会员(二级)</span></h2>
+        <h2 class="planner_h2"><span>สมาชิกที่ฉันแนะนำ (ระดับ 2)</span></h2>
         <div class="planner_rule">
             <table>
                 <tr>
-                    <th>推广会员</th>
-                    <th>注册时间</th>
+                    <th>สมาชิกโปรโมชั่น</th>
+                    <th>เวลาลงทะเบียน</th>
                 </tr>
                 <volist name="secondUsers" id="d">
                     <tr>
@@ -53,12 +53,12 @@
                 </volist>
             </table>
         </div>
-        <h2 class="planner_h2"><span>我推荐的会员(三级)</span></h2>
+        <h2 class="planner_h2"><span>สมาชิกที่ฉันแนะนำ (ระดับ 3)</span></h2>
         <div class="planner_rule">
             <table>
                 <tr>
-                    <th>推广会员</th>
-                    <th>注册时间</th>
+                    <th>สมาชิกโปรโมชั่น</th>
+                    <th>เวลาลงทะเบียน</th>
                 </tr>
                 <volist name="thirdUsers" id="d">
                     <tr>
@@ -72,7 +72,7 @@
 </div>
 <script>
     $().ready(function(){
-        msg("公告","邀请好友加入，即可获得lv1每日收益8%，lv2每日收益3%，lv3每日收益1%！",1);
+        msg("ประกาศ","เชิญเพื่อนเข้าร่วม เพื่อรับกำไรเพิ่มเติม สำหรับสมาชิก LV1 จะได้รับ 8%ต่อวัน  สมาชิก LV2 จะได้รับ 3%ต่อวัน  และสมาชิก LV3 จะได้รับ 1%ต่อวัน !",1);
     });
 </script>
 </body>

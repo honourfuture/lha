@@ -6,9 +6,9 @@
 
 
         <img src="__PUBLIC__/uploads/logo.png" />
-        <a href="?l=thai" class="lang">ไทย</a>
-        <a href="?l=zh-cn" class="lang2">中文</a>
-        <a href="?l=en-us" class="lang3">Eu</a>
+        <!--<a href="?l=thai" class="lang">ไทย</a>-->
+        <!--<a href="?l=zh-cn" class="lang2">中文</a>-->
+        <!--<a href="?l=en-us" class="lang3">Eu</a>-->
         <if condition="isLogin()">
             <a class="user" href="{:U('User/person')}">{$Think.lang.userCenter}</a>
             <else/>
@@ -129,7 +129,7 @@
     <div id="FontScroll">
         <ul>
             <volist name="fakers" id="faker">
-                <li class="faker"><a href="#"><span class="phone">手机号码: <span class="show-phone">{$faker['phone']}</span></span> <span class="message">{$faker['message']}</span> <span class="cash">{$faker['cash']}泰铢</span> </a></li>
+                <li class="faker"><a href="#"><span class="phone">{$Think.lang.phone}: <span class="show-phone">{$faker['phone']}</span></span> <span class="message">{$faker['message']}</span> <span class="cash">{$faker['cash']}{$Think.lang.unit}</span> </a></li>
             </volist>
         </ul>
     </div>
@@ -140,8 +140,8 @@
         </div>
     </if>
    <div class="contact">
-        <span class="tel">服务热线：<a href="tel:{:getInfo('tel')}"><strong>{:getInfo('tel')}</strong></a></span>
-        <a href="{:getInfo('service')}" class="kef">进入在线客服</a>
+        <span class="tel">{$Think.lang.serviceHotline}：<a href="tel:{:getInfo('tel')}"><strong>{:getInfo('tel')}</strong></a></span>
+        <a href="{:getInfo('service')}" class="kef">{$Think.lang.onlineService}</a>
     </div>
     <div class="fly_draw"  style="display: block;"><a href="{:U('Wheel/index')}" ><img src="__PUBLIC__/mobile/img/nav2.png"></a></div>
     <div class="footer">
@@ -198,7 +198,7 @@
     <include file="footer" menu="index"/>
     <if condition="getInfo('activity_status') eq 1">
         <!--活动弹窗 S -->
-        <div class="huodongbg" style="width:100%;height:2000px;position: fixed;top: 0;left:0;background-color: rgba(0,0,0,0.35);z-index: 9999999;">
+        <div class="huodfongbg" style="width:100%;height:2000px;position: fixed;top: 0;left:0;background-color: rgba(0,0,0,0.35);z-index: 9999999;">
             <div style="width:300px;height:200px;position: fixed;top: 0;left:0;right:0;bottom:0;margin:auto;background-color: #666;">
                 <a href="javascript:;" onclick="$('.huodongbg').hide();" style="width:110px;height:25px;line-height:25px;text-align: center;position:absolute;right: 5px;top: 10px;border: 1px solid #fff;color:#fff;border-radius:5px;">关闭活动广告</ a>
                 <a href="{:getInfo('activity_url')}" style="">

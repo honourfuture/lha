@@ -64,18 +64,18 @@ function qiandao() {
         dataType: "json",
         success: function (result) {
             if (result['code'] == "000") {
-                msg("提示",result['msg'],1);
+                msg("พรอมต์",result['msg'],1);
             } else {
                 if(result['code'] == "003"){
-                    msg("错误",result['msg'],2,'/user/certification.html');
+                    msg("ผิดพลาด",result['msg'],2,'/user/certification.html');
                 }
                 else{
-                    msg("错误",result['msg'],1);
+                    msg("ผิดพลาด",result['msg'],1);
                 }
             }
         },
         error: function () {
-            msg("错误","网络繁忙，签到失败！",1);
+            msg("ผิดพลาด","网络繁忙，签到失败！",1);
         }
     });
 }

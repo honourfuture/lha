@@ -47,18 +47,18 @@
             dataType: "json",
             success: function (result) {
                 if (result['code'] == "000") {
-                    msg("提示",result['msg'],2,'/user/success_hall.html');
+                    msg("{$Think.lang.notice}",result['msg'],2,'/user/success_hall.html');
                 } else {
                     if(result['code'] == "003"){
-                        msg("错误",result['msg'],2,'/user/certification.html');
+                        msg("{$Think.lang.error}",result['msg'],2,'/user/certification.html');
                     }
                     else{
-                        msg("错误",result['msg'],2,'/user/success_hall.html');
+                        msg("{$Think.lang.error}",result['msg'],2,'/user/success_hall.html');
                     }
                 }
             },
             error: function () {
-                msg("错误","网络繁忙，签到失败！",1);
+                msg("{$Think.lang.error}","网络繁忙，签到失败！",1);
             }
         });
     }

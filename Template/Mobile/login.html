@@ -2,7 +2,7 @@
 <div class="mobile">
     <div class="othertop">
         <a class="goback" href="{:U('mobile/index')}"><img src="__PUBLIC__/mobile/img/goback.png" /></a>
-        <div class="othertop-font">登录</div>
+        <div class="othertop-font">เข้าสู่ระบบ</div>
     </div>
     <div class="header-nbsp"></div>
     <div style="text-align: center;">
@@ -11,17 +11,17 @@
         <div class="login_bg">
 	        <form action="{:U('login')}" method="post">
 	            <div class="input_text log">
-	            	<label>账号</label>
-                    <input type="text" name="account" placeholder="请输入手机号码">
+	            	<label>เลขที่บัญชี</label>
+                    <input type="text" name="account" placeholder="กรุณาป้อนเบอร์มือถือ">
                 </div>
                 <div class="input_text log">
-	            	<label>密码</label>
-                    <input type="password" name="password" placeholder="请输入登录密码">
+	            	<label>รหัสผ่าน</label>
+                    <input type="password" name="password" placeholder="กรุณาป้อนรหัสผ่าน">
                 </div>
                 <div class="error_tips"></div>
-                <input type="submit" class="input_btn" value="登录" />
-                <p class="p2 re"><a href="reg.html">注册账号</a></p>
-                <if condition="smsStatus('18004') eq 1"><p class="p1"><a href="forget.html">忘记密码?</a></p></if>
+                <input type="submit" class="input_btn" value="เข้าสู่ระบบ" />
+                <p class="p2 re"><a href="reg.html">ลงทะเบียนบัญชี</a></p>
+                <if condition="smsStatus('18004') eq 1"><p class="p1"><a href="forget.html">ลืมรหัสผ่าน?</a></p></if>
 	        </form>
         </div>
     </div>

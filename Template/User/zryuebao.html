@@ -12,12 +12,12 @@
         </div>
         <div class="blank_card">
             <p>转入金额</p>
-            <label class="big">￥</label><input class="big" name="money" id="money" type="text" />
-            <p>可用余额 <span id="userMoney">{$user.money}</span>{$Think.lang.unit}</p>
+            <label class="big">{$Think.lang.unitSymbol}</label><input class="big" name="money" id="money" type="text" />
+            <p>{$Think.lang.AvailableBalance} <span id="userMoney">{$user.money}</span>{$Think.lang.unit}</p>
             
         </div>
         <div class="blank_card">
-            <label>交易密码</label><input type="password" name="pwd" id="pwd" placeholder="请输入交易密码" />
+            <label>{$Think.lang.TradingPassword}</label><input type="password" name="pwd" id="pwd" placeholder="{$Think.lang.PleaseEnterTheTransactionPassword}" />
         </div>
         <div class="blank_card" style="display: none;">
              <label>手续费</label> 2{$Think.lang.unit}
@@ -45,36 +45,36 @@ $(function(){
         var pwd = $("#pwd").val();
         var auth = parseInt("{$user.auth}");
         if(auth == 0){
-            msg("错误","请认证后再进行转入！",2,"{:U('User/certification')}");
+            msg("{$Think.lang.error}","请认证后再进行转入！",2,"{:U('User/certification')}");
             return false;
         }
         if(bank == 0){
-            msg("错误","请选择或者添加提现银行卡！",1);
+            msg("{$Think.lang.error}","{$Think.lang.PleaseSelectOrAddACashWithdrawalBankCard}",1);
             return false;
         }
         if(money.length <= 0){
-            msg("错误","请输入转入金额！",1);
+            msg("{$Think.lang.error}","请输入转入金额！",1);
             return false;
         }
         if(isNaN(money)){
             $("#money").val("");
-            msg("错误","请输入正确的转入金额！",1);
+            msg("{$Think.lang.error}","请输入正确的转入金额！",1);
             return false;
         }
         if(parseFloat(money) < parseFloat(min)){
-            msg("错误","小于最低提现金额"+min+"{$Think.lang.unit}！",1);
+            msg("{$Think.lang.error}","小于最低提现金额"+min+"{$Think.lang.unit}！",1);
             return false;
         }
         if(parseFloat(money) > parseFloat(max_money)){
-            msg("错误","小于最低提现金额"+min+"{$Think.lang.unit}！",1);
+            msg("{$Think.lang.error}","小于最低提现金额"+min+"{$Think.lang.unit}！",1);
             return false;
         }
         if(parseFloat(money) > parseFloat(userMoney)){
-            msg("错误","转入金额不能大于用户余额！",1);
+            msg("{$Think.lang.error}","转入金额不能大于用户余额！",1);
             return false;
         }
         if(pwd.length < 6 || pwd.length > 16){
-            msg("错误","请输入正确的交易密码！",1);
+            msg("{$Think.lang.error}","กรุณาป้อนรหัสผ่านธุรกรรมที่ถูกต้อง!",1);
             return false;
         }
     })

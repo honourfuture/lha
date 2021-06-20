@@ -9,9 +9,9 @@
     <form action="{:U('addzhuanchu')}" method="post" id="ifr">
         <div class="blank_card">
             <p>转出金额</p>
-            <label class="big">￥</label>
+            <label class="big">{$Think.lang.unitSymbol}</label>
             <input class="big" type="text" name="money" placeholder="请输入转出金额" id="money" />
-            <p>可用余额&nbsp;&nbsp;&nbsp;￥ <strong>{$res.paypal}</strong> {$Think.lang.unit}</p>
+            <p>{$Think.lang.AvailableBalance}&nbsp;&nbsp;&nbsp;{$Think.lang.unitSymbol} <strong>{$res.paypal}</strong> {$Think.lang.unit}</p>
         </div>
       
 
@@ -45,11 +45,11 @@ $("#ifr").submit(function(){
     var auth = parseInt("{$user.auth}");
  
     if(isNaN(money)){
-        msg("错误","转出金额有误！",1);
+        msg("{$Think.lang.error}","转出金额有误！",1);
         return false;
     }
     if(money < 0.01){
-        msg("错误","最低转出金额0.01{$Think.lang.unit}！",1);
+        msg("{$Think.lang.error}","最低转出金额0.01{$Think.lang.unit}！",1);
         return false;
     }
   

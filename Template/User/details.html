@@ -2,32 +2,32 @@
 <div class="mobile">
 	<div class="othertop">
         <a class="goback" href="javascript:history.back();"><img src="__PUBLIC__/mobile/img/goback.png" /></a>
-        <div class="othertop-font">投资详情</div>
+        <div class="othertop-font">รายละเอียดการลงทุน</div>
     </div>
     <div class="header-nbsp"></div>
 	<div class="contract_box deta">
 	    <div class="data_name">
-	        <span style="display: inline-block;width: 3rem;">投资金额：{$invest.money}{$Think.lang.unit}</span>
-	        <span style="display: inline-block;width: 3rem;">预期效益：{:getInvestMoney($invest['id'])}{$Think.lang.unit}</span><br/>
-	        <span style="display: inline-block;width: 3rem;">投资时间：{:date('Y-m-d',strtotime($invest['time']))}</span>
-	        <span style="display: inline-block;width: 3rem;">到期时间：{:date('Y-m-d',strtotime('+'.$invest['day'].' day',strtotime($invest['time'])))}</span><br/>
-	        <span>收益方式：{$invest.type2}</span>
+	        <span style="display: inline-block;width: 3rem;">ยอดเงินลงทุน：{$invest.money}{$Think.lang.unit}</span>
+	        <span style="display: inline-block;width: 3rem;">กำไรโดยประมาณ：{:getInvestMoney($invest['id'])}{$Think.lang.unit}</span><br/>
+	        <span style="display: inline-block;width: 3rem;">เวลาลงทุน：{:date('Y-m-d',strtotime($invest['time']))}</span>
+	        <span style="display: inline-block;width: 3rem;">เวลาครบกำหนด：{:date('Y-m-d',strtotime('+'.$invest['day'].' day',strtotime($invest['time'])))}</span><br/>
+	        <span>รูปแบบกำไร：{$invest.type2}</span>
 	    </div>
 	    <div class="table_auto">
 		    <table class="tablec">
 		        <tr>
-		            <th>期号</th>
-		            <th>应收本金</th>
-		            <th>应收利息</th>
-		            <th>应收时间</th>
-		            <th>收益时间</th>
-		            <th>应收总额</th>
-		            <th>已支付</th>
-		            <th>状态</th>
+		            <th>เลขที่รอบ</th>
+		            <th>เงินต้นที่ต้องได้รับ</th>
+		            <th>ดอกเบี้ยที่ต้องได้รับ</th>
+		            <th>เวลาที่ต้องได้รับ</th>
+		            <th>เวลากำไร</th>
+		            <th>ยอดรวมที่ต้องได้รับ</th>
+		            <th>จ่ายแล้ว</th>
+		            <th>สถานะ</th>
 		        </tr>
                 <volist name="list" id="l">
                     <tr>
-                        <td>第{$l.num}期</td>
+                        <td>รอบที่{$l.num}</td>
                         <td>{$l.money2}</td>
                         <td>{$l.money1}</td>
                         <td>{$l.time1}</td>
@@ -35,16 +35,16 @@
                             <if condition="$l['time2'] neq '0000-00-00 00:00:00'">
                                 {$l.time1}
                                 <else/>
-                                未完成
+                                ยังไม่สำเร็จ
                             </if>
                         </td>
                         <td>{$l.pay1}</td>
                         <td>{$l.pay2}</td>
                         <td>
                             <if condition="$l['status'] eq 1">
-                                已完成
+                                สำเร็จแล้ว
                                 <else/>
-                                未完成
+                                ยังไม่สำเร็จ
                             </if>
                         </td>
                     </tr>

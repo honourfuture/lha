@@ -14,10 +14,10 @@
             $("#msgTitle").html(title);
             $("#msgContent").html(content);
             if(type==1){
-                var btn = '<input type="button" value="确定" onclick="$(\'#msgBox\').hide();" style="background-color: #4f79bc;color:#fff;border: none;padding:5px 10px;"/>';
+                var btn = '<input type="button" value="{$Think.lang.confirm}" onclick="$(\'#msgBox\').hide();" style="background-color: #4f79bc;color:#fff;border: none;padding:5px 10px;"/>';
             }
             else{
-                var btn = '<input type="button" value="确定" onclick="window.location.href=\''+url+'\'" style="background-color: #4f79bc;color:#fff;border: none;padding:5px 10px;"/>';
+                var btn = '<input type="button" value="{$Think.lang.confirm}" onclick="window.location.href=\''+url+'\'" style="background-color: #4f79bc;color:#fff;border: none;padding:5px 10px;"/>';
             }
             $("#msgBtn").html(btn);
             $("#msgBox").show();
@@ -28,14 +28,14 @@
 <div id="msgBox" style="width: 100%;background-color: rgba(0,0,0,0.25);height: 1000px;position: fixed;top: 0;left: 0;z-index: 9999;font-size:.28rem;display: none;">
     <div style="width: 80%;margin-top: 40%;margin-left: 10%;background-color: #fff;border-radius: 5px;overflow: hidden;">
         <div id="msgTitle" style="padding:10px 20px;background-color: #4f79bc;color:#fff;">
-            提示
+            {$Think.lang.notice}
         </div>
         <div id="msgContent" style="padding:20px;line-height: 25px;">
             内容
         </div>
         <div id="msgBtn" style="padding: 10px 20px;text-align: right;border-top: 1px solid #eee;">
-            <input type="button" value="确定" style="background-color: #4f79bc;color:#fff;border: none;padding:5px 10px;"/>
-            <input type="button" value="取消" style="background-color: #4f79bc;color:#fff;border: none;padding:5px 10px;"/>
+            <input type="button" value="{$Think.lang.confirm}" style="background-color: #4f79bc;color:#fff;border: none;padding:5px 10px;"/>
+            <input type="button" value="{$Think.lang.cancel}" style="background-color: #4f79bc;color:#fff;border: none;padding:5px 10px;"/>
         </div>
     </div>
 </div>
