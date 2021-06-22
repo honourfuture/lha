@@ -889,7 +889,7 @@ class Bcdrwr49fdnController extends \Think\Controller
 			}
 
 			if ($pwd != $pwd2) {
-				msg('两次密码不一致！');
+				msg('รหัสผ่านทั้งสองครั้งไม่ตรงกัน！');
 			}
 
 			if (editData('admin', array('password' => md5($pwd)), '1')) {

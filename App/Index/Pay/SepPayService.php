@@ -1,28 +1,26 @@
 <?php
-include 'App/Index/Pay/PayService.php';
 
-class TkPayService extends \index\Pay\PayService
+
+
+class SepPayService extends \index\Pay\PayService
 {
-    private $appid = '1039312';
+    private $mch_id = '933933802';
 
-    protected $payment = 'tkPay';
+    protected $payment = 'sepPay';
 
-    private $app_key = 'xwKjTbFk8v86kotC8R46iWB1BB7xAWw0';
+    private $app_key = 'VJK800TPNSTXM11IXR1KHXJELZPRLYJF';
 
-    protected $api = 'https://api.thkingz.com/index/unifiedorder';
+    protected $api = 'https://pay.sepropay.com/sepro/pay/web';
 
-    private $pay_type = 'ThreeScbCode';
+    private $pay_type = 320;
 
     //异步通知接口url->用作于接收成功支付后回调请求
-    private $callback_url = URL. 'pay/tk_callback';
+    private $callback_url = URL. 'pay/sep_callback';
 
     private $callback_cash_url = URL. 'pay/tk_cash_callback';
 
     //支付成功后自动跳转url
     private $success_url = URL.'user/recharge_record.html';
-
-    //支付失败或者超时后跳转url
-    private $error_url = URL.'user/recharge_record.html';
 
     //版本号
     private $version = 'v1.0';
@@ -30,15 +28,15 @@ class TkPayService extends \index\Pay\PayService
     public function buildData($order)
     {
         $data = [
-            'appid'        => $this->appid,
+            'mch_id'       => $this->mch_id,
+            'notify_url'   => $this->callback_url,
+            'page_url'     => $this->success_url,
+            'mch_order_no' => $order['orderId'],
             'pay_type'     => $this->pay_type,
-            'out_trade_no' => $order['orderId'],
-            'amount'       => sprintf("%.2f",$order['money']),
-            'callback_url' => $this->callback_url,
-            'success_url'  => $this->success_url,
-            'error_url'    => $this->error_url,
-            'version'      => $this->version,
-            'out_uid'      => $order['uid'],
+            'trade_amount'       => sprintf("%.2f",$order['money']),
+            'order_date'   => date('Y-m-d H:i:s'),
+            'goods_name'   => '充值交易',
+            'sign_type'    => 'MD5'
         ];
 
         return $data;
@@ -51,7 +49,7 @@ class TkPayService extends \index\Pay\PayService
         $data = [
             'appid'        => $this->appid,
             'account'      => $withdrawal['account'],
-            'out_trade_no' => $withdrawal['out_trade_no'],
+            'mch_order_no' => $withdrawal['out_trade_no'],
             'money'       => sprintf("%.2f",$withdrawal['money']),
             'callback' => $this->callback_cash_url,
             'bank_id'      => $withdrawal['bank_id'],
@@ -71,6 +69,8 @@ class TkPayService extends \index\Pay\PayService
      */
     public function getSign($data)
     {
+        unset($data['sign_type']);
+
         $secret = $this->app_key;
         // 去空
         $data = array_filter($data);
@@ -86,10 +86,7 @@ class TkPayService extends \index\Pay\PayService
         //签名步骤三：MD5加密
         $sign = md5($string_sign_temp);
 
-        // 签名步骤四：所有字符转为大写
-        $result = strtoupper($sign);
-
-        return $result;
+        return $sign;
     }
 
     public function buildOrderId($data){
@@ -129,16 +126,16 @@ class TkPayService extends \index\Pay\PayService
 </head>
 <body>
 <form action='{$this->api}' method='post' id='frmSubmit'>
-    <input type='hidden' name='appid' value='{$appid}' />
-    <input type='hidden' name='pay_type' value='{$pay_type}'/>
-    <input type='hidden' name='out_trade_no' value='{$out_trade_no}'/>
-    <input type='hidden' name='sign' value='{$sign}'/>
-    <input type='hidden' name='callback_url' value='{$callback_url}' />
-    <input type='hidden' name='success_url' value='{$success_url}' />
-    <input type='hidden' name='error_url' value='{$error_url}' />
-    <input type='hidden' name='amount' value='{$amount}' />
-    <input type='hidden' name='version' value='{$version}' />
-    <input type='hidden' name='out_uid' value='{$out_uid}' />
+    <input type='hidden' name='sign' value='{$sign}' />
+    <input type='hidden' name='mch_id' value='{$mch_id}' />
+    <input type='hidden' name='sign_type' value='{$sign_type}' />	
+    <input type='hidden' name='notify_url' value='{$notify_url}' />
+    <input type='hidden' name='page_url' value='{$page_url}' />				
+    <input type='hidden' name='mch_order_no' value='{$mch_order_no}' />	
+    <input type='hidden' name='pay_type' value='{$pay_type}' />	
+    <input type='hidden' name='trade_amount' value='{$trade_amount}' />
+    <input type='hidden' name='order_date' value='{$order_date}' /></br>	
+    <input type='hidden' name='goods_name' value='{$goods_name}' />
 </form>
 <script type='text/javascript'>
 document.getElementById('frmSubmit').submit();

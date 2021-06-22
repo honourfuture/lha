@@ -489,7 +489,7 @@ public function index(){
             if($res){
                 $this->tuijiancalculate($res);
 
-                $this->success("注册成功");
+                $this->success("สมัครสมาชิกสำเร็จ");
             }else{
                 $this->error("注册失败");
             }

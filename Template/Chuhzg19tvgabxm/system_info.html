@@ -21,6 +21,13 @@
                     </select>
                 </div>
                 <div class="line">
+                    <label>sep通道：</label>
+                    <select name="is_sep_open">
+                        <option value="0"<if condition="getInfo('is_sep_open') eq 0"> selected="selected"</if>>关闭</option>
+                        <option value="1"<if condition="getInfo('is_sep_open') eq 1"> selected="selected"</if>>开启</option>
+                    </select>
+                </div>
+                <div class="line">
                     <label>公司电话：</label>
                     <input type="text" name="tel" value="{:getInfo('tel')}" class="short"/>
                 </div>

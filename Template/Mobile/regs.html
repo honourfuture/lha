@@ -41,7 +41,7 @@
                 <if condition="smsStatus('18001') eq 1">
                     <div class="input_text">
                         <i><img src="__PUBLIC__/mobile/img/icon_code.png"></i>
-                        <input type="text" id="smsCode" name="smscode" placeholder="请输入短信验证码">
+                        <input type="text" id="smsCode" name="smscode" placeholder="กรุณาหรอกรหัสยืนยันทาง SMS">
                         <button id="getcode" type="button" onclick="regcode(60)">发送</button>
                     </div>
                 </if>
@@ -116,7 +116,7 @@
             return false;
         }
         if(pwd != pwd2){
-            msg("{$Think.lang.error}","两次密码不一致！",1);
+            msg("{$Think.lang.error}","รหัสผ่านทั้งสองครั้งไม่ตรงกัน！",1);
             return false;
         }
      
@@ -157,7 +157,7 @@
             return false;
         }
         if(pwd != pwd2){
-            msg("{$Think.lang.error}","两次密码不一致！",1);
+            msg("{$Think.lang.error}","รหัสผ่านทั้งสองครั้งไม่ตรงกัน！",1);
             return false;
         }
       

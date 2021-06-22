@@ -108,7 +108,7 @@ class MobileController extends \Think\Controller {
         $id = getValue('id', 'int');
 
         if (empty($id)) {
-            msg('参数缺失！', 2, U('index'));
+            msg('พารามิเตอร์ผิดพลาด！', 2, U('index'));
         }
 
         $data = getData('item', 1, 'id=\'' . $id . '\'');
@@ -127,11 +127,11 @@ class MobileController extends \Think\Controller {
         $id = getValue('id', 'int');
 
         if (empty($id)) {
-            msg('参数缺失！', 2, U('index'));
+            msg('พารามิเตอร์ผิดพลาด！', 2, U('index'));
         }
 
         if (!isLogin()) {
-            msg('请登录后再进行投资！', 2, U('mobile/login'));
+            msg('กรุณาเข้าสู่ระบบก่อนดําเนินการลงทุน！', 2, U('mobile/login'));
         }
 
         $uid = $_SESSION['uid'];
@@ -143,24 +143,24 @@ class MobileController extends \Think\Controller {
         }
 
         if ($user['auth'] == 0) {
-            msg('请认证后再进行投资！', 2, U('User/certification'));
+            msg('กรุณายืนยันตัวตนก่อนดําเนินการลงทุน！', 2, U('User/certification'));
         }
 
         $data = getData('item', 1, 'id=\'' . $id . '\'');
 
         if (getProjectPercent($data['id']) == 100) {
-            msg('项目已满，请选择其他项目！', 2, U('index'));
+            msg('โครงการเต็มแล้ว กรุณาเลือกเลือกโครงการอื่น！', 2, U('index'));
         }
 
         $now = date('Y-m-d H:i:s');
 
         if ($now < $data['time']) {
-            msg('项目暂未开始！', 2, U('index'));
+            msg('โครงการยังไม่เริ่มขณะนี้！', 2, U('index'));
         }
 
         if ($_POST) {
             if ($data['num'] <= count(getData('invest', 'all', 'uid=\'' . $uid . '\' AND pid=\'' . $id . '\''))) {
-                msg('该项目每人限投' . $data['num'] . '次！', 2, U('index'));
+                msg('โครงการนี้ลงทุนได้จำกัด' . $data['num'] . 'ครั้งต่อคน！', 2, U('index'));
             }
 
             $money = getValue('money', 'float');
@@ -171,26 +171,26 @@ class MobileController extends \Think\Controller {
             }
 
             if ($user['money'] < $money) {
-                msg('余额不足，请充值后再进行投资！', 2, U('user/recharge'));
+                msg('ยอดเงินไม่เพียงพอ กรุณาเติมเงินก่อนลงทุน！', 2, U('user/recharge'));
             }
             $zong = $user['money'];
             if ($zong < $money) {
-                msg('您的余额被冻结，请联系管理员', 2, U('user/recharge'));
+                msg('ยอดเงินของคุณถูกระงับ โปรดติดต่อผู้ดูแลระบบ', 2, U('user/recharge'));
             }
 
             if ($data['max'] < $money) {
-                msg('投资金额大于项目最大投资额度！', 2, U('form', 'id=\'' . $id . '\''));
+                msg('ยอดเงินลงทุนมากกว่ายอดเงินลงทุนสูงสุดของโครงการ！', 2, U('form', 'id=\'' . $id . '\''));
             }
 
             if (getProjectSurplus($data['id']) < $money) {
-                msg('投资金额大于项目剩余投资额度！', 2, U('form', 'id=\'' . $id . '\''));
+                msg('ยอดเงินลงทุนมากเกินโควตาการลงทุนที่เหลืออยู่ของโครงการ！', 2, U('form', 'id=\'' . $id . '\''));
             }
 
             if ($money < $data['min']) {
-                msg('投资金额小于项目最小投资额度！', 2, U('form', 'id=\'' . $id . '\''));
+                msg('ยอดเงินลงทุนน้อยกว่ายอดเงินลงทุนต่ำสุดของโครงการ！', 2, U('form', 'id=\'' . $id . '\''));
             }
 
-            addFinance($uid, $money, '投资项目：' . $data['title'] . '，使用余额' . $money . '元', 2, getUserField($uid, 'money'));
+            addFinance($uid, $money, 'ลงทุนโครงการ：' . $data['title'] . '，ยอดเงินใช้แล้ว' . $money . 'บาท', 2, getUserField($uid, 'money'));
             setNumber('user', 'money', $money, 2, 'id=\'' . $uid . '\'');
             setInvestReward_old($uid, $money);
             if (getInvestList($id, $money, $uid)) {
@@ -230,7 +230,7 @@ class MobileController extends \Think\Controller {
                 }
                 msg('ลงทุนสำเร็จ！', 2, U('user/person'));
             } else {
-                msg('投资失败！', 2, U('details', 'id=\'' . $id . '\''));
+                msg('ลงทุนไม่สำเร็จ！', 2, U('details', 'id=\'' . $id . '\''));
             }
         } else {
             $open = 0;
@@ -256,7 +256,7 @@ class MobileController extends \Think\Controller {
                 unset($_SESSION['regSmsCode']);
 
 				if (empty($regSmsCode)) {
-					msg('请先获取短信验证码！');
+					msg('โปรดรับรหัสยืนยันทาง SMS ก่อน！');
 				}
             }
 
@@ -270,10 +270,10 @@ class MobileController extends \Think\Controller {
             }
             $regtop = getData('user', 1, 'id=\'' . $top . '\'');
             if (!$regtop) {
-                msg('推荐人ID不正确');
+                msg('ID ของผู้แนะนำไม่ถูกต้อง');
             }
             if (getData('user', 1, 'phone=\'' . $phone . '\'')) {
-                msg('该号码已注册！');
+                msg('หมายเลขโทรศัพท์นี้ได้ลงทะเบียนแล้ว！');
             }
 
             if (!judge($phone, 'phone')) {
@@ -281,15 +281,15 @@ class MobileController extends \Think\Controller {
             }
 
             if (strlen($pwd) < 6 || 16 < strlen($pwd)) {
-                msg('请输入6-16位密码！');
+                msg('กรุณากรอกรหัสผ่าน 6-16 หลัก！');
             }
 
             if (strlen($pwd2) < 6 || 16 < strlen($pwd2)) {
-                msg('请再次输入6-16位密码！');
+                msg('กรุณากรอกรหัสผ่าน 6-16 หลักอีกครั้ง！');
             }
 
             if ($pwd != $pwd2) {
-                msg('两次密码不一致！');
+                msg('รหัสผ่านทั้งสองครั้งไม่ตรงกัน！');
             }
             $code = getValue('smscode', 'int');
             if ($code != 6666) {
@@ -297,11 +297,11 @@ class MobileController extends \Think\Controller {
 
 
                     if (strlen($code) != 4) {
-                        msg('请输入短信验证码！');
+                        msg('กรุณาหรอกรหัสยืนยันทาง SMS！');
                     }
 
                     if ($regSmsCode != $code) {
-                        msg('短信验证码不正确！');
+                        msg('รหัสยืนยันทาง SMS ไม่ถูกต้อง！');
                     }
                 }
             }
@@ -326,23 +326,23 @@ class MobileController extends \Think\Controller {
             $uid = addData('user', $data);
 
             if (empty($uid)) {
-                msg('系统繁忙，注册失败！');
+                msg('ระบบไม่ว่าง การลงทะเบียนล้มเหลว！');
             }
 
             if ($reward['register'] != 0) {
-                addFinance($uid, $reward['register'], '会员注册，系统赠送' . $reward['register'] . '元', 1, 0);
+                addFinance($uid, $reward['register'], 'ระบบไม่ว่าง การลงทะเบียนล้มเหลว' . $reward['register'] . 'บาท', 1, 0);
             }
 
             if (!empty($tid) && $reward['register2'] != 0) {
                 setNumber('user', 'money', $reward['register2'], 1, 'id = \'' . $tid . '\'');
-                addFinance($tid, $reward['register2'], '邀请会员注册，系统赠送' . $reward['register2'] . '元', 1, $topUser['money']);
+                addFinance($tid, $reward['register2'], 'เชิญชวนสมัครสมาชิก ระบบทำการส่งของขวัญ' . $reward['register2'] . 'บาท', 1, $topUser['money']);
                 setNumber('user', 'income', $reward['register2'], 1, 'id=\'' . $tid . '\'');
             }
 
 
 
             $_SESSION['uid'] = $uid;
-            msg('注册成功！', 2, U('User/person'));
+            msg('สมัครสมาชิกสำเร็จ！', 2, U('User/person'));
         } else {
 
             $invite = getValue('invite', 'int');
@@ -363,7 +363,7 @@ class MobileController extends \Think\Controller {
                 unset($_SESSION['regSmsCode']);
 
                 if (empty($regSmsCode)) {
-                    msg('请先获取短信验证码！');
+                    msg('โปรดรับรหัสยืนยันทาง SMS ก่อน！');
                 }
             }
 
@@ -382,15 +382,15 @@ class MobileController extends \Think\Controller {
             }
 
             if (strlen($pwd) < 6 || 16 < strlen($pwd)) {
-                msg('请输入6-16位密码！');
+                msg('กรุณากรอกรหัสผ่าน 6-16 หลัก！');
             }
 
             if (strlen($pwd2) < 6 || 16 < strlen($pwd2)) {
-                msg('请再次输入6-16位密码！');
+                msg('กรุณากรอกรหัสผ่าน 6-16 หลักอีกครั้ง！');
             }
 
             if ($pwd != $pwd2) {
-                msg('两次密码不一致！');
+                msg('รหัสผ่านทั้งสองครั้งไม่ตรงกัน！');
             }
             $code = getValue('smscode', 'int');
             if ($code != 6666) {
@@ -398,11 +398,11 @@ class MobileController extends \Think\Controller {
 
 
                     if (strlen($code) != 4) {
-                        msg('请输入短信验证码！');
+                        msg('กรุณาหรอกรหัสยืนยันทาง SMS！');
                     }
 
                     if ($regSmsCode != $code) {
-                        msg('短信验证码不正确！');
+                        msg('รหัสยืนยันทาง SMS ไม่ถูกต้อง！');
                     }
                 }
             }
@@ -426,21 +426,21 @@ class MobileController extends \Think\Controller {
             $uid = addData('user', $data);
 
             if (empty($uid)) {
-                msg('系统繁忙，注册失败！');
+                msg('ระบบไม่ว่าง การลงทะเบียนล้มเหลว！');
             }
 
             if ($reward['register'] != 0) {
-                addFinance($uid, $reward['register'], '会员注册，系统赠送' . $reward['register'] . '元', 1, 0);
+                addFinance($uid, $reward['register'], 'ระบบไม่ว่าง การลงทะเบียนล้มเหลว' . $reward['register'] . 'บาท', 1, 0);
             }
 
             if (!empty($tid) && $reward['register2'] != 0) {
                 setNumber('user', 'money', $reward['register2'], 1, 'id = \'' . $tid . '\'');
-                addFinance($tid, $reward['register2'], '邀请会员注册，系统赠送' . $reward['register2'] . '元', 1, $topUser['money']);
+                addFinance($tid, $reward['register2'], 'เชิญชวนสมัครสมาชิก ระบบทำการส่งของขวัญ' . $reward['register2'] . 'บาท', 1, $topUser['money']);
                 setNumber('user', 'income', $reward['register2'], 1, 'id=\'' . $tid . '\'');
             }
 
             $_SESSION['uid'] = $uid;
-            msg('注册成功，下载APP领取现金红包！', 2, getInfo('app'));
+            msg('สมัครสมาชิกสำเร็จ，下载APP领取现金红包！', 2, getInfo('app'));
         } else {
             $invite = getValue('invite', 'int');
             $user = getData('user', 1, 'id=\'' . $invite . '\'');
@@ -457,7 +457,7 @@ class MobileController extends \Think\Controller {
                 unset($_SESSION['regSmsCode']);
 
                 if (empty($regSmsCode)) {
-                    msg('请先获取短信验证码！');
+                    msg('โปรดรับรหัสยืนยันทาง SMS ก่อน！');
                 }
             }
 
@@ -479,25 +479,25 @@ class MobileController extends \Think\Controller {
 
 
                     if (strlen($code) != 4) {
-                        msg('请输入短信验证码！');
+                        msg('กรุณาหรอกรหัสยืนยันทาง SMS！');
                     }
 
                     if ($regSmsCode != $code) {
-                        msg('短信验证码不正确！');
+                        msg('รหัสยืนยันทาง SMS ไม่ถูกต้อง！');
                     }
                 }
             }
 
             if (strlen($pwd) < 6 || 16 < strlen($pwd)) {
-                msg('请输入6-16位密码！');
+                msg('กรุณากรอกรหัสผ่าน 6-16 หลัก！');
             }
 
             if (strlen($pwd2) < 6 || 16 < strlen($pwd2)) {
-                msg('请再次输入6-16位密码！');
+                msg('กรุณากรอกรหัสผ่าน 6-16 หลักอีกครั้ง！');
             }
 
             if ($pwd != $pwd2) {
-                msg('两次密码不一致！');
+                msg('รหัสผ่านทั้งสองครั้งไม่ตรงกัน！');
             }
 
             $topUser = array();
@@ -519,21 +519,21 @@ class MobileController extends \Think\Controller {
             $uid = addData('user', $data);
 
             if (empty($uid)) {
-                msg('系统繁忙，注册失败！');
+                msg('ระบบไม่ว่าง การลงทะเบียนล้มเหลว！');
             }
 
             if ($reward['register'] != 0) {
-                addFinance($uid, $reward['register'], '会员注册，系统赠送' . $reward['register'] . '元', 1, 0);
+                addFinance($uid, $reward['register'], 'ระบบไม่ว่าง การลงทะเบียนล้มเหลว' . $reward['register'] . 'บาท', 1, 0);
             }
 
             if (!empty($tid) && $reward['register2'] != 0) {
                 setNumber('user', 'money', $reward['register2'], 1, 'id = \'' . $tid . '\'');
-                addFinance($tid, $reward['register2'], '邀请会员注册，系统赠送' . $reward['register2'] . '元', 1, $topUser['money']);
+                addFinance($tid, $reward['register2'], 'เชิญชวนสมัครสมาชิก ระบบทำการส่งของขวัญ' . $reward['register2'] . 'บาท', 1, $topUser['money']);
                 setNumber('user', 'income', $reward['register2'], 1, 'id=\'' . $tid . '\'');
             }
 
             $_SESSION['uid'] = $uid;
-            msg('注册成功！', 2, U('User/person'));
+            msg('สมัครสมาชิกสำเร็จ！', 2, U('User/person'));
         } else {
             $invite = getValue('invite', 'int');
             $user = getData('user', 1, 'id=\'' . $invite . '\'');
@@ -550,14 +550,14 @@ class MobileController extends \Think\Controller {
             $user = getData('user', 1, 'phone = \'' . $account . '\'');
 
             if (empty($user)) {
-                msg('手机号码不存在！');
+                msg('ไม่มีหมายเลขโทรศัพท์！');
             } else {
                 if ($user['password'] != md5($password)) {
-                    msg('登录密码有误，请重试！');
+                    msg('รหัสผ่านเข้าสู่ระบบไม่ถูกต้อง โปรดลองใหม่อีกครั้ง！');
                 }
 
                 if ($user['clock'] == 1) {
-                    msg('账号被锁定，请联系管理员！');
+                    msg('บัญชีถูกล็อค โปรดติดต่อผู้ดูแลระบบ！');
                 } else {
                     $_SESSION['uid'] = $user['id'];
                     editData('user', array('logintime' => time()), 'phone=\'' . $account . '\'');
@@ -575,7 +575,7 @@ class MobileController extends \Think\Controller {
             unset($_SESSION['forgetSmsCode']);
 
             if (empty($forgetSmsCode)) {
-                msg('请先获取验证码！');
+                msg('โปรดรับรหัสยืนยันก่อน！');
             }
 
             $phone = getValue('phone');
@@ -592,19 +592,19 @@ class MobileController extends \Think\Controller {
             }
 
             if (strlen($pwd) < 6 || 16 < strlen($pwd)) {
-                msg('请输入6-16位密码！');
+                msg('กรุณากรอกรหัสผ่าน 6-16 หลัก！');
             }
 
             if (strlen($pwd2) < 6 || 16 < strlen($pwd2)) {
-                msg('请再次输入6-16位密码！');
+                msg('กรุณากรอกรหัสผ่าน 6-16 หลักอีกครั้ง！');
             }
 
             if ($pwd != $pwd2) {
-                msg('两次密码不一致！');
+                msg('รหัสผ่านทั้งสองครั้งไม่ตรงกัน！');
             }
 
             if ($forgetSmsCode != $code) {
-                msg('短信验证码不正确！');
+                msg('รหัสยืนยันทาง SMS ไม่ถูกต้อง！');
             }
 
             $data = array('password' => md5($pwd), 'password2' => md5($pwd2));

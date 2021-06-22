@@ -2,6 +2,8 @@
 //dezend by http://www.yunlu99.com/
 namespace Index\Controller;
 include 'App/Index/Pay/TkPayService.php';
+include 'App/Index/Pay/SepPayService.php';
+
 class UserController extends \Think\Controller
 {
 	public function _initialize()
@@ -38,7 +40,7 @@ class UserController extends \Think\Controller
 			$user = getData('user', 1, 'idcard = \'' . $idcard . '\' AND id <> \'' . $uid . '\'');
 
 			if (!empty($user)) {
-				msg('身份证号码已存在，请勿重复注册！');
+				msg('มีเลขประจำตัวประชาชนนี้อยู่แล้ว กรุณาอย่าลงทะเบียนซ้ำ！');
 			}
 
 			$host = 'http://idcard.market.alicloudapi.com';
@@ -66,15 +68,15 @@ class UserController extends \Think\Controller
 			$resp = json_decode($re, true);
 
 			if ($resp['resp']['code'] == '5') {
-				msg('姓名和身份证号码不匹配！');
+				msg('ชื่อ-นามสกุลไม่ตรงกับเลขประจำตัวประชาชน！');
 			}
 
 			if ($resp['resp']['code'] == '14') {
-				msg('无此身份证号码！');
+				msg('ไม่มีเลขประจำตัวประชาชนนี้！');
 			}
 
 			if ($resp['resp']['code'] == '96') {
-				msg('网络繁忙，请稍后重试！');
+				msg('เครือข่ายไม่ว่าง โปรดลองอีกครั้งในภายหลัง！');
 			}
 
 	
@@ -84,7 +86,7 @@ class UserController extends \Think\Controller
 				msg('ยืนยันตัวตนสำเร็จ！');
 			}
 			else {
-				msg('认证失败！');
+				msg('การยืนยันตัวตนล้มเหลว！');
 			}
 		}
 		else {
@@ -102,19 +104,19 @@ class UserController extends \Think\Controller
 			$pwd2 = getValue('pwd2');
 
 			if ($user['password'] != md5($oldpwd)) {
-				msg('原登录密码错误！');
+				msg('รหัสผ่านเดิมไม่ถูกต้อง！');
 			}
 
 			if (strlen($pwd) < 6 || 16 < strlen($pwd)) {
-				msg('请输入6-16位密码！');
+				msg('กรุณากรอกรหัสผ่าน 6-16 หลัก！');
 			}
 
 			if (strlen($pwd2) < 6 || 16 < strlen($pwd2)) {
-				msg('请再次输入6-16位密码！');
+				msg('กรุณากรอกรหัสผ่าน 6-16 หลักอีกครั้ง！');
 			}
 
 			if ($pwd != $pwd2) {
-				msg('两次密码不一致！');
+				msg('รหัสผ่านทั้งสองครั้งไม่ตรงกัน！');
 			}
 
 			if (editData('user', array('password' => md5($pwd)), 'id=\'' . $uid . '\'')) {
@@ -143,15 +145,15 @@ class UserController extends \Think\Controller
 			}
 
 			if (strlen($pwd) < 6 || 16 < strlen($pwd)) {
-				msg('请输入6-16位密码！');
+				msg('กรุณากรอกรหัสผ่าน 6-16 หลัก！');
 			}
 
 			if (strlen($pwd2) < 6 || 16 < strlen($pwd2)) {
-				msg('请再次输入6-16位密码！');
+				msg('กรุณากรอกรหัสผ่าน 6-16 หลักอีกครั้ง！');
 			}
 
 			if ($pwd != $pwd2) {
-				msg('两次密码不一致！');
+				msg('รหัสผ่านทั้งสองครั้งไม่ตรงกัน！');
 			}
 
 			if (editData('user', array('password2' => md5($pwd)), 'id=\'' . $uid . '\'')) {
@@ -175,7 +177,7 @@ class UserController extends \Think\Controller
 			$type = getValue('type', 'str');
 
 			if ($money < 200) {
-				msg('小于最低充值金额200元！');
+				msg('น้อยกว่ายอดเติมเงินขั้นต่ำ 200 บาท！');
 			}
 
 			if ($type == 'bank') {
@@ -202,7 +204,10 @@ class UserController extends \Think\Controller
 					'uid' => $uid,
 					'money' => $money,
 				];
-				if ($type == 'tk') {
+				if ($type == 'sep') {
+					$tkPay = new \SepPayService();
+					$tkPay->pay($order);
+				}else if ($type == 'tk') {
 					$tkPay = new \TkPayService();
 					$tkPay->pay($order);
 				}else if ($type == 'wechat') {
@@ -305,7 +310,7 @@ class UserController extends \Think\Controller
 			$idcard = $user['idcard'];
 
 			if ($user['auth'] != 1) {
-				msg('请认证后再添加银行卡！', 2, U('User/certification'));
+				msg('โปรดยืนยันตัวตนก่อนเพิ่มบัตรธนาคาร！', 2, U('User/certification'));
 			}
 
 			$name = $user['name'];
@@ -315,17 +320,17 @@ class UserController extends \Think\Controller
 			$bank = getData('banks', 1, 'id=\'' . $bankId . '\'');
 			$name = $bank['bank_name'];
 			if (empty($bank)) {
-				msg('请输入所属银行！');
+				msg('กรุณากรอกธนาคาร！');
 			}
 
 			if (empty($account)) {
-				msg('请输入银行卡号！');
+				msg('กรุณากรอกหมายเลขบัตรธนาคาร！');
 			}
 
 			$bank1 = getData('bank', 1, 'account=\'' . $account . '\'');
 
 			if (!empty($bank1)) {
-				msg('银行卡号已存在，请勿重复添加！');
+				msg('มีหมายเลขบัตรธนาคารนี้อยู่แล้ว กรุณาอย่าใส่ซ้ำ！');
 			}
 
 			header('Content-type:text/html; charset=utf-8');
@@ -333,10 +338,10 @@ class UserController extends \Think\Controller
 				$data = array('uid' => $uid, 'bank' => $name, 'account' => $account, 'bank_id' => $bankId);
 
 				if (addData('bank', $data)) {
-					msg('添加成功！');
+					msg('การเพิ่มสำเร็จ！');
 				}
 				else {
-					msg('添加失败！');
+					msg('การเพิ่มล้มเหลว！');
 				}
 
 		 }else {
@@ -354,7 +359,7 @@ class UserController extends \Think\Controller
 		$id = getValue('id', 'int');
 
 		if (delData('bank', 'id=\'' . $id . '\'')) {
-			msg('删除成功！', 2, U('add_card'));
+			msg('ลบสำเร็จ！', 2, U('add_card'));
 		}
 		else {
 			msg('删除失败！', 2, U('add_card'));
@@ -375,18 +380,18 @@ class UserController extends \Think\Controller
 			$orderid = 'CASH' . time() . rand(100, 999);
 
 			if ($zong < $money) {
-				msg('您的余额被冻结（'.$user['dongjiemoney'].'），请联系管理员', 2, U('user/recharge'));
+				msg('ยอดเงินของคุณถูกระงับ（'.$user['dongjiemoney'].'），โปรดติดต่อผู้ดูแลระบบ', 2, U('user/recharge'));
 			}
 			if ($user['password2'] != md5($pwd)) {
 				msg('交易密码不正确！');
 			}
 
 			if ($user['money'] < $money) {
-				msg('提现金额大于会员余额！');
+				msg('ยอดเงินที่ถอนมากกว่ายอดเงินคงเหลือของสมาชิก！');
 			}
 
 			if ($user['auth'] != 1) {
-				msg('请认证后再进行提现！', 2, U('User/certification'));
+				msg('โปรดยืนยันตัวตนก่อนถอนเงิน！', 2, U('User/certification'));
 			}
 
 			if ($bank['uid'] != $uid || empty($bank)) {
@@ -394,7 +399,7 @@ class UserController extends \Think\Controller
 			}
 
 			if (empty($invest)) {
-				msg('未投资不能提现！');
+				msg('ยังไม่ลงทุน ไม่สามารถถอนเงินได้！');
 			}
 			
 			$v = getData('info', '1');
@@ -439,20 +444,20 @@ class UserController extends \Think\Controller
 			}
 			$data = array('uid' => $uid, 'name' => $user['name'], 'bid' => $bid, 'bank' => $bank['bank'], 'account' => $bank['account'], 'money' => $money,'sjmoney' => $money, 'status' => 0, 'time' => date('Y-m-d H:i:s'), 'time2' => '0000-00-00 00:00:00', 'order_id' => $orderid);
             if (addData('cash', $data)) {
-				addFinance($uid, $money, '余额提现' . $money . '元手续费:0', 2, getUserField($uid, 'money'));
+				addFinance($uid, $money, 'ถอนยอดเงินคงเหลือ' . $money . 'บาท ค่าธรรมเนียมการดำเนินการ 0', 2, getUserField($uid, 'money'));
 				setNumber('user', 'money', $money, 2, 'id=\'' . $uid . '\'');
 				setNumber('user', 'dongjiemoney', $money + 0, 1, 'id=\'' . $uid . '\'');
 
-				msg('提现成功！');
+				msg('การถอนเงินสสำเร็จ！');
 			}
 			else {
-				msg('提现失败！');
+				msg('การถอนเงินล้มเหลว！');
 			}
 	        
 			/*if($userCount >= $v['withdrawals']){
 				if (addData('cash', $data)) {
 					$Charge = ($money * $v['charged']) + $money;
-					addFinance($uid, $Charge, '余额提现' . $money . '元手续费:'.$Charge.'', 2, getUserField($uid, 'money'));
+					addFinance($uid, $Charge, '余额提现' . $money . 'บาท手续费:'.$Charge.'', 2, getUserField($uid, 'money'));
 					setNumber('user', 'money', $Charge, 2, 'id=\'' . $uid . '\'');
 					msg('提现成功！');
 				}
@@ -462,7 +467,7 @@ class UserController extends \Think\Controller
 				//echo $err_msg;exit;
 			}else{
 				if (addData('cash', $data)) {
-					addFinance($uid, $money, '余额提现' . $money . '元', 2, getUserField($uid, 'money'));
+					addFinance($uid, $money, '余额提现' . $money . 'บาท', 2, getUserField($uid, 'money'));
 					setNumber('user', 'money', $money, 2, 'id=\'' . $uid . '\'');
 					msg('提现成功！');
 				}

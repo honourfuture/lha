@@ -29,19 +29,19 @@
         var pwd = $("#pwd").val();
         var pwd2 = $("#pwd2").val();
         if (oldpwd.length < 6 || oldpwd.length > 16) {
-            msg("{$Think.lang.error}", "请输入6-16个字符的原交易密码！", 1);
+            msg("{$Think.lang.error}", "กรุณาใส่รหัสผ่านการทำธุรกรรมเดิม 6-16 ตัวอักษร！", 1);
             return false;
         }
         if (pwd.length < 6 || pwd.length > 16) {
-            msg("{$Think.lang.error}", "请输入6-16个字符的新交易密码！", 1);
+            msg("{$Think.lang.error}", "กรุณาใส่รหัสผ่านการทำธุรกรรมใหม่ 6-16 ตัวอักษร！", 1);
             return false;
         }
         if (pwd2.length < 6 || pwd2.length > 16) {
-            msg("{$Think.lang.error}", "请再次输入6-16个字符的新交易密码！", 1);
+            msg("{$Think.lang.error}", "กรุณาใส่รหัสผ่านการทำธุรกรรมใหม่ 6-16 ตัวอักษรอีกครั้ง！", 1);
             return false;
         }
         if (pwd != pwd2) {
-            msg("{$Think.lang.error}", "两次密码不一致！", 1);
+            msg("{$Think.lang.error}", "รหัสผ่านทั้งสองครั้งไม่ตรงกัน！", 1);
             return false;
         }
     })

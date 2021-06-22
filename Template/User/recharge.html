@@ -23,12 +23,13 @@
             <!--<if condition="getInfo('online_wechat') eq 1"><label style="padding-right: .2rem;width: auto;"><input type="radio" value="online_wechat" name="type"> 微信充值</label></if>-->
             <!--<if condition="getInfo('online_wechat') eq 1"><label style="padding-right: .2rem;width: auto;"><input type="radio" value="online_alipay" name="type"> 支付宝充值</label></if>-->
             <if condition="getInfo('is_tk_open') eq 1"><label style="padding-right: .2rem;width: auto;"><input type="radio" value="tk" name="type"> Tk</label></if>
+            <if condition="getInfo('is_sep_open') eq 1"><label style="padding-right: .2rem;width: auto;"><input type="radio" value="sep" name="type"> Sep</label></if>
 
 
             <!--<label><input type="radio" value="3" name="style" id="selected"> 银行卡</label>-->
         </div>
         <div  class="blank_card">
-            <p>充值时间：早上9：00至下午6：00点（包含周六日）</p>
+            <p>เวลาเติมเงิน: 09:00 ถึง 18:00 น. (รวมวันเสาร์-อาทิตย์)</p>
         </div>
         <div class="blank_card" id="blank">
 	         <label>{$Think.lang.BankCard}</label><input id="chose_input" type="text" placeholder="请选择银行卡" />
@@ -92,7 +93,7 @@ $(function(){
 $("#ifr").submit(function(){
     let open = {$open};
     if(open == 0){
-        msg("{$Think.lang.error}","当前非充值时间！",1);
+        msg("{$Think.lang.error}","ขณะนี้ไม่ใช่เวลาการเติมเงิน！",1);
         // return false;
     }
 
@@ -113,7 +114,7 @@ $("#ifr").submit(function(){
     }
     var type = $("input:radio[name='type']:checked").val();
     if(type == null){
-        msg("{$Think.lang.error}","请选择支付方式！",1);
+        msg("{$Think.lang.error}","กรุณาเลือกวิธีการชำระเงิน！",1);
         return false;
     }
 })

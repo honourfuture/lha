@@ -19,9 +19,9 @@
                     <td>{$r.type}</td>
                     <td>{$r.time}</td>
                     <td>
-                        <if condition="$r['status'] eq 0">处理中</if>
-                        <if condition="$r['status'] eq 1">充值成功</if>
-                        <if condition="$r['status'] eq 2">充值失败</if>
+                        <if condition="$r['status'] eq 0">กำลังดำเนินการ</if>
+                        <if condition="$r['status'] eq 1">ความสำเร็จ</if>
+                        <if condition="$r['status'] eq 2">ความล้มเหลว</if>
                     </td>
                 </tr>
             </volist>

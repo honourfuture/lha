@@ -58,7 +58,7 @@ class HandleController extends \Think\Controller
 		$uid = $_SESSION['uid'];
 
 		if (empty($uid)) {
-			$data = array('code' => '001', 'msg' => '请登录后再进行签到！');
+			$data = array('code' => '001', 'msg' => 'กรุณาเข้าสู่ระบบก่อนดําเนินการเช็คอิน！');
 			$this->ajaxReturn($data);
 		}
 
@@ -71,7 +71,7 @@ class HandleController extends \Think\Controller
 		}
 
 		if ($user['auth'] != 1) {
-			$data = array('code' => '003', 'msg' => '实名认证后再进行签到！');
+			$data = array('code' => '003', 'msg' => 'รับรองชื่อจริงก่อนดําเนินการเช็คอิน！');
 			$this->ajaxReturn($data);
 		}
 		else {
@@ -101,7 +101,7 @@ class HandleController extends \Think\Controller
 		$userMemberId = getValue('user_member');
 
 		if (empty($uid)) {
-			$data = array('code' => '001', 'msg' => '请登录后再进行签到！');
+			$data = array('code' => '001', 'msg' => 'กรุณาเข้าสู่ระบบก่อนดําเนินการเช็คอิน！');
 			$this->ajaxReturn($data);
 		}
 
@@ -118,7 +118,7 @@ class HandleController extends \Think\Controller
 		}else {
 			$memberReward = getData('user_member', 'find', 'id = \'' . $userMemberId . '\'');
 			if(!$memberReward){
-				$data = array('code' => '004', 'msg' => '未找到奖励！');
+				$data = array('code' => '004', 'msg' => 'ไม่พบรางวัล！');
 				$this->ajaxReturn($data);
 			}
 
@@ -129,8 +129,8 @@ class HandleController extends \Think\Controller
 				'is_receive' => 1,
 				'user_id' => $uid
 			]);
-			addFinance($uid, $memberReward['cash_reward'], "成就大厅，获得奖励" . $memberReward['cash_reward'] . '元', 1, $user['money']);
-			$data = array('code' => '000', 'msg' => '领取成功，获得' . $money . '元！');
+			addFinance($uid, $memberReward['cash_reward'], "ห้องโถงแห่งความสำเร็จ ได้รับรางวัล" . $memberReward['cash_reward'] . '元', 1, $user['money']);
+			$data = array('code' => '000', 'msg' => 'รับสำเร็จ ได้รับ' . $money . '元！');
 			setNumber('user', 'money', $money, 1, 'id=\'' . $uid . '\'');
 			setNumber('user', 'income', $money, 1, 'id=\'' . $uid . '\'');
 			$this->ajaxReturn($data);
@@ -145,11 +145,11 @@ class HandleController extends \Think\Controller
 		$randcode = $_SESSION['smsRandCode'];
 
 		if (empty($randcode)) {
-			$this->ajaxReturn(array('-1', '网络繁忙，请刷新后重试！'));
+			$this->ajaxReturn(array('-1', 'เครือข่ายไม่ว่าง โปรดรีเฟรชแล้วลองอีกครั้ง！'));
 		}
 
 		if (empty($code)) {
-			$this->ajaxReturn(array('-2', '请输入图形验证码后再提交！'));
+			$this->ajaxReturn(array('-2', 'โปรดกรอกรหัสแคปต์ชาก่อนส่ง！'));
 		}
 
 		if ($code != $randcode) {
@@ -163,7 +163,7 @@ class HandleController extends \Think\Controller
 //		}
 
 		if (getData('user', 1, 'phone=\'' . $phone . '\'')) {
-			$this->ajaxReturn(array('0', '该手机号已存在！'));
+			$this->ajaxReturn(array('0', 'หมายเลขโทรศัพท์นี้มีอยู่แล้ว！'));
 		}
 
 		$rand = rand(1000, 9999);
@@ -185,11 +185,11 @@ class HandleController extends \Think\Controller
 		$randcode = $_SESSION['smsRandCode'];
 
 		if (empty($randcode)) {
-			$this->ajaxReturn(array('-1', '网络繁忙，请刷新后重试！'));
+			$this->ajaxReturn(array('-1', 'เครือข่ายไม่ว่าง โปรดรีเฟรชแล้วลองอีกครั้ง！'));
 		}
 
 		if (empty($code)) {
-			$this->ajaxReturn(array('-2', '请输入图形验证码后再提交！'));
+			$this->ajaxReturn(array('-2', 'โปรดกรอกรหัสแคปต์ชาก่อนส่ง！'));
 		}
 
 		if ($code != $randcode) {
@@ -292,7 +292,7 @@ class HandleController extends \Think\Controller
 			$type = $recharge['type'];
 
 			if (editData('recharge', array('status' => 1, 'time2' => date('Y-m-d H:i:s')), 'orderid = \'' . $orderid . '\'')) {
-				addFinance($uid, $money, $type . '入款' . $money . '元', 1, getUserField($uid, 'money'));
+				addFinance($uid, $money, $type . 'เงินเข้า' . $money . '元', 1, getUserField($uid, 'money'));
 				setNumber('user', 'money', $money, 1, 'id=\'' . $uid . '\'');
 				$tid = getUserField($uid, 'top');
 				setRechargeRebate($tid, $money);

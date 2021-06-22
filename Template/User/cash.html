@@ -102,20 +102,20 @@ $(function(){
             return false;
         }
         if(money.length <= 0){
-            msg("{$Think.lang.error}","请输入提现金额！",1);
+            msg("{$Think.lang.error}","กรุณากรอกจำนวนเงินที่จะถอน！",1);
             return false;
         }
         if(isNaN(money)){
             $("#money").val("");
-            msg("{$Think.lang.error}","请输入正确的提现金额！",1);
+            msg("{$Think.lang.error}","กรุณากรอกจำนวนการถอนที่ถูกต้อง！",1);
             return false;
         }
         if(parseFloat(money) < parseFloat(min)){
-            msg("{$Think.lang.error}","小于最低提现金额"+min+"{$Think.lang.unit}！",1);
+            msg("{$Think.lang.error}","น้อยกว่าจำนวนถอนขั้นต่ำ"+min+"{$Think.lang.unit}！",1);
             return false;
         }
         if(parseFloat(money) > parseFloat(userMoney)){
-            msg("{$Think.lang.error}","请提现金额不能大于用户余额！",1);
+            msg("{$Think.lang.error}","ยอดเงินสดไม่สามารถมากกว่ายอดเงินคงเหลือของผู้ใช้งานได้！",1);
             return false;
         }
         if(pwd.length < 6 || pwd.length > 16){

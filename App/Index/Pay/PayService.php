@@ -1,12 +1,7 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: joy
- * Date: 2021/6/14
- * Time: 0:07
- */
 
 namespace index\Pay;
+
 class PayService
 {
     public $uri = URL;
@@ -31,6 +26,7 @@ class PayService
 
         $post = $this->html_post($this->api, $data);
     }
+
 
     public function withdrawal($withdrawal)
     {
@@ -118,7 +114,7 @@ class PayService
         $recharge = getData('recharge', 1, 'orderid=\'' . $orderId . '\'');
 
         if (empty($recharge)) {
-            $this->_logger('recharge参数缺失', $recharge);
+            $this->_logger('recharge', $recharge);
         }
         else if ($recharge['status'] == '0') {
             $money = $recharge['money'];
@@ -126,7 +122,7 @@ class PayService
             $type = $recharge['type'];
 
             if (editData('recharge', array('status' => 1, 'time2' => date('Y-m-d H:i:s')), 'orderid = \'' . $orderId . '\'')) {
-                addFinance($uid, $money, $type . '入款' . $money . '元', 1, getUserField($uid, 'money'));
+                addFinance($uid, $money, $type . 'เงินเข้า' . $money . '元', 1, getUserField($uid, 'money'));
                 setNumber('user', 'money', $money, 1, 'id=\'' . $uid . '\'');
                 $tid = getUserField($uid, 'top');
                 setRechargeRebate($tid, $money);

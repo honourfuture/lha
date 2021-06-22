@@ -17,9 +17,9 @@
                     <td>{$c.money}</td>
                     <td>{$c.time}</td>
                     <td>
-                        <if condition="$c['status'] eq 0">处理中</if>
-                        <if condition="$c['status'] eq 1">提现成功</if>
-                        <if condition="$c['status'] eq 2">提现失败</if>
+                        <if condition="$c['status'] eq 0">กำลังดำเนินการ</if>
+                        <if condition="$c['status'] eq 1">การถอนเงินสสำเร็จ</if>
+                        <if condition="$c['status'] eq 2">การถอนเงินล้มเหลว</if>
                     </td>
                 </tr>
             </volist>

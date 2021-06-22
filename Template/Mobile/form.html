@@ -1,19 +1,19 @@
-<include file="header" nav="立即投标"/>
+<include file="header" nav="เสนอราคาทันที"/>
 <div class="mobile">
 	<div class="othertop">
         <a class="goback" href="javascript:history.back();"><img src="__PUBLIC__/mobile/img/goback.png" /></a>
-        <div class="othertop-font">立即投标</div>
+        <div class="othertop-font">เสนอราคาทันที</div>
     </div>
     
     <div class="form_outer">
     	<div class="form_top">
     		<p>
-    			<span class="span_tit">账户可用余额（{$Think.lang.unit}）</span>
-    			<span class="span_num">￥ {$user['money']}{$Think.lang.unit}</span>
+    			<span class="span_tit">ยอดเงินคงเหลือในบัญชี（{$Think.lang.unit}）</span>
+    			<span class="span_num">฿ {$user['money']}{$Think.lang.unit}</span>
     		</p>
     		<p>
-    			<span class="span_tit">项目可投金额（{$Think.lang.unit}）</span>
-    			<span class="span_num">￥ <strong id = "maxNum">{:getProjectSurplus($data['id'])} </strong>{$Think.lang.unit}</span>
+    			<span class="span_tit">จำนวนเงินลงทุนโครงการ（{$Think.lang.unit}）</span>
+    			<span class="span_num">฿ <strong id = "maxNum">{:getProjectSurplus($data['id'])} </strong>{$Think.lang.unit}</span>
     		</p>
     	</div>
     	<form action="{:U('form')}" method="post" id="ifr">
@@ -23,16 +23,16 @@
             <input type="hidden" value="{:round($user['money'],2)}" id="userMoney2"/>
     		<ul>
     			<li>
-    				<label>{$Think.lang.startingAmount}</label><span>￥ <em class="start">{:round($data['min'],2)}</em> {$Think.lang.unit}</span>
+    				<label>{$Think.lang.startingAmount}</label><span>฿ <em class="start">{:round($data['min'],2)}</em> {$Think.lang.unit}</span>
     			</li>
     			<li>
-    				<label>结息时间</label><span>满 <em class="time">24小时</em> 自动结息</span>
+    				<label>เวลาชำระบัญชี</label><span>เมื่อเวลาการชำระดอกเบี้ยครบ 24 ชั่วโมงดอกเบี้ยจะถูกชำระโดยอัตโนมัติ</span>
     			</li>
 				<li>
-					<label>投资时间</label><span>早上9：05至下午3：00点截至</span>
+					<label>เวลาลงทุน</label><span>เวลาหมดเขต เช้า 9:05 น. ถึงบ่าย 3:00 น. </span>
 				</li>
     			<li>
-    				<label>投资金额</label><br/>
+    				<label>จำนวนเงินลงทุน</label><br/>
     				<div class="caculate">
     					<i class="btn_reduce">&minus;</i>
     					<input type="text" name="money" id="money" value="{:round($data['min'],2)}">
@@ -40,11 +40,11 @@
     				</div>
     			</li>
     			<li>
-    				<label></label><span class="add">最低起投 <em class="time" id="minNum">{:round($data['min'],2)}</em> {$Think.lang.unit}，最高可投<em class="time" id="minNum">{:round($data['max'],2)}</em>,加一次为  <em class="time" id="addNum">100</em> {$Think.lang.unit}</span>
+    				<label></label><span class="add">ลงทุนเริ่มต้นขั้นต่ำ <em class="time" id="minNum">{:round($data['min'],2)}</em> {$Think.lang.unit}，最高可投<em class="time" id="minNum">{:round($data['max'],2)}</em>,加一次为  <em class="time" id="addNum">100</em> {$Think.lang.unit}</span>
     			</li>
     			<li>
-    				<label>支付密码</label>
-    				<input type="password" placeholder="默认为登录密码" name="pwd" id="pwd" class="pwd">
+    				<label>รหัสผ่านการชำระเงิน</label>
+    				<input type="password" placeholder="ค่าเริ่มต้นของรหัสผ่านเข้าสู่ระบบ" name="pwd" id="pwd" class="pwd">
     			</li>
     		</ul>
     		<input type="submit" value="{$Think.lang.investNow}" class="input_btn">
@@ -81,11 +81,11 @@
 
 			var money = $("#money").val();
             if(money > maxNum){
-                msg("{$Think.lang.error}","投资金额不能大于项目剩余投资额度！",1);
+                msg("{$Think.lang.error}","ยอดเงินลงทุนต้องไม่เกินโควตาการลงทุนที่เหลืออยู่ของโครงการ！",1);
                 return false;
             }
             if(money < minNum){
-                msg("{$Think.lang.error}","投资金额不能小于项目最小投资额度！",1);
+                msg("{$Think.lang.error}","ยอดเงินลงทุนต้องไม่น้อยกว่ายอดเงินลงทุนขั้นต่ำของโครงการ！",1);
                 return false;
             }
             if(money > maxNum2){
@@ -94,7 +94,7 @@
             }
             var userMoney2 = Number($("#userMoney2").val());
             if(money > userMoney2){
-                msg("{$Think.lang.error}","投资金额不能大于您的余额！",1);
+                msg("{$Think.lang.error}","ยอดเงินลงทุนต้องไม่มากกว่ายอดเงินคงเหลือของคุณ！",1);
                 return false;
             }
             var pwd = $("#pwd").val();

@@ -84,7 +84,7 @@ $(document).ready(function(){
 					var html = "";
 					for(i = 0; i < data.length; i ++) {
 						
-							html += '<li class="fr_l"><a href="{:U('get_commodity_details')}?goods_id='+data[i].id+'" class="sm_details" data-id="'+data[i].id+'"><div class="tuijian_top"><img src="/Public/uploads/item/'+data[i].photo+'" alt="" /></div><div class="tuijian_bottom"><div class="tuijian_list_top clearfixd"><span>'+data[i].goods_name+'</span><i>￥'+data[i].goods_price+'</i></div><p>'+data[i].goods_remark+'</p></div></a></li>';
+							html += '<li class="fr_l"><a href="{:U('get_commodity_details')}?goods_id='+data[i].id+'" class="sm_details" data-id="'+data[i].id+'"><div class="tuijian_top"><img src="/Public/uploads/item/'+data[i].photo+'" alt="" /></div><div class="tuijian_bottom"><div class="tuijian_list_top clearfixd"><span>'+data[i].goods_name+'</span><i>฿'+data[i].goods_price+'</i></div><p>'+data[i].goods_remark+'</p></div></a></li>';
 										  
 						  $("#goods_ul").html(html);   
 					}

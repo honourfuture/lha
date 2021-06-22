@@ -14,7 +14,7 @@
                 <div class="inner">
                     <p>
                         <span class="span2">{$Think.lang.projectScale}</span>
-                        <span class="span1">￥<i>{:round($data['total'],2)}</i>W{$Think.lang.unit}</span>
+                        <span class="span1">฿<i>{:round($data['total'],2)}</i>W{$Think.lang.unit}</span>
                     </p>
                     <p>
                         <span class="span2">{$Think.lang.EveryDividend}</span>
@@ -113,7 +113,7 @@
     <div class="header-nbsp"></div>
     <div class="invest_btn">
         <if condition="getProjectPercent($data['id']) eq 100">
-            <a href="javascript:;" style="background-color: #888;">项目已满</a>
+            <a href="javascript:;" style="background-color: #888;">โครงการเต็มแล้ว</a>
             <else/>
             <a href="{:U('form','id='.$data['id'])}">ลงทุนเดี๋ยวนี้</a>
         </if>
