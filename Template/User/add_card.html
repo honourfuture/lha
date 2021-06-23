@@ -8,7 +8,7 @@
 <!-- 银行卡 -->
     <volist name="bank" id="b">
         <div class="mycard">
-            <p><span class="card_name">{$b.bank}</span><a href="{:U('del_card','id='.$b['id'])}" style="float: right;">删除此卡</a></p>
+            <p><span class="card_name">{$b.bank}</span><a href="{:U('del_card','id='.$b['id'])}" style="float: right;">ลบบัตรนี้</a></p>
             <p><span class="card_type">บัตรเดบิต</span></p>
             <p>
                 <span class="card_num">{:getBankFirst($b['account'])}</span>

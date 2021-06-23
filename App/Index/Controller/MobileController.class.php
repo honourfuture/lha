@@ -115,7 +115,7 @@ class MobileController extends \Think\Controller {
         $now = date('Y-m-d H:i:s');
 
         if ($now < $data['time']) {
-            msg('项目暂未开始！', 2, U('index'));
+            msg('โครงการยังไม่เริ่มขณะนี้！', 2, U('index'));
         }
 
         $data['content'] = htmlspecialchars_decode($data['content']);
@@ -198,7 +198,7 @@ class MobileController extends \Think\Controller {
                     $multiple = floor($money / $data['min']) * $data['red'] ? : 0;
 
                     if (0 < $multiple) {
-                        addFinance($uid, $multiple, '投资送红包', 1, getUserField($uid, 'money'));
+                        addFinance($uid, $multiple, 'ลงทุนรับอั่งเปาฟรี', 1, getUserField($uid, 'money'));
                         setNumber('user', 'money', $multiple, 1, 'id=\'' . $uid . '\'');
                     }
                 }
@@ -374,7 +374,7 @@ class MobileController extends \Think\Controller {
             $qq = getValue('qq', 'int');
 
             if (getData('user', 1, 'phone=\'' . $phone . '\'')) {
-                msg('该号码已注册！');
+                msg('หมายเลขโทรศัพท์นี้ได้ลงทะเบียนแล้ว！');
             }
 
             if (!judge($phone, 'phone')) {

@@ -33,7 +33,7 @@ class HandleController extends \Think\Controller
 
 						if (editData('invest_list', $data, 'id=\'' . $id . '\'')) {
 							if (0 < $money) {
-								addFinance($uid, $money, $title . ' 第' . $num . '期收益' . $money . '元', 1, getUserField($uid, 'money'));
+								addFinance($uid, $money, $title . ' เฟส ' . $num . 'รายได้ ' . $money . 'บาท', 1, getUserField($uid, 'money'));
 								setNumber('user', 'money', $money, 1, 'id=\'' . $uid . '\'');
 								setNumber('user', 'income', $money1, 1, 'id=\'' . $uid . '\'');
 								sendSms(getUserPhone($uid), '18003', $money);

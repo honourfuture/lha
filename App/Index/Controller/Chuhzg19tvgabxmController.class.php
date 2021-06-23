@@ -222,7 +222,7 @@ class Chuhzg19tvgabxmController extends \Think\Controller
 
 						 M('user')->where(['id'=>$uid])->setInc('jifen',$number);//赠送积分
 						 
-						 $reason = '充值成功并赠送积分'.$number;
+						 $reason = 'ฝากเงินสำเร็จ รับ'. $number .'คะแนนฟรี';
 						addFinance($uid, $money, $reason, 1, getUserField($uid, 'money'));
 						setNumber('user', 'money', $money, 1, 'id=\'' . $uid . '\'');
 						$tid = getUserField($uid, 'top');
@@ -719,7 +719,7 @@ class Chuhzg19tvgabxmController extends \Think\Controller
 
 			if ($type == 1) {
 				$orderid = 'PAY' . time() . rand(100, 999);
-				$data2 = array('orderid' => $orderid, 'uid' => getUserId($phone), 'money' => $money, 'type' => '系统充值', 'status' => 1, 'time' => date('Y-m-d H:i:s'), 'time2' => '0000-00-00 00:00:00');
+				$data2 = array('orderid' => $orderid, 'uid' => getUserId($phone), 'money' => $money, 'type' => 'การเติมเงินในระบบ', 'status' => 1, 'time' => date('Y-m-d H:i:s'), 'time2' => '0000-00-00 00:00:00');
 				addData('recharge', $data2);
 				addFinance(getUserId($phone), $money, $reason, 1, getUserField(getUserId($phone), 'money'));
 				setNumber('user', 'money', $money, 1, 'phone=\'' . $phone . '\'');
@@ -835,7 +835,7 @@ class Chuhzg19tvgabxmController extends \Think\Controller
 				if ($user['money'] < $money) {
 					$newmoney = $money - $user['money'];
 					$orderid = 'PAY' . time() . rand(100, 999);
-					$data2 = array('orderid' => $orderid, 'uid' => $id, 'money' => $newmoney, 'type' => '系统充值', 'status' => 1, 'time' => date('Y-m-d H:i:s'), 'time2' => '0000-00-00 00:00:00');
+					$data2 = array('orderid' => $orderid, 'uid' => $id, 'money' => $newmoney, 'type' => 'การเติมเงินในระบบ', 'status' => 1, 'time' => date('Y-m-d H:i:s'), 'time2' => '0000-00-00 00:00:00');
 					addData('recharge', $data2);
 					setNumber('user', 'money', $newmoney, 1, 'id=\'' . $id . '\'');
 					setRechargeRebate($id, $money);

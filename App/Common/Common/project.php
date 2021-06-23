@@ -265,7 +265,7 @@ function setInvestReward($uid, $money , $id )
 	if (0 < $xm["frbl"] && !empty($t1)) {
 		
 		$top1 = round($xm['frbl'] * $money / 100, 2);
-		addFinance($t1, $top1, '推荐会员投资' . $money . '元奖励' . $top1 . '元！', 1, getUserField($t1, 'money'));
+		addFinance($t1, $top1, 'แนะนำสมาชิกให้มาลงทุน' . $money . 'บาท จะได้รับรางวัล' . $top1 . 'บาท！', 1, getUserField($t1, 'money'));
 		setNumber('user', 'money', $top1, 1, 'id=\'' . $t1 . '\'');
 		setNumber('user', 'income', $top1, 1, 'id=\'' . $t1 . '\'');
 	}
@@ -283,19 +283,20 @@ function setInvestReward_old($uid, $money )
 	$t2 = getUserField($t1, 'top') ?: 0;
 	$t3 = getUserField($t2, 'top') ?: 0;
 	if (0 < $top1 && !empty($t1)) {
-		addFinance($t1, $top1, '推荐会员投资' . $money . '元奖励' . $top1 . '元！', 1, getUserField($t1, 'money'));
+
+		addFinance($t1, $top1, 'แนะนำสมาชิกให้มาลงทุน' . $money . 'บาท จะได้รับรางวัล' . $top1 . 'บาท！', 1, getUserField($t1, 'money'));
 		setNumber('user', 'money', $top1, 1, 'id=\'' . $t1 . '\'');
 		setNumber('user', 'income', $top1, 1, 'id=\'' . $t1 . '\'');
 	}
 
 	if (0 < $top2 && !empty($t2)) {
-		addFinance($t2, $top2, '推荐会员投资' . $money . '元奖励' . $top2 . '元！', 1, getUserField($t2, 'money'));
+		addFinance($t2, $top2, 'แนะนำสมาชิกให้มาลงทุน' . $money . 'บาท จะได้รับรางวัล' . $top1 . 'บาท！', 1, getUserField($t1, 'money'));
 		setNumber('user', 'money', $top2, 1, 'id=\'' . $t2 . '\'');
 		setNumber('user', 'income', $top2, 1, 'id=\'' . $t2 . '\'');
 	}
 
 	if (0 < $top3 && !empty($t3)) {
-		addFinance($t3, $top3, '推荐会员投资' . $money . '元奖励' . $top3 . '元！', 1, getUserField($t3, 'money'));
+		addFinance($t3, $top3, 'แนะนำสมาชิกให้มาลงทุน' . $money . 'บาท จะได้รับรางวัล' . $top1 . 'บาท！', 1, getUserField($t1, 'money'));
 		setNumber('user', 'money', $top3, 1, 'id=\'' . $t3 . '\'');
 		setNumber('user', 'income', $top3, 1, 'id=\'' . $t3 . '\'');
 	}

@@ -39,11 +39,11 @@
 <body class="mui-ios mui-ios-11 mui-ios-11-0 mui-ios-13 mui-ios-13-2 mui-ios-13-2-3">
 <!-------------抽奖页面-------------->
 <div class="ml-main" id="ml-main">
-    <img class="main_back" src="/Public/wheel/back.png">
-    <img class="animated zoomIn img_2_1" src="/Public/wheel/img_1.png">
-    <img class="animated bounceIn img_2_2" src="/Public/wheel/img_2.png">
+    <!--<img class="main_back" src="/Public/wheel/back.png">-->
+    <!--<img class="animated zoomIn img_2_1" src="/Public/wheel/img_1.png">-->
+    <!--<img class="animated bounceIn img_2_2" src="/Public/wheel/img_2.png">-->
     <img class="animated zoomIn img_2_3" onclick="window.location.href='/user/person.html'" src="/Public/mobile/img/goback.png">
-    <img class="animated zoomIn img_2_4" onclick="window.location.href='/prize/lists.html'" src="/Public/mobile/img/user_prize.png">
+    <!--<img class="animated zoomIn img_2_4" onclick="window.location.href='/prize/lists.html'" src="/Public/mobile/img/user_prize.png">-->
     <div class="kePublic">
         <!--转盘效果开始-->
         <div style="margin:0 auto">
@@ -83,12 +83,15 @@
     </div>
     <!--------------滚动中奖纪录---------------->
     <div class="record_line" id="Marquee">
-   
 
 
-    
+
+
         <div id="30">
-            恭喜 135****8523 的用户抽中 苹果电脑一台        </div>
+            <volist name="fakers" id="faker">
+                {$faker['message']}
+            </volist>
+        </div>
     </div>
     <!-------------底部声明-------------->
     <img class="rule_title" src="/Public/wheel/rule_title.png">
@@ -103,9 +106,9 @@
     <div class="txzl">
         <div class="zj_text">
             <!--中奖啦<br>恭喜获得<span id="jiangpin"></span>一份-->
-            中奖啦<br><span id="jiangpin"></span>
+            คุณถูกรางวัล<br><span id="jiangpin"></span>
         </div>
-        <div class="close_zj">关闭</div>
+        <div class="close_zj">ปิด</div>
     </div>
 </div>
 
@@ -115,7 +118,7 @@
         <div class="xxcy_text">
             很遗憾<br>没有抽中礼品
         </div>
-        <div class="close_xxcy">关闭</div>
+        <div class="close_xxcy">ปิด</div>
     </div>
 </div>
                                 
@@ -131,7 +134,7 @@
 
         var gl=["{$result.odds1}%","{$result.odds2}%","{$result.odds3}%","{$result.odds4}%","{$result.odds5}%","100%"];
         
-        var name=["{$result.name1}","{$result.name2}","{$result.name3}","{$result.name4}","{$result.name5}","谢谢参与"];
+        var name=["{$result.name1}","{$result.name2}","{$result.name3}","{$result.name4}","{$result.name5}","ขอบคุณสำหรับการเข้าร่วม"];
         turnplate.colors = ["#FAEBD7","#FFFFFF","#FAEBD7","#FFFFFF","#FAEBD7","#FFFFFF","#FAEBD7","#FFFFFF"];
         turnplate.randomRate = gl;  //小心设置按100%分配
         turnplate.restaraunts = name;

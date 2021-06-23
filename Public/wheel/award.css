@@ -823,21 +823,21 @@ html,body{
 	width: 80%;
 	height: auto;
 	position: absolute;
-	top: 69vw;
+	top: 24vw;
 	left: 10%;
 	z-index: 999;
 }
 .bottom_shadow{
 	width: 50vw;
 	position: absolute;
-	top: 139vw;
+	top: 97vw;
 	left: 25vw;
 	z-index: 1;
 }
 .kePublic_back{
 	width: 85vw;
 	position: absolute;
-	top: 72vw;
+	top: 26vw;
 	left: 6vw;
 	z-index: 2;
 }
@@ -845,7 +845,7 @@ html,body{
 	width: 90vw;
 	height: 8vw;
 	position: absolute;
-	top: 152vw;
+	top: 112vw;
 	left: 5vw;
 	line-height: 8vw;
 	font-size: 3vw;
@@ -868,14 +868,14 @@ html,body{
 .rule_title{
 	width: 40vw;
 	position: absolute;
-	top: 165vw;
+	top: 125vw;
 	left: 30vw;
 	z-index: 2;
 }
 .rule_text{
 	width: 90vw;
 	position: absolute;
-	top: 173vw;
+	top: 132vw;
 	left: 5vw;
 	font-size: 3.5vw;
 	line-height: 6vw;
