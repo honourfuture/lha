@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="68480f67-f626-45fe-a052-4ab649d40c9e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Template/User/cash.html" beforeDir="false" afterPath="$PROJECT_DIR$/Template/User/cash.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,21 +19,30 @@
         <entry file="file://$PROJECT_DIR$/App/Runtime/Cache/Index/9f9b6c3ad9d099d61dbbb16220e25230.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="420">
-              <caret line="99" column="40" lean-forward="true" selection-start-line="99" selection-start-column="32" selection-end-line="99" selection-end-column="40" />
+              <caret line="99" column="39" lean-forward="true" selection-start-line="99" selection-start-column="31" selection-end-line="99" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Template/User/cash.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="842">
+              <caret line="89" column="41" lean-forward="true" selection-start-line="89" selection-start-column="41" selection-end-line="89" selection-end-column="41" />
               <folding>
-                <element signature="n#style#0;n#div#5;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#5;n#form#0;n#div#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Template/User/cash.html">
+        <entry file="file://$PROJECT_DIR$/Template/User/person.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="428">
-              <caret line="66" column="14" selection-start-line="66" selection-start-column="14" selection-end-line="66" selection-end-column="14" />
+            <state relative-caret-position="764">
+              <caret line="57" column="100" selection-start-line="57" selection-start-column="100" selection-end-line="57" selection-end-column="100" />
               <folding>
-                <element signature="n#style#0;n#div#5;n#form#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#div#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -44,7 +52,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>该手机号已存在</find>
       <find>入款</find>
       <find>请登录后再进行投资</find>
       <find>参数缺失</find>
@@ -74,6 +81,7 @@
       <find>早上9：05至下午3：00点.(周一到周五,周六日无法提现)</find>
       <find>领取成功</find>
       <find>计30分钟内到账</find>
+      <find>安全退出</find>
     </findStrings>
     <replaceStrings>
       <replace>{$Think.lang.error}</replace>
@@ -169,7 +177,6 @@
         <option value="$PROJECT_DIR$/Template/Mobile/form.html" />
         <option value="$PROJECT_DIR$/Template/User/success_hall.html" />
         <option value="$PROJECT_DIR$/Template/User/set_account.html" />
-        <option value="$PROJECT_DIR$/Template/User/person.html" />
         <option value="$PROJECT_DIR$/Template/Chuhzg19tvgabxm/system_info.html" />
         <option value="$PROJECT_DIR$/App/Index/Controller/Chuhzg19tvgabxmController.class.php" />
         <option value="$PROJECT_DIR$/App/Index/Pay/SepPayService.php" />
@@ -177,6 +184,7 @@
         <option value="$PROJECT_DIR$/App/Index/Pay/TkPayService.php" />
         <option value="$PROJECT_DIR$/App/Runtime/Cache/Index/9f9b6c3ad9d099d61dbbb16220e25230.php" />
         <option value="$PROJECT_DIR$/Template/User/cash.html" />
+        <option value="$PROJECT_DIR$/Template/User/person.html" />
       </list>
     </option>
   </component>
@@ -334,12 +342,12 @@
       <workItem from="1624272949847" duration="779000" />
       <workItem from="1624333742324" duration="5839000" />
       <workItem from="1624370036686" duration="4481000" />
-      <workItem from="1624410468747" duration="995000" />
+      <workItem from="1624410468747" duration="1366000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="134763000" />
+    <option name="totallyTimeSpent" value="135134000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1176" extended-state="6" />
@@ -681,13 +689,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Template/User/person.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="35" selection-start-column="35" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Template/Chuhzg19tvgabxm/system_info.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
@@ -698,19 +699,26 @@
     <entry file="file://$PROJECT_DIR$/App/Runtime/Cache/Index/9f9b6c3ad9d099d61dbbb16220e25230.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
-          <caret line="99" column="40" lean-forward="true" selection-start-line="99" selection-start-column="32" selection-end-line="99" selection-end-column="40" />
-          <folding>
-            <element signature="n#style#0;n#div#5;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+          <caret line="99" column="39" lean-forward="true" selection-start-line="99" selection-start-column="31" selection-end-line="99" selection-end-column="39" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Template/User/cash.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="428">
-          <caret line="66" column="14" selection-start-line="66" selection-start-column="14" selection-end-line="66" selection-end-column="14" />
+        <state relative-caret-position="842">
+          <caret line="89" column="41" lean-forward="true" selection-start-line="89" selection-start-column="41" selection-end-line="89" selection-end-column="41" />
           <folding>
             <element signature="n#style#0;n#div#5;n#form#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Template/User/person.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="764">
+          <caret line="57" column="100" selection-start-line="57" selection-start-column="100" selection-end-line="57" selection-end-column="100" />
+          <folding>
+            <element signature="n#style#0;n#a#0;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
